@@ -23,7 +23,7 @@
 #define RF_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
 #define LB_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
 #define RB_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
-Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
+extern Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
 float vt_lf, vt_rf, vt_lb, vt_rb;
 extern rc RC_ctrl;
 extern pid_struct_t pid[5];
@@ -35,9 +35,9 @@ static uint32_t count_3;
 
 void MecanumCalculate()
 {
-    chassis_cmd_recv.vx = -RC_ctrl.ch0 * 0.68f;
-	chassis_cmd_recv.vy = -RC_ctrl.ch1 * 0.68f;
-	chassis_cmd_recv.wz = -RC_ctrl.ch2 * 0.68f;
+    // chassis_cmd_recv.vx = -RC_ctrl.ch0 * 0.68f;
+	// chassis_cmd_recv.vy = -RC_ctrl.ch1 * 0.68f;
+	// chassis_cmd_recv.wz = -RC_ctrl.ch2 * 0.68f;
 
 
     vt_lf = -chassis_cmd_recv.vx - chassis_cmd_recv.vy - chassis_cmd_recv.wz * LF_CENTER;

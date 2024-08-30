@@ -12,10 +12,12 @@
 #include  "remote_control.h"
 #include "robot_def.h"
 
+#define CHASSIS_COEF 0.25f
+
 
 static Chassis_Ctrl_Cmd_s chassis_cmd_send;        //发送给底盘的应用消息 
 static uint32_t count_2;
-
+Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
 
 
 
@@ -52,4 +54,48 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     HAL_UARTEx_ReceiveToIdle_IT(&huart3,buffer,36);
 //    HAL_UARTEx_ReceiveToIdle_DMA(&huart1,buffer,36);
   }
+}
+
+
+/**
+ * @brief 控制输入为遥控器(调试时)的模式和控制量设置
+ *
+ */
+void RemoteControlSet()
+{
+
+  if(switch_is_up(RC_ctrl.s2))          //右侧开关上，底盘控制
+  {
+    // chassis_cmd_recv.vx = -RC_ctrl.ch0 * 0.68f;
+    // chassis_cmd_recv.vy = -RC_ctrl.ch1 * 0.68f;
+    // chassis_cmd_recv.wz = -RC_ctrl.ch2 * 0.68f;
+    chassis_cmd_recv.vx = -RC_ctrl.ch0 * CHASSIS_COEF;
+    chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
+    chassis_cmd_recv.wz = -RC_ctrl.ch2 * CHASSIS_COEF;
+  }
+
+  if(switch_is_mid(RC_ctrl.s2))         //右侧开关中，xyz方向控制
+  {
+
+  }
+
+  if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开关下，夹爪夹紧
+  {
+
+  }
+
+  if(switch_is_mid(RC_ctrl.s1) && switch_is_down(RC_ctrl.s2))       //左侧开关中，右侧开关下，夹爪松开
+  {
+
+  }
+}
+
+
+/**
+ * @brief 控制输入为遥控器(调试时)的模式和控制量设置
+ *
+ */
+void RobotCMDTask()
+{
+  RemoteControlSet();
 }

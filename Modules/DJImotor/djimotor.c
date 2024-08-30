@@ -25,15 +25,7 @@ float Velocity_filter[5];
 slid_avg_filter_t Slid_filter[5];	//初始化滤波器示例
 extern float vt_lf, vt_rf, vt_lb, vt_rb;
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if(htim ->Instance == TIM2)
-	{
 
-		ChassisTask();
-
-	}
-}
 
 
 void AngleSumCalc(int ID)

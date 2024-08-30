@@ -66,6 +66,7 @@ Core/Src/sysmem.c \
 Application/chassis/chassis_control.c \
 Application/cmd/robot_cmd.c \
 Application/pid/pid.c \
+Application/robot.c \
 Bsp/Bsp_can.c \
 Modules/DJImotor/djimotor.c \
 Modules/remote/remote_control.c \

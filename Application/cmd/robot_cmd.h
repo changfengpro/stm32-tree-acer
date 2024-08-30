@@ -46,5 +46,8 @@ typedef struct
 } rc;
 
 
+void RemoteControlSet();
+void RobotCMDTask();
+
 
 #endif /* CMD_ROBOT_CMD_H_ */

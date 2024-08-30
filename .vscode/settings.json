@@ -3,7 +3,8 @@
         "*.py": "python",
         "djimotor.h": "c",
         "chassis_control.h": "c",
-        "arm_math.h": "c"
+        "arm_math.h": "c",
+        "robot_cmd.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
