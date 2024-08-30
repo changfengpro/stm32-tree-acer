@@ -1,0 +1,1074 @@
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Bsp_can.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Bsp/Bsp_can.c"
+  20              		.section	.text.can_user_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	can_user_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	can_user_init:
+  28              	.LVL0:
+  29              	.LFB134:
+   1:Bsp/Bsp_can.c **** /*
+   2:Bsp/Bsp_can.c ****  * Bsp_can.c
+   3:Bsp/Bsp_can.c ****  *
+   4:Bsp/Bsp_can.c ****  *  Created on: Jul 14, 2024
+   5:Bsp/Bsp_can.c ****  *      Author: auroranebulas
+   6:Bsp/Bsp_can.c ****  */
+   7:Bsp/Bsp_can.c ****  
+   8:Bsp/Bsp_can.c **** 
+   9:Bsp/Bsp_can.c **** #include "Bsp_can.h"
+  10:Bsp/Bsp_can.c **** #include "chassis_control.h"
+  11:Bsp/Bsp_can.c **** #include "djimotor.h"
+  12:Bsp/Bsp_can.c **** 
+  13:Bsp/Bsp_can.c **** Motor_6025_Typedef motor_array[6] = { 0 }; //前四位为底盘，后两位为云台
+  14:Bsp/Bsp_can.c **** moto_info_t motor_info[MOTOR_MAX_NUM];
+  15:Bsp/Bsp_can.c **** uint32_t index_check;
+  16:Bsp/Bsp_can.c **** extern slid_avg_filter_t Slid_filter[5];	//初始化滤波器示例
+  17:Bsp/Bsp_can.c **** extern float Velocity[5];
+  18:Bsp/Bsp_can.c **** extern float Last_Velocity[5];
+  19:Bsp/Bsp_can.c **** float Velocity_Filter[5];
+  20:Bsp/Bsp_can.c **** uint32_t count[3] = {0,0,0,0};
+  21:Bsp/Bsp_can.c **** 
+  22:Bsp/Bsp_can.c **** void can_user_init(CAN_HandleTypeDef* hcan )
+  23:Bsp/Bsp_can.c **** {
+  30              		.loc 1 23 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 40
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 23 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 2
+
+
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 8AB0     		sub	sp, sp, #40
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 56
+  24:Bsp/Bsp_can.c ****   CAN_FilterTypeDef  can_filter;
+  45              		.loc 1 24 3 is_stmt 1 view .LVU2
+  25:Bsp/Bsp_can.c **** 
+  26:Bsp/Bsp_can.c ****   can_filter.FilterBank = 0;                       // filter 0
+  46              		.loc 1 26 3 view .LVU3
+  47              		.loc 1 26 25 is_stmt 0 view .LVU4
+  48 0004 0023     		movs	r3, #0
+  49 0006 0593     		str	r3, [sp, #20]
+  27:Bsp/Bsp_can.c ****   can_filter.FilterMode =  CAN_FILTERMODE_IDMASK;  // mask mode
+  50              		.loc 1 27 3 is_stmt 1 view .LVU5
+  51              		.loc 1 27 25 is_stmt 0 view .LVU6
+  52 0008 0693     		str	r3, [sp, #24]
+  28:Bsp/Bsp_can.c ****   can_filter.FilterScale = CAN_FILTERSCALE_32BIT;
+  53              		.loc 1 28 3 is_stmt 1 view .LVU7
+  54              		.loc 1 28 26 is_stmt 0 view .LVU8
+  55 000a 0124     		movs	r4, #1
+  56 000c 0794     		str	r4, [sp, #28]
+  29:Bsp/Bsp_can.c ****   can_filter.FilterIdHigh = 0;
+  57              		.loc 1 29 3 is_stmt 1 view .LVU9
+  58              		.loc 1 29 27 is_stmt 0 view .LVU10
+  59 000e 0093     		str	r3, [sp]
+  30:Bsp/Bsp_can.c ****   can_filter.FilterIdLow  = 0;
+  60              		.loc 1 30 3 is_stmt 1 view .LVU11
+  61              		.loc 1 30 27 is_stmt 0 view .LVU12
+  62 0010 0193     		str	r3, [sp, #4]
+  31:Bsp/Bsp_can.c ****   can_filter.FilterMaskIdHigh = 0;
+  63              		.loc 1 31 3 is_stmt 1 view .LVU13
+  64              		.loc 1 31 31 is_stmt 0 view .LVU14
+  65 0012 0293     		str	r3, [sp, #8]
+  32:Bsp/Bsp_can.c ****   can_filter.FilterMaskIdLow  = 0;                // set mask 0 to receive all can id
+  66              		.loc 1 32 3 is_stmt 1 view .LVU15
+  67              		.loc 1 32 31 is_stmt 0 view .LVU16
+  68 0014 0393     		str	r3, [sp, #12]
+  33:Bsp/Bsp_can.c ****   can_filter.FilterFIFOAssignment = CAN_RX_FIFO0; // assign to fifo0
+  69              		.loc 1 33 3 is_stmt 1 view .LVU17
+  70              		.loc 1 33 35 is_stmt 0 view .LVU18
+  71 0016 0493     		str	r3, [sp, #16]
+  34:Bsp/Bsp_can.c ****   can_filter.FilterActivation = ENABLE;           // enable can filter
+  72              		.loc 1 34 3 is_stmt 1 view .LVU19
+  73              		.loc 1 34 31 is_stmt 0 view .LVU20
+  74 0018 0894     		str	r4, [sp, #32]
+  35:Bsp/Bsp_can.c ****   can_filter.SlaveStartFilterBank  = 14;          // only meaningful in dual can mode
+  75              		.loc 1 35 3 is_stmt 1 view .LVU21
+  76              		.loc 1 35 36 is_stmt 0 view .LVU22
+  77 001a 0E26     		movs	r6, #14
+  78 001c 0996     		str	r6, [sp, #36]
+  36:Bsp/Bsp_can.c ****   HAL_CAN_ConfigFilter(&hcan1, &can_filter);      // init can filter
+  79              		.loc 1 36 3 is_stmt 1 view .LVU23
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 3
+
+
+  80 001e 0E4D     		ldr	r5, .L3
+  81 0020 6946     		mov	r1, sp
+  82 0022 2846     		mov	r0, r5
+  83              	.LVL1:
+  84              		.loc 1 36 3 is_stmt 0 view .LVU24
+  85 0024 FFF7FEFF 		bl	HAL_CAN_ConfigFilter
+  86              	.LVL2:
+  37:Bsp/Bsp_can.c ****   HAL_CAN_Start(&hcan1);                          // start can1
+  87              		.loc 1 37 3 is_stmt 1 view .LVU25
+  88 0028 2846     		mov	r0, r5
+  89 002a FFF7FEFF 		bl	HAL_CAN_Start
+  90              	.LVL3:
+  38:Bsp/Bsp_can.c **** 
+  39:Bsp/Bsp_can.c ****   can_filter.FilterBank = 14;
+  91              		.loc 1 39 3 view .LVU26
+  92              		.loc 1 39 25 is_stmt 0 view .LVU27
+  93 002e 0596     		str	r6, [sp, #20]
+  40:Bsp/Bsp_can.c ****   can_filter.FilterFIFOAssignment = CAN_RX_FIFO1; // assign to fifo1
+  94              		.loc 1 40 3 is_stmt 1 view .LVU28
+  95              		.loc 1 40 35 is_stmt 0 view .LVU29
+  96 0030 0494     		str	r4, [sp, #16]
+  41:Bsp/Bsp_can.c ****   HAL_CAN_ConfigFilter(&hcan2, &can_filter);  
+  97              		.loc 1 41 3 is_stmt 1 view .LVU30
+  98 0032 0A4C     		ldr	r4, .L3+4
+  99 0034 6946     		mov	r1, sp
+ 100 0036 2046     		mov	r0, r4
+ 101 0038 FFF7FEFF 		bl	HAL_CAN_ConfigFilter
+ 102              	.LVL4:
+  42:Bsp/Bsp_can.c ****   HAL_CAN_Start(&hcan2);
+ 103              		.loc 1 42 3 view .LVU31
+ 104 003c 2046     		mov	r0, r4
+ 105 003e FFF7FEFF 		bl	HAL_CAN_Start
+ 106              	.LVL5:
+  43:Bsp/Bsp_can.c ****   HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING); // enable can1 rx interrupt
+ 107              		.loc 1 43 3 view .LVU32
+ 108 0042 0221     		movs	r1, #2
+ 109 0044 2846     		mov	r0, r5
+ 110 0046 FFF7FEFF 		bl	HAL_CAN_ActivateNotification
+ 111              	.LVL6:
+  44:Bsp/Bsp_can.c ****   HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO1_MSG_PENDING); // enable can2 rx interrupt
+ 112              		.loc 1 44 3 view .LVU33
+ 113 004a 1021     		movs	r1, #16
+ 114 004c 2046     		mov	r0, r4
+ 115 004e FFF7FEFF 		bl	HAL_CAN_ActivateNotification
+ 116              	.LVL7:
+  45:Bsp/Bsp_can.c **** }
+ 117              		.loc 1 45 1 is_stmt 0 view .LVU34
+ 118 0052 0AB0     		add	sp, sp, #40
+ 119              	.LCFI2:
+ 120              		.cfi_def_cfa_offset 16
+ 121              		@ sp needed
+ 122 0054 70BD     		pop	{r4, r5, r6, pc}
+ 123              	.L4:
+ 124 0056 00BF     		.align	2
+ 125              	.L3:
+ 126 0058 00000000 		.word	hcan1
+ 127 005c 00000000 		.word	hcan2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 4
+
+
+ 128              		.cfi_endproc
+ 129              	.LFE134:
+ 131              		.section	.text.HAL_CAN_RxFifo0MsgPendingCallback,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	HAL_CAN_RxFifo0MsgPendingCallback
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	HAL_CAN_RxFifo0MsgPendingCallback:
+ 139              	.LVL8:
+ 140              	.LFB135:
+  46:Bsp/Bsp_can.c **** 
+  47:Bsp/Bsp_can.c **** 
+  48:Bsp/Bsp_can.c **** 
+  49:Bsp/Bsp_can.c **** 
+  50:Bsp/Bsp_can.c **** // void Motor_CANFilterInit()
+  51:Bsp/Bsp_can.c **** // {
+  52:Bsp/Bsp_can.c **** // 	CAN_FilterTypeDef CAN_FilterInitStruct;
+  53:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterActivation = ENABLE;
+  54:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterMode = CAN_FILTERMODE_IDMASK;	//掩码模式
+  55:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterScale = CAN_FILTERSCALE_32BIT;	//32位筛选器
+  56:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterIdHigh = 0x0000;
+  57:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterIdLow = 0x0000;
+  58:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterMaskIdHigh = 0x0000;
+  59:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterMaskIdLow = 0x0000;
+  60:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterBank = 0;
+  61:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+  62:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.SlaveStartFilterBank = 14;
+  63:Bsp/Bsp_can.c **** 
+  64:Bsp/Bsp_can.c **** // 	HAL_CAN_ConfigFilter(&hcan1, &CAN_FilterInitStruct);
+  65:Bsp/Bsp_can.c **** // 	HAL_CAN_Start(&hcan1);
+  66:Bsp/Bsp_can.c **** // 	__HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+  67:Bsp/Bsp_can.c **** 
+  68:Bsp/Bsp_can.c **** // 	//HAL_UART_Transmit_IT(&huart1, &type, sizeof(type));
+  69:Bsp/Bsp_can.c **** 
+  70:Bsp/Bsp_can.c **** 
+  71:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterBank = 14;
+  72:Bsp/Bsp_can.c **** // 	CAN_FilterInitStruct.FilterFIFOAssignment = CAN_FILTER_FIFO1;//之后测试FIFO0，测试从接
+  73:Bsp/Bsp_can.c **** 
+  74:Bsp/Bsp_can.c **** // 	HAL_CAN_ConfigFilter(&hcan2, &CAN_FilterInitStruct);
+  75:Bsp/Bsp_can.c **** // 	//HAL_UART_Transmit_IT(&huart1, &type, sizeof(type));
+  76:Bsp/Bsp_can.c **** // 	HAL_CAN_Start(&hcan2);
+  77:Bsp/Bsp_can.c **** // 	__HAL_CAN_ENABLE_IT(&hcan2, CAN_IT_RX_FIFO1_MSG_PENDING);
+  78:Bsp/Bsp_can.c **** 
+  79:Bsp/Bsp_can.c **** // }
+  80:Bsp/Bsp_can.c **** 
+  81:Bsp/Bsp_can.c **** 
+  82:Bsp/Bsp_can.c **** 
+  83:Bsp/Bsp_can.c **** void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+  84:Bsp/Bsp_can.c **** {
+ 141              		.loc 1 84 1 is_stmt 1 view -0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 40
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		.loc 1 84 1 is_stmt 0 view .LVU36
+ 146 0000 30B5     		push	{r4, r5, lr}
+ 147              	.LCFI3:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 5
+
+
+ 148              		.cfi_def_cfa_offset 12
+ 149              		.cfi_offset 4, -12
+ 150              		.cfi_offset 5, -8
+ 151              		.cfi_offset 14, -4
+ 152 0002 8BB0     		sub	sp, sp, #44
+ 153              	.LCFI4:
+ 154              		.cfi_def_cfa_offset 56
+ 155 0004 0024     		movs	r4, #0
+  85:Bsp/Bsp_can.c ****   CAN_RxHeaderTypeDef rx_header;
+ 156              		.loc 1 85 3 is_stmt 1 view .LVU37
+  86:Bsp/Bsp_can.c ****   uint8_t             rx_data[8];
+ 157              		.loc 1 86 3 view .LVU38
+  87:Bsp/Bsp_can.c ****   uint8_t index;
+ 158              		.loc 1 87 3 view .LVU39
+  88:Bsp/Bsp_can.c ****   // if(hcan->Instance == CAN1)
+  89:Bsp/Bsp_can.c ****   // {
+  90:Bsp/Bsp_can.c ****   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); //receive can data
+ 159              		.loc 1 90 3 view .LVU40
+ 160 0006 01AB     		add	r3, sp, #4
+ 161 0008 03AA     		add	r2, sp, #12
+ 162 000a 2146     		mov	r1, r4
+ 163 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
+ 164              	.LVL9:
+  91:Bsp/Bsp_can.c ****   // }
+  92:Bsp/Bsp_can.c ****   if ((rx_header.StdId >= MOTOR_3508_FEEDBACK_ID_BASE)
+ 165              		.loc 1 92 3 view .LVU41
+ 166              		.loc 1 92 17 is_stmt 0 view .LVU42
+ 167 0010 039B     		ldr	r3, [sp, #12]
+  93:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_CHASSIS_MAX_NUM + MOTOR_GIMBAL_MAX_NU
+ 168              		.loc 1 93 4 view .LVU43
+ 169 0012 A3F50072 		sub	r2, r3, #512
+  92:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_CHASSIS_MAX_NUM + MOTOR_GIMBAL_MAX_NU
+ 170              		.loc 1 92 6 view .LVU44
+ 171 0016 052A     		cmp	r2, #5
+ 172 0018 24D8     		bhi	.L6
+  94:Bsp/Bsp_can.c ****   {
+  95:Bsp/Bsp_can.c **** 
+  96:Bsp/Bsp_can.c **** 	  index=rx_header.StdId - MOTOR_3508_FEEDBACK_ID_BASE;                  // get motor index by can_
+ 173              		.loc 1 96 4 is_stmt 1 view .LVU45
+ 174              		.loc 1 96 9 is_stmt 0 view .LVU46
+ 175 001a DCB2     		uxtb	r4, r3
+ 176              	.LVL10:
+  97:Bsp/Bsp_can.c ****     motor_array[index].angle    = ((rx_data[0] << 8) | rx_data[1]);
+ 177              		.loc 1 97 5 is_stmt 1 view .LVU47
+ 178              		.loc 1 97 44 is_stmt 0 view .LVU48
+ 179 001c 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
+ 180              		.loc 1 97 63 view .LVU49
+ 181 0020 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 182              		.loc 1 97 54 view .LVU50
+ 183 0024 40EA0120 		orr	r0, r0, r1, lsl #8
+ 184              		.loc 1 97 33 view .LVU51
+ 185 0028 2E49     		ldr	r1, .L11
+ 186 002a 04EB440E 		add	lr, r4, r4, lsl #1
+ 187 002e 01EB8E0C 		add	ip, r1, lr, lsl #2
+ 188 0032 21F82E00 		strh	r0, [r1, lr, lsl #2]	@ movhi
+  98:Bsp/Bsp_can.c ****     motor_array[index].current_get    = ((rx_data[2] << 8) | rx_data[3]);
+ 189              		.loc 1 98 5 is_stmt 1 view .LVU52
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 6
+
+
+ 190              		.loc 1 98 50 is_stmt 0 view .LVU53
+ 191 0036 9DF806E0 		ldrb	lr, [sp, #6]	@ zero_extendqisi2
+ 192              		.loc 1 98 69 view .LVU54
+ 193 003a 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 194              		.loc 1 98 60 view .LVU55
+ 195 003e 40EA0E20 		orr	r0, r0, lr, lsl #8
+ 196              		.loc 1 98 39 view .LVU56
+ 197 0042 ACF80400 		strh	r0, [ip, #4]	@ movhi
+  99:Bsp/Bsp_can.c ****     motor_array[index].current_set = ((rx_data[4] << 8) | rx_data[5]);
+ 198              		.loc 1 99 5 is_stmt 1 view .LVU57
+ 199              		.loc 1 99 47 is_stmt 0 view .LVU58
+ 200 0046 9DF808E0 		ldrb	lr, [sp, #8]	@ zero_extendqisi2
+ 201              		.loc 1 99 66 view .LVU59
+ 202 004a 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
+ 203              		.loc 1 99 57 view .LVU60
+ 204 004e 40EA0E20 		orr	r0, r0, lr, lsl #8
+ 205              		.loc 1 99 36 view .LVU61
+ 206 0052 ACF80600 		strh	r0, [ip, #6]	@ movhi
+ 100:Bsp/Bsp_can.c ****     motor_array[index].hall           =   rx_data[6];
+ 207              		.loc 1 100 5 is_stmt 1 view .LVU62
+ 208              		.loc 1 100 50 is_stmt 0 view .LVU63
+ 209 0056 9DF80A00 		ldrb	r0, [sp, #10]	@ zero_extendqisi2
+ 210              		.loc 1 100 39 view .LVU64
+ 211 005a 04EB440C 		add	ip, r4, r4, lsl #1
+ 212 005e 01EB8C01 		add	r1, r1, ip, lsl #2
+ 213 0062 0872     		strb	r0, [r1, #8]
+ 214              	.LVL11:
+ 215              	.L6:
+ 101:Bsp/Bsp_can.c ****     
+ 102:Bsp/Bsp_can.c ****   }
+ 103:Bsp/Bsp_can.c **** 
+ 104:Bsp/Bsp_can.c ****   if ((rx_header.StdId >= MOTOR_3508_FEEDBACK_ID_BASE)
+ 216              		.loc 1 104 3 is_stmt 1 view .LVU65
+ 217              		.loc 1 104 6 is_stmt 0 view .LVU66
+ 218 0064 082A     		cmp	r2, #8
+ 219 0066 21D8     		bhi	.L7
+ 220              	.LBB2:
+ 105:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_MAX_NUM))                  // judge t
+ 106:Bsp/Bsp_can.c ****   {
+ 107:Bsp/Bsp_can.c ****     uint8_t index = rx_header.StdId - MOTOR_3508_FEEDBACK_ID_BASE;                  // get motor in
+ 221              		.loc 1 107 5 is_stmt 1 view .LVU67
+ 222              	.LVL12:
+ 108:Bsp/Bsp_can.c ****     motor_info[index].rotor_angle    = ((rx_data[0] << 8) | rx_data[1]);
+ 223              		.loc 1 108 5 view .LVU68
+ 224              		.loc 1 108 49 is_stmt 0 view .LVU69
+ 225 0068 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 226              		.loc 1 108 68 view .LVU70
+ 227 006c 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 228              		.loc 1 108 22 view .LVU71
+ 229 0070 DBB2     		uxtb	r3, r3
+ 230              		.loc 1 108 59 view .LVU72
+ 231 0072 40EA0220 		orr	r0, r0, r2, lsl #8
+ 232              		.loc 1 108 38 view .LVU73
+ 233 0076 1C49     		ldr	r1, .L11+4
+ 234 0078 03EB4302 		add	r2, r3, r3, lsl #1
+ 235 007c 01EB8202 		add	r2, r1, r2, lsl #2
+ 236 0080 9080     		strh	r0, [r2, #4]	@ movhi
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 7
+
+
+ 109:Bsp/Bsp_can.c ****     motor_info[index].rotor_speed    = ((rx_data[2] << 8) | rx_data[3]);
+ 237              		.loc 1 109 5 is_stmt 1 view .LVU74
+ 238              		.loc 1 109 49 is_stmt 0 view .LVU75
+ 239 0082 9DF806C0 		ldrb	ip, [sp, #6]	@ zero_extendqisi2
+ 240              		.loc 1 109 68 view .LVU76
+ 241 0086 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 242              		.loc 1 109 59 view .LVU77
+ 243 008a 40EA0C20 		orr	r0, r0, ip, lsl #8
+ 244              		.loc 1 109 38 view .LVU78
+ 245 008e D080     		strh	r0, [r2, #6]	@ movhi
+ 110:Bsp/Bsp_can.c ****     motor_info[index].torque_current = ((rx_data[4] << 8) | rx_data[5]);
+ 246              		.loc 1 110 5 is_stmt 1 view .LVU79
+ 247              		.loc 1 110 49 is_stmt 0 view .LVU80
+ 248 0090 9DF808C0 		ldrb	ip, [sp, #8]	@ zero_extendqisi2
+ 249              		.loc 1 110 68 view .LVU81
+ 250 0094 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
+ 251              		.loc 1 110 59 view .LVU82
+ 252 0098 40EA0C20 		orr	r0, r0, ip, lsl #8
+ 253              		.loc 1 110 38 view .LVU83
+ 254 009c 1081     		strh	r0, [r2, #8]	@ movhi
+ 111:Bsp/Bsp_can.c ****     motor_info[index].temp           =   rx_data[6];
+ 255              		.loc 1 111 5 is_stmt 1 view .LVU84
+ 256              		.loc 1 111 49 is_stmt 0 view .LVU85
+ 257 009e 9DF80A20 		ldrb	r2, [sp, #10]	@ zero_extendqisi2
+ 258              		.loc 1 111 38 view .LVU86
+ 259 00a2 03EB4303 		add	r3, r3, r3, lsl #1
+ 260              	.LVL13:
+ 261              		.loc 1 111 38 view .LVU87
+ 262 00a6 01EB8301 		add	r1, r1, r3, lsl #2
+ 263 00aa 8A72     		strb	r2, [r1, #10]
+ 264              	.LVL14:
+ 265              	.L7:
+ 266              		.loc 1 111 38 view .LVU88
+ 267              	.LBE2:
+ 112:Bsp/Bsp_can.c ****   }
+ 113:Bsp/Bsp_can.c **** 
+ 114:Bsp/Bsp_can.c ****   index_check = index;
+ 268              		.loc 1 114 3 is_stmt 1 view .LVU89
+ 269              		.loc 1 114 15 is_stmt 0 view .LVU90
+ 270 00ac 0F4B     		ldr	r3, .L11+8
+ 271 00ae 1C60     		str	r4, [r3]
+ 115:Bsp/Bsp_can.c **** 
+ 116:Bsp/Bsp_can.c ****   if(index > 0 && index < 5)
+ 272              		.loc 1 116 3 is_stmt 1 view .LVU91
+ 273              		.loc 1 116 16 is_stmt 0 view .LVU92
+ 274 00b0 631E     		subs	r3, r4, #1
+ 275 00b2 DBB2     		uxtb	r3, r3
+ 276              		.loc 1 116 5 view .LVU93
+ 277 00b4 032B     		cmp	r3, #3
+ 278 00b6 01D9     		bls	.L10
+ 279              	.L5:
+ 117:Bsp/Bsp_can.c ****   {
+ 118:Bsp/Bsp_can.c **** 	  Velocity_Calclate(index);
+ 119:Bsp/Bsp_can.c ****     Velocity_Filter[index] = Slid_avg_filter(&Slid_filter[index], Velocity[index]);
+ 120:Bsp/Bsp_can.c **** 
+ 121:Bsp/Bsp_can.c ****   }
+ 122:Bsp/Bsp_can.c **** 
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 8
+
+
+ 123:Bsp/Bsp_can.c **** 
+ 124:Bsp/Bsp_can.c **** }
+ 280              		.loc 1 124 1 view .LVU94
+ 281 00b8 0BB0     		add	sp, sp, #44
+ 282              	.LCFI5:
+ 283              		.cfi_remember_state
+ 284              		.cfi_def_cfa_offset 12
+ 285              		@ sp needed
+ 286 00ba 30BD     		pop	{r4, r5, pc}
+ 287              	.LVL15:
+ 288              	.L10:
+ 289              	.LCFI6:
+ 290              		.cfi_restore_state
+ 118:Bsp/Bsp_can.c ****     Velocity_Filter[index] = Slid_avg_filter(&Slid_filter[index], Velocity[index]);
+ 291              		.loc 1 118 4 is_stmt 1 view .LVU95
+ 292 00bc 2046     		mov	r0, r4
+ 293 00be FFF7FEFF 		bl	Velocity_Calclate
+ 294              	.LVL16:
+ 119:Bsp/Bsp_can.c **** 
+ 295              		.loc 1 119 5 view .LVU96
+ 119:Bsp/Bsp_can.c **** 
+ 296              		.loc 1 119 30 is_stmt 0 view .LVU97
+ 297 00c2 A500     		lsls	r5, r4, #2
+ 298 00c4 0A4B     		ldr	r3, .L11+12
+ 299 00c6 03EB8403 		add	r3, r3, r4, lsl #2
+ 300 00ca 93ED000A 		vldr.32	s0, [r3]
+ 301 00ce 0948     		ldr	r0, .L11+16
+ 302 00d0 00EB0410 		add	r0, r0, r4, lsl #4
+ 303 00d4 FFF7FEFF 		bl	Slid_avg_filter
+ 304              	.LVL17:
+ 119:Bsp/Bsp_can.c **** 
+ 305              		.loc 1 119 28 view .LVU98
+ 306 00d8 074B     		ldr	r3, .L11+20
+ 307 00da 2B44     		add	r3, r3, r5
+ 308 00dc 83ED000A 		vstr.32	s0, [r3]
+ 309              		.loc 1 124 1 view .LVU99
+ 310 00e0 EAE7     		b	.L5
+ 311              	.L12:
+ 312 00e2 00BF     		.align	2
+ 313              	.L11:
+ 314 00e4 00000000 		.word	motor_array
+ 315 00e8 00000000 		.word	motor_info
+ 316 00ec 00000000 		.word	index_check
+ 317 00f0 00000000 		.word	Velocity
+ 318 00f4 00000000 		.word	Slid_filter
+ 319 00f8 00000000 		.word	Velocity_Filter
+ 320              		.cfi_endproc
+ 321              	.LFE135:
+ 323              		.section	.text.HAL_CAN_RxFifo1MsgPendingCallback,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	HAL_CAN_RxFifo1MsgPendingCallback
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 330              	HAL_CAN_RxFifo1MsgPendingCallback:
+ 331              	.LVL18:
+ 332              	.LFB136:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 9
+
+
+ 125:Bsp/Bsp_can.c **** 
+ 126:Bsp/Bsp_can.c **** 
+ 127:Bsp/Bsp_can.c **** void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
+ 128:Bsp/Bsp_can.c **** {
+ 333              		.loc 1 128 1 is_stmt 1 view -0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 40
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		.loc 1 128 1 is_stmt 0 view .LVU101
+ 338 0000 30B5     		push	{r4, r5, lr}
+ 339              	.LCFI7:
+ 340              		.cfi_def_cfa_offset 12
+ 341              		.cfi_offset 4, -12
+ 342              		.cfi_offset 5, -8
+ 343              		.cfi_offset 14, -4
+ 344 0002 8BB0     		sub	sp, sp, #44
+ 345              	.LCFI8:
+ 346              		.cfi_def_cfa_offset 56
+ 347 0004 0024     		movs	r4, #0
+ 129:Bsp/Bsp_can.c ****   CAN_RxHeaderTypeDef rx_header;
+ 348              		.loc 1 129 3 is_stmt 1 view .LVU102
+ 130:Bsp/Bsp_can.c ****   uint8_t             rx_data[8];
+ 349              		.loc 1 130 3 view .LVU103
+ 131:Bsp/Bsp_can.c ****   uint8_t index;
+ 350              		.loc 1 131 3 view .LVU104
+ 132:Bsp/Bsp_can.c **** 
+ 133:Bsp/Bsp_can.c **** 
+ 134:Bsp/Bsp_can.c ****   // if(hcan->Instance == CAN2)
+ 135:Bsp/Bsp_can.c ****   // {
+ 136:Bsp/Bsp_can.c ****      HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO1, &rx_header, rx_data); //receive can data
+ 351              		.loc 1 136 6 view .LVU105
+ 352 0006 01AB     		add	r3, sp, #4
+ 353 0008 03AA     		add	r2, sp, #12
+ 354 000a 0121     		movs	r1, #1
+ 355 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
+ 356              	.LVL19:
+ 137:Bsp/Bsp_can.c ****   // }
+ 138:Bsp/Bsp_can.c **** 
+ 139:Bsp/Bsp_can.c **** 
+ 140:Bsp/Bsp_can.c **** 
+ 141:Bsp/Bsp_can.c ****   if ((rx_header.StdId >= MOTOR_3508_FEEDBACK_ID_BASE)
+ 357              		.loc 1 141 3 view .LVU106
+ 358              		.loc 1 141 17 is_stmt 0 view .LVU107
+ 359 0010 039B     		ldr	r3, [sp, #12]
+ 142:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_CHASSIS_MAX_NUM + MOTOR_GIMBAL_MAX_NU
+ 360              		.loc 1 142 4 view .LVU108
+ 361 0012 A3F50072 		sub	r2, r3, #512
+ 141:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_CHASSIS_MAX_NUM + MOTOR_GIMBAL_MAX_NU
+ 362              		.loc 1 141 6 view .LVU109
+ 363 0016 052A     		cmp	r2, #5
+ 364 0018 24D8     		bhi	.L14
+ 143:Bsp/Bsp_can.c ****   {
+ 144:Bsp/Bsp_can.c **** 
+ 145:Bsp/Bsp_can.c **** 	  index=rx_header.StdId - MOTOR_3508_FEEDBACK_ID_BASE;                  // get motor index by can_
+ 365              		.loc 1 145 4 is_stmt 1 view .LVU110
+ 366              		.loc 1 145 9 is_stmt 0 view .LVU111
+ 367 001a DCB2     		uxtb	r4, r3
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 10
+
+
+ 368              	.LVL20:
+ 146:Bsp/Bsp_can.c ****     motor_array[index].angle    = ((rx_data[0] << 8) | rx_data[1]);
+ 369              		.loc 1 146 5 is_stmt 1 view .LVU112
+ 370              		.loc 1 146 44 is_stmt 0 view .LVU113
+ 371 001c 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
+ 372              		.loc 1 146 63 view .LVU114
+ 373 0020 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 374              		.loc 1 146 54 view .LVU115
+ 375 0024 40EA0120 		orr	r0, r0, r1, lsl #8
+ 376              		.loc 1 146 33 view .LVU116
+ 377 0028 2E49     		ldr	r1, .L19
+ 378 002a 04EB440E 		add	lr, r4, r4, lsl #1
+ 379 002e 01EB8E0C 		add	ip, r1, lr, lsl #2
+ 380 0032 21F82E00 		strh	r0, [r1, lr, lsl #2]	@ movhi
+ 147:Bsp/Bsp_can.c ****     motor_array[index].current_get    = ((rx_data[2] << 8) | rx_data[3]);
+ 381              		.loc 1 147 5 is_stmt 1 view .LVU117
+ 382              		.loc 1 147 50 is_stmt 0 view .LVU118
+ 383 0036 9DF806E0 		ldrb	lr, [sp, #6]	@ zero_extendqisi2
+ 384              		.loc 1 147 69 view .LVU119
+ 385 003a 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 386              		.loc 1 147 60 view .LVU120
+ 387 003e 40EA0E20 		orr	r0, r0, lr, lsl #8
+ 388              		.loc 1 147 39 view .LVU121
+ 389 0042 ACF80400 		strh	r0, [ip, #4]	@ movhi
+ 148:Bsp/Bsp_can.c ****     motor_array[index].current_set = ((rx_data[4] << 8) | rx_data[5]);
+ 390              		.loc 1 148 5 is_stmt 1 view .LVU122
+ 391              		.loc 1 148 47 is_stmt 0 view .LVU123
+ 392 0046 9DF808E0 		ldrb	lr, [sp, #8]	@ zero_extendqisi2
+ 393              		.loc 1 148 66 view .LVU124
+ 394 004a 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
+ 395              		.loc 1 148 57 view .LVU125
+ 396 004e 40EA0E20 		orr	r0, r0, lr, lsl #8
+ 397              		.loc 1 148 36 view .LVU126
+ 398 0052 ACF80600 		strh	r0, [ip, #6]	@ movhi
+ 149:Bsp/Bsp_can.c ****     motor_array[index].hall           =   rx_data[6];
+ 399              		.loc 1 149 5 is_stmt 1 view .LVU127
+ 400              		.loc 1 149 50 is_stmt 0 view .LVU128
+ 401 0056 9DF80A00 		ldrb	r0, [sp, #10]	@ zero_extendqisi2
+ 402              		.loc 1 149 39 view .LVU129
+ 403 005a 04EB440C 		add	ip, r4, r4, lsl #1
+ 404 005e 01EB8C01 		add	r1, r1, ip, lsl #2
+ 405 0062 0872     		strb	r0, [r1, #8]
+ 406              	.LVL21:
+ 407              	.L14:
+ 150:Bsp/Bsp_can.c ****     
+ 151:Bsp/Bsp_can.c ****   }
+ 152:Bsp/Bsp_can.c **** 
+ 153:Bsp/Bsp_can.c ****   if ((rx_header.StdId >= MOTOR_3508_FEEDBACK_ID_BASE)
+ 408              		.loc 1 153 3 is_stmt 1 view .LVU130
+ 409              		.loc 1 153 6 is_stmt 0 view .LVU131
+ 410 0064 082A     		cmp	r2, #8
+ 411 0066 21D8     		bhi	.L15
+ 412              	.LBB3:
+ 154:Bsp/Bsp_can.c ****    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_MAX_NUM))                  // judge t
+ 155:Bsp/Bsp_can.c ****   {
+ 156:Bsp/Bsp_can.c ****     uint8_t index = rx_header.StdId - MOTOR_3508_FEEDBACK_ID_BASE;                  // get motor in
+ 413              		.loc 1 156 5 is_stmt 1 view .LVU132
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 11
+
+
+ 414              	.LVL22:
+ 157:Bsp/Bsp_can.c ****     motor_info[index].rotor_angle    = ((rx_data[0] << 8) | rx_data[1]);
+ 415              		.loc 1 157 5 view .LVU133
+ 416              		.loc 1 157 49 is_stmt 0 view .LVU134
+ 417 0068 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 418              		.loc 1 157 68 view .LVU135
+ 419 006c 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 420              		.loc 1 157 22 view .LVU136
+ 421 0070 DBB2     		uxtb	r3, r3
+ 422              		.loc 1 157 59 view .LVU137
+ 423 0072 40EA0220 		orr	r0, r0, r2, lsl #8
+ 424              		.loc 1 157 38 view .LVU138
+ 425 0076 1C49     		ldr	r1, .L19+4
+ 426 0078 03EB4302 		add	r2, r3, r3, lsl #1
+ 427 007c 01EB8202 		add	r2, r1, r2, lsl #2
+ 428 0080 9080     		strh	r0, [r2, #4]	@ movhi
+ 158:Bsp/Bsp_can.c ****     motor_info[index].rotor_speed    = ((rx_data[2] << 8) | rx_data[3]);
+ 429              		.loc 1 158 5 is_stmt 1 view .LVU139
+ 430              		.loc 1 158 49 is_stmt 0 view .LVU140
+ 431 0082 9DF806C0 		ldrb	ip, [sp, #6]	@ zero_extendqisi2
+ 432              		.loc 1 158 68 view .LVU141
+ 433 0086 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 434              		.loc 1 158 59 view .LVU142
+ 435 008a 40EA0C20 		orr	r0, r0, ip, lsl #8
+ 436              		.loc 1 158 38 view .LVU143
+ 437 008e D080     		strh	r0, [r2, #6]	@ movhi
+ 159:Bsp/Bsp_can.c ****     motor_info[index].torque_current = ((rx_data[4] << 8) | rx_data[5]);
+ 438              		.loc 1 159 5 is_stmt 1 view .LVU144
+ 439              		.loc 1 159 49 is_stmt 0 view .LVU145
+ 440 0090 9DF808C0 		ldrb	ip, [sp, #8]	@ zero_extendqisi2
+ 441              		.loc 1 159 68 view .LVU146
+ 442 0094 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
+ 443              		.loc 1 159 59 view .LVU147
+ 444 0098 40EA0C20 		orr	r0, r0, ip, lsl #8
+ 445              		.loc 1 159 38 view .LVU148
+ 446 009c 1081     		strh	r0, [r2, #8]	@ movhi
+ 160:Bsp/Bsp_can.c ****     motor_info[index].temp           =   rx_data[6];
+ 447              		.loc 1 160 5 is_stmt 1 view .LVU149
+ 448              		.loc 1 160 49 is_stmt 0 view .LVU150
+ 449 009e 9DF80A20 		ldrb	r2, [sp, #10]	@ zero_extendqisi2
+ 450              		.loc 1 160 38 view .LVU151
+ 451 00a2 03EB4303 		add	r3, r3, r3, lsl #1
+ 452              	.LVL23:
+ 453              		.loc 1 160 38 view .LVU152
+ 454 00a6 01EB8301 		add	r1, r1, r3, lsl #2
+ 455 00aa 8A72     		strb	r2, [r1, #10]
+ 456              	.LVL24:
+ 457              	.L15:
+ 458              		.loc 1 160 38 view .LVU153
+ 459              	.LBE3:
+ 161:Bsp/Bsp_can.c ****   }
+ 162:Bsp/Bsp_can.c ****  
+ 163:Bsp/Bsp_can.c ****   index_check = index;
+ 460              		.loc 1 163 3 is_stmt 1 view .LVU154
+ 461              		.loc 1 163 15 is_stmt 0 view .LVU155
+ 462 00ac 0F4B     		ldr	r3, .L19+8
+ 463 00ae 1C60     		str	r4, [r3]
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 12
+
+
+ 164:Bsp/Bsp_can.c **** 
+ 165:Bsp/Bsp_can.c ****   if(index > 0 && index < 5)
+ 464              		.loc 1 165 3 is_stmt 1 view .LVU156
+ 465              		.loc 1 165 16 is_stmt 0 view .LVU157
+ 466 00b0 631E     		subs	r3, r4, #1
+ 467 00b2 DBB2     		uxtb	r3, r3
+ 468              		.loc 1 165 5 view .LVU158
+ 469 00b4 032B     		cmp	r3, #3
+ 470 00b6 01D9     		bls	.L18
+ 471              	.L13:
+ 166:Bsp/Bsp_can.c ****   {
+ 167:Bsp/Bsp_can.c **** 	  Velocity_Calclate(index);
+ 168:Bsp/Bsp_can.c **** 
+ 169:Bsp/Bsp_can.c ****     Velocity_Filter[index] = Slid_avg_filter(&Slid_filter[index], Velocity[index]);
+ 170:Bsp/Bsp_can.c **** 
+ 171:Bsp/Bsp_can.c ****   }
+ 172:Bsp/Bsp_can.c **** 
+ 173:Bsp/Bsp_can.c **** 
+ 174:Bsp/Bsp_can.c **** }
+ 472              		.loc 1 174 1 view .LVU159
+ 473 00b8 0BB0     		add	sp, sp, #44
+ 474              	.LCFI9:
+ 475              		.cfi_remember_state
+ 476              		.cfi_def_cfa_offset 12
+ 477              		@ sp needed
+ 478 00ba 30BD     		pop	{r4, r5, pc}
+ 479              	.LVL25:
+ 480              	.L18:
+ 481              	.LCFI10:
+ 482              		.cfi_restore_state
+ 167:Bsp/Bsp_can.c **** 
+ 483              		.loc 1 167 4 is_stmt 1 view .LVU160
+ 484 00bc 2046     		mov	r0, r4
+ 485 00be FFF7FEFF 		bl	Velocity_Calclate
+ 486              	.LVL26:
+ 169:Bsp/Bsp_can.c **** 
+ 487              		.loc 1 169 5 view .LVU161
+ 169:Bsp/Bsp_can.c **** 
+ 488              		.loc 1 169 30 is_stmt 0 view .LVU162
+ 489 00c2 A500     		lsls	r5, r4, #2
+ 490 00c4 0A4B     		ldr	r3, .L19+12
+ 491 00c6 03EB8403 		add	r3, r3, r4, lsl #2
+ 492 00ca 93ED000A 		vldr.32	s0, [r3]
+ 493 00ce 0948     		ldr	r0, .L19+16
+ 494 00d0 00EB0410 		add	r0, r0, r4, lsl #4
+ 495 00d4 FFF7FEFF 		bl	Slid_avg_filter
+ 496              	.LVL27:
+ 169:Bsp/Bsp_can.c **** 
+ 497              		.loc 1 169 28 view .LVU163
+ 498 00d8 074B     		ldr	r3, .L19+20
+ 499 00da 2B44     		add	r3, r3, r5
+ 500 00dc 83ED000A 		vstr.32	s0, [r3]
+ 501              		.loc 1 174 1 view .LVU164
+ 502 00e0 EAE7     		b	.L13
+ 503              	.L20:
+ 504 00e2 00BF     		.align	2
+ 505              	.L19:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 13
+
+
+ 506 00e4 00000000 		.word	motor_array
+ 507 00e8 00000000 		.word	motor_info
+ 508 00ec 00000000 		.word	index_check
+ 509 00f0 00000000 		.word	Velocity
+ 510 00f4 00000000 		.word	Slid_filter
+ 511 00f8 00000000 		.word	Velocity_Filter
+ 512              		.cfi_endproc
+ 513              	.LFE136:
+ 515              		.section	.text.set_motor_value_CAN1,"ax",%progbits
+ 516              		.align	1
+ 517              		.global	set_motor_value_CAN1
+ 518              		.syntax unified
+ 519              		.thumb
+ 520              		.thumb_func
+ 522              	set_motor_value_CAN1:
+ 523              	.LVL28:
+ 524              	.LFB137:
+ 175:Bsp/Bsp_can.c **** 
+ 176:Bsp/Bsp_can.c **** 
+ 177:Bsp/Bsp_can.c **** void set_motor_value_CAN1(uint16_t tx_ID, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+ 178:Bsp/Bsp_can.c **** {
+ 525              		.loc 1 178 1 is_stmt 1 view -0
+ 526              		.cfi_startproc
+ 527              		@ args = 4, pretend = 0, frame = 32
+ 528              		@ frame_needed = 0, uses_anonymous_args = 0
+ 529              		.loc 1 178 1 is_stmt 0 view .LVU166
+ 530 0000 00B5     		push	{lr}
+ 531              	.LCFI11:
+ 532              		.cfi_def_cfa_offset 4
+ 533              		.cfi_offset 14, -4
+ 534 0002 89B0     		sub	sp, sp, #36
+ 535              	.LCFI12:
+ 536              		.cfi_def_cfa_offset 40
+ 537 0004 BDF928C0 		ldrsh	ip, [sp, #40]
+ 179:Bsp/Bsp_can.c ****   CAN_TxHeaderTypeDef tx_header;
+ 538              		.loc 1 179 3 is_stmt 1 view .LVU167
+ 180:Bsp/Bsp_can.c ****   uint8_t             tx_data[8];
+ 539              		.loc 1 180 3 view .LVU168
+ 181:Bsp/Bsp_can.c **** 
+ 182:Bsp/Bsp_can.c ****   tx_header.StdId = tx_ID;
+ 540              		.loc 1 182 3 view .LVU169
+ 541              		.loc 1 182 19 is_stmt 0 view .LVU170
+ 542 0008 0290     		str	r0, [sp, #8]
+ 183:Bsp/Bsp_can.c ****   tx_header.IDE   = CAN_ID_STD;
+ 543              		.loc 1 183 3 is_stmt 1 view .LVU171
+ 544              		.loc 1 183 19 is_stmt 0 view .LVU172
+ 545 000a 0020     		movs	r0, #0
+ 546              	.LVL29:
+ 547              		.loc 1 183 19 view .LVU173
+ 548 000c 0490     		str	r0, [sp, #16]
+ 184:Bsp/Bsp_can.c ****   tx_header.RTR   = CAN_RTR_DATA;
+ 549              		.loc 1 184 3 is_stmt 1 view .LVU174
+ 550              		.loc 1 184 19 is_stmt 0 view .LVU175
+ 551 000e 0590     		str	r0, [sp, #20]
+ 185:Bsp/Bsp_can.c ****   tx_header.DLC   = 8;
+ 552              		.loc 1 185 3 is_stmt 1 view .LVU176
+ 553              		.loc 1 185 19 is_stmt 0 view .LVU177
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 14
+
+
+ 554 0010 0820     		movs	r0, #8
+ 555 0012 0690     		str	r0, [sp, #24]
+ 186:Bsp/Bsp_can.c **** 
+ 187:Bsp/Bsp_can.c ****   tx_data[0] = (v1>>8)&0xff;
+ 556              		.loc 1 187 3 is_stmt 1 view .LVU178
+ 557              		.loc 1 187 14 is_stmt 0 view .LVU179
+ 558 0014 41FA00F0 		asr	r0, r1, r0
+ 559 0018 8DF80000 		strb	r0, [sp]
+ 188:Bsp/Bsp_can.c ****   tx_data[1] =    (v1)&0xff;
+ 560              		.loc 1 188 3 is_stmt 1 view .LVU180
+ 561              		.loc 1 188 14 is_stmt 0 view .LVU181
+ 562 001c 8DF80110 		strb	r1, [sp, #1]
+ 189:Bsp/Bsp_can.c ****   tx_data[2] = (v2>>8)&0xff;
+ 563              		.loc 1 189 3 is_stmt 1 view .LVU182
+ 564              		.loc 1 189 14 is_stmt 0 view .LVU183
+ 565 0020 1112     		asrs	r1, r2, #8
+ 566              	.LVL30:
+ 567              		.loc 1 189 14 view .LVU184
+ 568 0022 8DF80210 		strb	r1, [sp, #2]
+ 190:Bsp/Bsp_can.c ****   tx_data[3] =    (v2)&0xff;
+ 569              		.loc 1 190 3 is_stmt 1 view .LVU185
+ 570              		.loc 1 190 14 is_stmt 0 view .LVU186
+ 571 0026 8DF80320 		strb	r2, [sp, #3]
+ 191:Bsp/Bsp_can.c ****   tx_data[4] = (v3>>8)&0xff;
+ 572              		.loc 1 191 3 is_stmt 1 view .LVU187
+ 573              		.loc 1 191 14 is_stmt 0 view .LVU188
+ 574 002a 1A12     		asrs	r2, r3, #8
+ 575              	.LVL31:
+ 576              		.loc 1 191 14 view .LVU189
+ 577 002c 8DF80420 		strb	r2, [sp, #4]
+ 192:Bsp/Bsp_can.c ****   tx_data[5] =    (v3)&0xff;
+ 578              		.loc 1 192 3 is_stmt 1 view .LVU190
+ 579              		.loc 1 192 14 is_stmt 0 view .LVU191
+ 580 0030 8DF80530 		strb	r3, [sp, #5]
+ 193:Bsp/Bsp_can.c ****   tx_data[6] = (v4>>8)&0xff;
+ 581              		.loc 1 193 3 is_stmt 1 view .LVU192
+ 582              		.loc 1 193 14 is_stmt 0 view .LVU193
+ 583 0034 9DF92930 		ldrsb	r3, [sp, #41]
+ 584              	.LVL32:
+ 585              		.loc 1 193 14 view .LVU194
+ 586 0038 8DF80630 		strb	r3, [sp, #6]
+ 194:Bsp/Bsp_can.c ****   tx_data[7] =    (v4)&0xff;
+ 587              		.loc 1 194 3 is_stmt 1 view .LVU195
+ 588              		.loc 1 194 14 is_stmt 0 view .LVU196
+ 589 003c 8DF807C0 		strb	ip, [sp, #7]
+ 195:Bsp/Bsp_can.c ****   HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data,(uint32_t*)CAN_TX_MAILBOX0);
+ 590              		.loc 1 195 3 is_stmt 1 view .LVU197
+ 591 0040 0123     		movs	r3, #1
+ 592 0042 6A46     		mov	r2, sp
+ 593 0044 02A9     		add	r1, sp, #8
+ 594 0046 0348     		ldr	r0, .L23
+ 595 0048 FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 596              	.LVL33:
+ 196:Bsp/Bsp_can.c ****   
+ 197:Bsp/Bsp_can.c **** }
+ 597              		.loc 1 197 1 is_stmt 0 view .LVU198
+ 598 004c 09B0     		add	sp, sp, #36
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 15
+
+
+ 599              	.LCFI13:
+ 600              		.cfi_def_cfa_offset 4
+ 601              		@ sp needed
+ 602 004e 5DF804FB 		ldr	pc, [sp], #4
+ 603              	.LVL34:
+ 604              	.L24:
+ 605              		.loc 1 197 1 view .LVU199
+ 606 0052 00BF     		.align	2
+ 607              	.L23:
+ 608 0054 00000000 		.word	hcan1
+ 609              		.cfi_endproc
+ 610              	.LFE137:
+ 612              		.section	.text.set_motor_value_CAN2,"ax",%progbits
+ 613              		.align	1
+ 614              		.global	set_motor_value_CAN2
+ 615              		.syntax unified
+ 616              		.thumb
+ 617              		.thumb_func
+ 619              	set_motor_value_CAN2:
+ 620              	.LVL35:
+ 621              	.LFB138:
+ 198:Bsp/Bsp_can.c **** 
+ 199:Bsp/Bsp_can.c **** void set_motor_value_CAN2(uint16_t tx_ID, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+ 200:Bsp/Bsp_can.c **** {
+ 622              		.loc 1 200 1 is_stmt 1 view -0
+ 623              		.cfi_startproc
+ 624              		@ args = 4, pretend = 0, frame = 32
+ 625              		@ frame_needed = 0, uses_anonymous_args = 0
+ 626              		.loc 1 200 1 is_stmt 0 view .LVU201
+ 627 0000 00B5     		push	{lr}
+ 628              	.LCFI14:
+ 629              		.cfi_def_cfa_offset 4
+ 630              		.cfi_offset 14, -4
+ 631 0002 89B0     		sub	sp, sp, #36
+ 632              	.LCFI15:
+ 633              		.cfi_def_cfa_offset 40
+ 634 0004 BDF928C0 		ldrsh	ip, [sp, #40]
+ 201:Bsp/Bsp_can.c ****   CAN_TxHeaderTypeDef tx_header;
+ 635              		.loc 1 201 3 is_stmt 1 view .LVU202
+ 202:Bsp/Bsp_can.c ****   uint8_t             tx_data[8];
+ 636              		.loc 1 202 3 view .LVU203
+ 203:Bsp/Bsp_can.c **** 
+ 204:Bsp/Bsp_can.c ****   tx_header.StdId = tx_ID;
+ 637              		.loc 1 204 3 view .LVU204
+ 638              		.loc 1 204 19 is_stmt 0 view .LVU205
+ 639 0008 0290     		str	r0, [sp, #8]
+ 205:Bsp/Bsp_can.c ****   tx_header.IDE   = CAN_ID_STD;
+ 640              		.loc 1 205 3 is_stmt 1 view .LVU206
+ 641              		.loc 1 205 19 is_stmt 0 view .LVU207
+ 642 000a 0020     		movs	r0, #0
+ 643              	.LVL36:
+ 644              		.loc 1 205 19 view .LVU208
+ 645 000c 0490     		str	r0, [sp, #16]
+ 206:Bsp/Bsp_can.c ****   tx_header.RTR   = CAN_RTR_DATA;
+ 646              		.loc 1 206 3 is_stmt 1 view .LVU209
+ 647              		.loc 1 206 19 is_stmt 0 view .LVU210
+ 648 000e 0590     		str	r0, [sp, #20]
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 16
+
+
+ 207:Bsp/Bsp_can.c ****   tx_header.DLC   = 8;
+ 649              		.loc 1 207 3 is_stmt 1 view .LVU211
+ 650              		.loc 1 207 19 is_stmt 0 view .LVU212
+ 651 0010 0820     		movs	r0, #8
+ 652 0012 0690     		str	r0, [sp, #24]
+ 208:Bsp/Bsp_can.c **** 
+ 209:Bsp/Bsp_can.c ****   tx_data[0] = (v1>>8)&0xff;
+ 653              		.loc 1 209 3 is_stmt 1 view .LVU213
+ 654              		.loc 1 209 14 is_stmt 0 view .LVU214
+ 655 0014 41FA00F0 		asr	r0, r1, r0
+ 656 0018 8DF80000 		strb	r0, [sp]
+ 210:Bsp/Bsp_can.c ****   tx_data[1] =    (v1)&0xff;
+ 657              		.loc 1 210 3 is_stmt 1 view .LVU215
+ 658              		.loc 1 210 14 is_stmt 0 view .LVU216
+ 659 001c 8DF80110 		strb	r1, [sp, #1]
+ 211:Bsp/Bsp_can.c ****   tx_data[2] = (v2>>8)&0xff;
+ 660              		.loc 1 211 3 is_stmt 1 view .LVU217
+ 661              		.loc 1 211 14 is_stmt 0 view .LVU218
+ 662 0020 1112     		asrs	r1, r2, #8
+ 663              	.LVL37:
+ 664              		.loc 1 211 14 view .LVU219
+ 665 0022 8DF80210 		strb	r1, [sp, #2]
+ 212:Bsp/Bsp_can.c ****   tx_data[3] =    (v2)&0xff;
+ 666              		.loc 1 212 3 is_stmt 1 view .LVU220
+ 667              		.loc 1 212 14 is_stmt 0 view .LVU221
+ 668 0026 8DF80320 		strb	r2, [sp, #3]
+ 213:Bsp/Bsp_can.c ****   tx_data[4] = (v3>>8)&0xff;
+ 669              		.loc 1 213 3 is_stmt 1 view .LVU222
+ 670              		.loc 1 213 14 is_stmt 0 view .LVU223
+ 671 002a 1A12     		asrs	r2, r3, #8
+ 672              	.LVL38:
+ 673              		.loc 1 213 14 view .LVU224
+ 674 002c 8DF80420 		strb	r2, [sp, #4]
+ 214:Bsp/Bsp_can.c ****   tx_data[5] =    (v3)&0xff;
+ 675              		.loc 1 214 3 is_stmt 1 view .LVU225
+ 676              		.loc 1 214 14 is_stmt 0 view .LVU226
+ 677 0030 8DF80530 		strb	r3, [sp, #5]
+ 215:Bsp/Bsp_can.c ****   tx_data[6] = (v4>>8)&0xff;
+ 678              		.loc 1 215 3 is_stmt 1 view .LVU227
+ 679              		.loc 1 215 14 is_stmt 0 view .LVU228
+ 680 0034 9DF92930 		ldrsb	r3, [sp, #41]
+ 681              	.LVL39:
+ 682              		.loc 1 215 14 view .LVU229
+ 683 0038 8DF80630 		strb	r3, [sp, #6]
+ 216:Bsp/Bsp_can.c ****   tx_data[7] =    (v4)&0xff;
+ 684              		.loc 1 216 3 is_stmt 1 view .LVU230
+ 685              		.loc 1 216 14 is_stmt 0 view .LVU231
+ 686 003c 8DF807C0 		strb	ip, [sp, #7]
+ 217:Bsp/Bsp_can.c ****   HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data,(uint32_t*)CAN_TX_MAILBOX0);
+ 687              		.loc 1 217 3 is_stmt 1 view .LVU232
+ 688 0040 0123     		movs	r3, #1
+ 689 0042 6A46     		mov	r2, sp
+ 690 0044 02A9     		add	r1, sp, #8
+ 691 0046 0348     		ldr	r0, .L27
+ 692 0048 FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 693              	.LVL40:
+ 218:Bsp/Bsp_can.c ****   
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 17
+
+
+ 219:Bsp/Bsp_can.c **** }
+ 694              		.loc 1 219 1 is_stmt 0 view .LVU233
+ 695 004c 09B0     		add	sp, sp, #36
+ 696              	.LCFI16:
+ 697              		.cfi_def_cfa_offset 4
+ 698              		@ sp needed
+ 699 004e 5DF804FB 		ldr	pc, [sp], #4
+ 700              	.LVL41:
+ 701              	.L28:
+ 702              		.loc 1 219 1 view .LVU234
+ 703 0052 00BF     		.align	2
+ 704              	.L27:
+ 705 0054 00000000 		.word	hcan2
+ 706              		.cfi_endproc
+ 707              	.LFE138:
+ 709              		.global	count
+ 710              		.section	.bss.count,"aw",%nobits
+ 711              		.align	2
+ 714              	count:
+ 715 0000 00000000 		.space	12
+ 715      00000000 
+ 715      00000000 
+ 716              		.global	Velocity_Filter
+ 717              		.section	.bss.Velocity_Filter,"aw",%nobits
+ 718              		.align	2
+ 721              	Velocity_Filter:
+ 722 0000 00000000 		.space	20
+ 722      00000000 
+ 722      00000000 
+ 722      00000000 
+ 722      00000000 
+ 723              		.global	index_check
+ 724              		.section	.bss.index_check,"aw",%nobits
+ 725              		.align	2
+ 728              	index_check:
+ 729 0000 00000000 		.space	4
+ 730              		.global	motor_info
+ 731              		.section	.bss.motor_info,"aw",%nobits
+ 732              		.align	2
+ 735              	motor_info:
+ 736 0000 00000000 		.space	108
+ 736      00000000 
+ 736      00000000 
+ 736      00000000 
+ 736      00000000 
+ 737              		.global	motor_array
+ 738              		.section	.bss.motor_array,"aw",%nobits
+ 739              		.align	2
+ 742              	motor_array:
+ 743 0000 00000000 		.space	72
+ 743      00000000 
+ 743      00000000 
+ 743      00000000 
+ 743      00000000 
+ 744              		.text
+ 745              	.Letext0:
+ 746              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 18
+
+
+ 747              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 748              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 749              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 750              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 751              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 752              		.file 8 "Core/Inc/can.h"
+ 753              		.file 9 "Bsp/Bsp_can.h"
+ 754              		.file 10 "Modules/DJImotor/djimotor.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Bsp_can.c
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:21     .text.can_user_init:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:27     .text.can_user_init:00000000 can_user_init
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:126    .text.can_user_init:00000058 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:132    .text.HAL_CAN_RxFifo0MsgPendingCallback:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:138    .text.HAL_CAN_RxFifo0MsgPendingCallback:00000000 HAL_CAN_RxFifo0MsgPendingCallback
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:314    .text.HAL_CAN_RxFifo0MsgPendingCallback:000000e4 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:742    .bss.motor_array:00000000 motor_array
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:735    .bss.motor_info:00000000 motor_info
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:728    .bss.index_check:00000000 index_check
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:721    .bss.Velocity_Filter:00000000 Velocity_Filter
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:324    .text.HAL_CAN_RxFifo1MsgPendingCallback:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:330    .text.HAL_CAN_RxFifo1MsgPendingCallback:00000000 HAL_CAN_RxFifo1MsgPendingCallback
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:506    .text.HAL_CAN_RxFifo1MsgPendingCallback:000000e4 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:516    .text.set_motor_value_CAN1:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:522    .text.set_motor_value_CAN1:00000000 set_motor_value_CAN1
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:608    .text.set_motor_value_CAN1:00000054 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:613    .text.set_motor_value_CAN2:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:619    .text.set_motor_value_CAN2:00000000 set_motor_value_CAN2
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:705    .text.set_motor_value_CAN2:00000054 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:714    .bss.count:00000000 count
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:711    .bss.count:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:718    .bss.Velocity_Filter:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:725    .bss.index_check:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:732    .bss.motor_info:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\cccc5TFE.s:739    .bss.motor_array:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_CAN_ConfigFilter
+HAL_CAN_Start
+HAL_CAN_ActivateNotification
+hcan1
+hcan2
+HAL_CAN_GetRxMessage
+Velocity_Calclate
+Slid_avg_filter
+Velocity
+Slid_filter
+HAL_CAN_AddTxMessage
