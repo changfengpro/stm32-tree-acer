@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
   27:Application/cmd/robot_cmd.c **** uint8_t buffer[36];
   28:Application/cmd/robot_cmd.c **** rc RC_ctrl;
   29:Application/cmd/robot_cmd.c **** // rc_union RC_data;
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 2
 
 
   30:Application/cmd/robot_cmd.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
   72              		.loc 1 40 52 view .LVU15
   73 0024 C5F30A05 		ubfx	r5, r5, #0, #11
   74              		.loc 1 40 17 view .LVU16
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 3
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 3
 
 
   75 0028 9D62     		str	r5, [r3, #40]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
   49:Application/cmd/robot_cmd.c ****     RC_ctrl.ch0 -= RC_CH_VALUE_OFFSET;
  121              		.loc 1 49 5 is_stmt 1 view .LVU42
  122              		.loc 1 49 17 is_stmt 0 view .LVU43
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 4
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 4
 
 
  123 006c A6F58066 		sub	r6, r6, #1024
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
   63:Application/cmd/robot_cmd.c ****  *
   64:Application/cmd/robot_cmd.c ****  */
   65:Application/cmd/robot_cmd.c **** void RemoteControlSet()
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 5
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 5
 
 
   66:Application/cmd/robot_cmd.c **** {
@@ -251,7 +251,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
   68:Application/cmd/robot_cmd.c ****   if(switch_is_up(RC_ctrl.s2))          //右侧开关上，底盘控制
  171              		.loc 1 68 3 view .LVU55
  172              		.loc 1 68 6 is_stmt 0 view .LVU56
- 173 0000 1B4B     		ldr	r3, .L15
+ 173 0000 234B     		ldr	r3, .L15
  174 0002 93F83930 		ldrb	r3, [r3, #57]	@ zero_extendqisi2
  175              		.loc 1 68 5 view .LVU57
  176 0006 012B     		cmp	r3, #1
@@ -274,33 +274,35 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
  183              	.L10:
   79:Application/cmd/robot_cmd.c ****   {
   80:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vz = RC_ctrl.ch1 * COREXY_COEF;
-  81:Application/cmd/robot_cmd.c ****   }
-  82:Application/cmd/robot_cmd.c **** 
-  83:Application/cmd/robot_cmd.c ****   if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开�
-  84:Application/cmd/robot_cmd.c ****   {
-  85:Application/cmd/robot_cmd.c **** 
-  86:Application/cmd/robot_cmd.c ****   }
+  81:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
+  82:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
+  83:Application/cmd/robot_cmd.c ****   }
+  84:Application/cmd/robot_cmd.c **** 
+  85:Application/cmd/robot_cmd.c ****   if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开�
+  86:Application/cmd/robot_cmd.c ****   {
   87:Application/cmd/robot_cmd.c **** 
-  88:Application/cmd/robot_cmd.c ****   if(switch_is_mid(RC_ctrl.s1) && switch_is_down(RC_ctrl.s2))       //左侧开关中，右侧开�
-  89:Application/cmd/robot_cmd.c ****   {
-  90:Application/cmd/robot_cmd.c **** 
-  91:Application/cmd/robot_cmd.c ****   }
-  92:Application/cmd/robot_cmd.c **** }
- 184              		.loc 1 92 1 view .LVU60
+  88:Application/cmd/robot_cmd.c ****   }
+  89:Application/cmd/robot_cmd.c **** 
+  90:Application/cmd/robot_cmd.c ****   if(switch_is_mid(RC_ctrl.s1) && switch_is_down(RC_ctrl.s2))       //左侧开关中，右侧开�
+  91:Application/cmd/robot_cmd.c ****   {
+  92:Application/cmd/robot_cmd.c **** 
+  93:Application/cmd/robot_cmd.c ****   }
+  94:Application/cmd/robot_cmd.c **** }
+ 184              		.loc 1 94 1 view .LVU60
  185 000e 7047     		bx	lr
  186              	.L13:
   73:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
  187              		.loc 1 73 5 is_stmt 1 view .LVU61
   73:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
  188              		.loc 1 73 35 is_stmt 0 view .LVU62
- 189 0010 1748     		ldr	r0, .L15
+ 189 0010 1F48     		ldr	r0, .L15
  190 0012 426A     		ldr	r2, [r0, #36]
   73:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 6
+
+
  191              		.loc 1 73 27 view .LVU63
  192 0014 5242     		rsbs	r2, r2, #0
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 6
-
-
  193 0016 07EE902A 		vmov	s15, r2	@ int
   73:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
  194              		.loc 1 73 40 view .LVU64
@@ -309,7 +311,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
  197 0022 67EE877A 		vmul.f32	s15, s15, s14
   73:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
  198              		.loc 1 73 25 view .LVU65
- 199 0026 1349     		ldr	r1, .L15+4
+ 199 0026 1B49     		ldr	r1, .L15+4
  200 0028 C1ED007A 		vstr.32	s15, [r1]
   74:Application/cmd/robot_cmd.c ****     chassis_cmd_recv.wz = -RC_ctrl.ch2 * CHASSIS_COEF;
  201              		.loc 1 74 5 is_stmt 1 view .LVU66
@@ -345,145 +347,170 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 1
  222 0050 C1ED027A 		vstr.32	s15, [r1, #8]
  223 0054 D9E7     		b	.L11
  224              	.L14:
-  80:Application/cmd/robot_cmd.c ****   }
+  80:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
  225              		.loc 1 80 5 is_stmt 1 view .LVU76
-  80:Application/cmd/robot_cmd.c ****   }
+  80:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
  226              		.loc 1 80 33 is_stmt 0 view .LVU77
- 227 0056 064B     		ldr	r3, .L15
- 228 0058 D3ED0A7A 		vldr.32	s15, [r3, #40]	@ int
-  80:Application/cmd/robot_cmd.c ****   }
- 229              		.loc 1 80 38 view .LVU78
+ 227 0056 0E4A     		ldr	r2, .L15
+  80:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
+ 228              		.loc 1 80 38 view .LVU78
+ 229 0058 D2ED0A7A 		vldr.32	s15, [r2, #40]	@ int
  230 005c F8EEE77A 		vcvt.f32.s32	s15, s15
  231 0060 B1EE087A 		vmov.f32	s14, #6.0e+0
  232 0064 67EE877A 		vmul.f32	s15, s15, s14
-  80:Application/cmd/robot_cmd.c ****   }
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 7
+
+
+  80:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
  233              		.loc 1 80 24 view .LVU79
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 7
-
-
- 234 0068 034B     		ldr	r3, .L15+8
+ 234 0068 0B4B     		ldr	r3, .L15+8
  235 006a C3ED027A 		vstr.32	s15, [r3, #8]
-  83:Application/cmd/robot_cmd.c ****   {
- 236              		.loc 1 83 3 is_stmt 1 view .LVU80
-  86:Application/cmd/robot_cmd.c **** 
- 237              		.loc 1 86 3 view .LVU81
-  88:Application/cmd/robot_cmd.c ****   {
- 238              		.loc 1 88 3 view .LVU82
-  91:Application/cmd/robot_cmd.c **** }
- 239              		.loc 1 91 3 view .LVU83
- 240              		.loc 1 92 1 is_stmt 0 view .LVU84
- 241 006e CEE7     		b	.L10
- 242              	.L16:
- 243              		.align	2
- 244              	.L15:
- 245 0070 00000000 		.word	RC_ctrl
- 246 0074 00000000 		.word	chassis_cmd_recv
- 247 0078 00000000 		.word	Corexy_cmd_recv
- 248              		.cfi_endproc
- 249              	.LFE135:
- 251              		.section	.text.RobotCMDTask,"ax",%progbits
- 252              		.align	1
- 253              		.global	RobotCMDTask
- 254              		.syntax unified
- 255              		.thumb
- 256              		.thumb_func
- 258              	RobotCMDTask:
- 259              	.LFB136:
-  93:Application/cmd/robot_cmd.c **** 
-  94:Application/cmd/robot_cmd.c **** 
-  95:Application/cmd/robot_cmd.c **** /**
-  96:Application/cmd/robot_cmd.c ****  * @brief 控制输入为遥控器(调试时)的模式和控制量设置
-  97:Application/cmd/robot_cmd.c ****  *
-  98:Application/cmd/robot_cmd.c ****  */
-  99:Application/cmd/robot_cmd.c **** void RobotCMDTask()
- 100:Application/cmd/robot_cmd.c **** {
- 260              		.loc 1 100 1 is_stmt 1 view -0
- 261              		.cfi_startproc
- 262              		@ args = 0, pretend = 0, frame = 0
- 263              		@ frame_needed = 0, uses_anonymous_args = 0
- 264 0000 08B5     		push	{r3, lr}
- 265              	.LCFI1:
- 266              		.cfi_def_cfa_offset 8
- 267              		.cfi_offset 3, -8
- 268              		.cfi_offset 14, -4
- 101:Application/cmd/robot_cmd.c ****   RemoteControlSet();
- 269              		.loc 1 101 3 view .LVU86
- 270 0002 FFF7FEFF 		bl	RemoteControlSet
- 271              	.LVL4:
- 102:Application/cmd/robot_cmd.c **** }...
- 272              		.loc 1 102 1 is_stmt 0 view .LVU87
- 273 0006 08BD     		pop	{r3, pc}
- 274              		.cfi_endproc
- 275              	.LFE136:
- 277              		.global	RC_ctrl
- 278              		.section	.bss.RC_ctrl,"aw",%nobits
- 279              		.align	2
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 8
+  81:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
+ 236              		.loc 1 81 5 is_stmt 1 view .LVU80
+  81:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
+ 237              		.loc 1 81 38 is_stmt 0 view .LVU81
+ 238 006e D2ED0B7A 		vldr.32	s15, [r2, #44]	@ int
+ 239 0072 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 240 0076 67EE877A 		vmul.f32	s15, s15, s14
+  81:Application/cmd/robot_cmd.c ****     Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
+ 241              		.loc 1 81 24 view .LVU82
+ 242 007a C3ED007A 		vstr.32	s15, [r3]
+  82:Application/cmd/robot_cmd.c ****   }
+ 243              		.loc 1 82 5 is_stmt 1 view .LVU83
+  82:Application/cmd/robot_cmd.c ****   }
+ 244              		.loc 1 82 33 is_stmt 0 view .LVU84
+ 245 007e D2ED0C7A 		vldr.32	s15, [r2, #48]	@ int
+  82:Application/cmd/robot_cmd.c ****   }
+ 246              		.loc 1 82 38 view .LVU85
+ 247 0082 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 248 0086 67EE877A 		vmul.f32	s15, s15, s14
+  82:Application/cmd/robot_cmd.c ****   }
+ 249              		.loc 1 82 24 view .LVU86
+ 250 008a C3ED017A 		vstr.32	s15, [r3, #4]
+  85:Application/cmd/robot_cmd.c ****   {
+ 251              		.loc 1 85 3 is_stmt 1 view .LVU87
+  88:Application/cmd/robot_cmd.c **** 
+ 252              		.loc 1 88 3 view .LVU88
+  90:Application/cmd/robot_cmd.c ****   {
+ 253              		.loc 1 90 3 view .LVU89
+  93:Application/cmd/robot_cmd.c **** }
+ 254              		.loc 1 93 3 view .LVU90
+ 255              		.loc 1 94 1 is_stmt 0 view .LVU91
+ 256 008e BEE7     		b	.L10
+ 257              	.L16:
+ 258              		.align	2
+ 259              	.L15:
+ 260 0090 00000000 		.word	RC_ctrl
+ 261 0094 00000000 		.word	chassis_cmd_recv
+ 262 0098 00000000 		.word	Corexy_cmd_recv
+ 263              		.cfi_endproc
+ 264              	.LFE135:
+ 266              		.section	.text.RobotCMDTask,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	RobotCMDTask
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 273              	RobotCMDTask:
+ 274              	.LFB136:
+  95:Application/cmd/robot_cmd.c **** 
+  96:Application/cmd/robot_cmd.c **** 
+  97:Application/cmd/robot_cmd.c **** /**
+  98:Application/cmd/robot_cmd.c ****  * @brief 控制输入为遥控器(调试时)的模式和控制量设置
+  99:Application/cmd/robot_cmd.c ****  *
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 8
 
 
- 282              	RC_ctrl:
- 283 0000 00000000 		.space	60
- 283      00000000 
- 283      00000000 
- 283      00000000 
- 283      00000000 
- 284              		.global	buffer
- 285              		.section	.bss.buffer,"aw",%nobits
- 286              		.align	2
- 289              	buffer:
- 290 0000 00000000 		.space	36
- 290      00000000 
- 290      00000000 
- 290      00000000 
- 290      00000000 
- 291              		.global	Corexy_cmd_recv
- 292              		.section	.bss.Corexy_cmd_recv,"aw",%nobits
- 293              		.align	2
- 296              	Corexy_cmd_recv:
- 297 0000 00000000 		.space	12
- 297      00000000 
- 297      00000000 
- 298              		.global	chassis_cmd_recv
- 299              		.section	.bss.chassis_cmd_recv,"aw",%nobits
- 300              		.align	2
- 303              	chassis_cmd_recv:
- 304 0000 00000000 		.space	24
- 304      00000000 
- 304      00000000 
- 304      00000000 
- 304      00000000 
- 305              		.text
- 306              	.Letext0:
- 307              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
- 308              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
- 309              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 310              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 311              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 312              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 313              		.file 8 "Application/cmd/robot_cmd.h"
- 314              		.file 9 "Application/robot_def.h"
- 315              		.file 10 "Core/Inc/usart.h"
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s 			page 9
+ 100:Application/cmd/robot_cmd.c ****  */
+ 101:Application/cmd/robot_cmd.c **** void RobotCMDTask()
+ 102:Application/cmd/robot_cmd.c **** {
+ 275              		.loc 1 102 1 is_stmt 1 view -0
+ 276              		.cfi_startproc
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279 0000 08B5     		push	{r3, lr}
+ 280              	.LCFI1:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 3, -8
+ 283              		.cfi_offset 14, -4
+ 103:Application/cmd/robot_cmd.c ****   RemoteControlSet();
+ 284              		.loc 1 103 3 view .LVU93
+ 285 0002 FFF7FEFF 		bl	RemoteControlSet
+ 286              	.LVL4:
+ 104:Application/cmd/robot_cmd.c **** }...
+ 287              		.loc 1 104 1 is_stmt 0 view .LVU94
+ 288 0006 08BD     		pop	{r3, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE136:
+ 292              		.global	RC_ctrl
+ 293              		.section	.bss.RC_ctrl,"aw",%nobits
+ 294              		.align	2
+ 297              	RC_ctrl:
+ 298 0000 00000000 		.space	60
+ 298      00000000 
+ 298      00000000 
+ 298      00000000 
+ 298      00000000 
+ 299              		.global	buffer
+ 300              		.section	.bss.buffer,"aw",%nobits
+ 301              		.align	2
+ 304              	buffer:
+ 305 0000 00000000 		.space	36
+ 305      00000000 
+ 305      00000000 
+ 305      00000000 
+ 305      00000000 
+ 306              		.global	Corexy_cmd_recv
+ 307              		.section	.bss.Corexy_cmd_recv,"aw",%nobits
+ 308              		.align	2
+ 311              	Corexy_cmd_recv:
+ 312 0000 00000000 		.space	12
+ 312      00000000 
+ 312      00000000 
+ 313              		.global	chassis_cmd_recv
+ 314              		.section	.bss.chassis_cmd_recv,"aw",%nobits
+ 315              		.align	2
+ 318              	chassis_cmd_recv:
+ 319 0000 00000000 		.space	24
+ 319      00000000 
+ 319      00000000 
+ 319      00000000 
+ 319      00000000 
+ 320              		.text
+ 321              	.Letext0:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 9
+
+
+ 322              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 323              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 324              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 325              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 326              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 327              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 328              		.file 8 "Application/cmd/robot_cmd.h"
+ 329              		.file 9 "Application/robot_def.h"
+ 330              		.file 10 "Core/Inc/usart.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 robot_cmd.c
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:21     .text.HAL_UARTEx_RxEventCallback:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:27     .text.HAL_UARTEx_RxEventCallback:00000000 HAL_UARTEx_RxEventCallback
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:151    .text.HAL_UARTEx_RxEventCallback:00000094 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:289    .bss.buffer:00000000 buffer
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:282    .bss.RC_ctrl:00000000 RC_ctrl
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:158    .text.RemoteControlSet:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:164    .text.RemoteControlSet:00000000 RemoteControlSet
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:245    .text.RemoteControlSet:00000070 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:303    .bss.chassis_cmd_recv:00000000 chassis_cmd_recv
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:296    .bss.Corexy_cmd_recv:00000000 Corexy_cmd_recv
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:252    .text.RobotCMDTask:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:258    .text.RobotCMDTask:00000000 RobotCMDTask
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:279    .bss.RC_ctrl:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:286    .bss.buffer:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:293    .bss.Corexy_cmd_recv:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cczj3QZg.s:300    .bss.chassis_cmd_recv:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:21     .text.HAL_UARTEx_RxEventCallback:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:27     .text.HAL_UARTEx_RxEventCallback:00000000 HAL_UARTEx_RxEventCallback
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:151    .text.HAL_UARTEx_RxEventCallback:00000094 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:304    .bss.buffer:00000000 buffer
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:297    .bss.RC_ctrl:00000000 RC_ctrl
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:158    .text.RemoteControlSet:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:164    .text.RemoteControlSet:00000000 RemoteControlSet
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:260    .text.RemoteControlSet:00000090 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:318    .bss.chassis_cmd_recv:00000000 chassis_cmd_recv
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:311    .bss.Corexy_cmd_recv:00000000 Corexy_cmd_recv
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:267    .text.RobotCMDTask:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:273    .text.RobotCMDTask:00000000 RobotCMDTask
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:294    .bss.RC_ctrl:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:301    .bss.buffer:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:308    .bss.Corexy_cmd_recv:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccrp0PZM.s:315    .bss.chassis_cmd_recv:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UARTEx_ReceiveToIdle_IT

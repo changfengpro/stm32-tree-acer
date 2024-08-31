@@ -78,6 +78,8 @@ void RemoteControlSet()
   if(switch_is_mid(RC_ctrl.s2))         //右侧开关中，xyz方向控制
   {
     Corexy_cmd_recv.vz = RC_ctrl.ch1 * COREXY_COEF;
+    Corexy_cmd_recv.vx = RC_ctrl.ch2 * COREXY_COEF;
+    Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
   }
 
   if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开关下，夹爪夹紧

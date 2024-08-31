@@ -118,7 +118,7 @@ int main(void)
 	pid_init(&pid[i], 25, 1, 0.1, 2000, 7000);
   }
   
-  for(int i = 7; i < 9; i++)
+  for(int i = 5; i < 9; i++)
   {
 	pid_init(&pid[i], 10, 0.5, 0.1, 2500, 3000);
   }

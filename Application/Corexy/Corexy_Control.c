@@ -29,6 +29,8 @@ void CorexyCalculate()
 {
     vt_lu =  Corexy_cmd_recv.vz;
     vt_ru = -Corexy_cmd_recv.vz;
+    vt_ld =  Corexy_cmd_recv.vy - Corexy_cmd_recv.vx;
+    vt_rd = -Corexy_cmd_recv.vy - Corexy_cmd_recv.vx;
 }
 
 /*
@@ -38,10 +40,12 @@ void CorexyCalculate()
 void CorexyTask()
 {
     CorexyCalculate();
-
+    pid_ref[5] = ver_pid_calc(&pid[5], vt_ld, motor_info[5].rotor_speed);
+    pid_ref[6] = ver_pid_calc(&pid[6], vt_rd, motor_info[6].rotor_speed);
     pid_ref[7] = ver_pid_calc(&pid[7], vt_lu, motor_info[7].rotor_speed);
     pid_ref[8] = ver_pid_calc(&pid[8], vt_ru, motor_info[8].rotor_speed);
 
     set_motor_value_CAN2(0x1FF, 0, 0, pid_ref[7], pid_ref[8]);
+    set_motor_value_CAN1(0x1FF, pid_ref[5], pid_ref[6], 0, 0);
 
 }

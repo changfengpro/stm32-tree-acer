@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 1
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 1
   28:Application/Corexy/Corexy_Control.c **** void CorexyCalculate()
   29:Application/Corexy/Corexy_Control.c **** {
   29              		.loc 1 29 1 view -0
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 2
 
 
   30              		.cfi_startproc
@@ -68,187 +68,260 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 1
   30:Application/Corexy/Corexy_Control.c ****     vt_lu =  Corexy_cmd_recv.vz;
   34              		.loc 1 30 5 view .LVU1
   35              		.loc 1 30 29 is_stmt 0 view .LVU2
-  36 0000 054B     		ldr	r3, .L2
+  36 0000 0D4B     		ldr	r3, .L2
   37 0002 D3ED027A 		vldr.32	s15, [r3, #8]
   38              		.loc 1 30 11 view .LVU3
-  39 0006 054B     		ldr	r3, .L2+4
-  40 0008 C3ED007A 		vstr.32	s15, [r3]
+  39 0006 0D4A     		ldr	r2, .L2+4
+  40 0008 C2ED007A 		vstr.32	s15, [r2]
   31:Application/Corexy/Corexy_Control.c ****     vt_ru = -Corexy_cmd_recv.vz;
   41              		.loc 1 31 5 is_stmt 1 view .LVU4
   42              		.loc 1 31 13 is_stmt 0 view .LVU5
   43 000c F1EE677A 		vneg.f32	s15, s15
   44              		.loc 1 31 11 view .LVU6
-  45 0010 034B     		ldr	r3, .L2+8
-  46 0012 C3ED007A 		vstr.32	s15, [r3]
-  32:Application/Corexy/Corexy_Control.c **** }
-  47              		.loc 1 32 1 view .LVU7
-  48 0016 7047     		bx	lr
-  49              	.L3:
-  50              		.align	2
-  51              	.L2:
-  52 0018 00000000 		.word	Corexy_cmd_recv
-  53 001c 00000000 		.word	vt_lu
-  54 0020 00000000 		.word	vt_ru
-  55              		.cfi_endproc
-  56              	.LFE134:
-  58              		.section	.text.CorexyTask,"ax",%progbits
-  59              		.align	1
-  60              		.global	CorexyTask
-  61              		.syntax unified
-  62              		.thumb
-  63              		.thumb_func
-  65              	CorexyTask:
-  66              	.LFB135:
-  33:Application/Corexy/Corexy_Control.c **** 
-  34:Application/Corexy/Corexy_Control.c **** /*
-  35:Application/Corexy/Corexy_Control.c ****  * @brief Corexy结构控制任务
-  36:Application/Corexy/Corexy_Control.c ****  * @return None
-  37:Application/Corexy/Corexy_Control.c ****  */
-  38:Application/Corexy/Corexy_Control.c **** void CorexyTask()
-  39:Application/Corexy/Corexy_Control.c **** {
-  67              		.loc 1 39 1 is_stmt 1 view -0
-  68              		.cfi_startproc
-  69              		@ args = 0, pretend = 0, frame = 0
-  70              		@ frame_needed = 0, uses_anonymous_args = 0
-  71 0000 70B5     		push	{r4, r5, r6, lr}
-  72              	.LCFI0:
-  73              		.cfi_def_cfa_offset 16
-  74              		.cfi_offset 4, -16
-  75              		.cfi_offset 5, -12
-  76              		.cfi_offset 6, -8
-  77              		.cfi_offset 14, -4
-  78 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 3
+  45 0010 0B4A     		ldr	r2, .L2+8
+  46 0012 C2ED007A 		vstr.32	s15, [r2]
+  32:Application/Corexy/Corexy_Control.c ****     vt_ld =  Corexy_cmd_recv.vy - Corexy_cmd_recv.vx;
+  47              		.loc 1 32 5 is_stmt 1 view .LVU7
+  48              		.loc 1 32 29 is_stmt 0 view .LVU8
+  49 0016 D3ED017A 		vldr.32	s15, [r3, #4]
+  50              		.loc 1 32 50 view .LVU9
+  51 001a 93ED007A 		vldr.32	s14, [r3]
+  52              		.loc 1 32 33 view .LVU10
+  53 001e 77EEC76A 		vsub.f32	s13, s15, s14
+  54              		.loc 1 32 11 view .LVU11
+  55 0022 084B     		ldr	r3, .L2+12
+  56 0024 C3ED006A 		vstr.32	s13, [r3]
+  33:Application/Corexy/Corexy_Control.c ****     vt_rd = -Corexy_cmd_recv.vy - Corexy_cmd_recv.vx;
+  57              		.loc 1 33 5 is_stmt 1 view .LVU12
+  58              		.loc 1 33 13 is_stmt 0 view .LVU13
+  59 0028 F1EE677A 		vneg.f32	s15, s15
+  60              		.loc 1 33 33 view .LVU14
+  61 002c 77EEC77A 		vsub.f32	s15, s15, s14
+  62              		.loc 1 33 11 view .LVU15
+  63 0030 054B     		ldr	r3, .L2+16
+  64 0032 C3ED007A 		vstr.32	s15, [r3]
+  34:Application/Corexy/Corexy_Control.c **** }
+  65              		.loc 1 34 1 view .LVU16
+  66 0036 7047     		bx	lr
+  67              	.L3:
+  68              		.align	2
+  69              	.L2:
+  70 0038 00000000 		.word	Corexy_cmd_recv
+  71 003c 00000000 		.word	vt_lu
+  72 0040 00000000 		.word	vt_ru
+  73 0044 00000000 		.word	vt_ld
+  74 0048 00000000 		.word	vt_rd
+  75              		.cfi_endproc
+  76              	.LFE134:
+  78              		.section	.text.CorexyTask,"ax",%progbits
+  79              		.align	1
+  80              		.global	CorexyTask
+  81              		.syntax unified
+  82              		.thumb
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 3
 
 
-  79              	.LCFI1:
-  80              		.cfi_def_cfa_offset 24
-  40:Application/Corexy/Corexy_Control.c ****     CorexyCalculate();
-  81              		.loc 1 40 5 view .LVU9
-  82 0004 FFF7FEFF 		bl	CorexyCalculate
-  83              	.LVL0:
-  41:Application/Corexy/Corexy_Control.c **** 
-  42:Application/Corexy/Corexy_Control.c ****     pid_ref[7] = ver_pid_calc(&pid[7], vt_lu, motor_info[7].rotor_speed);
-  84              		.loc 1 42 5 view .LVU10
-  85              		.loc 1 42 60 is_stmt 0 view .LVU11
-  86 0008 1A4E     		ldr	r6, .L6
-  87 000a B6F95A30 		ldrsh	r3, [r6, #90]
-  88 000e 00EE903A 		vmov	s1, r3	@ int
-  89              		.loc 1 42 18 view .LVU12
-  90 0012 194D     		ldr	r5, .L6+4
-  91 0014 F8EEE00A 		vcvt.f32.s32	s1, s1
-  92 0018 184B     		ldr	r3, .L6+8
-  93 001a 93ED000A 		vldr.32	s0, [r3]
-  94 001e 2846     		mov	r0, r5
-  95 0020 FFF7FEFF 		bl	ver_pid_calc
-  96              	.LVL1:
-  97              		.loc 1 42 16 view .LVU13
-  98 0024 164C     		ldr	r4, .L6+12
-  99 0026 84ED070A 		vstr.32	s0, [r4, #28]
-  43:Application/Corexy/Corexy_Control.c ****     pid_ref[8] = ver_pid_calc(&pid[8], vt_ru, motor_info[8].rotor_speed);
- 100              		.loc 1 43 5 is_stmt 1 view .LVU14
- 101              		.loc 1 43 60 is_stmt 0 view .LVU15
- 102 002a B6F96630 		ldrsh	r3, [r6, #102]
- 103 002e 00EE903A 		vmov	s1, r3	@ int
- 104              		.loc 1 43 18 view .LVU16
- 105 0032 F8EEE00A 		vcvt.f32.s32	s1, s1
- 106 0036 134B     		ldr	r3, .L6+16
- 107 0038 93ED000A 		vldr.32	s0, [r3]
- 108 003c 05F13400 		add	r0, r5, #52
- 109 0040 FFF7FEFF 		bl	ver_pid_calc
- 110              	.LVL2:
- 111              		.loc 1 43 16 view .LVU17
- 112 0044 84ED080A 		vstr.32	s0, [r4, #32]
-  44:Application/Corexy/Corexy_Control.c **** 
-  45:Application/Corexy/Corexy_Control.c ****     set_motor_value_CAN2(0x1FF, 0, 0, pid_ref[7], pid_ref[8]);
- 113              		.loc 1 45 5 is_stmt 1 view .LVU18
- 114              		.loc 1 45 46 is_stmt 0 view .LVU19
- 115 0048 D4ED077A 		vldr.32	s15, [r4, #28]
- 116              		.loc 1 45 5 view .LVU20
- 117 004c FDEEE77A 		vcvt.s32.f32	s15, s15
- 118 0050 BDEEC00A 		vcvt.s32.f32	s0, s0
- 119 0054 10EE103A 		vmov	r3, s0	@ int
- 120 0058 1BB2     		sxth	r3, r3
- 121 005a 0093     		str	r3, [sp]
- 122 005c 17EE903A 		vmov	r3, s15	@ int
- 123 0060 1BB2     		sxth	r3, r3
- 124 0062 0022     		movs	r2, #0
- 125 0064 1146     		mov	r1, r2
- 126 0066 40F2FF10 		movw	r0, #511
- 127 006a FFF7FEFF 		bl	set_motor_value_CAN2
- 128              	.LVL3:
-  46:Application/Corexy/Corexy_Control.c **** 
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 4
+  83              		.thumb_func
+  85              	CorexyTask:
+  86              	.LFB135:
+  35:Application/Corexy/Corexy_Control.c **** 
+  36:Application/Corexy/Corexy_Control.c **** /*
+  37:Application/Corexy/Corexy_Control.c ****  * @brief Corexy结构控制任务
+  38:Application/Corexy/Corexy_Control.c ****  * @return None
+  39:Application/Corexy/Corexy_Control.c ****  */
+  40:Application/Corexy/Corexy_Control.c **** void CorexyTask()
+  41:Application/Corexy/Corexy_Control.c **** {
+  87              		.loc 1 41 1 is_stmt 1 view -0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91 0000 70B5     		push	{r4, r5, r6, lr}
+  92              	.LCFI0:
+  93              		.cfi_def_cfa_offset 16
+  94              		.cfi_offset 4, -16
+  95              		.cfi_offset 5, -12
+  96              		.cfi_offset 6, -8
+  97              		.cfi_offset 14, -4
+  98 0002 82B0     		sub	sp, sp, #8
+  99              	.LCFI1:
+ 100              		.cfi_def_cfa_offset 24
+  42:Application/Corexy/Corexy_Control.c ****     CorexyCalculate();
+ 101              		.loc 1 42 5 view .LVU18
+ 102 0004 FFF7FEFF 		bl	CorexyCalculate
+ 103              	.LVL0:
+  43:Application/Corexy/Corexy_Control.c ****     pid_ref[5] = ver_pid_calc(&pid[5], vt_ld, motor_info[5].rotor_speed);
+ 104              		.loc 1 43 5 view .LVU19
+ 105              		.loc 1 43 60 is_stmt 0 view .LVU20
+ 106 0008 334E     		ldr	r6, .L6
+ 107 000a B6F94230 		ldrsh	r3, [r6, #66]
+ 108 000e 00EE903A 		vmov	s1, r3	@ int
+ 109              		.loc 1 43 18 view .LVU21
+ 110 0012 324D     		ldr	r5, .L6+4
+ 111 0014 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 112 0018 314B     		ldr	r3, .L6+8
+ 113 001a 93ED000A 		vldr.32	s0, [r3]
+ 114 001e 2846     		mov	r0, r5
+ 115 0020 FFF7FEFF 		bl	ver_pid_calc
+ 116              	.LVL1:
+ 117              		.loc 1 43 16 view .LVU22
+ 118 0024 2F4C     		ldr	r4, .L6+12
+ 119 0026 84ED050A 		vstr.32	s0, [r4, #20]
+  44:Application/Corexy/Corexy_Control.c ****     pid_ref[6] = ver_pid_calc(&pid[6], vt_rd, motor_info[6].rotor_speed);
+ 120              		.loc 1 44 5 is_stmt 1 view .LVU23
+ 121              		.loc 1 44 60 is_stmt 0 view .LVU24
+ 122 002a B6F94E30 		ldrsh	r3, [r6, #78]
+ 123 002e 00EE903A 		vmov	s1, r3	@ int
+ 124              		.loc 1 44 18 view .LVU25
+ 125 0032 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 126 0036 2C4B     		ldr	r3, .L6+16
+ 127 0038 93ED000A 		vldr.32	s0, [r3]
+ 128 003c 05F13400 		add	r0, r5, #52
+ 129 0040 FFF7FEFF 		bl	ver_pid_calc
+ 130              	.LVL2:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 4
 
 
-  47:Application/Corexy/Corexy_Control.c **** }...
- 129              		.loc 1 47 1 view .LVU21
- 130 006e 02B0     		add	sp, sp, #8
- 131              	.LCFI2:
- 132              		.cfi_def_cfa_offset 16
- 133              		@ sp needed
- 134 0070 70BD     		pop	{r4, r5, r6, pc}
- 135              	.L7:
- 136 0072 00BF     		.align	2
- 137              	.L6:
- 138 0074 00000000 		.word	motor_info
- 139 0078 6C010000 		.word	pid+364
- 140 007c 00000000 		.word	vt_lu
- 141 0080 00000000 		.word	pid_ref
- 142 0084 00000000 		.word	vt_ru
- 143              		.cfi_endproc
- 144              	.LFE135:
- 146              		.global	vt_rd
- 147              		.section	.bss.vt_rd,"aw",%nobits
- 148              		.align	2
- 151              	vt_rd:
- 152 0000 00000000 		.space	4
- 153              		.global	vt_ld
- 154              		.section	.bss.vt_ld,"aw",%nobits
- 155              		.align	2
- 158              	vt_ld:
- 159 0000 00000000 		.space	4
- 160              		.global	vt_ru
- 161              		.section	.bss.vt_ru,"aw",%nobits
- 162              		.align	2
- 165              	vt_ru:
- 166 0000 00000000 		.space	4
- 167              		.global	vt_lu
- 168              		.section	.bss.vt_lu,"aw",%nobits
- 169              		.align	2
- 172              	vt_lu:
- 173 0000 00000000 		.space	4
- 174              		.text
- 175              	.Letext0:
- 176              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
- 177              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
- 178              		.file 4 "Bsp/Bsp_can.h"
- 179              		.file 5 "Application/robot_def.h"
- 180              		.file 6 "Application/pid/pid.h"
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s 			page 5
+ 131              		.loc 1 44 16 view .LVU26
+ 132 0044 84ED060A 		vstr.32	s0, [r4, #24]
+  45:Application/Corexy/Corexy_Control.c ****     pid_ref[7] = ver_pid_calc(&pid[7], vt_lu, motor_info[7].rotor_speed);
+ 133              		.loc 1 45 5 is_stmt 1 view .LVU27
+ 134              		.loc 1 45 60 is_stmt 0 view .LVU28
+ 135 0048 B6F95A30 		ldrsh	r3, [r6, #90]
+ 136 004c 00EE903A 		vmov	s1, r3	@ int
+ 137              		.loc 1 45 18 view .LVU29
+ 138 0050 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 139 0054 254B     		ldr	r3, .L6+20
+ 140 0056 93ED000A 		vldr.32	s0, [r3]
+ 141 005a 05F16800 		add	r0, r5, #104
+ 142 005e FFF7FEFF 		bl	ver_pid_calc
+ 143              	.LVL3:
+ 144              		.loc 1 45 16 view .LVU30
+ 145 0062 84ED070A 		vstr.32	s0, [r4, #28]
+  46:Application/Corexy/Corexy_Control.c ****     pid_ref[8] = ver_pid_calc(&pid[8], vt_ru, motor_info[8].rotor_speed);
+ 146              		.loc 1 46 5 is_stmt 1 view .LVU31
+ 147              		.loc 1 46 60 is_stmt 0 view .LVU32
+ 148 0066 B6F96630 		ldrsh	r3, [r6, #102]
+ 149 006a 00EE903A 		vmov	s1, r3	@ int
+ 150              		.loc 1 46 18 view .LVU33
+ 151 006e F8EEE00A 		vcvt.f32.s32	s1, s1
+ 152 0072 1F4B     		ldr	r3, .L6+24
+ 153 0074 93ED000A 		vldr.32	s0, [r3]
+ 154 0078 05F19C00 		add	r0, r5, #156
+ 155 007c FFF7FEFF 		bl	ver_pid_calc
+ 156              	.LVL4:
+ 157              		.loc 1 46 16 view .LVU34
+ 158 0080 84ED080A 		vstr.32	s0, [r4, #32]
+  47:Application/Corexy/Corexy_Control.c **** 
+  48:Application/Corexy/Corexy_Control.c ****     set_motor_value_CAN2(0x1FF, 0, 0, pid_ref[7], pid_ref[8]);
+ 159              		.loc 1 48 5 is_stmt 1 view .LVU35
+ 160              		.loc 1 48 46 is_stmt 0 view .LVU36
+ 161 0084 D4ED077A 		vldr.32	s15, [r4, #28]
+ 162              		.loc 1 48 5 view .LVU37
+ 163 0088 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 164 008c BDEEC00A 		vcvt.s32.f32	s0, s0
+ 165 0090 10EE103A 		vmov	r3, s0	@ int
+ 166 0094 1BB2     		sxth	r3, r3
+ 167 0096 0093     		str	r3, [sp]
+ 168 0098 17EE903A 		vmov	r3, s15	@ int
+ 169 009c 1BB2     		sxth	r3, r3
+ 170 009e 0022     		movs	r2, #0
+ 171 00a0 1146     		mov	r1, r2
+ 172 00a2 40F2FF10 		movw	r0, #511
+ 173 00a6 FFF7FEFF 		bl	set_motor_value_CAN2
+ 174              	.LVL5:
+  49:Application/Corexy/Corexy_Control.c ****     set_motor_value_CAN1(0x1FF, pid_ref[5], pid_ref[6], 0, 0);
+ 175              		.loc 1 49 5 is_stmt 1 view .LVU38
+ 176              		.loc 1 49 40 is_stmt 0 view .LVU39
+ 177 00aa D4ED057A 		vldr.32	s15, [r4, #20]
+ 178              		.loc 1 49 52 view .LVU40
+ 179 00ae 94ED067A 		vldr.32	s14, [r4, #24]
+ 180              		.loc 1 49 5 view .LVU41
+ 181 00b2 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 182 00b6 FDEEE77A 		vcvt.s32.f32	s15, s15
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 5
+
+
+ 183 00ba 0023     		movs	r3, #0
+ 184 00bc 0093     		str	r3, [sp]
+ 185 00be 17EE102A 		vmov	r2, s14	@ int
+ 186 00c2 12B2     		sxth	r2, r2
+ 187 00c4 17EE901A 		vmov	r1, s15	@ int
+ 188 00c8 09B2     		sxth	r1, r1
+ 189 00ca 40F2FF10 		movw	r0, #511
+ 190 00ce FFF7FEFF 		bl	set_motor_value_CAN1
+ 191              	.LVL6:
+  50:Application/Corexy/Corexy_Control.c **** 
+  51:Application/Corexy/Corexy_Control.c **** }...
+ 192              		.loc 1 51 1 view .LVU42
+ 193 00d2 02B0     		add	sp, sp, #8
+ 194              	.LCFI2:
+ 195              		.cfi_def_cfa_offset 16
+ 196              		@ sp needed
+ 197 00d4 70BD     		pop	{r4, r5, r6, pc}
+ 198              	.L7:
+ 199 00d6 00BF     		.align	2
+ 200              	.L6:
+ 201 00d8 00000000 		.word	motor_info
+ 202 00dc 04010000 		.word	pid+260
+ 203 00e0 00000000 		.word	vt_ld
+ 204 00e4 00000000 		.word	pid_ref
+ 205 00e8 00000000 		.word	vt_rd
+ 206 00ec 00000000 		.word	vt_lu
+ 207 00f0 00000000 		.word	vt_ru
+ 208              		.cfi_endproc
+ 209              	.LFE135:
+ 211              		.global	vt_rd
+ 212              		.section	.bss.vt_rd,"aw",%nobits
+ 213              		.align	2
+ 216              	vt_rd:
+ 217 0000 00000000 		.space	4
+ 218              		.global	vt_ld
+ 219              		.section	.bss.vt_ld,"aw",%nobits
+ 220              		.align	2
+ 223              	vt_ld:
+ 224 0000 00000000 		.space	4
+ 225              		.global	vt_ru
+ 226              		.section	.bss.vt_ru,"aw",%nobits
+ 227              		.align	2
+ 230              	vt_ru:
+ 231 0000 00000000 		.space	4
+ 232              		.global	vt_lu
+ 233              		.section	.bss.vt_lu,"aw",%nobits
+ 234              		.align	2
+ 237              	vt_lu:
+ 238 0000 00000000 		.space	4
+ 239              		.text
+ 240              	.Letext0:
+ 241              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 242              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 243              		.file 4 "Bsp/Bsp_can.h"
+ 244              		.file 5 "Application/robot_def.h"
+ 245              		.file 6 "Application/pid/pid.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Corexy_Control.c
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:21     .text.CorexyCalculate:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:27     .text.CorexyCalculate:00000000 CorexyCalculate
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:52     .text.CorexyCalculate:00000018 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:172    .bss.vt_lu:00000000 vt_lu
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:165    .bss.vt_ru:00000000 vt_ru
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:59     .text.CorexyTask:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:65     .text.CorexyTask:00000000 CorexyTask
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:138    .text.CorexyTask:00000074 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:151    .bss.vt_rd:00000000 vt_rd
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:148    .bss.vt_rd:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:158    .bss.vt_ld:00000000 vt_ld
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:155    .bss.vt_ld:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:162    .bss.vt_ru:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\cc7XtD9c.s:169    .bss.vt_lu:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:21     .text.CorexyCalculate:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:27     .text.CorexyCalculate:00000000 CorexyCalculate
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:70     .text.CorexyCalculate:00000038 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:237    .bss.vt_lu:00000000 vt_lu
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:230    .bss.vt_ru:00000000 vt_ru
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:223    .bss.vt_ld:00000000 vt_ld
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:216    .bss.vt_rd:00000000 vt_rd
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:79     .text.CorexyTask:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:85     .text.CorexyTask:00000000 CorexyTask
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:201    .text.CorexyTask:000000d8 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:213    .bss.vt_rd:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:220    .bss.vt_ld:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:227    .bss.vt_ru:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccuRY7KA.s:234    .bss.vt_lu:00000000 $d
 
 UNDEFINED SYMBOLS
 Corexy_cmd_recv
 ver_pid_calc
 set_motor_value_CAN2
+set_motor_value_CAN1
 motor_info
 pid
 pid_ref
