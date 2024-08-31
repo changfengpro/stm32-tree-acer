@@ -1,4 +1,5 @@
-build/robot.o: Application/robot.c Application/cmd/robot_cmd.h \
+build/Corexy_Control.o: Application/Corexy/Corexy_Control.c \
+ Application/Corexy/Corexy_Control.h Bsp/Bsp_can.h Core/Inc/can.h \
  Core/Inc/main.h Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -26,9 +27,11 @@ build/robot.o: Application/robot.c Application/cmd/robot_cmd.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- Application/chassis/chassis_control.h \
- Application/Corexy/Corexy_Control.h
-Application/cmd/robot_cmd.h:
+ Application/robot_def.h Application/cmd/robot_cmd.h Core/Inc/main.h \
+ Application/pid/pid.h
+Application/Corexy/Corexy_Control.h:
+Bsp/Bsp_can.h:
+Core/Inc/can.h:
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -59,5 +62,7 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-Application/chassis/chassis_control.h:
-Application/Corexy/Corexy_Control.h:
+Application/robot_def.h:
+Application/cmd/robot_cmd.h:
+Core/Inc/main.h:
+Application/pid/pid.h:

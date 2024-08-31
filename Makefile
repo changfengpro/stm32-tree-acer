@@ -67,6 +67,7 @@ Application/chassis/chassis_control.c \
 Application/cmd/robot_cmd.c \
 Application/pid/pid.c \
 Application/robot.c \
+Application/Corexy/Corexy_Control.c \
 Bsp/Bsp_can.c \
 Modules/DJImotor/djimotor.c \
 Modules/remote/remote_control.c \
@@ -137,12 +138,14 @@ C_INCLUDES =  \
 -IApplication/cmd \
 -IApplication/pid \
 -IApplication/chassis \
+-IApplication/Corexy \
 -ICore/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include \
 -IMiddlewares/ST/ARM/DSP/Inc
+
 
 
 # compile gcc flags

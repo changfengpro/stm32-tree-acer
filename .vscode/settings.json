@@ -4,7 +4,9 @@
         "djimotor.h": "c",
         "chassis_control.h": "c",
         "arm_math.h": "c",
-        "robot_cmd.h": "c"
+        "robot_cmd.h": "c",
+        "corexy_control.h": "c",
+        "pid.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

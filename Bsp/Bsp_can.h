@@ -5,6 +5,13 @@
  *      Author: auroranebulas
  */
 
+/*
+CAN1电机ID： 3 4 5 6
+CAN2电机ID:  1 2 7 8
+*/
+
+
+
 #ifndef BSP_CAN_H_
 #define BSP_CAN_H_
 

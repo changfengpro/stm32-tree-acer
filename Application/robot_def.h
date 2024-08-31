@@ -35,6 +35,15 @@ typedef struct
 
 } Chassis_Ctrl_Cmd_s;
 
+typedef struct 
+{
+    float vx;       //前进方向速度
+    float vy;       //横移方向速度
+    float vz;       //竖直方向速度
+} Corexy_Ctrl_Cmd_s;
+
+
+
 //机器人地盘修改的参数，单位为毫米(mm)
 #define WHEEL_BASE 320         				//纵向轴距（前进后退方向）
 #define TRACK_WIDTH 320        				//横向轴距（左右平移方向）

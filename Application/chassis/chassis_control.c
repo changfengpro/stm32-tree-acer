@@ -25,9 +25,8 @@
 #define RB_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
 extern Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
 float vt_lf, vt_rf, vt_lb, vt_rb;
-extern rc RC_ctrl;
-extern pid_struct_t pid[5];
-float pid_ref[5];
+extern pid_struct_t pid[9];
+extern float pid_ref[9];
 extern float Velocity[5];
 extern float Velocity_Filter[5];
 static uint32_t count;

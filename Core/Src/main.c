@@ -34,6 +34,16 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+typedef struct 
+{
+  float kp;
+  float ki;
+  float kd;
+  float i_max;
+  float out_max;
+} pid_test_t;
+
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -51,6 +61,7 @@
 /* USER CODE BEGIN PV */
 extern uint8_t buffer[36];
 extern pid_struct_t pid[5];
+pid_test_t pid_test;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,6 +117,12 @@ int main(void)
   {
 	pid_init(&pid[i], 25, 1, 0.1, 2000, 7000);
   }
+  
+  for(int i = 7; i < 9; i++)
+  {
+	pid_init(&pid[i], 10, 0.5, 0.1, 2500, 3000);
+  }
+  
   HAL_Delay(100);
 
   HAL_TIM_Base_Start_IT(&htim2);

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 1
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -37,7 +37,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 1
    7:Application/robot.c **** 
    8:Application/robot.c **** #include "robot_cmd.h"
    9:Application/robot.c **** #include "chassis_control.h"
-  10:Application/robot.c **** 
+  10:Application/robot.c **** #include "Corexy_Control.h"
   11:Application/robot.c **** 
   12:Application/robot.c **** 
   13:Application/robot.c **** void RobotTask()
@@ -58,85 +58,91 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 1
   16:Application/robot.c ****     ChassisTask();
   41              		.loc 1 16 5 view .LVU2
   42 0006 FFF7FEFF 		bl	ChassisTask
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s 			page 2
 
 
   43              	.LVL1:
-  17:Application/robot.c **** }
-  44              		.loc 1 17 1 is_stmt 0 view .LVU3
-  45 000a 08BD     		pop	{r3, pc}
-  46              		.cfi_endproc
-  47              	.LFE134:
-  49              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
-  50              		.align	1
-  51              		.global	HAL_TIM_PeriodElapsedCallback
-  52              		.syntax unified
-  53              		.thumb
-  54              		.thumb_func
-  56              	HAL_TIM_PeriodElapsedCallback:
-  57              	.LVL2:
-  58              	.LFB135:
-  18:Application/robot.c **** 
-  19:Application/robot.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-  20:Application/robot.c **** {
-  59              		.loc 1 20 1 is_stmt 1 view -0
-  60              		.cfi_startproc
-  61              		@ args = 0, pretend = 0, frame = 0
-  62              		@ frame_needed = 0, uses_anonymous_args = 0
-  63              		.loc 1 20 1 is_stmt 0 view .LVU5
-  64 0000 08B5     		push	{r3, lr}
-  65              	.LCFI1:
-  66              		.cfi_def_cfa_offset 8
-  67              		.cfi_offset 3, -8
-  68              		.cfi_offset 14, -4
-  21:Application/robot.c **** 	if(htim ->Instance == TIM2)
-  69              		.loc 1 21 2 is_stmt 1 view .LVU6
-  70              		.loc 1 21 10 is_stmt 0 view .LVU7
-  71 0002 0368     		ldr	r3, [r0]
-  72              		.loc 1 21 4 view .LVU8
-  73 0004 B3F1804F 		cmp	r3, #1073741824
-  74 0008 00D0     		beq	.L6
-  75              	.LVL3:
-  76              	.L3:
-  22:Application/robot.c **** 	{
-  23:Application/robot.c ****         RobotTask();
-  24:Application/robot.c **** 	}
-  25:Application/robot.c **** }...
-  77              		.loc 1 25 1 view .LVU9
-  78 000a 08BD     		pop	{r3, pc}
-  79              	.LVL4:
-  80              	.L6:
-  23:Application/robot.c ****         RobotTask();
-  81              		.loc 1 23 9 is_stmt 1 view .LVU10
-  82 000c FFF7FEFF 		bl	RobotTask
-  83              	.LVL5:
-  84              		.loc 1 25 1 is_stmt 0 view .LVU11
-  85 0010 FBE7     		b	.L3
-  86              		.cfi_endproc
-  87              	.LFE135:
-  89              		.text
-  90              	.Letext0:
-  91              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
-  92              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 3
+  17:Application/robot.c ****     CorexyTask();
+  44              		.loc 1 17 5 view .LVU3
+  45 000a FFF7FEFF 		bl	CorexyTask
+  46              	.LVL2:
+  18:Application/robot.c **** }
+  47              		.loc 1 18 1 is_stmt 0 view .LVU4
+  48 000e 08BD     		pop	{r3, pc}
+  49              		.cfi_endproc
+  50              	.LFE134:
+  52              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+  53              		.align	1
+  54              		.global	HAL_TIM_PeriodElapsedCallback
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  59              	HAL_TIM_PeriodElapsedCallback:
+  60              	.LVL3:
+  61              	.LFB135:
+  19:Application/robot.c **** 
+  20:Application/robot.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+  21:Application/robot.c **** {
+  62              		.loc 1 21 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		.loc 1 21 1 is_stmt 0 view .LVU6
+  67 0000 08B5     		push	{r3, lr}
+  68              	.LCFI1:
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 3, -8
+  71              		.cfi_offset 14, -4
+  22:Application/robot.c **** 	if(htim ->Instance == TIM2)
+  72              		.loc 1 22 2 is_stmt 1 view .LVU7
+  73              		.loc 1 22 10 is_stmt 0 view .LVU8
+  74 0002 0368     		ldr	r3, [r0]
+  75              		.loc 1 22 4 view .LVU9
+  76 0004 B3F1804F 		cmp	r3, #1073741824
+  77 0008 00D0     		beq	.L6
+  78              	.LVL4:
+  79              	.L3:
+  23:Application/robot.c **** 	{
+  24:Application/robot.c ****         RobotTask();
+  25:Application/robot.c **** 	}
+  26:Application/robot.c **** }...
+  80              		.loc 1 26 1 view .LVU10
+  81 000a 08BD     		pop	{r3, pc}
+  82              	.LVL5:
+  83              	.L6:
+  24:Application/robot.c ****         RobotTask();
+  84              		.loc 1 24 9 is_stmt 1 view .LVU11
+  85 000c FFF7FEFF 		bl	RobotTask
+  86              	.LVL6:
+  87              		.loc 1 26 1 is_stmt 0 view .LVU12
+  88 0010 FBE7     		b	.L3
+  89              		.cfi_endproc
+  90              	.LFE135:
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s 			page 3
 
 
-  93              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
-  94              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
-  95              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
-  96              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
-  97              		.file 8 "Application/chassis/chassis_control.h"
-  98              		.file 9 "Application/cmd/robot_cmd.h"
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s 			page 4
+  92              		.text
+  93              	.Letext0:
+  94              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
+  95              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
+  96              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+  97              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+  98              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+  99              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 100              		.file 8 "Application/Corexy/Corexy_Control.h"
+ 101              		.file 9 "Application/chassis/chassis_control.h"
+ 102              		.file 10 "Application/cmd/robot_cmd.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 robot.c
-C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s:21     .text.RobotTask:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s:27     .text.RobotTask:00000000 RobotTask
-C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s:50     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccw7Kafz.s:56     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s:21     .text.RobotTask:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s:27     .text.RobotTask:00000000 RobotTask
+C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s:53     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccEWvGwf.s:59     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
 
 UNDEFINED SYMBOLS
 RobotCMDTask
 ChassisTask
+CorexyTask

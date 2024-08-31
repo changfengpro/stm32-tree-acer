@@ -8,7 +8,8 @@
 #include "pid.h"
 
 
-pid_struct_t pid[5];
+pid_struct_t pid[9];
+float pid_ref[9];
 
 
 /**

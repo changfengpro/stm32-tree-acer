@@ -13,12 +13,13 @@
 #include "robot_def.h"
 
 #define CHASSIS_COEF 0.25f
+#define COREXY_COEF 6.0f
 
 
 static Chassis_Ctrl_Cmd_s chassis_cmd_send;        //发送给底盘的应用消息 
 static uint32_t count_2;
-Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
-
+Chassis_Ctrl_Cmd_s chassis_cmd_recv;              //底盘接收到的控制命令
+Corexy_Ctrl_Cmd_s Corexy_cmd_recv;             //corexy结构接收到的控制指令
 
 
 
@@ -76,7 +77,7 @@ void RemoteControlSet()
 
   if(switch_is_mid(RC_ctrl.s2))         //右侧开关中，xyz方向控制
   {
-
+    Corexy_cmd_recv.vz = RC_ctrl.ch1 * COREXY_COEF;
   }
 
   if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开关下，夹爪夹紧
