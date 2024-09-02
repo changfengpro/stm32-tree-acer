@@ -12,7 +12,7 @@ pid_struct_t pid[9];
 float pid_ref[9];
 
 
-/**
+/*
   * @brief  初始化pid参数
   * @param  pid struct
   * @param  kp 比例系数
