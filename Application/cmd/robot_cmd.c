@@ -11,6 +11,8 @@
 #include "memory.h"
 #include  "remote_control.h"
 #include "robot_def.h"
+#include "stm32f4xx_hal_tim.h"
+#include "tim.h"
 
 #define CHASSIS_COEF 0.25f
 #define COREXY_COEF 6.0f
@@ -82,14 +84,14 @@ void RemoteControlSet()
     Corexy_cmd_recv.vy = RC_ctrl.ch3 * COREXY_COEF;
   }
 
-  if(switch_is_down(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开关下，夹爪夹紧
+  if(switch_is_mid(RC_ctrl.s2) && switch_is_up(RC_ctrl.s1))        //左侧开关上，右侧开关中夹爪夹紧
   {
-
+     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 200);
   }
 
-  if(switch_is_mid(RC_ctrl.s1) && switch_is_down(RC_ctrl.s2))       //左侧开关中，右侧开关下，夹爪松开
+  if(switch_is_mid(RC_ctrl.s1) && switch_is_mid(RC_ctrl.s2))       //左侧开关中，右侧开关中，夹爪松开
   {
-
+     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 150);
   }
 }
 

@@ -10,7 +10,7 @@
 
 #include "Bsp_can.h"
 
-#define SLID_WINDOWS_SIZE 3				//滑动窗口大小
+#define SLID_WINDOWS_SIZE 5				//滑动窗口大小
 
 typedef struct
 {

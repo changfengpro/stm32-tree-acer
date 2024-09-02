@@ -62,6 +62,7 @@ typedef struct
 extern uint8_t buffer[36];
 extern pid_struct_t pid[5];
 pid_test_t pid_test;
+float servo = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,6 +110,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART3_UART_Init();
   MX_CAN2_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   can_user_init(&hcan1);
   can_user_init(&hcan2);
@@ -126,6 +128,11 @@ int main(void)
   HAL_Delay(100);
 
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  
+  // HAL_Delay(100);
+
+  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 150);
   /* USER CODE END 2 */
 
   /* Infinite loop */

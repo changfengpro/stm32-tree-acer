@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
   27:Modules/DJImotor/djimotor.c **** 
   28:Modules/DJImotor/djimotor.c **** 
   29:Modules/DJImotor/djimotor.c **** 
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 2
 
 
   30:Modules/DJImotor/djimotor.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
   76              		.global	Velocity_Calclate
   77              		.syntax unified
   78              		.thumb
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 3
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 3
 
 
   79              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
  128 0040 0C4B     		ldr	r3, .L6+20
  129 0042 3344     		add	r3, r3, r6
  130 0044 1860     		str	r0, [r3]	@ float
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 4
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 4
 
 
   45:Modules/DJImotor/djimotor.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
  179 0006 0091     		str	r1, [sp]
  180 0008 0B46     		mov	r3, r1
  181 000a 0A46     		mov	r2, r1
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 5
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 5
 
 
  182 000c 4FF40070 		mov	r0, #512
@@ -283,7 +283,7 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
   66:Modules/DJImotor/djimotor.c **** 	filter->DataBuff[filter->index] = data;
  210              		.loc 1 66 2 view .LVU31
  211              		.loc 1 66 25 is_stmt 0 view .LVU32
- 212 0000 8289     		ldrh	r2, [r0, #12]
+ 212 0000 828A     		ldrh	r2, [r0, #20]
  213              		.loc 1 66 34 view .LVU33
  214 0002 00EB8203 		add	r3, r0, r2, lsl #2
  215 0006 83ED000A 		vstr.32	s0, [r3]
@@ -292,87 +292,88 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
  217              		.loc 1 67 33 is_stmt 0 view .LVU35
  218 000a 0132     		adds	r2, r2, #1
  219              		.loc 1 67 38 view .LVU36
- 220 000c 094B     		ldr	r3, .L14
+ 220 000c 0A4B     		ldr	r3, .L14
  221 000e 83FB0213 		smull	r1, r3, r3, r2
- 222 0012 03EB4303 		add	r3, r3, r3, lsl #1
- 223 0016 D31A     		subs	r3, r2, r3
- 224              		.loc 1 67 16 view .LVU37
- 225 0018 8381     		strh	r3, [r0, #12]	@ movhi
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 6
+ 222 0012 5B10     		asrs	r3, r3, #1
+ 223 0014 03EB8303 		add	r3, r3, r3, lsl #2
+ 224 0018 D31A     		subs	r3, r2, r3
+ 225              		.loc 1 67 16 view .LVU37
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 6
 
 
+ 226 001a 8382     		strh	r3, [r0, #20]	@ movhi
   68:Modules/DJImotor/djimotor.c **** 	if(filter->size < SLID_WINDOWS_SIZE) filter->size += 1;
- 226              		.loc 1 68 2 is_stmt 1 view .LVU38
- 227              		.loc 1 68 11 is_stmt 0 view .LVU39
- 228 001a C389     		ldrh	r3, [r0, #14]
- 229              		.loc 1 68 4 view .LVU40
- 230 001c 022B     		cmp	r3, #2
- 231 001e 01D8     		bhi	.L11
- 232              		.loc 1 68 39 is_stmt 1 discriminator 1 view .LVU41
- 233              		.loc 1 68 52 is_stmt 0 discriminator 1 view .LVU42
- 234 0020 0133     		adds	r3, r3, #1
- 235 0022 C381     		strh	r3, [r0, #14]	@ movhi
- 236              	.L11:
+ 227              		.loc 1 68 2 is_stmt 1 view .LVU38
+ 228              		.loc 1 68 11 is_stmt 0 view .LVU39
+ 229 001c C38A     		ldrh	r3, [r0, #22]
+ 230              		.loc 1 68 4 view .LVU40
+ 231 001e 042B     		cmp	r3, #4
+ 232 0020 01D8     		bhi	.L11
+ 233              		.loc 1 68 39 is_stmt 1 discriminator 1 view .LVU41
+ 234              		.loc 1 68 52 is_stmt 0 discriminator 1 view .LVU42
+ 235 0022 0133     		adds	r3, r3, #1
+ 236 0024 C382     		strh	r3, [r0, #22]	@ movhi
+ 237              	.L11:
   69:Modules/DJImotor/djimotor.c **** 
   70:Modules/DJImotor/djimotor.c **** 	//取平均
   71:Modules/DJImotor/djimotor.c **** 	for(uint16_t i = 0; i < filter->size; i++)
- 237              		.loc 1 71 2 is_stmt 1 view .LVU43
- 238              	.LBB2:
- 239              		.loc 1 71 6 view .LVU44
- 240              	.LVL12:
- 241              		.loc 1 71 15 is_stmt 0 view .LVU45
- 242 0024 0023     		movs	r3, #0
- 243              		.loc 1 71 2 view .LVU46
- 244 0026 01E0     		b	.L12
- 245              	.LVL13:
- 246              	.L13:
+ 238              		.loc 1 71 2 is_stmt 1 view .LVU43
+ 239              	.LBB2:
+ 240              		.loc 1 71 6 view .LVU44
+ 241              	.LVL12:
+ 242              		.loc 1 71 15 is_stmt 0 view .LVU45
+ 243 0026 0023     		movs	r3, #0
+ 244              		.loc 1 71 2 view .LVU46
+ 245 0028 01E0     		b	.L12
+ 246              	.LVL13:
+ 247              	.L13:
   72:Modules/DJImotor/djimotor.c **** 	{
   73:Modules/DJImotor/djimotor.c **** 		temp += filter->DataBuff[i];
- 247              		.loc 1 73 3 is_stmt 1 discriminator 3 view .LVU47
+ 248              		.loc 1 73 3 is_stmt 1 discriminator 3 view .LVU47
   71:Modules/DJImotor/djimotor.c **** 	{
- 248              		.loc 1 71 41 discriminator 3 view .LVU48
- 249 0028 0133     		adds	r3, r3, #1
- 250              	.LVL14:
+ 249              		.loc 1 71 41 discriminator 3 view .LVU48
+ 250 002a 0133     		adds	r3, r3, #1
+ 251              	.LVL14:
   71:Modules/DJImotor/djimotor.c **** 	{
- 251              		.loc 1 71 41 is_stmt 0 discriminator 3 view .LVU49
- 252 002a 9BB2     		uxth	r3, r3
- 253              	.LVL15:
- 254              	.L12:
+ 252              		.loc 1 71 41 is_stmt 0 discriminator 3 view .LVU49
+ 253 002c 9BB2     		uxth	r3, r3
+ 254              	.LVL15:
+ 255              	.L12:
   71:Modules/DJImotor/djimotor.c **** 	{
- 255              		.loc 1 71 24 is_stmt 1 discriminator 1 view .LVU50
+ 256              		.loc 1 71 24 is_stmt 1 discriminator 1 view .LVU50
   71:Modules/DJImotor/djimotor.c **** 	{
- 256              		.loc 1 71 32 is_stmt 0 discriminator 1 view .LVU51
- 257 002c C289     		ldrh	r2, [r0, #14]
+ 257              		.loc 1 71 32 is_stmt 0 discriminator 1 view .LVU51
+ 258 002e C28A     		ldrh	r2, [r0, #22]
   71:Modules/DJImotor/djimotor.c **** 	{
- 258              		.loc 1 71 24 discriminator 1 view .LVU52
- 259 002e 9A42     		cmp	r2, r3
- 260 0030 FAD8     		bhi	.L13
- 261              	.LBE2:
+ 259              		.loc 1 71 24 discriminator 1 view .LVU52
+ 260 0030 9A42     		cmp	r2, r3
+ 261 0032 FAD8     		bhi	.L13
+ 262              	.LBE2:
   74:Modules/DJImotor/djimotor.c **** 	}
   75:Modules/DJImotor/djimotor.c **** 	temp /= filter->size;
- 262              		.loc 1 75 2 is_stmt 1 view .LVU53
- 263              	.LVL16:
+ 263              		.loc 1 75 2 is_stmt 1 view .LVU53
+ 264              	.LVL16:
   76:Modules/DJImotor/djimotor.c **** } 
- 264              		.loc 1 76 1 is_stmt 0 view .LVU54
- 265 0032 7047     		bx	lr
- 266              	.L15:
- 267              		.align	2
- 268              	.L14:
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 7
+ 265              		.loc 1 76 1 is_stmt 0 view .LVU54
+ 266 0034 7047     		bx	lr
+ 267              	.L15:
+ 268 0036 00BF     		.align	2
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 7
 
 
- 269 0034 56555555 		.word	1431655766
- 270              		.cfi_endproc
- 271              	.LFE137:
- 273              		.section	.text.Low_Pass_Filter,"ax",%progbits
- 274              		.align	1
- 275              		.global	Low_Pass_Filter
- 276              		.syntax unified
- 277              		.thumb
- 278              		.thumb_func
- 280              	Low_Pass_Filter:
- 281              	.LVL17:
- 282              	.LFB138:
+ 269              	.L14:
+ 270 0038 67666666 		.word	1717986919
+ 271              		.cfi_endproc
+ 272              	.LFE137:
+ 274              		.section	.text.Low_Pass_Filter,"ax",%progbits
+ 275              		.align	1
+ 276              		.global	Low_Pass_Filter
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	Low_Pass_Filter:
+ 282              	.LVL17:
+ 283              	.LFB138:
   77:Modules/DJImotor/djimotor.c **** 
   78:Modules/DJImotor/djimotor.c **** /*
   79:Modules/DJImotor/djimotor.c ****  * @brief 低通滤波
@@ -382,113 +383,113 @@ ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 1
   83:Modules/DJImotor/djimotor.c ****  */
   84:Modules/DJImotor/djimotor.c **** float Low_Pass_Filter(float data, float last_data)
   85:Modules/DJImotor/djimotor.c **** {
- 283              		.loc 1 85 1 is_stmt 1 view -0
- 284              		.cfi_startproc
- 285              		@ args = 0, pretend = 0, frame = 0
- 286              		@ frame_needed = 0, uses_anonymous_args = 0
- 287              		@ link register save eliminated.
+ 284              		.loc 1 85 1 is_stmt 1 view -0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              		@ link register save eliminated.
   86:Modules/DJImotor/djimotor.c **** 	double temp;
- 288              		.loc 1 86 2 view .LVU56
+ 289              		.loc 1 86 2 view .LVU56
   87:Modules/DJImotor/djimotor.c **** 
   88:Modules/DJImotor/djimotor.c **** 	temp = 0.7 * last_data + 0.3 * data;
- 289              		.loc 1 88 2 view .LVU57
- 290              	.LVL18:
+ 290              		.loc 1 88 2 view .LVU57
+ 291              	.LVL18:
   89:Modules/DJImotor/djimotor.c **** }
- 291              		.loc 1 89 1 is_stmt 0 view .LVU58
- 292 0000 7047     		bx	lr
- 293              		.cfi_endproc
- 294              	.LFE138:
- 296              		.global	Slid_filter
- 297              		.section	.bss.Slid_filter,"aw",%nobits
- 298              		.align	2
- 301              	Slid_filter:
- 302 0000 00000000 		.space	80
- 302      00000000 
- 302      00000000 
- 302      00000000 
- 302      00000000 
- 303              		.global	Velocity_filter
- 304              		.section	.bss.Velocity_filter,"aw",%nobits
- 305              		.align	2
- 308              	Velocity_filter:
- 309 0000 00000000 		.space	20
- 309      00000000 
- 309      00000000 
- 309      00000000 
- 309      00000000 
- 310              		.global	Last_Velocity
- 311              		.section	.bss.Last_Velocity,"aw",%nobits
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 8
+ 292              		.loc 1 89 1 is_stmt 0 view .LVU58
+ 293 0000 7047     		bx	lr
+ 294              		.cfi_endproc
+ 295              	.LFE138:
+ 297              		.global	Slid_filter
+ 298              		.section	.bss.Slid_filter,"aw",%nobits
+ 299              		.align	2
+ 302              	Slid_filter:
+ 303 0000 00000000 		.space	120
+ 303      00000000 
+ 303      00000000 
+ 303      00000000 
+ 303      00000000 
+ 304              		.global	Velocity_filter
+ 305              		.section	.bss.Velocity_filter,"aw",%nobits
+ 306              		.align	2
+ 309              	Velocity_filter:
+ 310 0000 00000000 		.space	20
+ 310      00000000 
+ 310      00000000 
+ 310      00000000 
+ 310      00000000 
+ 311              		.global	Last_Velocity
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 8
 
 
- 312              		.align	2
- 315              	Last_Velocity:
- 316 0000 00000000 		.space	20
- 316      00000000 
- 316      00000000 
- 316      00000000 
- 316      00000000 
- 317              		.global	Velocity
- 318              		.section	.bss.Velocity,"aw",%nobits
- 319              		.align	2
- 322              	Velocity:
- 323 0000 00000000 		.space	20
- 323      00000000 
- 323      00000000 
- 323      00000000 
- 323      00000000 
- 324              		.section	.bss.last_position,"aw",%nobits
- 325              		.align	2
- 328              	last_position:
- 329 0000 00000000 		.space	20
- 329      00000000 
- 329      00000000 
- 329      00000000 
- 329      00000000 
- 330              		.section	.bss.position,"aw",%nobits
- 331              		.align	2
- 334              	position:
- 335 0000 00000000 		.space	20
- 335      00000000 
- 335      00000000 
- 335      00000000 
- 335      00000000 
- 336              		.text
- 337              	.Letext0:
- 338              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
- 339              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
- 340              		.file 4 "Bsp/Bsp_can.h"
- 341              		.file 5 "Modules/DJImotor/djimotor.h"
-ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s 			page 9
+ 312              		.section	.bss.Last_Velocity,"aw",%nobits
+ 313              		.align	2
+ 316              	Last_Velocity:
+ 317 0000 00000000 		.space	20
+ 317      00000000 
+ 317      00000000 
+ 317      00000000 
+ 317      00000000 
+ 318              		.global	Velocity
+ 319              		.section	.bss.Velocity,"aw",%nobits
+ 320              		.align	2
+ 323              	Velocity:
+ 324 0000 00000000 		.space	20
+ 324      00000000 
+ 324      00000000 
+ 324      00000000 
+ 324      00000000 
+ 325              		.section	.bss.last_position,"aw",%nobits
+ 326              		.align	2
+ 329              	last_position:
+ 330 0000 00000000 		.space	20
+ 330      00000000 
+ 330      00000000 
+ 330      00000000 
+ 330      00000000 
+ 331              		.section	.bss.position,"aw",%nobits
+ 332              		.align	2
+ 335              	position:
+ 336 0000 00000000 		.space	20
+ 336      00000000 
+ 336      00000000 
+ 336      00000000 
+ 336      00000000 
+ 337              		.text
+ 338              	.Letext0:
+ 339              		.file 2 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 340              		.file 3 "d:\\msys64\\mingw64\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 341              		.file 4 "Bsp/Bsp_can.h"
+ 342              		.file 5 "Modules/DJImotor/djimotor.h"
+ARM GAS  C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 djimotor.c
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:21     .text.AngleSumCalc:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:27     .text.AngleSumCalc:00000000 AngleSumCalc
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:65     .text.AngleSumCalc:00000034 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:328    .bss.last_position:00000000 last_position
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:334    .bss.position:00000000 position
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:75     .text.Velocity_Calclate:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:81     .text.Velocity_Calclate:00000000 Velocity_Calclate
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:147    .text.Velocity_Calclate:00000060 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:322    .bss.Velocity:00000000 Velocity
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:158    .text.DJIMotorStop:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:164    .text.DJIMotorStop:00000000 DJIMotorStop
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:195    .text.Slid_avg_filter:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:201    .text.Slid_avg_filter:00000000 Slid_avg_filter
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:269    .text.Slid_avg_filter:00000034 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:274    .text.Low_Pass_Filter:00000000 $t
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:280    .text.Low_Pass_Filter:00000000 Low_Pass_Filter
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:301    .bss.Slid_filter:00000000 Slid_filter
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:298    .bss.Slid_filter:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:308    .bss.Velocity_filter:00000000 Velocity_filter
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:305    .bss.Velocity_filter:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:315    .bss.Last_Velocity:00000000 Last_Velocity
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:312    .bss.Last_Velocity:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:319    .bss.Velocity:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:325    .bss.last_position:00000000 $d
-C:\Users\AURORA~1\AppData\Local\Temp\ccbhOnh1.s:331    .bss.position:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:21     .text.AngleSumCalc:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:27     .text.AngleSumCalc:00000000 AngleSumCalc
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:65     .text.AngleSumCalc:00000034 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:329    .bss.last_position:00000000 last_position
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:335    .bss.position:00000000 position
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:75     .text.Velocity_Calclate:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:81     .text.Velocity_Calclate:00000000 Velocity_Calclate
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:147    .text.Velocity_Calclate:00000060 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:323    .bss.Velocity:00000000 Velocity
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:158    .text.DJIMotorStop:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:164    .text.DJIMotorStop:00000000 DJIMotorStop
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:195    .text.Slid_avg_filter:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:201    .text.Slid_avg_filter:00000000 Slid_avg_filter
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:270    .text.Slid_avg_filter:00000038 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:275    .text.Low_Pass_Filter:00000000 $t
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:281    .text.Low_Pass_Filter:00000000 Low_Pass_Filter
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:302    .bss.Slid_filter:00000000 Slid_filter
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:299    .bss.Slid_filter:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:309    .bss.Velocity_filter:00000000 Velocity_filter
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:306    .bss.Velocity_filter:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:316    .bss.Last_Velocity:00000000 Last_Velocity
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:313    .bss.Last_Velocity:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:320    .bss.Velocity:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:326    .bss.last_position:00000000 $d
+C:\Users\AURORA~1\AppData\Local\Temp\ccFqiLOp.s:332    .bss.position:00000000 $d
 
 UNDEFINED SYMBOLS
 motor_array
