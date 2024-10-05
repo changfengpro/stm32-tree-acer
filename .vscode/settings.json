@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+      "*.py": "python",
+      "dmmotor.h": "c",
+      "bsp_log.h": "c",
+      "motor_def.h": "c",
+      "stdint.h": "c",
+      "controller.h": "c",
+      "arm_math.h": "c"
+    },
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+
+    "terminal.integrated.defaultProfile.windows": "mysys2-mingw64", // 若希望为默认终端可以加入这一句
+    "terminal.integrated.profiles.windows": {
+      "mysys2-mingw64": {
+        "path": "cmd.exe", // 意思是使用cmd作为父进程启动终端
+        "args": ["/c","D:\\msys64\\msys2_shell.cmd -defterm -mingw64 -no-start -here"]
+          // msys2_shell.cmd在msys的安装目录下，这里要改为你自己的目录
+      }
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "cmake.sourceDirectory": "D:/CubeMX/DMmotor/Drivers/CMSIS/DSP/Source/TransformFunctions"
+}
+

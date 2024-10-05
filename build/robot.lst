@@ -1,0 +1,147 @@
+ARM GAS  D:\msys64\tmp\ccTZ7wbI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"robot.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Application/robot.c"
+  20              		.section	.text.RobotTask,"ax",%progbits
+  21              		.align	1
+  22              		.global	RobotTask
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	RobotTask:
+  28              	.LFB137:
+   1:Application/robot.c **** /*
+   2:Application/robot.c ****  * robot.c
+   3:Application/robot.c ****  *
+   4:Application/robot.c ****  *  Created on: Sep 23, 2024
+   5:Application/robot.c ****  *      Author: auroranebulas
+   6:Application/robot.c ****  */
+   7:Application/robot.c **** 
+   8:Application/robot.c **** #include "robot.h"
+   9:Application/robot.c **** 
+  10:Application/robot.c **** void RobotTask()
+  11:Application/robot.c **** {
+  29              		.loc 1 11 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  12:Application/robot.c ****     DMMotorTask(motor);
+  38              		.loc 1 12 5 view .LVU1
+  39 0002 024B     		ldr	r3, .L3
+  40 0004 1868     		ldr	r0, [r3]
+  41 0006 FFF7FEFF 		bl	DMMotorTask
+  42              	.LVL0:
+  13:Application/robot.c **** }
+  43              		.loc 1 13 1 is_stmt 0 view .LVU2
+  44 000a 08BD     		pop	{r3, pc}
+  45              	.L4:
+ARM GAS  D:\msys64\tmp\ccTZ7wbI.s 			page 2
+
+
+  46              		.align	2
+  47              	.L3:
+  48 000c 00000000 		.word	motor
+  49              		.cfi_endproc
+  50              	.LFE137:
+  52              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+  53              		.align	1
+  54              		.global	HAL_TIM_PeriodElapsedCallback
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  59              	HAL_TIM_PeriodElapsedCallback:
+  60              	.LVL1:
+  61              	.LFB138:
+  14:Application/robot.c **** 
+  15:Application/robot.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+  16:Application/robot.c **** {
+  62              		.loc 1 16 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		.loc 1 16 1 is_stmt 0 view .LVU4
+  67 0000 08B5     		push	{r3, lr}
+  68              	.LCFI1:
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 3, -8
+  71              		.cfi_offset 14, -4
+  17:Application/robot.c **** 	if(htim ->Instance == TIM2)
+  72              		.loc 1 17 2 is_stmt 1 view .LVU5
+  73              		.loc 1 17 10 is_stmt 0 view .LVU6
+  74 0002 0368     		ldr	r3, [r0]
+  75              		.loc 1 17 4 view .LVU7
+  76 0004 B3F1804F 		cmp	r3, #1073741824
+  77 0008 00D0     		beq	.L8
+  78              	.LVL2:
+  79              	.L5:
+  18:Application/robot.c **** 	{
+  19:Application/robot.c ****         RobotTask();
+  20:Application/robot.c **** 	}
+  21:Application/robot.c **** }...
+  80              		.loc 1 21 1 view .LVU8
+  81 000a 08BD     		pop	{r3, pc}
+  82              	.LVL3:
+  83              	.L8:
+  19:Application/robot.c ****         RobotTask();
+  84              		.loc 1 19 9 is_stmt 1 view .LVU9
+  85 000c FFF7FEFF 		bl	RobotTask
+  86              	.LVL4:
+  87              		.loc 1 21 1 is_stmt 0 view .LVU10
+  88 0010 FBE7     		b	.L5
+  89              		.cfi_endproc
+  90              	.LFE138:
+  92              		.text
+  93              	.Letext0:
+  94              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+  95              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+  96              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
+ARM GAS  D:\msys64\tmp\ccTZ7wbI.s 			page 3
+
+
+  97              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+  98              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+  99              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 100              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 101              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 102              		.file 10 "Bsp/Can/bsp_can.h"
+ 103              		.file 11 "Modules/alogrithm/controller.h"
+ 104              		.file 12 "Modules/Motor/motor_def.h"
+ 105              		.file 13 "Modules/Motor/DMmotor/dmmotor.h"
+ 106              		.file 14 "Application/robot.h"
+ARM GAS  D:\msys64\tmp\ccTZ7wbI.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 robot.c
+D:\msys64\tmp\ccTZ7wbI.s:21     .text.RobotTask:00000000 $t
+D:\msys64\tmp\ccTZ7wbI.s:27     .text.RobotTask:00000000 RobotTask
+D:\msys64\tmp\ccTZ7wbI.s:48     .text.RobotTask:0000000c $d
+D:\msys64\tmp\ccTZ7wbI.s:53     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+D:\msys64\tmp\ccTZ7wbI.s:59     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+
+UNDEFINED SYMBOLS
+DMMotorTask
+motor

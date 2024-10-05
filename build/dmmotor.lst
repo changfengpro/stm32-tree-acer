@@ -1,0 +1,1762 @@
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"dmmotor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Modules/Motor/DMmotor/dmmotor.c"
+  20              		.section	.text.float_to_uint,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	float_to_uint:
+  27              	.LVL0:
+  28              	.LFB181:
+   1:Modules/Motor/DMmotor/dmmotor.c **** #include "dmmotor.h"
+   2:Modules/Motor/DMmotor/dmmotor.c **** #include "general_def.h"
+   3:Modules/Motor/DMmotor/dmmotor.c **** #include "string.h"
+   4:Modules/Motor/DMmotor/dmmotor.c **** #include "stdlib.h"
+   5:Modules/Motor/DMmotor/dmmotor.c **** #include "bsp_log.h"
+   6:Modules/Motor/DMmotor/dmmotor.c **** #include "Bsp_can.h"
+   7:Modules/Motor/DMmotor/dmmotor.c **** #include "arm_math.h"
+   8:Modules/Motor/DMmotor/dmmotor.c **** 
+   9:Modules/Motor/DMmotor/dmmotor.c **** #define DM_COEF PI*4.0f/12.5f
+  10:Modules/Motor/DMmotor/dmmotor.c **** 
+  11:Modules/Motor/DMmotor/dmmotor.c **** static uint8_t idx;
+  12:Modules/Motor/DMmotor/dmmotor.c **** static DMMotorInstance *dm_motor_instance[DM_MOTOR_CNT];
+  13:Modules/Motor/DMmotor/dmmotor.c **** /* 两个用于将uint值和float值进行映射的函数,在设定发送值和解析反馈值时�
+  14:Modules/Motor/DMmotor/dmmotor.c **** static uint16_t float_to_uint(float x, float x_min, float x_max, uint8_t bits)
+  15:Modules/Motor/DMmotor/dmmotor.c **** {
+  29              		.loc 1 15 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  16:Modules/Motor/DMmotor/dmmotor.c ****     float span = x_max - x_min;
+  34              		.loc 1 16 5 view .LVU1
+  35              		.loc 1 16 11 is_stmt 0 view .LVU2
+  36 0000 31EE601A 		vsub.f32	s2, s2, s1
+  37              	.LVL1:
+  17:Modules/Motor/DMmotor/dmmotor.c ****     float offset = x_min;
+  38              		.loc 1 17 5 is_stmt 1 view .LVU3
+  18:Modules/Motor/DMmotor/dmmotor.c ****     return (uint16_t)(x - offset) * ((float)((1 << bits) - 1) / span);
+  39              		.loc 1 18 5 view .LVU4
+  40              		.loc 1 18 25 is_stmt 0 view .LVU5
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 2
+
+
+  41 0004 30EE600A 		vsub.f32	s0, s0, s1
+  42              	.LVL2:
+  43              		.loc 1 18 12 view .LVU6
+  44 0008 FCEEC07A 		vcvt.u32.f32	s15, s0
+  45 000c 17EE903A 		vmov	r3, s15	@ int
+  46 0010 9BB2     		uxth	r3, r3
+  47 0012 07EE903A 		vmov	s15, r3	@ int
+  48              		.loc 1 18 49 view .LVU7
+  49 0016 0123     		movs	r3, #1
+  50 0018 8340     		lsls	r3, r3, r0
+  51              		.loc 1 18 58 view .LVU8
+  52 001a 013B     		subs	r3, r3, #1
+  53              		.loc 1 18 38 view .LVU9
+  54 001c 07EE103A 		vmov	s14, r3	@ int
+  55 0020 B8EEC77A 		vcvt.f32.s32	s14, s14
+  56              		.loc 1 18 63 view .LVU10
+  57 0024 C7EE016A 		vdiv.f32	s13, s14, s2
+  58              		.loc 1 18 35 view .LVU11
+  59 0028 F8EEE77A 		vcvt.f32.s32	s15, s15
+  60 002c 67EEA67A 		vmul.f32	s15, s15, s13
+  61 0030 FCEEE77A 		vcvt.u32.f32	s15, s15
+  19:Modules/Motor/DMmotor/dmmotor.c **** }
+  62              		.loc 1 19 1 view .LVU12
+  63 0034 17EE903A 		vmov	r3, s15	@ int
+  64 0038 98B2     		uxth	r0, r3
+  65              	.LVL3:
+  66              		.loc 1 19 1 view .LVU13
+  67 003a 7047     		bx	lr
+  68              		.cfi_endproc
+  69              	.LFE181:
+  71              		.section	.text.uint_to_float,"ax",%progbits
+  72              		.align	1
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	uint_to_float:
+  78              	.LVL4:
+  79              	.LFB182:
+  20:Modules/Motor/DMmotor/dmmotor.c **** 
+  21:Modules/Motor/DMmotor/dmmotor.c **** 
+  22:Modules/Motor/DMmotor/dmmotor.c **** static float uint_to_float(int x_int, float x_min, float x_max, int bits)
+  23:Modules/Motor/DMmotor/dmmotor.c **** {
+  80              		.loc 1 23 1 is_stmt 1 view -0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85              		.loc 1 23 1 is_stmt 0 view .LVU15
+  86 0000 07EE900A 		vmov	s15, r0	@ int
+  24:Modules/Motor/DMmotor/dmmotor.c ****     float span = x_max - x_min;
+  87              		.loc 1 24 5 is_stmt 1 view .LVU16
+  88              		.loc 1 24 11 is_stmt 0 view .LVU17
+  89 0004 70EEC00A 		vsub.f32	s1, s1, s0
+  90              	.LVL5:
+  25:Modules/Motor/DMmotor/dmmotor.c ****     float offset = x_min;
+  91              		.loc 1 25 5 is_stmt 1 view .LVU18
+  26:Modules/Motor/DMmotor/dmmotor.c ****     return ((float)x_int) * span / ((float)((1 << bits) - 1)) + offset;
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 3
+
+
+  92              		.loc 1 26 5 view .LVU19
+  93              		.loc 1 26 13 is_stmt 0 view .LVU20
+  94 0008 F8EEE77A 		vcvt.f32.s32	s15, s15
+  95              		.loc 1 26 27 view .LVU21
+  96 000c 27EEA07A 		vmul.f32	s14, s15, s1
+  97              		.loc 1 26 48 view .LVU22
+  98 0010 0123     		movs	r3, #1
+  99 0012 8B40     		lsls	r3, r3, r1
+ 100              		.loc 1 26 57 view .LVU23
+ 101 0014 013B     		subs	r3, r3, #1
+ 102              		.loc 1 26 37 view .LVU24
+ 103 0016 07EE903A 		vmov	s15, r3	@ int
+ 104 001a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 105              		.loc 1 26 34 view .LVU25
+ 106 001e C7EE276A 		vdiv.f32	s13, s14, s15
+  27:Modules/Motor/DMmotor/dmmotor.c **** }
+ 107              		.loc 1 27 1 view .LVU26
+ 108 0022 36EE800A 		vadd.f32	s0, s13, s0
+ 109              	.LVL6:
+ 110              		.loc 1 27 1 view .LVU27
+ 111 0026 7047     		bx	lr
+ 112              		.cfi_endproc
+ 113              	.LFE182:
+ 115              		.section	.text.DMMotorSingleRoundSignDetect,"ax",%progbits
+ 116              		.align	1
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	DMMotorSingleRoundSignDetect:
+ 122              	.LVL7:
+ 123              	.LFB184:
+  28:Modules/Motor/DMmotor/dmmotor.c **** 
+  29:Modules/Motor/DMmotor/dmmotor.c **** static void DMMotorSetMode(DMMotor_Mode_e cmd, DMMotorInstance *motor)
+  30:Modules/Motor/DMmotor/dmmotor.c **** {
+  31:Modules/Motor/DMmotor/dmmotor.c ****     memset(motor->motor_can_instace->tx_buff, 0xff, 7);  // 发送电机指令的时候前面7bytes
+  32:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace->tx_buff[7] = (uint8_t)cmd; // 最后一位是命令id
+  33:Modules/Motor/DMmotor/dmmotor.c ****     CANTransmit(motor->motor_can_instace, 1);
+  34:Modules/Motor/DMmotor/dmmotor.c **** }
+  35:Modules/Motor/DMmotor/dmmotor.c **** 
+  36:Modules/Motor/DMmotor/dmmotor.c **** //输出当前属于哪个圈（1234中的哪个）
+  37:Modules/Motor/DMmotor/dmmotor.c **** static int16_t DMMotorSingleRoundSignDetect(float position)
+  38:Modules/Motor/DMmotor/dmmotor.c **** {
+ 124              		.loc 1 38 1 is_stmt 1 view -0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              		@ link register save eliminated.
+  39:Modules/Motor/DMmotor/dmmotor.c ****     int8_t sign=0;
+ 129              		.loc 1 39 5 view .LVU29
+  40:Modules/Motor/DMmotor/dmmotor.c ****     if(position<-6.25)
+ 130              		.loc 1 40 5 view .LVU30
+ 131              		.loc 1 40 7 is_stmt 0 view .LVU31
+ 132 0000 F9EE097A 		vmov.f32	s15, #-6.25e+0
+ 133 0004 B4EEE70A 		vcmpe.f32	s0, s15
+ 134 0008 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 135 000c 22D4     		bmi	.L10
+  41:Modules/Motor/DMmotor/dmmotor.c ****     {
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 4
+
+
+  42:Modules/Motor/DMmotor/dmmotor.c ****         sign=1;
+  43:Modules/Motor/DMmotor/dmmotor.c ****     }
+  44:Modules/Motor/DMmotor/dmmotor.c ****     else if(position < 0 &&position >= -6.25)
+ 136              		.loc 1 44 10 is_stmt 1 view .LVU32
+ 137              		.loc 1 44 12 is_stmt 0 view .LVU33
+ 138 000e B5EEC00A 		vcmpe.f32	s0, #0
+ 139 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 140 0016 0DD4     		bmi	.L19
+ 141              	.L5:
+  45:Modules/Motor/DMmotor/dmmotor.c ****     {
+  46:Modules/Motor/DMmotor/dmmotor.c ****         sign=2;
+  47:Modules/Motor/DMmotor/dmmotor.c ****     }
+  48:Modules/Motor/DMmotor/dmmotor.c ****     else if(position < 6.25 &&position >= 0)
+ 142              		.loc 1 48 10 is_stmt 1 view .LVU34
+ 143              		.loc 1 48 12 is_stmt 0 view .LVU35
+ 144 0018 F1EE097A 		vmov.f32	s15, #6.25e+0
+ 145 001c B4EEE70A 		vcmpe.f32	s0, s15
+ 146 0020 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 147 0024 0DD5     		bpl	.L17
+ 148              		.loc 1 48 29 discriminator 1 view .LVU36
+ 149 0026 B5EEC00A 		vcmpe.f32	s0, #0
+ 150 002a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 151 002e 13DB     		blt	.L18
+  49:Modules/Motor/DMmotor/dmmotor.c ****     {
+  50:Modules/Motor/DMmotor/dmmotor.c ****         sign=3;
+ 152              		.loc 1 50 13 view .LVU37
+ 153 0030 0320     		movs	r0, #3
+ 154 0032 7047     		bx	lr
+ 155              	.L19:
+  44:Modules/Motor/DMmotor/dmmotor.c ****     {
+ 156              		.loc 1 44 26 discriminator 1 view .LVU38
+ 157 0034 B4EEE70A 		vcmpe.f32	s0, s15
+ 158 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 159 003c ECDB     		blt	.L5
+  46:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 160              		.loc 1 46 13 view .LVU39
+ 161 003e 0220     		movs	r0, #2
+ 162 0040 7047     		bx	lr
+ 163              	.L17:
+  51:Modules/Motor/DMmotor/dmmotor.c ****     }
+  52:Modules/Motor/DMmotor/dmmotor.c ****     else if(position >= 6.25)
+ 164              		.loc 1 52 10 is_stmt 1 view .LVU40
+ 165              		.loc 1 52 12 is_stmt 0 view .LVU41
+ 166 0042 F1EE097A 		vmov.f32	s15, #6.25e+0
+ 167 0046 B4EEE70A 		vcmpe.f32	s0, s15
+ 168 004a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 169 004e 05DA     		bge	.L13
+  39:Modules/Motor/DMmotor/dmmotor.c ****     if(position<-6.25)
+ 170              		.loc 1 39 12 view .LVU42
+ 171 0050 0020     		movs	r0, #0
+ 172 0052 7047     		bx	lr
+ 173              	.L10:
+  42:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 174              		.loc 1 42 13 view .LVU43
+ 175 0054 0120     		movs	r0, #1
+ 176 0056 7047     		bx	lr
+ 177              	.L18:
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 5
+
+
+  39:Modules/Motor/DMmotor/dmmotor.c ****     if(position<-6.25)
+ 178              		.loc 1 39 12 view .LVU44
+ 179 0058 0020     		movs	r0, #0
+ 180 005a 7047     		bx	lr
+ 181              	.L13:
+  53:Modules/Motor/DMmotor/dmmotor.c ****     {
+  54:Modules/Motor/DMmotor/dmmotor.c ****         sign=4;
+ 182              		.loc 1 54 13 view .LVU45
+ 183 005c 0420     		movs	r0, #4
+ 184              	.LVL8:
+  55:Modules/Motor/DMmotor/dmmotor.c ****     }
+  56:Modules/Motor/DMmotor/dmmotor.c **** 
+  57:Modules/Motor/DMmotor/dmmotor.c ****     return sign;
+ 185              		.loc 1 57 5 is_stmt 1 view .LVU46
+  58:Modules/Motor/DMmotor/dmmotor.c **** }
+ 186              		.loc 1 58 1 is_stmt 0 view .LVU47
+ 187 005e 7047     		bx	lr
+ 188              		.cfi_endproc
+ 189              	.LFE184:
+ 191              		.section	.text.DMMotorMultiRoundDetect,"ax",%progbits
+ 192              		.align	1
+ 193              		.syntax unified
+ 194              		.thumb
+ 195              		.thumb_func
+ 197              	DMMotorMultiRoundDetect:
+ 198              	.LVL9:
+ 199              	.LFB185:
+  59:Modules/Motor/DMmotor/dmmotor.c **** 
+  60:Modules/Motor/DMmotor/dmmotor.c **** //达妙多圈检测，输出过圈量
+  61:Modules/Motor/DMmotor/dmmotor.c **** static int8_t DMMotorMultiRoundDetect(DMMotorInstance * motor)
+  62:Modules/Motor/DMmotor/dmmotor.c **** {
+ 200              		.loc 1 62 1 is_stmt 1 view -0
+ 201              		.cfi_startproc
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		.loc 1 62 1 is_stmt 0 view .LVU49
+ 205 0000 38B5     		push	{r3, r4, r5, lr}
+ 206              	.LCFI0:
+ 207              		.cfi_def_cfa_offset 16
+ 208              		.cfi_offset 3, -16
+ 209              		.cfi_offset 4, -12
+ 210              		.cfi_offset 5, -8
+ 211              		.cfi_offset 14, -4
+ 212 0002 0446     		mov	r4, r0
+  63:Modules/Motor/DMmotor/dmmotor.c ****     static float position;
+ 213              		.loc 1 63 5 is_stmt 1 view .LVU50
+  64:Modules/Motor/DMmotor/dmmotor.c ****     static int8_t last_round_sign;
+ 214              		.loc 1 64 5 view .LVU51
+  65:Modules/Motor/DMmotor/dmmotor.c ****     static int8_t current_round_sign;
+ 215              		.loc 1 65 5 view .LVU52
+  66:Modules/Motor/DMmotor/dmmotor.c ****     int8_t diff_round;
+ 216              		.loc 1 66 5 view .LVU53
+  67:Modules/Motor/DMmotor/dmmotor.c ****     
+  68:Modules/Motor/DMmotor/dmmotor.c ****     position = motor->measure.recv_position;
+ 217              		.loc 1 68 5 view .LVU54
+ 218              		.loc 1 68 30 is_stmt 0 view .LVU55
+ 219 0004 D0F80A30 		ldr	r3, [r0, #10]	@ unaligned
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 6
+
+
+ 220 0008 00EE103A 		vmov	s0, r3	@ int
+ 221              		.loc 1 68 14 view .LVU56
+ 222 000c 104B     		ldr	r3, .L27
+ 223 000e 83ED000A 		vstr.32	s0, [r3]
+  69:Modules/Motor/DMmotor/dmmotor.c ****     last_round_sign = motor->measure.round_sign;
+ 224              		.loc 1 69 5 is_stmt 1 view .LVU57
+ 225              		.loc 1 69 37 is_stmt 0 view .LVU58
+ 226 0012 90F92A50 		ldrsb	r5, [r0, #42]
+ 227              		.loc 1 69 21 view .LVU59
+ 228 0016 0F4B     		ldr	r3, .L27+4
+ 229 0018 1D70     		strb	r5, [r3]
+  70:Modules/Motor/DMmotor/dmmotor.c ****     current_round_sign=DMMotorSingleRoundSignDetect(position);
+ 230              		.loc 1 70 5 is_stmt 1 view .LVU60
+ 231              		.loc 1 70 24 is_stmt 0 view .LVU61
+ 232 001a FFF7FEFF 		bl	DMMotorSingleRoundSignDetect
+ 233              	.LVL10:
+ 234              		.loc 1 70 23 discriminator 1 view .LVU62
+ 235 001e 42B2     		sxtb	r2, r0
+ 236 0020 0D4B     		ldr	r3, .L27+8
+ 237 0022 1A70     		strb	r2, [r3]
+  71:Modules/Motor/DMmotor/dmmotor.c **** 
+  72:Modules/Motor/DMmotor/dmmotor.c ****     //计算差值
+  73:Modules/Motor/DMmotor/dmmotor.c ****     diff_round=current_round_sign-last_round_sign;
+ 238              		.loc 1 73 5 is_stmt 1 view .LVU63
+ 239              		.loc 1 73 34 is_stmt 0 view .LVU64
+ 240 0024 431B     		subs	r3, r0, r5
+ 241              	.LVL11:
+  74:Modules/Motor/DMmotor/dmmotor.c ****     //更新
+  75:Modules/Motor/DMmotor/dmmotor.c ****     motor->measure.round_sign=current_round_sign;
+ 242              		.loc 1 75 5 is_stmt 1 view .LVU65
+ 243              		.loc 1 75 30 is_stmt 0 view .LVU66
+ 244 0026 84F82A20 		strb	r2, [r4, #42]
+  76:Modules/Motor/DMmotor/dmmotor.c **** 
+  77:Modules/Motor/DMmotor/dmmotor.c ****     if(last_round_sign==0)//第一次收到，先设定当前所在的圈
+ 245              		.loc 1 77 5 is_stmt 1 view .LVU67
+ 246              		.loc 1 77 7 is_stmt 0 view .LVU68
+ 247 002a 75B1     		cbz	r5, .L24
+ 248 002c D9B2     		uxtb	r1, r3
+ 249 002e 58B2     		sxtb	r0, r3
+  78:Modules/Motor/DMmotor/dmmotor.c ****     {
+  79:Modules/Motor/DMmotor/dmmotor.c ****         motor->measure.round_sign = current_round_sign;
+  80:Modules/Motor/DMmotor/dmmotor.c ****         return 0;
+  81:Modules/Motor/DMmotor/dmmotor.c ****     }
+  82:Modules/Motor/DMmotor/dmmotor.c **** 
+  83:Modules/Motor/DMmotor/dmmotor.c ****     if(diff_round != 0)
+ 250              		.loc 1 83 5 is_stmt 1 view .LVU69
+ 251              		.loc 1 83 7 is_stmt 0 view .LVU70
+ 252 0030 00B9     		cbnz	r0, .L26
+ 253              	.LVL12:
+ 254              	.L21:
+  84:Modules/Motor/DMmotor/dmmotor.c ****     {
+  85:Modules/Motor/DMmotor/dmmotor.c ****         if(diff_round>2)
+  86:Modules/Motor/DMmotor/dmmotor.c ****         {
+  87:Modules/Motor/DMmotor/dmmotor.c ****             diff_round-=4;
+  88:Modules/Motor/DMmotor/dmmotor.c ****         }
+  89:Modules/Motor/DMmotor/dmmotor.c ****         else if(diff_round<-2)
+  90:Modules/Motor/DMmotor/dmmotor.c ****         {
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 7
+
+
+  91:Modules/Motor/DMmotor/dmmotor.c ****             diff_round+=4;
+  92:Modules/Motor/DMmotor/dmmotor.c ****         }
+  93:Modules/Motor/DMmotor/dmmotor.c ****         return diff_round;
+  94:Modules/Motor/DMmotor/dmmotor.c ****     }
+  95:Modules/Motor/DMmotor/dmmotor.c **** 
+  96:Modules/Motor/DMmotor/dmmotor.c ****     return 0;
+  97:Modules/Motor/DMmotor/dmmotor.c **** }
+ 255              		.loc 1 97 1 view .LVU71
+ 256 0032 38BD     		pop	{r3, r4, r5, pc}
+ 257              	.LVL13:
+ 258              	.L26:
+  85:Modules/Motor/DMmotor/dmmotor.c ****         {
+ 259              		.loc 1 85 9 is_stmt 1 view .LVU72
+  85:Modules/Motor/DMmotor/dmmotor.c ****         {
+ 260              		.loc 1 85 11 is_stmt 0 view .LVU73
+ 261 0034 0228     		cmp	r0, #2
+ 262 0036 02DD     		ble	.L22
+  87:Modules/Motor/DMmotor/dmmotor.c ****         }
+ 263              		.loc 1 87 13 is_stmt 1 view .LVU74
+  87:Modules/Motor/DMmotor/dmmotor.c ****         }
+ 264              		.loc 1 87 23 is_stmt 0 view .LVU75
+ 265 0038 0439     		subs	r1, r1, #4
+ 266 003a 48B2     		sxtb	r0, r1
+ 267              	.LVL14:
+  87:Modules/Motor/DMmotor/dmmotor.c ****         }
+ 268              		.loc 1 87 23 view .LVU76
+ 269 003c F9E7     		b	.L21
+ 270              	.LVL15:
+ 271              	.L22:
+  89:Modules/Motor/DMmotor/dmmotor.c ****         {
+ 272              		.loc 1 89 14 is_stmt 1 view .LVU77
+  89:Modules/Motor/DMmotor/dmmotor.c ****         {
+ 273              		.loc 1 89 16 is_stmt 0 view .LVU78
+ 274 003e 10F1020F 		cmn	r0, #2
+ 275 0042 F6DA     		bge	.L21
+  91:Modules/Motor/DMmotor/dmmotor.c ****         }
+ 276              		.loc 1 91 13 is_stmt 1 view .LVU79
+  91:Modules/Motor/DMmotor/dmmotor.c ****         }
+ 277              		.loc 1 91 23 is_stmt 0 view .LVU80
+ 278 0044 0431     		adds	r1, r1, #4
+ 279 0046 48B2     		sxtb	r0, r1
+ 280              	.LVL16:
+  93:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 281              		.loc 1 93 9 is_stmt 1 view .LVU81
+  93:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 282              		.loc 1 93 16 is_stmt 0 view .LVU82
+ 283 0048 F3E7     		b	.L21
+ 284              	.LVL17:
+ 285              	.L24:
+  80:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 286              		.loc 1 80 16 view .LVU83
+ 287 004a 2846     		mov	r0, r5
+ 288 004c F1E7     		b	.L21
+ 289              	.L28:
+ 290 004e 00BF     		.align	2
+ 291              	.L27:
+ 292 0050 00000000 		.word	position.2
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 8
+
+
+ 293 0054 00000000 		.word	last_round_sign.1
+ 294 0058 00000000 		.word	current_round_sign.0
+ 295              		.cfi_endproc
+ 296              	.LFE185:
+ 298              		.section	.text.DMMotorSetMode,"ax",%progbits
+ 299              		.align	1
+ 300              		.syntax unified
+ 301              		.thumb
+ 302              		.thumb_func
+ 304              	DMMotorSetMode:
+ 305              	.LVL18:
+ 306              	.LFB183:
+  30:Modules/Motor/DMmotor/dmmotor.c ****     memset(motor->motor_can_instace->tx_buff, 0xff, 7);  // 发送电机指令的时候前面7bytes
+ 307              		.loc 1 30 1 is_stmt 1 view -0
+ 308              		.cfi_startproc
+ 309              		@ args = 0, pretend = 0, frame = 0
+ 310              		@ frame_needed = 0, uses_anonymous_args = 0
+  30:Modules/Motor/DMmotor/dmmotor.c ****     memset(motor->motor_can_instace->tx_buff, 0xff, 7);  // 发送电机指令的时候前面7bytes
+ 311              		.loc 1 30 1 is_stmt 0 view .LVU85
+ 312 0000 08B5     		push	{r3, lr}
+ 313              	.LCFI1:
+ 314              		.cfi_def_cfa_offset 8
+ 315              		.cfi_offset 3, -8
+ 316              		.cfi_offset 14, -4
+  31:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace->tx_buff[7] = (uint8_t)cmd; // 最后一位是命令id
+ 317              		.loc 1 31 5 is_stmt 1 view .LVU86
+  31:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace->tx_buff[7] = (uint8_t)cmd; // 最后一位是命令id
+ 318              		.loc 1 31 17 is_stmt 0 view .LVU87
+ 319 0002 D1F8B731 		ldr	r3, [r1, #439]	@ unaligned
+  31:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace->tx_buff[7] = (uint8_t)cmd; // 最后一位是命令id
+ 320              		.loc 1 31 5 view .LVU88
+ 321 0006 4FF0FF32 		mov	r2, #-1
+ 322 000a 5A62     		str	r2, [r3, #36]	@ unaligned
+ 323 000c C3F82720 		str	r2, [r3, #39]	@ unaligned
+  32:Modules/Motor/DMmotor/dmmotor.c ****     CANTransmit(motor->motor_can_instace, 1);
+ 324              		.loc 1 32 5 is_stmt 1 view .LVU89
+  32:Modules/Motor/DMmotor/dmmotor.c ****     CANTransmit(motor->motor_can_instace, 1);
+ 325              		.loc 1 32 10 is_stmt 0 view .LVU90
+ 326 0010 D1F8B731 		ldr	r3, [r1, #439]	@ unaligned
+  32:Modules/Motor/DMmotor/dmmotor.c ****     CANTransmit(motor->motor_can_instace, 1);
+ 327              		.loc 1 32 42 view .LVU91
+ 328 0014 83F82B00 		strb	r0, [r3, #43]
+  33:Modules/Motor/DMmotor/dmmotor.c **** }
+ 329              		.loc 1 33 5 is_stmt 1 view .LVU92
+ 330 0018 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 331 001c D1F8B701 		ldr	r0, [r1, #439]	@ unaligned
+ 332              	.LVL19:
+  33:Modules/Motor/DMmotor/dmmotor.c **** }
+ 333              		.loc 1 33 5 is_stmt 0 view .LVU93
+ 334 0020 FFF7FEFF 		bl	CANTransmit
+ 335              	.LVL20:
+  34:Modules/Motor/DMmotor/dmmotor.c **** 
+ 336              		.loc 1 34 1 view .LVU94
+ 337 0024 08BD     		pop	{r3, pc}
+ 338              		.cfi_endproc
+ 339              	.LFE183:
+ 341              		.global	__aeabi_f2d
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 9
+
+
+ 342              		.global	__aeabi_i2d
+ 343              		.global	__aeabi_dmul
+ 344              		.global	__aeabi_dadd
+ 345              		.global	__aeabi_dsub
+ 346              		.global	__aeabi_ddiv
+ 347              		.global	__aeabi_d2f
+ 348              		.section	.text.DMMotorDecode,"ax",%progbits
+ 349              		.align	1
+ 350              		.syntax unified
+ 351              		.thumb
+ 352              		.thumb_func
+ 354              	DMMotorDecode:
+ 355              	.LVL21:
+ 356              	.LFB186:
+  98:Modules/Motor/DMmotor/dmmotor.c **** 
+  99:Modules/Motor/DMmotor/dmmotor.c **** static void DMMotorDecode(CANInstance *motor_can)
+ 100:Modules/Motor/DMmotor/dmmotor.c **** {
+ 357              		.loc 1 100 1 is_stmt 1 view -0
+ 358              		.cfi_startproc
+ 359              		@ args = 0, pretend = 0, frame = 0
+ 360              		@ frame_needed = 0, uses_anonymous_args = 0
+ 361              		.loc 1 100 1 is_stmt 0 view .LVU96
+ 362 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 363              	.LCFI2:
+ 364              		.cfi_def_cfa_offset 32
+ 365              		.cfi_offset 4, -32
+ 366              		.cfi_offset 5, -28
+ 367              		.cfi_offset 6, -24
+ 368              		.cfi_offset 7, -20
+ 369              		.cfi_offset 8, -16
+ 370              		.cfi_offset 9, -12
+ 371              		.cfi_offset 10, -8
+ 372              		.cfi_offset 14, -4
+ 373 0004 2DED028B 		vpush.64	{d8}
+ 374              	.LCFI3:
+ 375              		.cfi_def_cfa_offset 40
+ 376              		.cfi_offset 80, -40
+ 377              		.cfi_offset 81, -36
+ 378 0008 0546     		mov	r5, r0
+ 101:Modules/Motor/DMmotor/dmmotor.c ****     uint16_t tmp; // 用于暂存解析值,稍后转换成float数据,避免多次创建临时变�
+ 379              		.loc 1 101 5 is_stmt 1 view .LVU97
+ 102:Modules/Motor/DMmotor/dmmotor.c ****     uint8_t *rxbuff = motor_can->rx_buff;
+ 380              		.loc 1 102 5 view .LVU98
+ 381              	.LVL22:
+ 103:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorInstance *motor = (DMMotorInstance *)motor_can->id;
+ 382              		.loc 1 103 5 view .LVU99
+ 383              		.loc 1 103 22 is_stmt 0 view .LVU100
+ 384 000a D0F83D40 		ldr	r4, [r0, #61]	@ unaligned
+ 385              	.LVL23:
+ 104:Modules/Motor/DMmotor/dmmotor.c ****     DM_Motor_Measure_s *measure = &(motor->measure); // 将can实例中保存的id转换成电机�
+ 386              		.loc 1 104 5 is_stmt 1 view .LVU101
+ 105:Modules/Motor/DMmotor/dmmotor.c **** 
+ 106:Modules/Motor/DMmotor/dmmotor.c ****     measure->recv_last_position = measure->recv_position;
+ 387              		.loc 1 106 5 view .LVU102
+ 388              		.loc 1 106 42 is_stmt 0 view .LVU103
+ 389 000e D4F80A30 		ldr	r3, [r4, #10]	@ unaligned
+ 390              		.loc 1 106 33 view .LVU104
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 10
+
+
+ 391 0012 C4F80630 		str	r3, [r4, #6]	@ unaligned
+ 107:Modules/Motor/DMmotor/dmmotor.c ****     tmp = (uint16_t)((rxbuff[1] << 8) | rxbuff[2]);
+ 392              		.loc 1 107 5 is_stmt 1 view .LVU105
+ 393              		.loc 1 107 29 is_stmt 0 view .LVU106
+ 394 0016 90F82D00 		ldrb	r0, [r0, #45]	@ zero_extendqisi2
+ 395              	.LVL24:
+ 396              		.loc 1 107 47 view .LVU107
+ 397 001a 95F82E30 		ldrb	r3, [r5, #46]	@ zero_extendqisi2
+ 398              	.LVL25:
+ 108:Modules/Motor/DMmotor/dmmotor.c ****     measure->recv_position = uint_to_float(tmp, DM_P_MIN, DM_P_MAX, 16);
+ 399              		.loc 1 108 5 is_stmt 1 view .LVU108
+ 400              		.loc 1 108 30 is_stmt 0 view .LVU109
+ 401 001e 1021     		movs	r1, #16
+ 402 0020 F2EE090A 		vmov.f32	s1, #1.25e+1
+ 403 0024 BAEE090A 		vmov.f32	s0, #-1.25e+1
+ 404 0028 43EA0020 		orr	r0, r3, r0, lsl #8
+ 405              	.LVL26:
+ 406              		.loc 1 108 30 view .LVU110
+ 407 002c FFF7FEFF 		bl	uint_to_float
+ 408              	.LVL27:
+ 409              		.loc 1 108 28 discriminator 1 view .LVU111
+ 410 0030 10EE103A 		vmov	r3, s0
+ 411 0034 C4F80A30 		str	r3, [r4, #10]	@ unaligned
+ 109:Modules/Motor/DMmotor/dmmotor.c **** 
+ 110:Modules/Motor/DMmotor/dmmotor.c **** 
+ 111:Modules/Motor/DMmotor/dmmotor.c ****     tmp = (uint16_t)((rxbuff[3] << 4) | rxbuff[4] >> 4);
+ 412              		.loc 1 111 5 is_stmt 1 view .LVU112
+ 413              		.loc 1 111 29 is_stmt 0 view .LVU113
+ 414 0038 95F82F00 		ldrb	r0, [r5, #47]	@ zero_extendqisi2
+ 415              		.loc 1 111 47 view .LVU114
+ 416 003c 95F83030 		ldrb	r3, [r5, #48]	@ zero_extendqisi2
+ 417              		.loc 1 111 39 view .LVU115
+ 418 0040 1B09     		lsrs	r3, r3, #4
+ 419              	.LVL28:
+ 112:Modules/Motor/DMmotor/dmmotor.c ****     measure->velocity = uint_to_float(tmp, DM_V_MIN, DM_V_MAX, 12);
+ 420              		.loc 1 112 5 is_stmt 1 view .LVU116
+ 421              		.loc 1 112 25 is_stmt 0 view .LVU117
+ 422 0042 0C21     		movs	r1, #12
+ 423 0044 DFED5E0A 		vldr.32	s1, .L39+16
+ 424 0048 9FED5E0A 		vldr.32	s0, .L39+20
+ 425 004c 43EA0010 		orr	r0, r3, r0, lsl #4
+ 426              	.LVL29:
+ 427              		.loc 1 112 25 view .LVU118
+ 428 0050 FFF7FEFF 		bl	uint_to_float
+ 429              	.LVL30:
+ 430              		.loc 1 112 23 discriminator 1 view .LVU119
+ 431 0054 10EE103A 		vmov	r3, s0
+ 432 0058 C4F80230 		str	r3, [r4, #2]	@ unaligned
+ 113:Modules/Motor/DMmotor/dmmotor.c **** 
+ 114:Modules/Motor/DMmotor/dmmotor.c ****     tmp = (uint16_t)(((rxbuff[4] & 0x0f) << 8) | rxbuff[5]);
+ 433              		.loc 1 114 5 is_stmt 1 view .LVU120
+ 434              		.loc 1 114 30 is_stmt 0 view .LVU121
+ 435 005c 95F83030 		ldrb	r3, [r5, #48]	@ zero_extendqisi2
+ 436              		.loc 1 114 56 view .LVU122
+ 437 0060 95F83100 		ldrb	r0, [r5, #49]	@ zero_extendqisi2
+ 438              		.loc 1 114 48 view .LVU123
+ 439 0064 1B02     		lsls	r3, r3, #8
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 11
+
+
+ 440 0066 03F47063 		and	r3, r3, #3840
+ 441              	.LVL31:
+ 115:Modules/Motor/DMmotor/dmmotor.c ****     measure->torque = uint_to_float(tmp, DM_T_MIN, DM_T_MAX, 12);
+ 442              		.loc 1 115 5 is_stmt 1 view .LVU124
+ 443              		.loc 1 115 23 is_stmt 0 view .LVU125
+ 444 006a 0C21     		movs	r1, #12
+ 445 006c F3EE020A 		vmov.f32	s1, #1.8e+1
+ 446 0070 BBEE020A 		vmov.f32	s0, #-1.8e+1
+ 447 0074 1843     		orrs	r0, r0, r3
+ 448              	.LVL32:
+ 449              		.loc 1 115 23 view .LVU126
+ 450 0076 FFF7FEFF 		bl	uint_to_float
+ 451              	.LVL33:
+ 452              		.loc 1 115 21 discriminator 1 view .LVU127
+ 453 007a 10EE103A 		vmov	r3, s0
+ 454 007e C4F81E30 		str	r3, [r4, #30]	@ unaligned
+ 116:Modules/Motor/DMmotor/dmmotor.c **** 
+ 117:Modules/Motor/DMmotor/dmmotor.c ****     measure->T_Mos = (float)rxbuff[6];
+ 455              		.loc 1 117 5 is_stmt 1 view .LVU128
+ 456              		.loc 1 117 35 is_stmt 0 view .LVU129
+ 457 0082 95F83230 		ldrb	r3, [r5, #50]	@ zero_extendqisi2
+ 458              		.loc 1 117 20 view .LVU130
+ 459 0086 07EE903A 		vmov	s15, r3	@ int
+ 460 008a F8EE677A 		vcvt.f32.u32	s15, s15
+ 461 008e 17EE903A 		vmov	r3, s15
+ 462 0092 C4F82230 		str	r3, [r4, #34]	@ unaligned
+ 118:Modules/Motor/DMmotor/dmmotor.c ****     measure->T_Rotor = (float)rxbuff[7];
+ 463              		.loc 1 118 5 is_stmt 1 view .LVU131
+ 464              		.loc 1 118 37 is_stmt 0 view .LVU132
+ 465 0096 95F83330 		ldrb	r3, [r5, #51]	@ zero_extendqisi2
+ 466              		.loc 1 118 22 view .LVU133
+ 467 009a 07EE903A 		vmov	s15, r3	@ int
+ 468 009e F8EE677A 		vcvt.f32.u32	s15, s15
+ 469 00a2 17EE903A 		vmov	r3, s15
+ 470 00a6 C4F82630 		str	r3, [r4, #38]	@ unaligned
+ 119:Modules/Motor/DMmotor/dmmotor.c **** 
+ 120:Modules/Motor/DMmotor/dmmotor.c ****     measure->recv_total_round+=DMMotorMultiRoundDetect(motor);
+ 471              		.loc 1 120 5 is_stmt 1 view .LVU134
+ 472              		.loc 1 120 32 is_stmt 0 view .LVU135
+ 473 00aa 2046     		mov	r0, r4
+ 474 00ac FFF7FEFF 		bl	DMMotorMultiRoundDetect
+ 475              	.LVL34:
+ 476              		.loc 1 120 12 discriminator 1 view .LVU136
+ 477 00b0 D4F80E30 		ldr	r3, [r4, #14]	@ unaligned
+ 478              		.loc 1 120 30 discriminator 1 view .LVU137
+ 479 00b4 1844     		add	r0, r0, r3
+ 480 00b6 C4F80E00 		str	r0, [r4, #14]	@ unaligned
+ 121:Modules/Motor/DMmotor/dmmotor.c ****     measure->start_point_offset_count=(measure->recv_total_round>0)?(measure->recv_total_round+2)/4
+ 481              		.loc 1 121 5 is_stmt 1 view .LVU138
+ 482              		.loc 1 121 100 is_stmt 0 view .LVU139
+ 483 00ba 0028     		cmp	r0, #0
+ 484 00bc 6FDD     		ble	.L32
+ 485              		.loc 1 121 100 discriminator 1 view .LVU140
+ 486 00be 851C     		adds	r5, r0, #2
+ 487              	.LVL35:
+ 488              		.loc 1 121 100 discriminator 1 view .LVU141
+ 489 00c0 6BD4     		bmi	.L37
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 12
+
+
+ 490              	.L33:
+ 491 00c2 AD10     		asrs	r5, r5, #2
+ 492              	.L34:
+ 493              		.loc 1 121 38 discriminator 4 view .LVU142
+ 494 00c4 C4F81250 		str	r5, [r4, #18]	@ unaligned
+ 122:Modules/Motor/DMmotor/dmmotor.c **** 
+ 123:Modules/Motor/DMmotor/dmmotor.c ****     measure->total_position = measure->recv_total_round * PI2 + (4*PI-12.5) * measure->start_point_
+ 495              		.loc 1 123 5 is_stmt 1 view .LVU143
+ 496              		.loc 1 123 57 is_stmt 0 view .LVU144
+ 497 00c8 07EE900A 		vmov	s15, r0	@ int
+ 498 00cc F8EEE77A 		vcvt.f32.s32	s15, s15
+ 499 00d0 9FED3D8A 		vldr.32	s16, .L39+24
+ 500 00d4 67EE887A 		vmul.f32	s15, s15, s16
+ 501 00d8 17EE900A 		vmov	r0, s15
+ 502 00dc FFF7FEFF 		bl	__aeabi_f2d
+ 503              	.LVL36:
+ 504 00e0 0646     		mov	r6, r0
+ 505 00e2 0F46     		mov	r7, r1
+ 506              		.loc 1 123 77 view .LVU145
+ 507 00e4 2846     		mov	r0, r5
+ 508 00e6 FFF7FEFF 		bl	__aeabi_i2d
+ 509              	.LVL37:
+ 510 00ea 31A3     		adr	r3, .L39
+ 511 00ec D3E90023 		ldrd	r2, [r3]
+ 512 00f0 FFF7FEFF 		bl	__aeabi_dmul
+ 513              	.LVL38:
+ 514 00f4 0246     		mov	r2, r0
+ 515 00f6 0B46     		mov	r3, r1
+ 516              		.loc 1 123 63 view .LVU146
+ 517 00f8 3046     		mov	r0, r6
+ 518 00fa 3946     		mov	r1, r7
+ 519 00fc FFF7FEFF 		bl	__aeabi_dadd
+ 520              	.LVL39:
+ 521 0100 0646     		mov	r6, r0
+ 522 0102 0F46     		mov	r7, r1
+ 523              		.loc 1 123 124 view .LVU147
+ 524 0104 D4F80A50 		ldr	r5, [r4, #10]	@ unaligned
+ 525 0108 2846     		mov	r0, r5	@ float
+ 526 010a FFF7FEFF 		bl	__aeabi_f2d
+ 527              	.LVL40:
+ 528              		.loc 1 123 140 view .LVU148
+ 529 010e 0022     		movs	r2, #0
+ 530 0110 2E4B     		ldr	r3, .L39+28
+ 531 0112 FFF7FEFF 		bl	__aeabi_dadd
+ 532              	.LVL41:
+ 533 0116 8046     		mov	r8, r0
+ 534 0118 8946     		mov	r9, r1
+ 535              		.loc 1 123 158 view .LVU149
+ 536 011a 94F92A00 		ldrsb	r0, [r4, #42]
+ 537              		.loc 1 123 174 view .LVU150
+ 538 011e 0138     		subs	r0, r0, #1
+ 539 0120 FFF7FEFF 		bl	__aeabi_i2d
+ 540              	.LVL42:
+ 541 0124 0022     		movs	r2, #0
+ 542 0126 2A4B     		ldr	r3, .L39+32
+ 543 0128 FFF7FEFF 		bl	__aeabi_dmul
+ 544              	.LVL43:
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 13
+
+
+ 545 012c 0246     		mov	r2, r0
+ 546 012e 0B46     		mov	r3, r1
+ 547              		.loc 1 123 148 view .LVU151
+ 548 0130 4046     		mov	r0, r8
+ 549 0132 4946     		mov	r1, r9
+ 550 0134 FFF7FEFF 		bl	__aeabi_dsub
+ 551              	.LVL44:
+ 552              		.loc 1 123 180 view .LVU152
+ 553 0138 1FA3     		adr	r3, .L39+8
+ 554 013a D3E90023 		ldrd	r2, [r3]
+ 555 013e FFF7FEFF 		bl	__aeabi_dmul
+ 556              	.LVL45:
+ 557              		.loc 1 123 181 view .LVU153
+ 558 0142 0022     		movs	r2, #0
+ 559 0144 234B     		ldr	r3, .L39+36
+ 560 0146 FFF7FEFF 		bl	__aeabi_dmul
+ 561              	.LVL46:
+ 562 014a 0022     		movs	r2, #0
+ 563 014c 1F4B     		ldr	r3, .L39+28
+ 564 014e FFF7FEFF 		bl	__aeabi_ddiv
+ 565              	.LVL47:
+ 566 0152 0246     		mov	r2, r0
+ 567 0154 0B46     		mov	r3, r1
+ 568              		.loc 1 123 113 view .LVU154
+ 569 0156 3046     		mov	r0, r6
+ 570 0158 3946     		mov	r1, r7
+ 571 015a FFF7FEFF 		bl	__aeabi_dadd
+ 572              	.LVL48:
+ 573 015e FFF7FEFF 		bl	__aeabi_d2f
+ 574              	.LVL49:
+ 575 0162 00EE100A 		vmov	s0, r0
+ 576              		.loc 1 123 29 view .LVU155
+ 577 0166 C4F82B00 		str	r0, [r4, #43]	@ unaligned
+ 124:Modules/Motor/DMmotor/dmmotor.c **** 
+ 125:Modules/Motor/DMmotor/dmmotor.c ****     measure->total_round=measure->recv_position/PI2;
+ 578              		.loc 1 125 5 is_stmt 1 view .LVU156
+ 579              		.loc 1 125 48 is_stmt 0 view .LVU157
+ 580 016a 07EE905A 		vmov	s15, r5
+ 581 016e C7EE887A 		vdiv.f32	s15, s15, s16
+ 582              		.loc 1 125 25 view .LVU158
+ 583 0172 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 584 0176 17EE903A 		vmov	r3, s15	@ int
+ 585 017a C4F82F30 		str	r3, [r4, #47]	@ unaligned
+ 126:Modules/Motor/DMmotor/dmmotor.c ****     measure->last_position=measure->recv_position;
+ 586              		.loc 1 126 5 is_stmt 1 view .LVU159
+ 587              		.loc 1 126 27 is_stmt 0 view .LVU160
+ 588 017e C4F81650 		str	r5, [r4, #22]	@ unaligned
+ 127:Modules/Motor/DMmotor/dmmotor.c ****     measure->position=fmodf(measure->total_position,PI2);
+ 589              		.loc 1 127 5 is_stmt 1 view .LVU161
+ 590              		.loc 1 127 23 is_stmt 0 view .LVU162
+ 591 0182 F0EE480A 		vmov.f32	s1, s16
+ 592 0186 FFF7FEFF 		bl	fmodf
+ 593              	.LVL50:
+ 594              		.loc 1 127 22 discriminator 1 view .LVU163
+ 595 018a 10EE103A 		vmov	r3, s0
+ 596 018e C4F81A30 		str	r3, [r4, #26]	@ unaligned
+ 128:Modules/Motor/DMmotor/dmmotor.c ****     //measure->total_position = measure->recv_total_round * PI2 + (measure->position+12.5-(measure-
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 14
+
+
+ 129:Modules/Motor/DMmotor/dmmotor.c **** }
+ 597              		.loc 1 129 1 view .LVU164
+ 598 0192 BDEC028B 		vldm	sp!, {d8}
+ 599              	.LCFI4:
+ 600              		.cfi_remember_state
+ 601              		.cfi_restore 80
+ 602              		.cfi_restore 81
+ 603              		.cfi_def_cfa_offset 32
+ 604 0196 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 605              	.LVL51:
+ 606              	.L37:
+ 607              	.LCFI5:
+ 608              		.cfi_restore_state
+ 121:Modules/Motor/DMmotor/dmmotor.c **** 
+ 609              		.loc 1 121 100 discriminator 1 view .LVU165
+ 610 019a 0335     		adds	r5, r5, #3
+ 611 019c 91E7     		b	.L33
+ 612              	.LVL52:
+ 613              	.L32:
+ 121:Modules/Motor/DMmotor/dmmotor.c **** 
+ 614              		.loc 1 121 100 discriminator 2 view .LVU166
+ 615 019e 851E     		subs	r5, r0, #2
+ 616              	.LVL53:
+ 121:Modules/Motor/DMmotor/dmmotor.c **** 
+ 617              		.loc 1 121 100 discriminator 2 view .LVU167
+ 618 01a0 01D4     		bmi	.L38
+ 619              	.L35:
+ 620 01a2 AD10     		asrs	r5, r5, #2
+ 621 01a4 8EE7     		b	.L34
+ 622              	.L38:
+ 623 01a6 0335     		adds	r5, r5, #3
+ 624 01a8 FBE7     		b	.L35
+ 625              	.L40:
+ 626 01aa 00BFAFF3 		.align	3
+ 626      0080
+ 627              	.L39:
+ 628 01b0 00000000 		.word	0
+ 629 01b4 B0FDB03F 		.word	1068563888
+ 630 01b8 00000060 		.word	1610612736
+ 631 01bc FB210940 		.word	1074340347
+ 632 01c0 00003442 		.word	1110704128
+ 633 01c4 000034C2 		.word	-1036779520
+ 634 01c8 DB0FC940 		.word	1086918619
+ 635 01cc 00002940 		.word	1076428800
+ 636 01d0 00001940 		.word	1075380224
+ 637 01d4 00001040 		.word	1074790400
+ 638              		.cfi_endproc
+ 639              	.LFE186:
+ 641              		.section	.text.DMMotorLostCallback,"ax",%progbits
+ 642              		.align	1
+ 643              		.global	DMMotorLostCallback
+ 644              		.syntax unified
+ 645              		.thumb
+ 646              		.thumb_func
+ 648              	DMMotorLostCallback:
+ 649              	.LVL54:
+ 650              	.LFB187:
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 15
+
+
+ 130:Modules/Motor/DMmotor/dmmotor.c **** 
+ 131:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorLostCallback(void *motor_ptr)
+ 132:Modules/Motor/DMmotor/dmmotor.c **** {
+ 651              		.loc 1 132 1 is_stmt 1 view -0
+ 652              		.cfi_startproc
+ 653              		@ args = 0, pretend = 0, frame = 0
+ 654              		@ frame_needed = 0, uses_anonymous_args = 0
+ 655              		@ link register save eliminated.
+ 133:Modules/Motor/DMmotor/dmmotor.c **** }
+ 656              		.loc 1 133 1 view .LVU169
+ 657 0000 7047     		bx	lr
+ 658              		.cfi_endproc
+ 659              	.LFE187:
+ 661              		.section	.text.DMMotorCaliEncoder,"ax",%progbits
+ 662              		.align	1
+ 663              		.global	DMMotorCaliEncoder
+ 664              		.syntax unified
+ 665              		.thumb
+ 666              		.thumb_func
+ 668              	DMMotorCaliEncoder:
+ 669              	.LVL55:
+ 670              	.LFB188:
+ 134:Modules/Motor/DMmotor/dmmotor.c **** 
+ 135:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorCaliEncoder(DMMotorInstance *motor)
+ 136:Modules/Motor/DMmotor/dmmotor.c **** {
+ 671              		.loc 1 136 1 view -0
+ 672              		.cfi_startproc
+ 673              		@ args = 0, pretend = 0, frame = 0
+ 674              		@ frame_needed = 0, uses_anonymous_args = 0
+ 675              		.loc 1 136 1 is_stmt 0 view .LVU171
+ 676 0000 08B5     		push	{r3, lr}
+ 677              	.LCFI6:
+ 678              		.cfi_def_cfa_offset 8
+ 679              		.cfi_offset 3, -8
+ 680              		.cfi_offset 14, -4
+ 681 0002 0146     		mov	r1, r0
+ 137:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorSetMode(DM_CMD_ZERO_POSITION, motor);
+ 682              		.loc 1 137 5 is_stmt 1 view .LVU172
+ 683 0004 FE20     		movs	r0, #254
+ 684              	.LVL56:
+ 685              		.loc 1 137 5 is_stmt 0 view .LVU173
+ 686 0006 FFF7FEFF 		bl	DMMotorSetMode
+ 687              	.LVL57:
+ 138:Modules/Motor/DMmotor/dmmotor.c ****     DWT_Delay(0.1);
+ 688              		.loc 1 138 5 is_stmt 1 view .LVU174
+ 689 000a 9FED020A 		vldr.32	s0, .L44
+ 690 000e FFF7FEFF 		bl	DWT_Delay
+ 691              	.LVL58:
+ 139:Modules/Motor/DMmotor/dmmotor.c **** }
+ 692              		.loc 1 139 1 is_stmt 0 view .LVU175
+ 693 0012 08BD     		pop	{r3, pc}
+ 694              	.L45:
+ 695              		.align	2
+ 696              	.L44:
+ 697 0014 CDCCCC3D 		.word	1036831949
+ 698              		.cfi_endproc
+ 699              	.LFE188:
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 16
+
+
+ 701              		.section	.text.DMMotorSetRef,"ax",%progbits
+ 702              		.align	1
+ 703              		.global	DMMotorSetRef
+ 704              		.syntax unified
+ 705              		.thumb
+ 706              		.thumb_func
+ 708              	DMMotorSetRef:
+ 709              	.LVL59:
+ 710              	.LFB190:
+ 140:Modules/Motor/DMmotor/dmmotor.c **** 
+ 141:Modules/Motor/DMmotor/dmmotor.c **** DMMotorInstance *DMMotorInit(Motor_Init_Config_s *config)
+ 142:Modules/Motor/DMmotor/dmmotor.c **** {
+ 143:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorInstance *motor = (DMMotorInstance *)malloc(sizeof(DMMotorInstance));
+ 144:Modules/Motor/DMmotor/dmmotor.c ****     
+ 145:Modules/Motor/DMmotor/dmmotor.c ****     memset(motor, 0, sizeof(DMMotorInstance));
+ 146:Modules/Motor/DMmotor/dmmotor.c ****     
+ 147:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_settings = config->controller_setting_init_config;
+ 148:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->current_PID, &config->controller_param_init_config.current_PID);
+ 149:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->speed_PID, &config->controller_param_init_config.speed_PID);
+ 150:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->angle_PID, &config->controller_param_init_config.angle_PID);
+ 151:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_angle_feedback_ptr = config->controller_param_init_config.other_angle_feedback_ptr
+ 152:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_speed_feedback_ptr = config->controller_param_init_config.other_speed_feedback_ptr
+ 153:Modules/Motor/DMmotor/dmmotor.c **** 
+ 154:Modules/Motor/DMmotor/dmmotor.c ****     config->can_init_config.can_module_callback = DMMotorDecode;
+ 155:Modules/Motor/DMmotor/dmmotor.c ****     config->can_init_config.id = motor;
+ 156:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace = CANRegister(&config->can_init_config);
+ 157:Modules/Motor/DMmotor/dmmotor.c **** 
+ 158:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorEnable(motor);
+ 159:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorSetMode(DM_CMD_MOTOR_MODE, motor);
+ 160:Modules/Motor/DMmotor/dmmotor.c ****     DWT_Delay(0.1);
+ 161:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorCaliEncoder(motor);
+ 162:Modules/Motor/DMmotor/dmmotor.c ****     DWT_Delay(0.1);
+ 163:Modules/Motor/DMmotor/dmmotor.c ****     dm_motor_instance[idx++] = motor;
+ 164:Modules/Motor/DMmotor/dmmotor.c ****     return motor;
+ 165:Modules/Motor/DMmotor/dmmotor.c **** }
+ 166:Modules/Motor/DMmotor/dmmotor.c **** 
+ 167:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorSetRef(DMMotorInstance *motor, float ref)
+ 168:Modules/Motor/DMmotor/dmmotor.c **** {
+ 711              		.loc 1 168 1 is_stmt 1 view -0
+ 712              		.cfi_startproc
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 715              		@ link register save eliminated.
+ 169:Modules/Motor/DMmotor/dmmotor.c ****     motor->pid_ref = ref;
+ 716              		.loc 1 169 5 view .LVU177
+ 717              		.loc 1 169 20 is_stmt 0 view .LVU178
+ 718 0000 10EE103A 		vmov	r3, s0
+ 719 0004 C0F8B231 		str	r3, [r0, #434]	@ unaligned
+ 170:Modules/Motor/DMmotor/dmmotor.c **** }
+ 720              		.loc 1 170 1 view .LVU179
+ 721 0008 7047     		bx	lr
+ 722              		.cfi_endproc
+ 723              	.LFE190:
+ 725              		.section	.text.DMMotorEnable,"ax",%progbits
+ 726              		.align	1
+ 727              		.global	DMMotorEnable
+ 728              		.syntax unified
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 17
+
+
+ 729              		.thumb
+ 730              		.thumb_func
+ 732              	DMMotorEnable:
+ 733              	.LVL60:
+ 734              	.LFB191:
+ 171:Modules/Motor/DMmotor/dmmotor.c **** 
+ 172:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorEnable(DMMotorInstance *motor)
+ 173:Modules/Motor/DMmotor/dmmotor.c **** {
+ 735              		.loc 1 173 1 is_stmt 1 view -0
+ 736              		.cfi_startproc
+ 737              		@ args = 0, pretend = 0, frame = 0
+ 738              		@ frame_needed = 0, uses_anonymous_args = 0
+ 739              		@ link register save eliminated.
+ 174:Modules/Motor/DMmotor/dmmotor.c ****     motor->stop_flag = MOTOR_ENALBED;
+ 740              		.loc 1 174 5 view .LVU181
+ 741              		.loc 1 174 22 is_stmt 0 view .LVU182
+ 742 0000 0123     		movs	r3, #1
+ 743 0002 80F8B631 		strb	r3, [r0, #438]
+ 175:Modules/Motor/DMmotor/dmmotor.c **** }
+ 744              		.loc 1 175 1 view .LVU183
+ 745 0006 7047     		bx	lr
+ 746              		.cfi_endproc
+ 747              	.LFE191:
+ 749              		.section	.text.DMMotorInit,"ax",%progbits
+ 750              		.align	1
+ 751              		.global	DMMotorInit
+ 752              		.syntax unified
+ 753              		.thumb
+ 754              		.thumb_func
+ 756              	DMMotorInit:
+ 757              	.LVL61:
+ 758              	.LFB189:
+ 142:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorInstance *motor = (DMMotorInstance *)malloc(sizeof(DMMotorInstance));
+ 759              		.loc 1 142 1 is_stmt 1 view -0
+ 760              		.cfi_startproc
+ 761              		@ args = 0, pretend = 0, frame = 0
+ 762              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorInstance *motor = (DMMotorInstance *)malloc(sizeof(DMMotorInstance));
+ 763              		.loc 1 142 1 is_stmt 0 view .LVU185
+ 764 0000 38B5     		push	{r3, r4, r5, lr}
+ 765              	.LCFI7:
+ 766              		.cfi_def_cfa_offset 16
+ 767              		.cfi_offset 3, -16
+ 768              		.cfi_offset 4, -12
+ 769              		.cfi_offset 5, -8
+ 770              		.cfi_offset 14, -4
+ 771 0002 2DED028B 		vpush.64	{d8}
+ 772              	.LCFI8:
+ 773              		.cfi_def_cfa_offset 24
+ 774              		.cfi_offset 80, -24
+ 775              		.cfi_offset 81, -20
+ 776 0006 0546     		mov	r5, r0
+ 143:Modules/Motor/DMmotor/dmmotor.c ****     
+ 777              		.loc 1 143 5 is_stmt 1 view .LVU186
+ 143:Modules/Motor/DMmotor/dmmotor.c ****     
+ 778              		.loc 1 143 49 is_stmt 0 view .LVU187
+ 779 0008 40F2BF10 		movw	r0, #447
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 18
+
+
+ 780              	.LVL62:
+ 143:Modules/Motor/DMmotor/dmmotor.c ****     
+ 781              		.loc 1 143 49 view .LVU188
+ 782 000c FFF7FEFF 		bl	malloc
+ 783              	.LVL63:
+ 784 0010 0446     		mov	r4, r0
+ 785              	.LVL64:
+ 145:Modules/Motor/DMmotor/dmmotor.c ****     
+ 786              		.loc 1 145 5 is_stmt 1 view .LVU189
+ 787 0012 40F2BF12 		movw	r2, #447
+ 788 0016 0021     		movs	r1, #0
+ 789 0018 FFF7FEFF 		bl	memset
+ 790              	.LVL65:
+ 147:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->current_PID, &config->controller_param_init_config.current_PID);
+ 791              		.loc 1 147 5 view .LVU190
+ 147:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->current_PID, &config->controller_param_init_config.current_PID);
+ 792              		.loc 1 147 27 is_stmt 0 view .LVU191
+ 793 001c D5F89400 		ldr	r0, [r5, #148]
+ 794 0020 C4F83300 		str	r0, [r4, #51]	@ unaligned
+ 795 0024 B5F89820 		ldrh	r2, [r5, #152]	@ unaligned
+ 796 0028 95F89A30 		ldrb	r3, [r5, #154]	@ zero_extendqisi2
+ 797 002c A4F83720 		strh	r2, [r4, #55]	@ unaligned
+ 798 0030 84F83930 		strb	r3, [r4, #57]
+ 148:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->speed_PID, &config->controller_param_init_config.speed_PID);
+ 799              		.loc 1 148 5 is_stmt 1 view .LVU192
+ 800 0034 05F11001 		add	r1, r5, #16
+ 801 0038 04F13A00 		add	r0, r4, #58
+ 802 003c FFF7FEFF 		bl	PIDInit
+ 803              	.LVL66:
+ 149:Modules/Motor/DMmotor/dmmotor.c ****     PIDInit(&motor->angle_PID, &config->controller_param_init_config.angle_PID);
+ 804              		.loc 1 149 5 view .LVU193
+ 805 0040 05F13C01 		add	r1, r5, #60
+ 806 0044 04F1B200 		add	r0, r4, #178
+ 807 0048 FFF7FEFF 		bl	PIDInit
+ 808              	.LVL67:
+ 150:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_angle_feedback_ptr = config->controller_param_init_config.other_angle_feedback_ptr
+ 809              		.loc 1 150 5 view .LVU194
+ 810 004c 05F16801 		add	r1, r5, #104
+ 811 0050 04F59570 		add	r0, r4, #298
+ 812 0054 FFF7FEFF 		bl	PIDInit
+ 813              	.LVL68:
+ 151:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_speed_feedback_ptr = config->controller_param_init_config.other_speed_feedback_ptr
+ 814              		.loc 1 151 5 view .LVU195
+ 151:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_speed_feedback_ptr = config->controller_param_init_config.other_speed_feedback_ptr
+ 815              		.loc 1 151 75 is_stmt 0 view .LVU196
+ 816 0058 2B68     		ldr	r3, [r5]
+ 151:Modules/Motor/DMmotor/dmmotor.c ****     motor->other_speed_feedback_ptr = config->controller_param_init_config.other_speed_feedback_ptr
+ 817              		.loc 1 151 37 view .LVU197
+ 818 005a C4F8A231 		str	r3, [r4, #418]	@ unaligned
+ 152:Modules/Motor/DMmotor/dmmotor.c **** 
+ 819              		.loc 1 152 5 is_stmt 1 view .LVU198
+ 152:Modules/Motor/DMmotor/dmmotor.c **** 
+ 820              		.loc 1 152 75 is_stmt 0 view .LVU199
+ 821 005e 6B68     		ldr	r3, [r5, #4]
+ 152:Modules/Motor/DMmotor/dmmotor.c **** 
+ 822              		.loc 1 152 37 view .LVU200
+ 823 0060 C4F8A631 		str	r3, [r4, #422]	@ unaligned
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 19
+
+
+ 154:Modules/Motor/DMmotor/dmmotor.c ****     config->can_init_config.id = motor;
+ 824              		.loc 1 154 5 is_stmt 1 view .LVU201
+ 154:Modules/Motor/DMmotor/dmmotor.c ****     config->can_init_config.id = motor;
+ 825              		.loc 1 154 49 is_stmt 0 view .LVU202
+ 826 0064 144B     		ldr	r3, .L50
+ 827 0066 C5F8A830 		str	r3, [r5, #168]
+ 155:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace = CANRegister(&config->can_init_config);
+ 828              		.loc 1 155 5 is_stmt 1 view .LVU203
+ 155:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_can_instace = CANRegister(&config->can_init_config);
+ 829              		.loc 1 155 32 is_stmt 0 view .LVU204
+ 830 006a C5F8AC40 		str	r4, [r5, #172]
+ 156:Modules/Motor/DMmotor/dmmotor.c **** 
+ 831              		.loc 1 156 5 is_stmt 1 view .LVU205
+ 156:Modules/Motor/DMmotor/dmmotor.c **** 
+ 832              		.loc 1 156 32 is_stmt 0 view .LVU206
+ 833 006e 05F19C00 		add	r0, r5, #156
+ 834 0072 FFF7FEFF 		bl	CANRegister
+ 835              	.LVL69:
+ 156:Modules/Motor/DMmotor/dmmotor.c **** 
+ 836              		.loc 1 156 30 discriminator 1 view .LVU207
+ 837 0076 C4F8B701 		str	r0, [r4, #439]	@ unaligned
+ 158:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorSetMode(DM_CMD_MOTOR_MODE, motor);
+ 838              		.loc 1 158 5 is_stmt 1 view .LVU208
+ 839 007a 2046     		mov	r0, r4
+ 840 007c FFF7FEFF 		bl	DMMotorEnable
+ 841              	.LVL70:
+ 159:Modules/Motor/DMmotor/dmmotor.c ****     DWT_Delay(0.1);
+ 842              		.loc 1 159 5 view .LVU209
+ 843 0080 2146     		mov	r1, r4
+ 844 0082 FC20     		movs	r0, #252
+ 845 0084 FFF7FEFF 		bl	DMMotorSetMode
+ 846              	.LVL71:
+ 160:Modules/Motor/DMmotor/dmmotor.c ****     DMMotorCaliEncoder(motor);
+ 847              		.loc 1 160 5 view .LVU210
+ 848 0088 9FED0C8A 		vldr.32	s16, .L50+4
+ 849 008c B0EE480A 		vmov.f32	s0, s16
+ 850 0090 FFF7FEFF 		bl	DWT_Delay
+ 851              	.LVL72:
+ 161:Modules/Motor/DMmotor/dmmotor.c ****     DWT_Delay(0.1);
+ 852              		.loc 1 161 5 view .LVU211
+ 853 0094 2046     		mov	r0, r4
+ 854 0096 FFF7FEFF 		bl	DMMotorCaliEncoder
+ 855              	.LVL73:
+ 162:Modules/Motor/DMmotor/dmmotor.c ****     dm_motor_instance[idx++] = motor;
+ 856              		.loc 1 162 5 view .LVU212
+ 857 009a B0EE480A 		vmov.f32	s0, s16
+ 858 009e FFF7FEFF 		bl	DWT_Delay
+ 859              	.LVL74:
+ 163:Modules/Motor/DMmotor/dmmotor.c ****     return motor;
+ 860              		.loc 1 163 5 view .LVU213
+ 163:Modules/Motor/DMmotor/dmmotor.c ****     return motor;
+ 861              		.loc 1 163 26 is_stmt 0 view .LVU214
+ 862 00a2 074A     		ldr	r2, .L50+8
+ 863 00a4 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 864 00a6 591C     		adds	r1, r3, #1
+ 865 00a8 1170     		strb	r1, [r2]
+ 163:Modules/Motor/DMmotor/dmmotor.c ****     return motor;
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 20
+
+
+ 866              		.loc 1 163 30 view .LVU215
+ 867 00aa 064A     		ldr	r2, .L50+12
+ 868 00ac 42F82340 		str	r4, [r2, r3, lsl #2]
+ 164:Modules/Motor/DMmotor/dmmotor.c **** }
+ 869              		.loc 1 164 5 is_stmt 1 view .LVU216
+ 165:Modules/Motor/DMmotor/dmmotor.c **** 
+ 870              		.loc 1 165 1 is_stmt 0 view .LVU217
+ 871 00b0 2046     		mov	r0, r4
+ 872 00b2 BDEC028B 		vldm	sp!, {d8}
+ 873              	.LCFI9:
+ 874              		.cfi_restore 80
+ 875              		.cfi_restore 81
+ 876              		.cfi_def_cfa_offset 16
+ 877 00b6 38BD     		pop	{r3, r4, r5, pc}
+ 878              	.LVL75:
+ 879              	.L51:
+ 165:Modules/Motor/DMmotor/dmmotor.c **** 
+ 880              		.loc 1 165 1 view .LVU218
+ 881              		.align	2
+ 882              	.L50:
+ 883 00b8 00000000 		.word	DMMotorDecode
+ 884 00bc CDCCCC3D 		.word	1036831949
+ 885 00c0 00000000 		.word	idx
+ 886 00c4 00000000 		.word	dm_motor_instance
+ 887              		.cfi_endproc
+ 888              	.LFE189:
+ 890              		.section	.text.DMMotorStop,"ax",%progbits
+ 891              		.align	1
+ 892              		.global	DMMotorStop
+ 893              		.syntax unified
+ 894              		.thumb
+ 895              		.thumb_func
+ 897              	DMMotorStop:
+ 898              	.LVL76:
+ 899              	.LFB192:
+ 176:Modules/Motor/DMmotor/dmmotor.c **** 
+ 177:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorStop(DMMotorInstance *motor)//不使用使能模式是因为需要收到反馈
+ 178:Modules/Motor/DMmotor/dmmotor.c **** {
+ 900              		.loc 1 178 1 is_stmt 1 view -0
+ 901              		.cfi_startproc
+ 902              		@ args = 0, pretend = 0, frame = 0
+ 903              		@ frame_needed = 0, uses_anonymous_args = 0
+ 904              		@ link register save eliminated.
+ 179:Modules/Motor/DMmotor/dmmotor.c ****     motor->stop_flag = MOTOR_STOP;
+ 905              		.loc 1 179 5 view .LVU220
+ 906              		.loc 1 179 22 is_stmt 0 view .LVU221
+ 907 0000 0023     		movs	r3, #0
+ 908 0002 80F8B631 		strb	r3, [r0, #438]
+ 180:Modules/Motor/DMmotor/dmmotor.c **** }
+ 909              		.loc 1 180 1 view .LVU222
+ 910 0006 7047     		bx	lr
+ 911              		.cfi_endproc
+ 912              	.LFE192:
+ 914              		.section	.text.DMMotorOuterLoop,"ax",%progbits
+ 915              		.align	1
+ 916              		.global	DMMotorOuterLoop
+ 917              		.syntax unified
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 21
+
+
+ 918              		.thumb
+ 919              		.thumb_func
+ 921              	DMMotorOuterLoop:
+ 922              	.LVL77:
+ 923              	.LFB193:
+ 181:Modules/Motor/DMmotor/dmmotor.c **** 
+ 182:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorOuterLoop(DMMotorInstance *motor, Closeloop_Type_e type)
+ 183:Modules/Motor/DMmotor/dmmotor.c **** {
+ 924              		.loc 1 183 1 is_stmt 1 view -0
+ 925              		.cfi_startproc
+ 926              		@ args = 0, pretend = 0, frame = 0
+ 927              		@ frame_needed = 0, uses_anonymous_args = 0
+ 928              		@ link register save eliminated.
+ 184:Modules/Motor/DMmotor/dmmotor.c ****     motor->motor_settings.outer_loop_type = type;
+ 929              		.loc 1 184 5 view .LVU224
+ 930              		.loc 1 184 43 is_stmt 0 view .LVU225
+ 931 0000 80F83310 		strb	r1, [r0, #51]
+ 185:Modules/Motor/DMmotor/dmmotor.c **** }
+ 932              		.loc 1 185 1 view .LVU226
+ 933 0004 7047     		bx	lr
+ 934              		.cfi_endproc
+ 935              	.LFE193:
+ 937              		.section	.text.DMMotorTask,"ax",%progbits
+ 938              		.align	1
+ 939              		.global	DMMotorTask
+ 940              		.syntax unified
+ 941              		.thumb
+ 942              		.thumb_func
+ 944              	DMMotorTask:
+ 945              	.LVL78:
+ 946              	.LFB194:
+ 186:Modules/Motor/DMmotor/dmmotor.c **** 
+ 187:Modules/Motor/DMmotor/dmmotor.c **** float pdes,vdes,tdes,kpdes,kddes;
+ 188:Modules/Motor/DMmotor/dmmotor.c **** 
+ 189:Modules/Motor/DMmotor/dmmotor.c **** //@Todo: 目前只实现了力控，更多位控PID等请自行添加
+ 190:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorTask(DMMotorInstance *motor)
+ 191:Modules/Motor/DMmotor/dmmotor.c **** {
+ 947              		.loc 1 191 1 is_stmt 1 view -0
+ 948              		.cfi_startproc
+ 949              		@ args = 0, pretend = 0, frame = 16
+ 950              		@ frame_needed = 0, uses_anonymous_args = 0
+ 951              		.loc 1 191 1 is_stmt 0 view .LVU228
+ 952 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 953              	.LCFI10:
+ 954              		.cfi_def_cfa_offset 24
+ 955              		.cfi_offset 4, -24
+ 956              		.cfi_offset 5, -20
+ 957              		.cfi_offset 6, -16
+ 958              		.cfi_offset 7, -12
+ 959              		.cfi_offset 8, -8
+ 960              		.cfi_offset 14, -4
+ 961 0004 2DED028B 		vpush.64	{d8}
+ 962              	.LCFI11:
+ 963              		.cfi_def_cfa_offset 32
+ 964              		.cfi_offset 80, -32
+ 965              		.cfi_offset 81, -28
+ 966 0008 84B0     		sub	sp, sp, #16
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 22
+
+
+ 967              	.LCFI12:
+ 968              		.cfi_def_cfa_offset 48
+ 969 000a 0446     		mov	r4, r0
+ 192:Modules/Motor/DMmotor/dmmotor.c ****     float  pid_ref, set;
+ 970              		.loc 1 192 5 is_stmt 1 view .LVU229
+ 193:Modules/Motor/DMmotor/dmmotor.c ****    //DM_Motor_Measure_s *measure = &motor->measure;
+ 194:Modules/Motor/DMmotor/dmmotor.c ****     Motor_Control_Setting_s *setting = &motor->motor_settings;
+ 971              		.loc 1 194 5 view .LVU230
+ 972              	.LVL79:
+ 195:Modules/Motor/DMmotor/dmmotor.c ****     //CANInstance *motor_can = motor->motor_can_instace;
+ 196:Modules/Motor/DMmotor/dmmotor.c ****     //uint16_t tmp;
+ 197:Modules/Motor/DMmotor/dmmotor.c ****     DMMotor_Send_s motor_send_mailbox;
+ 973              		.loc 1 197 5 view .LVU231
+ 198:Modules/Motor/DMmotor/dmmotor.c **** 
+ 199:Modules/Motor/DMmotor/dmmotor.c ****         pid_ref = motor->pid_ref;
+ 974              		.loc 1 199 9 view .LVU232
+ 200:Modules/Motor/DMmotor/dmmotor.c ****         
+ 201:Modules/Motor/DMmotor/dmmotor.c ****         set = pid_ref;
+ 975              		.loc 1 201 9 view .LVU233
+ 202:Modules/Motor/DMmotor/dmmotor.c ****         if (setting->motor_reverse_flag == MOTOR_DIRECTION_REVERSE)
+ 976              		.loc 1 202 9 view .LVU234
+ 203:Modules/Motor/DMmotor/dmmotor.c ****             set *= -1;
+ 977              		.loc 1 203 13 view .LVU235
+ 204:Modules/Motor/DMmotor/dmmotor.c ****        
+ 205:Modules/Motor/DMmotor/dmmotor.c ****         LIMIT_MIN_MAX(set, DM_T_MIN, DM_T_MAX);
+ 978              		.loc 1 205 9 view .LVU236
+ 206:Modules/Motor/DMmotor/dmmotor.c ****         motor_send_mailbox.position_des = float_to_uint(pdes, DM_P_MIN, DM_P_MAX, 16);
+ 979              		.loc 1 206 9 view .LVU237
+ 980              		.loc 1 206 43 is_stmt 0 view .LVU238
+ 981 000c 1020     		movs	r0, #16
+ 982              	.LVL80:
+ 983              		.loc 1 206 43 view .LVU239
+ 984 000e B2EE091A 		vmov.f32	s2, #1.25e+1
+ 985 0012 FAEE090A 		vmov.f32	s1, #-1.25e+1
+ 986 0016 424B     		ldr	r3, .L57
+ 987 0018 93ED000A 		vldr.32	s0, [r3]
+ 988 001c FFF7FEFF 		bl	float_to_uint
+ 989              	.LVL81:
+ 990              		.loc 1 206 43 view .LVU240
+ 991 0020 8046     		mov	r8, r0
+ 992              		.loc 1 206 41 discriminator 1 view .LVU241
+ 993 0022 ADF80400 		strh	r0, [sp, #4]	@ movhi
+ 207:Modules/Motor/DMmotor/dmmotor.c ****         motor_send_mailbox.velocity_des = float_to_uint(vdes, DM_V_MIN, DM_V_MAX, 12);
+ 994              		.loc 1 207 9 is_stmt 1 view .LVU242
+ 995              		.loc 1 207 43 is_stmt 0 view .LVU243
+ 996 0026 0C20     		movs	r0, #12
+ 997 0028 9FED3E1A 		vldr.32	s2, .L57+4
+ 998 002c DFED3E0A 		vldr.32	s1, .L57+8
+ 999 0030 3E4B     		ldr	r3, .L57+12
+ 1000 0032 93ED000A 		vldr.32	s0, [r3]
+ 1001 0036 FFF7FEFF 		bl	float_to_uint
+ 1002              	.LVL82:
+ 1003 003a 0746     		mov	r7, r0
+ 1004              		.loc 1 207 41 discriminator 1 view .LVU244
+ 1005 003c ADF80600 		strh	r0, [sp, #6]	@ movhi
+ 208:Modules/Motor/DMmotor/dmmotor.c ****         motor_send_mailbox.torque_des = float_to_uint(tdes, DM_T_MIN, DM_T_MAX, 12);
+ 1006              		.loc 1 208 9 is_stmt 1 view .LVU245
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 23
+
+
+ 1007              		.loc 1 208 41 is_stmt 0 view .LVU246
+ 1008 0040 0C20     		movs	r0, #12
+ 1009 0042 B3EE021A 		vmov.f32	s2, #1.8e+1
+ 1010 0046 FBEE020A 		vmov.f32	s1, #-1.8e+1
+ 1011 004a 394B     		ldr	r3, .L57+16
+ 1012 004c 93ED000A 		vldr.32	s0, [r3]
+ 1013 0050 FFF7FEFF 		bl	float_to_uint
+ 1014              	.LVL83:
+ 1015              		.loc 1 208 39 discriminator 1 view .LVU247
+ 1016 0054 ADF80800 		strh	r0, [sp, #8]	@ movhi
+ 209:Modules/Motor/DMmotor/dmmotor.c ****         motor_send_mailbox.Kp = float_to_uint(kpdes, DM_KP_MIN, DM_KP_MAX, 12);
+ 1017              		.loc 1 209 9 is_stmt 1 view .LVU248
+ 1018              		.loc 1 209 33 is_stmt 0 view .LVU249
+ 1019 0058 9FED368A 		vldr.32	s16, .L57+20
+ 1020 005c 0C20     		movs	r0, #12
+ 1021 005e 9FED361A 		vldr.32	s2, .L57+24
+ 1022 0062 F0EE480A 		vmov.f32	s1, s16
+ 1023 0066 354B     		ldr	r3, .L57+28
+ 1024 0068 93ED000A 		vldr.32	s0, [r3]
+ 1025 006c FFF7FEFF 		bl	float_to_uint
+ 1026              	.LVL84:
+ 1027 0070 0646     		mov	r6, r0
+ 1028              		.loc 1 209 31 discriminator 1 view .LVU250
+ 1029 0072 ADF80A00 		strh	r0, [sp, #10]	@ movhi
+ 210:Modules/Motor/DMmotor/dmmotor.c ****         motor_send_mailbox.Kd = float_to_uint(kddes, DM_KD_MIN, DM_KD_MAX, 12);
+ 1030              		.loc 1 210 9 is_stmt 1 view .LVU251
+ 1031              		.loc 1 210 33 is_stmt 0 view .LVU252
+ 1032 0076 0C20     		movs	r0, #12
+ 1033 0078 B1EE041A 		vmov.f32	s2, #5.0e+0
+ 1034 007c F0EE480A 		vmov.f32	s1, s16
+ 1035 0080 2F4B     		ldr	r3, .L57+32
+ 1036 0082 93ED000A 		vldr.32	s0, [r3]
+ 1037 0086 FFF7FEFF 		bl	float_to_uint
+ 1038              	.LVL85:
+ 1039 008a 0546     		mov	r5, r0
+ 1040              		.loc 1 210 31 discriminator 1 view .LVU253
+ 1041 008c ADF80C00 		strh	r0, [sp, #12]	@ movhi
+ 211:Modules/Motor/DMmotor/dmmotor.c **** 
+ 212:Modules/Motor/DMmotor/dmmotor.c ****         if(motor->stop_flag == MOTOR_STOP)
+ 1042              		.loc 1 212 9 is_stmt 1 view .LVU254
+ 1043              		.loc 1 212 17 is_stmt 0 view .LVU255
+ 1044 0090 94F8B631 		ldrb	r3, [r4, #438]	@ zero_extendqisi2
+ 1045              		.loc 1 212 11 view .LVU256
+ 1046 0094 53B9     		cbnz	r3, .L55
+ 213:Modules/Motor/DMmotor/dmmotor.c ****             motor_send_mailbox.torque_des = float_to_uint(0, DM_T_MIN, DM_T_MAX, 12);
+ 1047              		.loc 1 213 13 is_stmt 1 view .LVU257
+ 1048              		.loc 1 213 45 is_stmt 0 view .LVU258
+ 1049 0096 0C20     		movs	r0, #12
+ 1050 0098 B3EE021A 		vmov.f32	s2, #1.8e+1
+ 1051 009c FBEE020A 		vmov.f32	s1, #-1.8e+1
+ 1052 00a0 B0EE480A 		vmov.f32	s0, s16
+ 1053 00a4 FFF7FEFF 		bl	float_to_uint
+ 1054              	.LVL86:
+ 1055              		.loc 1 213 43 discriminator 1 view .LVU259
+ 1056 00a8 ADF80800 		strh	r0, [sp, #8]	@ movhi
+ 1057              	.L55:
+ 214:Modules/Motor/DMmotor/dmmotor.c **** 
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 24
+
+
+ 215:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[0] = (uint8_t)(motor_send_mailbox.position_des >> 8);
+ 1058              		.loc 1 215 9 is_stmt 1 view .LVU260
+ 1059              		.loc 1 215 14 is_stmt 0 view .LVU261
+ 1060 00ac D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1061              		.loc 1 215 48 view .LVU262
+ 1062 00b0 4FEA1822 		lsr	r2, r8, #8
+ 1063              		.loc 1 215 46 view .LVU263
+ 1064 00b4 83F82420 		strb	r2, [r3, #36]
+ 216:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[1] = (uint8_t)(motor_send_mailbox.position_des);
+ 1065              		.loc 1 216 9 is_stmt 1 view .LVU264
+ 1066              		.loc 1 216 14 is_stmt 0 view .LVU265
+ 1067 00b8 D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1068              		.loc 1 216 46 view .LVU266
+ 1069 00bc 83F82580 		strb	r8, [r3, #37]
+ 217:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[2] = (uint8_t)(motor_send_mailbox.velocity_des >> 4);
+ 1070              		.loc 1 217 9 is_stmt 1 view .LVU267
+ 1071              		.loc 1 217 14 is_stmt 0 view .LVU268
+ 1072 00c0 D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1073              		.loc 1 217 48 view .LVU269
+ 1074 00c4 C7F30712 		ubfx	r2, r7, #4, #8
+ 1075              		.loc 1 217 46 view .LVU270
+ 1076 00c8 83F82620 		strb	r2, [r3, #38]
+ 218:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[3] = (uint8_t)(((motor_send_mailbox.velocity_des & 0xF) <
+ 1077              		.loc 1 218 9 is_stmt 1 view .LVU271
+ 1078              		.loc 1 218 136 is_stmt 0 view .LVU272
+ 1079 00cc C6F30323 		ubfx	r3, r6, #8, #4
+ 1080              		.loc 1 218 105 view .LVU273
+ 1081 00d0 43EA0713 		orr	r3, r3, r7, lsl #4
+ 1082              		.loc 1 218 14 view .LVU274
+ 1083 00d4 D4F8B721 		ldr	r2, [r4, #439]	@ unaligned
+ 1084              		.loc 1 218 46 view .LVU275
+ 1085 00d8 82F82730 		strb	r3, [r2, #39]
+ 219:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[4] = (uint8_t)(motor_send_mailbox.Kp);
+ 1086              		.loc 1 219 9 is_stmt 1 view .LVU276
+ 1087              		.loc 1 219 14 is_stmt 0 view .LVU277
+ 1088 00dc D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1089              		.loc 1 219 46 view .LVU278
+ 1090 00e0 83F82860 		strb	r6, [r3, #40]
+ 220:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[5] = (uint8_t)(motor_send_mailbox.Kd >> 4);
+ 1091              		.loc 1 220 9 is_stmt 1 view .LVU279
+ 1092              		.loc 1 220 14 is_stmt 0 view .LVU280
+ 1093 00e4 D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1094              		.loc 1 220 48 view .LVU281
+ 1095 00e8 C5F30712 		ubfx	r2, r5, #4, #8
+ 1096              		.loc 1 220 46 view .LVU282
+ 1097 00ec 83F82920 		strb	r2, [r3, #41]
+ 221:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[6] = (uint8_t)(((motor_send_mailbox.Kd & 0xF) << 4) | (mo
+ 1098              		.loc 1 221 9 is_stmt 1 view .LVU283
+ 1099              		.loc 1 221 116 is_stmt 0 view .LVU284
+ 1100 00f0 BDF80820 		ldrh	r2, [sp, #8]
+ 1101              		.loc 1 221 95 view .LVU285
+ 1102 00f4 130A     		lsrs	r3, r2, #8
+ 1103 00f6 43EA0513 		orr	r3, r3, r5, lsl #4
+ 1104              		.loc 1 221 14 view .LVU286
+ 1105 00fa D4F8B711 		ldr	r1, [r4, #439]	@ unaligned
+ 1106              		.loc 1 221 46 view .LVU287
+ 1107 00fe 81F82A30 		strb	r3, [r1, #42]
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 25
+
+
+ 222:Modules/Motor/DMmotor/dmmotor.c ****         motor->motor_can_instace->tx_buff[7] = (uint8_t)(motor_send_mailbox.torque_des);
+ 1108              		.loc 1 222 9 is_stmt 1 view .LVU288
+ 1109              		.loc 1 222 14 is_stmt 0 view .LVU289
+ 1110 0102 D4F8B731 		ldr	r3, [r4, #439]	@ unaligned
+ 1111              		.loc 1 222 46 view .LVU290
+ 1112 0106 83F82B20 		strb	r2, [r3, #43]
+ 223:Modules/Motor/DMmotor/dmmotor.c **** 
+ 224:Modules/Motor/DMmotor/dmmotor.c ****         CANTransmit(motor->motor_can_instace, 1);
+ 1113              		.loc 1 224 9 is_stmt 1 view .LVU291
+ 1114 010a B7EE000A 		vmov.f32	s0, #1.0e+0
+ 1115 010e D4F8B701 		ldr	r0, [r4, #439]	@ unaligned
+ 1116 0112 FFF7FEFF 		bl	CANTransmit
+ 1117              	.LVL87:
+ 225:Modules/Motor/DMmotor/dmmotor.c **** 
+ 226:Modules/Motor/DMmotor/dmmotor.c ****         
+ 227:Modules/Motor/DMmotor/dmmotor.c ****     
+ 228:Modules/Motor/DMmotor/dmmotor.c **** }
+ 1118              		.loc 1 228 1 is_stmt 0 view .LVU292
+ 1119 0116 04B0     		add	sp, sp, #16
+ 1120              	.LCFI13:
+ 1121              		.cfi_def_cfa_offset 32
+ 1122              		@ sp needed
+ 1123 0118 BDEC028B 		vldm	sp!, {d8}
+ 1124              	.LCFI14:
+ 1125              		.cfi_restore 80
+ 1126              		.cfi_restore 81
+ 1127              		.cfi_def_cfa_offset 24
+ 1128 011c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1129              	.LVL88:
+ 1130              	.L58:
+ 1131              		.loc 1 228 1 view .LVU293
+ 1132              		.align	2
+ 1133              	.L57:
+ 1134 0120 00000000 		.word	pdes
+ 1135 0124 00003442 		.word	1110704128
+ 1136 0128 000034C2 		.word	-1036779520
+ 1137 012c 00000000 		.word	vdes
+ 1138 0130 00000000 		.word	tdes
+ 1139 0134 00000000 		.word	0
+ 1140 0138 0000FA43 		.word	1140457472
+ 1141 013c 00000000 		.word	kpdes
+ 1142 0140 00000000 		.word	kddes
+ 1143              		.cfi_endproc
+ 1144              	.LFE194:
+ 1146              		.section	.text.DMMotorControlInit,"ax",%progbits
+ 1147              		.align	1
+ 1148              		.global	DMMotorControlInit
+ 1149              		.syntax unified
+ 1150              		.thumb
+ 1151              		.thumb_func
+ 1153              	DMMotorControlInit:
+ 1154              	.LFB195:
+ 229:Modules/Motor/DMmotor/dmmotor.c **** 
+ 230:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorControlInit()
+ 231:Modules/Motor/DMmotor/dmmotor.c **** {
+ 1155              		.loc 1 231 1 is_stmt 1 view -0
+ 1156              		.cfi_startproc
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 26
+
+
+ 1157              		@ args = 0, pretend = 0, frame = 16
+ 1158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1159 0000 10B5     		push	{r4, lr}
+ 1160              	.LCFI15:
+ 1161              		.cfi_def_cfa_offset 8
+ 1162              		.cfi_offset 4, -8
+ 1163              		.cfi_offset 14, -4
+ 1164 0002 84B0     		sub	sp, sp, #16
+ 1165              	.LCFI16:
+ 1166              		.cfi_def_cfa_offset 24
+ 232:Modules/Motor/DMmotor/dmmotor.c ****     char dm_task_name[5] = "dm";
+ 1167              		.loc 1 232 5 view .LVU295
+ 1168              		.loc 1 232 10 is_stmt 0 view .LVU296
+ 1169 0004 46F66453 		movw	r3, #28004
+ 1170 0008 0293     		str	r3, [sp, #8]
+ 1171 000a 0023     		movs	r3, #0
+ 1172 000c 8DF80C30 		strb	r3, [sp, #12]
+ 233:Modules/Motor/DMmotor/dmmotor.c ****     // 遍历所有电机实例,创建任务
+ 234:Modules/Motor/DMmotor/dmmotor.c ****     if (!idx)
+ 1173              		.loc 1 234 5 is_stmt 1 view .LVU297
+ 1174              		.loc 1 234 9 is_stmt 0 view .LVU298
+ 1175 0010 0B4B     		ldr	r3, .L65
+ 1176 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1177              		.loc 1 234 8 view .LVU299
+ 1178 0014 93B1     		cbz	r3, .L59
+ 1179              	.LBB2:
+ 235:Modules/Motor/DMmotor/dmmotor.c ****         return;
+ 236:Modules/Motor/DMmotor/dmmotor.c ****     for (size_t i = 0; i < idx; i++)
+ 1180              		.loc 1 236 17 view .LVU300
+ 1181 0016 0024     		movs	r4, #0
+ 1182 0018 0CE0     		b	.L60
+ 1183              	.LVL89:
+ 1184              	.L62:
+ 1185              	.LBB3:
+ 237:Modules/Motor/DMmotor/dmmotor.c ****     {
+ 238:Modules/Motor/DMmotor/dmmotor.c ****         char dm_id_buff[2] = {0};
+ 1186              		.loc 1 238 9 is_stmt 1 view .LVU301
+ 1187              		.loc 1 238 14 is_stmt 0 view .LVU302
+ 1188 001a 0023     		movs	r3, #0
+ 1189 001c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 239:Modules/Motor/DMmotor/dmmotor.c ****         __itoa(i, dm_id_buff, 10);
+ 1190              		.loc 1 239 9 is_stmt 1 view .LVU303
+ 1191 0020 0A22     		movs	r2, #10
+ 1192 0022 01A9     		add	r1, sp, #4
+ 1193 0024 2046     		mov	r0, r4
+ 1194 0026 FFF7FEFF 		bl	__itoa
+ 1195              	.LVL90:
+ 240:Modules/Motor/DMmotor/dmmotor.c ****         strcat(dm_task_name, dm_id_buff);
+ 1196              		.loc 1 240 9 view .LVU304
+ 1197 002a 01A9     		add	r1, sp, #4
+ 1198 002c 02A8     		add	r0, sp, #8
+ 1199 002e FFF7FEFF 		bl	strcat
+ 1200              	.LVL91:
+ 1201              	.LBE3:
+ 236:Modules/Motor/DMmotor/dmmotor.c ****     {
+ 1202              		.loc 1 236 34 discriminator 3 view .LVU305
+ 1203 0032 0134     		adds	r4, r4, #1
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 27
+
+
+ 1204              	.LVL92:
+ 1205              	.L60:
+ 236:Modules/Motor/DMmotor/dmmotor.c ****     {
+ 1206              		.loc 1 236 26 discriminator 1 view .LVU306
+ 1207 0034 024B     		ldr	r3, .L65
+ 1208 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1209 0038 A342     		cmp	r3, r4
+ 1210 003a EED8     		bhi	.L62
+ 1211              	.LVL93:
+ 1212              	.L59:
+ 236:Modules/Motor/DMmotor/dmmotor.c ****     {
+ 1213              		.loc 1 236 26 is_stmt 0 discriminator 1 view .LVU307
+ 1214              	.LBE2:
+ 241:Modules/Motor/DMmotor/dmmotor.c **** 
+ 242:Modules/Motor/DMmotor/dmmotor.c ****     }
+ 243:Modules/Motor/DMmotor/dmmotor.c **** }
+ 1215              		.loc 1 243 1 view .LVU308
+ 1216 003c 04B0     		add	sp, sp, #16
+ 1217              	.LCFI17:
+ 1218              		.cfi_def_cfa_offset 8
+ 1219              		@ sp needed
+ 1220 003e 10BD     		pop	{r4, pc}
+ 1221              	.L66:
+ 1222              		.align	2
+ 1223              	.L65:
+ 1224 0040 00000000 		.word	idx
+ 1225              		.cfi_endproc
+ 1226              	.LFE195:
+ 1228              		.section	.text.DMMotorControl,"ax",%progbits
+ 1229              		.align	1
+ 1230              		.global	DMMotorControl
+ 1231              		.syntax unified
+ 1232              		.thumb
+ 1233              		.thumb_func
+ 1235              	DMMotorControl:
+ 1236              	.LFB196:
+ 244:Modules/Motor/DMmotor/dmmotor.c **** 
+ 245:Modules/Motor/DMmotor/dmmotor.c **** void DMMotorControl()
+ 246:Modules/Motor/DMmotor/dmmotor.c **** {
+ 1237              		.loc 1 246 1 is_stmt 1 view -0
+ 1238              		.cfi_startproc
+ 1239              		@ args = 0, pretend = 0, frame = 0
+ 1240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1241              		@ link register save eliminated.
+ 247:Modules/Motor/DMmotor/dmmotor.c **** 
+ 248:Modules/Motor/DMmotor/dmmotor.c **** }...
+ 1242              		.loc 1 248 1 view .LVU310
+ 1243 0000 7047     		bx	lr
+ 1244              		.cfi_endproc
+ 1245              	.LFE196:
+ 1247              		.section	.bss.current_round_sign.0,"aw",%nobits
+ 1250              	current_round_sign.0:
+ 1251 0000 00       		.space	1
+ 1252              		.section	.bss.last_round_sign.1,"aw",%nobits
+ 1255              	last_round_sign.1:
+ 1256 0000 00       		.space	1
+ 1257              		.section	.bss.position.2,"aw",%nobits
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 28
+
+
+ 1258              		.align	2
+ 1261              	position.2:
+ 1262 0000 00000000 		.space	4
+ 1263              		.global	kddes
+ 1264              		.section	.bss.kddes,"aw",%nobits
+ 1265              		.align	2
+ 1268              	kddes:
+ 1269 0000 00000000 		.space	4
+ 1270              		.global	kpdes
+ 1271              		.section	.bss.kpdes,"aw",%nobits
+ 1272              		.align	2
+ 1275              	kpdes:
+ 1276 0000 00000000 		.space	4
+ 1277              		.global	tdes
+ 1278              		.section	.bss.tdes,"aw",%nobits
+ 1279              		.align	2
+ 1282              	tdes:
+ 1283 0000 00000000 		.space	4
+ 1284              		.global	vdes
+ 1285              		.section	.bss.vdes,"aw",%nobits
+ 1286              		.align	2
+ 1289              	vdes:
+ 1290 0000 00000000 		.space	4
+ 1291              		.global	pdes
+ 1292              		.section	.bss.pdes,"aw",%nobits
+ 1293              		.align	2
+ 1296              	pdes:
+ 1297 0000 00000000 		.space	4
+ 1298              		.section	.bss.dm_motor_instance,"aw",%nobits
+ 1299              		.align	2
+ 1302              	dm_motor_instance:
+ 1303 0000 00000000 		.space	16
+ 1303      00000000 
+ 1303      00000000 
+ 1303      00000000 
+ 1304              		.section	.bss.idx,"aw",%nobits
+ 1307              	idx:
+ 1308 0000 00       		.space	1
+ 1309              		.text
+ 1310              	.Letext0:
+ 1311              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 1312              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 1313              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
+ 1314              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1315              		.file 6 "D:/msys64/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
+ 1316              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 1317              		.file 8 "Bsp/Can/bsp_can.h"
+ 1318              		.file 9 "Modules/alogrithm/controller.h"
+ 1319              		.file 10 "Modules/Motor/motor_def.h"
+ 1320              		.file 11 "Modules/Motor/DMmotor/dmmotor.h"
+ 1321              		.file 12 "D:/msys64/mingw64/arm-none-eabi/include/string.h"
+ 1322              		.file 13 "D:/msys64/mingw64/arm-none-eabi/include/stdlib.h"
+ 1323              		.file 14 "D:/msys64/mingw64/arm-none-eabi/include/math.h"
+ 1324              		.file 15 "BSp/dwt/bsp_dwt.h"
+ 1325              		.file 16 "<built-in>"
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dmmotor.c
+D:\msys64\tmp\ccrGcLNv.s:21     .text.float_to_uint:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:26     .text.float_to_uint:00000000 float_to_uint
+D:\msys64\tmp\ccrGcLNv.s:72     .text.uint_to_float:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:77     .text.uint_to_float:00000000 uint_to_float
+D:\msys64\tmp\ccrGcLNv.s:116    .text.DMMotorSingleRoundSignDetect:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:121    .text.DMMotorSingleRoundSignDetect:00000000 DMMotorSingleRoundSignDetect
+D:\msys64\tmp\ccrGcLNv.s:192    .text.DMMotorMultiRoundDetect:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:197    .text.DMMotorMultiRoundDetect:00000000 DMMotorMultiRoundDetect
+D:\msys64\tmp\ccrGcLNv.s:292    .text.DMMotorMultiRoundDetect:00000050 $d
+D:\msys64\tmp\ccrGcLNv.s:1261   .bss.position.2:00000000 position.2
+D:\msys64\tmp\ccrGcLNv.s:1255   .bss.last_round_sign.1:00000000 last_round_sign.1
+D:\msys64\tmp\ccrGcLNv.s:1250   .bss.current_round_sign.0:00000000 current_round_sign.0
+D:\msys64\tmp\ccrGcLNv.s:299    .text.DMMotorSetMode:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:304    .text.DMMotorSetMode:00000000 DMMotorSetMode
+D:\msys64\tmp\ccrGcLNv.s:349    .text.DMMotorDecode:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:354    .text.DMMotorDecode:00000000 DMMotorDecode
+D:\msys64\tmp\ccrGcLNv.s:628    .text.DMMotorDecode:000001b0 $d
+D:\msys64\tmp\ccrGcLNv.s:642    .text.DMMotorLostCallback:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:648    .text.DMMotorLostCallback:00000000 DMMotorLostCallback
+D:\msys64\tmp\ccrGcLNv.s:662    .text.DMMotorCaliEncoder:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:668    .text.DMMotorCaliEncoder:00000000 DMMotorCaliEncoder
+D:\msys64\tmp\ccrGcLNv.s:697    .text.DMMotorCaliEncoder:00000014 $d
+D:\msys64\tmp\ccrGcLNv.s:702    .text.DMMotorSetRef:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:708    .text.DMMotorSetRef:00000000 DMMotorSetRef
+D:\msys64\tmp\ccrGcLNv.s:726    .text.DMMotorEnable:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:732    .text.DMMotorEnable:00000000 DMMotorEnable
+D:\msys64\tmp\ccrGcLNv.s:750    .text.DMMotorInit:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:756    .text.DMMotorInit:00000000 DMMotorInit
+D:\msys64\tmp\ccrGcLNv.s:883    .text.DMMotorInit:000000b8 $d
+D:\msys64\tmp\ccrGcLNv.s:1307   .bss.idx:00000000 idx
+D:\msys64\tmp\ccrGcLNv.s:1302   .bss.dm_motor_instance:00000000 dm_motor_instance
+D:\msys64\tmp\ccrGcLNv.s:891    .text.DMMotorStop:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:897    .text.DMMotorStop:00000000 DMMotorStop
+D:\msys64\tmp\ccrGcLNv.s:915    .text.DMMotorOuterLoop:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:921    .text.DMMotorOuterLoop:00000000 DMMotorOuterLoop
+D:\msys64\tmp\ccrGcLNv.s:938    .text.DMMotorTask:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:944    .text.DMMotorTask:00000000 DMMotorTask
+D:\msys64\tmp\ccrGcLNv.s:1134   .text.DMMotorTask:00000120 $d
+D:\msys64\tmp\ccrGcLNv.s:1296   .bss.pdes:00000000 pdes
+D:\msys64\tmp\ccrGcLNv.s:1289   .bss.vdes:00000000 vdes
+D:\msys64\tmp\ccrGcLNv.s:1282   .bss.tdes:00000000 tdes
+D:\msys64\tmp\ccrGcLNv.s:1275   .bss.kpdes:00000000 kpdes
+D:\msys64\tmp\ccrGcLNv.s:1268   .bss.kddes:00000000 kddes
+D:\msys64\tmp\ccrGcLNv.s:1147   .text.DMMotorControlInit:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:1153   .text.DMMotorControlInit:00000000 DMMotorControlInit
+D:\msys64\tmp\ccrGcLNv.s:1224   .text.DMMotorControlInit:00000040 $d
+D:\msys64\tmp\ccrGcLNv.s:1229   .text.DMMotorControl:00000000 $t
+D:\msys64\tmp\ccrGcLNv.s:1235   .text.DMMotorControl:00000000 DMMotorControl
+D:\msys64\tmp\ccrGcLNv.s:1251   .bss.current_round_sign.0:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1256   .bss.last_round_sign.1:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1258   .bss.position.2:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1265   .bss.kddes:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1272   .bss.kpdes:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1279   .bss.tdes:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1286   .bss.vdes:00000000 $d
+ARM GAS  D:\msys64\tmp\ccrGcLNv.s 			page 30
+
+
+D:\msys64\tmp\ccrGcLNv.s:1293   .bss.pdes:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1299   .bss.dm_motor_instance:00000000 $d
+D:\msys64\tmp\ccrGcLNv.s:1308   .bss.idx:00000000 $d
+
+UNDEFINED SYMBOLS
+CANTransmit
+__aeabi_f2d
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_dsub
+__aeabi_ddiv
+__aeabi_d2f
+fmodf
+DWT_Delay
+malloc
+memset
+PIDInit
+CANRegister
+__itoa
+strcat
