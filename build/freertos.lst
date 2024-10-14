@@ -1,4 +1,4 @@
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
   28:Core/Src/freertos.c **** #include "bmi088.h"
   29:Core/Src/freertos.c **** /* USER CODE END Includes */
   30:Core/Src/freertos.c **** 
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 2
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 2
 
 
   31:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
   85:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
   86:Core/Src/freertos.c **** 
   87:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 3
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 3
 
 
   88:Core/Src/freertos.c ****   /* add semaphores, ... */
@@ -178,7 +178,7 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
   40 0000 FEE7     		b	.L2
   41              		.cfi_endproc
   42              	.LFE139:
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 4
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 4
 
 
   44              		.section	.text.StartBMI088Task,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
   87              		.thumb
   88              		.thumb_func
   90              	MX_FREERTOS_Init:
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 5
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 5
 
 
   91              	.LFB138:
@@ -298,7 +298,7 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
  138              	.LC0:
  139 0000 424D4930 		.ascii	"BMI088Task\000"
  139      38385461 
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 6
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 6
 
 
  139      736B00
@@ -349,27 +349,27 @@ ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 1
  182              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
  183              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
  184              		.file 5 "BMI088/bmi088.h"
-ARM GAS  D:\msys64\tmp\ccD6mmXh.s 			page 7
+ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-D:\msys64\tmp\ccD6mmXh.s:21     .text.StartDefaultTask:00000000 $t
-D:\msys64\tmp\ccD6mmXh.s:27     .text.StartDefaultTask:00000000 StartDefaultTask
-D:\msys64\tmp\ccD6mmXh.s:45     .text.StartBMI088Task:00000000 $t
-D:\msys64\tmp\ccD6mmXh.s:51     .text.StartBMI088Task:00000000 StartBMI088Task
-D:\msys64\tmp\ccD6mmXh.s:84     .text.MX_FREERTOS_Init:00000000 $t
-D:\msys64\tmp\ccD6mmXh.s:90     .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-D:\msys64\tmp\ccD6mmXh.s:126    .text.MX_FREERTOS_Init:00000020 $d
-D:\msys64\tmp\ccD6mmXh.s:166    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
-D:\msys64\tmp\ccD6mmXh.s:177    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-D:\msys64\tmp\ccD6mmXh.s:144    .rodata.BMI088Task_attributes:00000000 BMI088Task_attributes
-D:\msys64\tmp\ccD6mmXh.s:155    .bss.BMI088TaskHandle:00000000 BMI088TaskHandle
-D:\msys64\tmp\ccD6mmXh.s:137    .rodata.str1.4:00000000 $d
-D:\msys64\tmp\ccD6mmXh.s:141    .rodata.BMI088Task_attributes:00000000 $d
-D:\msys64\tmp\ccD6mmXh.s:152    .bss.BMI088TaskHandle:00000000 $d
-D:\msys64\tmp\ccD6mmXh.s:163    .rodata.defaultTask_attributes:00000000 $d
-D:\msys64\tmp\ccD6mmXh.s:174    .bss.defaultTaskHandle:00000000 $d
+D:\msys64\tmp\ccxbbwGx.s:21     .text.StartDefaultTask:00000000 $t
+D:\msys64\tmp\ccxbbwGx.s:27     .text.StartDefaultTask:00000000 StartDefaultTask
+D:\msys64\tmp\ccxbbwGx.s:45     .text.StartBMI088Task:00000000 $t
+D:\msys64\tmp\ccxbbwGx.s:51     .text.StartBMI088Task:00000000 StartBMI088Task
+D:\msys64\tmp\ccxbbwGx.s:84     .text.MX_FREERTOS_Init:00000000 $t
+D:\msys64\tmp\ccxbbwGx.s:90     .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+D:\msys64\tmp\ccxbbwGx.s:126    .text.MX_FREERTOS_Init:00000020 $d
+D:\msys64\tmp\ccxbbwGx.s:166    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
+D:\msys64\tmp\ccxbbwGx.s:177    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+D:\msys64\tmp\ccxbbwGx.s:144    .rodata.BMI088Task_attributes:00000000 BMI088Task_attributes
+D:\msys64\tmp\ccxbbwGx.s:155    .bss.BMI088TaskHandle:00000000 BMI088TaskHandle
+D:\msys64\tmp\ccxbbwGx.s:137    .rodata.str1.4:00000000 $d
+D:\msys64\tmp\ccxbbwGx.s:141    .rodata.BMI088Task_attributes:00000000 $d
+D:\msys64\tmp\ccxbbwGx.s:152    .bss.BMI088TaskHandle:00000000 $d
+D:\msys64\tmp\ccxbbwGx.s:163    .rodata.defaultTask_attributes:00000000 $d
+D:\msys64\tmp\ccxbbwGx.s:174    .bss.defaultTaskHandle:00000000 $d
 
 UNDEFINED SYMBOLS
 BMI088_Accel_Read

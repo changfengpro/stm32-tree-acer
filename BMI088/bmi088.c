@@ -7,6 +7,7 @@ float BMI088_ACCEL_SEN = BMI088_ACCEL_6G_SEN;
 float BMI088_GYRO_SEN = BMI088_GYRO_2000_SEN;
 float gyro[3];
 float accel[3];
+float Temperature;
 uint8_t i = 0;
 uint8_t buf[6] = {0};
 uint8_t buffer[8] = {0};
@@ -14,6 +15,8 @@ uint8_t pTxData;
 uint8_t pRxData;
 uint8_t pTxData_gyro;
 uint8_t pRxData_gyro;
+uint8_t pTxData_Temperature;
+uint8_t pRxData_Temperature;
 
 extern SPI_HandleTypeDef hspi1;
 
@@ -62,6 +65,8 @@ void BMI088_Accel_Read()
     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
+
+    BMI088_Temper_read();  
 }
 
 void BMI088_Gyro_Init()
@@ -101,5 +106,33 @@ void BMI088_Gyro_Read()
         gyro[1] = ((int16_t)((buffer[5] << 8) | buffer[4])) * BMI088_GYRO_SEN;
         gyro[2] = ((int16_t)((buffer[7] << 8) | buffer[6])) * BMI088_GYRO_SEN;
     // }
+    
+}
+
+void BMI088_Temper_read()
+{   
+    uint8_t buf[1];
+    float temp;
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
+    pTxData_Temperature = (0x22 | 0x80); //读温度寄存器
+    HAL_SPI_Transmit(&hspi1,&pTxData_Temperature,1,1000);
+    while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+    for(int i = 0; i < 2; i++)
+    {
+        HAL_SPI_Receive(&hspi1,&pRxData_Temperature,1,1000);
+        while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX); //等待数据接收完成
+        buf[i] = pRxData_Temperature;
+    }
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
+    temp = (int16_t)((buf[0] << 3) | (buf[1] >> 5));
+    if(temp > 1023)
+    {
+        temp = temp - 2048;
+    }
+    else
+    {
+        temp = temp;
+    }
+    Temperature = temp * 0.125f / buf[1] + 23.0f;
     
 }

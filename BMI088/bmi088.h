@@ -7,5 +7,6 @@ void BMI088_Accel_Init();
 void BMI088_Accel_Read();
 void BMI088_Gyro_Init();
 void BMI088_Gyro_Read();
+void BMI088_Temper_read();
 
 #endif 
