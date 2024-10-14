@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bmi088.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,10 +57,16 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+osThreadId_t BMI088TaskHandle;
+const osThreadAttr_t BMI088Task_attributes = {
+  .name = "BMI088Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityAboveNormal,
+};
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void StartBMI088Task(void *argumen);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -93,7 +99,7 @@ void MX_FREERTOS_Init(void) {
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-
+  BMI088TaskHandle = osThreadNew(StartBMI088Task, NULL, &BMI088Task_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -114,16 +120,29 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+    
+    //vTaskDelete(NULL);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    
   }
   /* USER CODE END StartDefaultTask */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-
+void StartBMI088Task(void *argumen)
+{
+    BMI088_Accel_Init();
+    BMI088_Gyro_Init();
+  for(;;)
+  {
+    BMI088_Accel_Read();
+    BMI088_Gyro_Read();
+    osDelay(1);
+    
+  }
+}
 /* USER CODE END Application */
 

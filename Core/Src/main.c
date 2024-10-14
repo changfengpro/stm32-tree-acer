@@ -93,8 +93,7 @@ int main(void)
   MX_DMA_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  BMI088_Accel_Init();
-  BMI088_Gyro_Init();
+  
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -102,7 +101,6 @@ int main(void)
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();
-
   /* Start scheduler */
   osKernelStart();
 
@@ -112,7 +110,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   { 
+    
     BMI088_Accel_Read();
+    // osDelay(1);
+    HAL_Delay(1);
     BMI088_Gyro_Read();
     // HAL_Delay(1);
     // BMI088_Gyro_Init();

@@ -2,6 +2,8 @@
     "files.associations": {
         "*.py": "python",
         "stdint.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "cmsis_os.h": "c",
+        "freertos.h": "c"
     }
 }
