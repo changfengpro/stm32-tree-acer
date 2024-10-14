@@ -134,14 +134,11 @@ void StartDefaultTask(void *argument)
 /* USER CODE BEGIN Application */
 void StartBMI088Task(void *argumen)
 {
-    BMI088_Accel_Init();
-    BMI088_Gyro_Init();
   for(;;)
   {
     BMI088_Accel_Read();
     BMI088_Gyro_Read();
     osDelay(1);
-    
   }
 }
 /* USER CODE END Application */
