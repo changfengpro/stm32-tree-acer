@@ -1,4 +1,4 @@
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"stm32f4xx_hal_rcc_ex.c"
@@ -27,8 +27,7 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
   24              		.thumb
   25              		.thumb_func
   27              	HAL_RCCEx_PeriphCLKConfig:
-  28              	.LVL0:
-  29              	.LFB134:
+  28              	.LFB134:
    1:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
    2:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   ******************************************************************************
    3:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @file    stm32f4xx_hal_rcc_ex.c
@@ -58,10 +57,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
   27:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /** @defgroup RCCEx RCCEx
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 2
-
-
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief RCCEx HAL module driver
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 2
+
+
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @{
   32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
   33:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -118,10 +117,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
   84:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval HAL status
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 3
-
-
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 3
+
+
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
   89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart = 0U;
   90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tmpreg1 = 0U;
@@ -178,10 +177,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_SAI1_CONFIG(PeriphClkInit->Sai1ClockSelection);
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable the PLLI2S when it's used as clock source for SAI */
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if (PeriphClkInit->Sai1ClockSelection == RCC_SAI1CLKSOURCE_PLLI2S)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 4
-
-
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 4
+
+
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       plli2sused = 1U;
  146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
  147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable the PLLSAI when it's used as clock source for SAI */
@@ -238,10 +237,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Reset the Backup domain only if the RTC Clock source selection is modified from reset value 
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tmpreg1 = (RCC->BDCR & RCC_BDCR_RTCSEL);
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 5
-
-
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((tmpreg1 != 0x00000000U) && ((tmpreg1) != (PeriphClkInit->RTCClockSelection & RCC_BDCR_RTCS
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 5
+
+
  202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
  203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Store the content of BDCR register before the reset of Backup Domain */
  204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       tmpreg1 = (RCC->BDCR & ~(RCC_BDCR_RTCSEL));
@@ -298,10 +297,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Configure the CEC clock source */
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_CEC_CONFIG(PeriphClkInit->CecClockSelection);
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 6
-
-
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 6
+
+
  259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
  260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
  261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*----------------------------- CLK48 Configuration ------------------------*/
@@ -358,10 +357,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
  313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tickstart = HAL_GetTick();
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is disabled */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 7
-
-
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY)  != RESET)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 7
+
+
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
  317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
  318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
@@ -418,10 +417,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
  370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /*------ In Case of PLLI2S is selected as source clock for SPDIFRX -------*/
  371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_SPDIFRX) == RCC_PERIPHCLK_SPDIFRX)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 8
-
-
  372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         && (PeriphClkInit->SpdifClockSelection == RCC_SPDIFRXCLKSOURCE_PLLI2SP))
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 8
+
+
  373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
  374:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* check for Parameters */
  375:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       assert_param(IS_RCC_PLLI2SP_VALUE(PeriphClkInit->PLLI2S.PLLI2SP));
@@ -478,10 +477,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  426:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
  427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLSAI_TIMEOUT_VALUE)
  428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 9
-
-
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* return in case of Timeout detected */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 9
+
+
  430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
  431:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
  432:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
@@ -538,10 +537,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  483:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLSAI_TIMEOUT_VALUE)
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* return in case of Timeout detected */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 10
-
-
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 10
+
+
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
  488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
  489:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
@@ -598,10 +597,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  540:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tempreg = (RCC->CFGR & RCC_CFGR_RTCPRE);
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->RTCClockSelection = (uint32_t)((tempreg) | (RCC->BDCR & RCC_BDCR_RTCSEL));
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 11
-
-
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the CEC clock configuration -----------------------------------------*/
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 11
+
+
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->CecClockSelection = __HAL_RCC_GET_CEC_SOURCE();
  545:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
  546:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the FMPI2C1 clock configuration -------------------------------------*/
@@ -658,10 +657,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  597:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       saiclocksource = RCC->DCKCFGR;
  598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       saiclocksource &= (RCC_DCKCFGR_SAI1SRC | RCC_DCKCFGR_SAI2SRC);
  599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       switch (saiclocksource)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 12
-
-
  600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 12
+
+
  601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         case 0U: /* PLLSAI is the clock source for SAI*/
  602:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
  603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* Configure the PLLSAI division factor */
@@ -718,10 +717,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* Configure the PLLI2S division factor */
  655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLL_VCO Input  = PLL_SOURCE/PLLM */
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           if ((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSI)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 13
-
-
  657:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 13
+
+
  658:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             /* In Case the PLL Source is HSI (Internal Clock) */
  659:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (HSI_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
  660:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
@@ -778,10 +777,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  711:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
  712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Check if I2S clock selection is PLLI2S VCO output clock divided by PLLI2SR used as I2S c
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         case RCC_I2SAPB1CLKSOURCE_PLLI2S:
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 14
-
-
  714:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 14
+
+
  715:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* Configure the PLLI2S division factor */
  716:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLLI2S_VCO Input  = PLL_SOURCE/PLLI2SM */
  717:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           if ((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSE)
@@ -838,10 +837,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  768:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
  769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Clock not enabled for I2S*/
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         default:
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 15
-
-
  771:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 15
+
+
  772:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           frequency = 0U;
  773:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           break;
  774:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
@@ -898,10 +897,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  825:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             /* Get the I2S source clock value */
  826:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (uint32_t)(HSI_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
  827:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 16
-
-
  828:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 16
+
+
  829:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLL_VCO Output = PLL_VCO Input * PLLN */
  830:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           vcooutput = (uint32_t)(vcoinput * (((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6U) & (RCC_PLLCF
  831:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* I2S_CLK = PLL_VCO Output/PLLR */
@@ -958,10 +957,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  882:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
  883:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart = 0U;
  884:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tmpreg1 = 0U;
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 17
-
-
  885:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t pllsaip = 0U;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 17
+
+
  886:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t pllsaiq = 0U;
  887:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t pllsair = 0U;
  888:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -1018,10 +1017,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  939:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /*---------------------- I2S configuration -------------------------------*/
  940:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* In Case of I2S Clock Configuration through PLLI2S, PLLI2SR must be added
  941:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       only for I2S configuration */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 18
-
-
  942:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_I2S) == (RCC_PERIPHCLK_I2S))
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 18
+
+
  943:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
  944:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* check for Parameters */
  945:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       assert_param(IS_RCC_PLLI2SR_VALUE(PeriphClkInit->PLLI2S.PLLI2SR));
@@ -1078,10 +1077,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
  996:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
  997:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
  998:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 19
-
-
  999:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 19
+
+
 1000:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*----------------------- SAI/LTDC Configuration (PLLSAI) ------------------*/
 1001:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*----------------------- Common configuration SAI/LTDC --------------------*/
 1002:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* In Case of SAI, LTDC or CLK48 Clock Configuration through PLLSAI, PLLSAIN division
@@ -1138,10 +1137,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1053:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       pllsaip = ((((RCC->PLLSAICFGR & RCC_PLLSAICFGR_PLLSAIP) >> RCC_PLLSAICFGR_PLLSAIP_Pos) + 1U) 
 1054:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Read PLLSAIQ value from PLLSAICFGR register (this value is not need for SAI configuration)
 1055:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       pllsaiq = ((RCC->PLLSAICFGR & RCC_PLLSAICFGR_PLLSAIQ) >> RCC_PLLSAICFGR_PLLSAIQ_Pos);
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 20
-
-
 1056:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* PLLSAI_VCO Input  = PLL_SOURCE/PLLM */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 20
+
+
 1057:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* PLLSAI_VCO Output = PLLSAI_VCO Input * PLLSAIN */
 1058:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* LTDC_CLK(first level) = PLLSAI_VCO Output/PLLSAIR */
 1059:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       __HAL_RCC_PLLSAI_CONFIG(PeriphClkInit->PLLSAI.PLLSAIN, pllsaip, pllsaiq, PeriphClkInit->PLLSA
@@ -1198,10 +1197,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
 1111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tickstart = HAL_GetTick();
 1112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 21
-
-
 1113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     while ((PWR->CR & PWR_CR_DBP) == RESET)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 21
+
+
 1114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 1115:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > RCC_DBP_TIMEOUT_VALUE)
 1116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
@@ -1258,10 +1257,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1167:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
 1168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
 1169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tempreg;
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 22
-
-
 1170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 22
+
+
 1171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Set all possible values for the extended clock type parameter------------*/
 1172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PeriphClockSelection = RCC_PERIPHCLK_I2S        | RCC_PERIPHCLK_SAI_PLLSAI | \
 1173:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****                                         RCC_PERIPHCLK_SAI_PLLI2S | RCC_PERIPHCLK_LTDC       | \
@@ -1318,10 +1317,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Output (value in Hz) */
 1225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t vcooutput = 0U;
 1226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   switch (PeriphClk)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 23
-
-
 1227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 23
+
+
 1228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_PERIPHCLK_I2S:
 1229:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 1230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Get the current I2S source */
@@ -1378,10 +1377,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) ||
 1282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 1283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Initializes the RCC extended peripherals clocks according to the specified
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 24
-
-
 1284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         parameters in the RCC_PeriphCLKInitTypeDef.
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 24
+
+
 1285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @param  PeriphClkInit pointer to an RCC_PeriphCLKInitTypeDef structure that
 1286:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         contains the configuration information for the Extended Peripherals
 1287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         clocks(I2S, LTDC RTC and TIM).
@@ -1438,10 +1437,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1338:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
 1339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F413xx) || defined(STM32F423xx)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 25
-
-
 1341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*----------------------- SAI1 Block A configuration -----------------------*/
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 25
+
+
 1342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_SAIA) == (RCC_PERIPHCLK_SAIA))
 1343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check the parameters */
@@ -1498,10 +1497,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1395:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check for RTC Parameters used to output RTCCLK */
 1396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_RTCCLKSOURCE(PeriphClkInit->RTCClockSelection));
 1397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 26
-
-
 1398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable Power Clock*/
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 26
+
+
 1399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PWR_CLK_ENABLE();
 1400:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1401:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable write access to Backup domain */
@@ -1558,10 +1557,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1452:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
 1453:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1454:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*------------------------------------- FMPI2C1 Configuration --------------*/
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 27
-
-
 1455:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_FMPI2C1) == RCC_PERIPHCLK_FMPI2C1)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 27
+
+
 1456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1457:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check the parameters */
 1458:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_FMPI2C1CLKSOURCE(PeriphClkInit->Fmpi2c1ClockSelection));
@@ -1618,10 +1617,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1509:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 1510:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 1511:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 28
-
-
 1512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* check for common PLLI2S Parameters */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 28
+
+
 1513:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SCLKSOURCE(PeriphClkInit->PLLI2SSelection));
 1514:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SM_VALUE(PeriphClkInit->PLLI2S.PLLI2SM));
 1515:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SN_VALUE(PeriphClkInit->PLLI2S.PLLI2SN));
@@ -1678,10 +1677,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1566:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       assert_param(IS_RCC_PLLI2SR_VALUE(PeriphClkInit->PLLI2S.PLLI2SR));
 1567:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       assert_param(IS_RCC_PLLI2SQ_VALUE(PeriphClkInit->PLLI2S.PLLI2SQ));
 1568:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 29
-
-
 1569:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Configure the PLLI2S division factors */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 29
+
+
 1570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* PLLI2S_VCO = f(VCO clock) = f(PLLI2S clock input) * (PLLI2SN/PLLI2SM)*/
 1571:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* SPDIFRXCLK = f(PLLI2S clock output) = f(VCO clock) / PLLI2SP */
 1572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       __HAL_RCC_PLLI2S_CONFIG(PeriphClkInit->PLLI2S.PLLI2SM, PeriphClkInit->PLLI2S.PLLI2SN, PeriphC
@@ -1738,10 +1737,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1623:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 1624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
 1625:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 30
-
-
 1626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*-------------------- DFSDM2 Audio clock source configuration -------------*/
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 30
+
+
 1627:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_DFSDM2_AUDIO) == RCC_PERIPHCLK_DFSDM2_
 1628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1629:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check the parameters */
@@ -1798,10 +1797,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1680:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1681:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1682:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the PLLI2S Clock configuration --------------------------------------*/
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 31
-
-
 1683:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SM = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM) >> RCC_PLLI
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 31
+
+
 1684:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SN = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SN) >> RCC_PLLI
 1685:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SQ = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SQ) >> RCC_PLLI
 1686:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SR = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SR) >> RCC_PLLI
@@ -1858,10 +1857,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1737:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1738:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     PeriphClkInit->TIMPresSelection = RCC_TIMPRES_DESACTIVATED;
 1739:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 32
-
-
 1740:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   else
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 32
+
+
 1741:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1742:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     PeriphClkInit->TIMPresSelection = RCC_TIMPRES_ACTIVATED;
 1743:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
@@ -1918,10 +1917,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1794:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****               vcoinput = (uint32_t)(HSE_VALUE / (uint32_t)(RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM
 1795:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             }
 1796:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             else
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 33
-
-
 1797:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 33
+
+
 1798:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****               /* Get the I2S source clock value */
 1799:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****               vcoinput = (uint32_t)(HSI_VALUE / (uint32_t)(RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM
 1800:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             }
@@ -1978,10 +1977,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 1852:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_PERIPHCLK_I2S_APB2:
 1853:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 34
-
-
 1854:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Get the current I2S source */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 34
+
+
 1855:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       srcclk = __HAL_RCC_GET_I2S_APB2_SOURCE();
 1856:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       switch (srcclk)
 1857:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
@@ -2038,10 +2037,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1908:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
 1909:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 1910:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLL_VCO Output = PLL_VCO Input * PLLN */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 35
-
-
 1911:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           vcooutput = (uint32_t)(vcoinput * (((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6U) & (RCC_PLLCF
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 35
+
+
 1912:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* I2S_CLK = PLL_VCO Output/PLLR */
 1913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           frequency = (uint32_t)(vcooutput / (((RCC->PLLCFGR & RCC_PLLCFGR_PLLR) >> 28U) & (RCC_PLL
 1914:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           break;
@@ -2098,10 +2097,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 1965:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Check the parameters */
 1966:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PERIPHCLOCK(PeriphClkInit->PeriphClockSelection));
 1967:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 36
-
-
 1968:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*---------------------------- RTC configuration ---------------------------*/
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 36
+
+
 1969:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_RTC) == (RCC_PERIPHCLK_RTC))
 1970:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 1971:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check for RTC Parameters used to output RTCCLK */
@@ -2158,10 +2157,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2022:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*---------------------------- TIM configuration ---------------------------*/
 2023:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_TIM) == (RCC_PERIPHCLK_TIM))
 2024:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 37
-
-
 2025:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_TIMCLKPRESCALER(PeriphClkInit->TIMPresSelection);
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 37
+
+
 2026:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2027:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*--------------------------------------------------------------------------*/
 2028:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -2218,10 +2217,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2079:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2080:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if ((RCC->DCKCFGR & RCC_DCKCFGR_TIMPRE) == RESET)
 2081:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 38
-
-
 2082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     PeriphClkInit->TIMPresSelection = RCC_TIMPRES_DESACTIVATED;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 38
+
+
 2083:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2084:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   else
 2085:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
@@ -2278,10 +2277,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2136:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (uint32_t)(HSE_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
 2137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
 2138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           else
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 39
-
-
 2139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 39
+
+
 2140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             /* Get the I2S source clock value */
 2141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (uint32_t)(HSI_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
 2142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
@@ -2338,10 +2337,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *
 2194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval HAL status
 2195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 40
-
-
 2196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 40
+
+
 2197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
 2198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart = 0U;
 2199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tmpreg1 = 0U;
@@ -2398,10 +2397,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Read PLLI2SR value from PLLI2SCFGR register (this value is not need for SAI configuration)
 2252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       tmpreg1 = ((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SR) >> RCC_PLLI2SCFGR_PLLI2SR_Pos);
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 41
-
-
 2253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Configure the PLLI2S division factors */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 41
+
+
 2254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* PLLI2S_VCO Input  = PLL_SOURCE/PLLM */
 2255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* PLLI2S_VCO Output = PLLI2S_VCO Input * PLLI2SN */
 2256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* SAI_CLK(first level) = PLLI2S_VCO Output/PLLI2SQ */
@@ -2458,10 +2457,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2307:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLSAI_TIMEOUT_VALUE)
 2308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* return in case of Timeout detected */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 42
-
-
 2310:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 42
+
+
 2311:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 2312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -2518,10 +2517,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2364:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_RTC) == (RCC_PERIPHCLK_RTC))
 2365:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2366:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check for RTC Parameters used to output RTCCLK */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 43
-
-
 2367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_RTCCLKSOURCE(PeriphClkInit->RTCClockSelection));
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 43
+
+
 2368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable Power Clock*/
 2370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PWR_CLK_ENABLE();
@@ -2578,10 +2577,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return HAL_OK;
 2423:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 44
-
-
 2424:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 44
+
+
 2425:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 2426:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Configures the PeriphClkInit according to the internal
 2427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * RCC configuration registers.
@@ -2638,10 +2637,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2478:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t vcoinput = 0U;
 2479:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t srcclk = 0U;
 2480:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Output (value in Hz) */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 45
-
-
 2481:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t vcooutput = 0U;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 45
+
+
 2482:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   switch (PeriphClk)
 2483:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_PERIPHCLK_I2S:
@@ -2698,10 +2697,10 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2535:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx */
 2536:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2537:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx)|| defined(STM32F417xx) ||\
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 46
-
-
 2538:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 46
+
+
 2539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 2540:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Initializes the RCC extended peripherals clocks according to the specified parameters i
 2541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         RCC_PeriphCLKInitTypeDef.
@@ -2716,64 +2715,112 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2550:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 2551:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
 2552:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
-  30              		.loc 1 2552 1 view -0
-  31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 8
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 2552 1 is_stmt 0 view .LVU1
-  35 0000 30B5     		push	{r4, r5, lr}
-  36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 12
-  38              		.cfi_offset 4, -12
-  39              		.cfi_offset 5, -8
-  40              		.cfi_offset 14, -4
-  41 0002 83B0     		sub	sp, sp, #12
-  42              	.LCFI1:
-  43              		.cfi_def_cfa_offset 24
-  44 0004 0446     		mov	r4, r0
+  29              		.loc 1 2552 1
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 24
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 86B0     		sub	sp, sp, #24
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 32
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 7860     		str	r0, [r7, #4]
 2553:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart = 0U;
-  45              		.loc 1 2553 3 is_stmt 1 view .LVU2
-  46              	.LVL1:
+  45              		.loc 1 2553 12
+  46 0008 0023     		movs	r3, #0
+  47 000a 7B61     		str	r3, [r7, #20]
 2554:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tmpreg1 = 0U;
-  47              		.loc 1 2554 3 view .LVU3
+  48              		.loc 1 2554 12
+  49 000c 0023     		movs	r3, #0
+  50 000e 3B61     		str	r3, [r7, #16]
 2555:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2556:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Check the parameters */
 2557:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PERIPHCLOCK(PeriphClkInit->PeriphClockSelection));
-  48              		.loc 1 2557 3 view .LVU4
 2558:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2559:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*---------------------------- I2S configuration ---------------------------*/
 2560:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if ((((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_I2S) == RCC_PERIPHCLK_I2S) ||
-  49              		.loc 1 2560 3 view .LVU5
-  50              		.loc 1 2560 90 is_stmt 0 view .LVU6
-  51 0006 0368     		ldr	r3, [r0]
-  52              		.loc 1 2560 6 view .LVU7
-  53 0008 13F0050F 		tst	r3, #5
-  54 000c 06D1     		bne	.L21
-  55              	.LVL2:
-  56              	.L2:
+  51              		.loc 1 2560 23
+  52 0010 7B68     		ldr	r3, [r7, #4]
+  53 0012 1B68     		ldr	r3, [r3]
+  54              		.loc 1 2560 47
+  55 0014 03F00103 		and	r3, r3, #1
+  56              		.loc 1 2560 6
+  57 0018 002B     		cmp	r3, #0
+  58 001a 05D1     		bne	.L2
 2561:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_PLLI2S) == RCC_PERIPHCLK_PLLI2S))
+  59              		.loc 1 2561 23
+  60 001c 7B68     		ldr	r3, [r7, #4]
+  61 001e 1B68     		ldr	r3, [r3]
+  62              		.loc 1 2561 47
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 47
+
+
+  63 0020 03F00403 		and	r3, r3, #4
+2560:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_PLLI2S) == RCC_PERIPHCLK_PLLI2S))
+  64              		.loc 1 2560 90 discriminator 1
+  65 0024 002B     		cmp	r3, #0
+  66 0026 35D0     		beq	.L3
+  67              	.L2:
 2562:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2563:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* check for Parameters */
 2564:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SR_VALUE(PeriphClkInit->PLLI2S.PLLI2SR));
 2565:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SN_VALUE(PeriphClkInit->PLLI2S.PLLI2SN));
 2566:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F411xE)
 2567:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SM_VALUE(PeriphClkInit->PLLI2S.PLLI2SM));
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 47
-
-
 2568:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F411xE */
 2569:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Disable the PLLI2S */
 2570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PLLI2S_DISABLE();
+  68              		.loc 1 2570 5
+  69 0028 624B     		ldr	r3, .L17
+  70 002a 0022     		movs	r2, #0
+  71 002c 1A60     		str	r2, [r3]
 2571:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
 2572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tickstart = HAL_GetTick();
+  72              		.loc 1 2572 17
+  73 002e FFF7FEFF 		bl	HAL_GetTick
+  74 0032 7861     		str	r0, [r7, #20]
 2573:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is disabled */
 2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY)  != RESET)
+  75              		.loc 1 2574 11
+  76 0034 08E0     		b	.L4
+  77              	.L6:
 2575:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
+  78              		.loc 1 2576 12
+  79 0036 FFF7FEFF 		bl	HAL_GetTick
+  80 003a 0246     		mov	r2, r0
+  81              		.loc 1 2576 26 discriminator 1
+  82 003c 7B69     		ldr	r3, [r7, #20]
+  83 003e D31A     		subs	r3, r2, r3
+  84              		.loc 1 2576 10 discriminator 1
+  85 0040 022B     		cmp	r3, #2
+  86 0042 01D9     		bls	.L4
 2577:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2578:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* return in case of Timeout detected */
 2579:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
+  87              		.loc 1 2579 16
+  88 0044 0323     		movs	r3, #3
+  89 0046 B0E0     		b	.L5
+  90              	.L4:
+2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+  91              		.loc 1 2574 12
+  92 0048 5B4B     		ldr	r3, .L17+4
+  93 004a 1B68     		ldr	r3, [r3]
+  94 004c 03F00063 		and	r3, r3, #134217728
+2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+  95              		.loc 1 2574 52
+  96 0050 002B     		cmp	r3, #0
+  97 0052 F0D1     		bne	.L6
 2580:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 48
+
+
 2581:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2582:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2583:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F411xE)
@@ -2787,83 +2834,303 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2591:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* PLLI2S_VCO = f(VCO clock) = f(PLLI2S clock input) * (PLLI2SN/PLLM) */
 2592:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* I2SCLK = f(PLLI2S clock output) = f(VCO clock) / PLLI2SR */
 2593:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PLLI2S_CONFIG(PeriphClkInit->PLLI2S.PLLI2SN, PeriphClkInit->PLLI2S.PLLI2SR);
+  98              		.loc 1 2593 5
+  99 0054 7B68     		ldr	r3, [r7, #4]
+ 100 0056 5B68     		ldr	r3, [r3, #4]
+ 101 0058 9A01     		lsls	r2, r3, #6
+ 102 005a 7B68     		ldr	r3, [r7, #4]
+ 103 005c 9B68     		ldr	r3, [r3, #8]
+ 104 005e 1B07     		lsls	r3, r3, #28
+ 105 0060 5549     		ldr	r1, .L17+4
+ 106 0062 1343     		orrs	r3, r3, r2
+ 107 0064 C1F88430 		str	r3, [r1, #132]
 2594:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F411xE */
 2595:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2596:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable the PLLI2S */
 2597:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PLLI2S_ENABLE();
+ 108              		.loc 1 2597 5
+ 109 0068 524B     		ldr	r3, .L17
+ 110 006a 0122     		movs	r2, #1
+ 111 006c 1A60     		str	r2, [r3]
 2598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
 2599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tickstart = HAL_GetTick();
+ 112              		.loc 1 2599 17
+ 113 006e FFF7FEFF 		bl	HAL_GetTick
+ 114 0072 7861     		str	r0, [r7, #20]
 2600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is ready */
 2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY)  == RESET)
+ 115              		.loc 1 2601 11
+ 116 0074 08E0     		b	.L7
+ 117              	.L8:
 2602:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
+ 118              		.loc 1 2603 12
+ 119 0076 FFF7FEFF 		bl	HAL_GetTick
+ 120 007a 0246     		mov	r2, r0
+ 121              		.loc 1 2603 26 discriminator 1
+ 122 007c 7B69     		ldr	r3, [r7, #20]
+ 123 007e D31A     		subs	r3, r2, r3
+ 124              		.loc 1 2603 10 discriminator 1
+ 125 0080 022B     		cmp	r3, #2
+ 126 0082 01D9     		bls	.L7
 2604:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2605:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* return in case of Timeout detected */
 2606:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
+ 127              		.loc 1 2606 16
+ 128 0084 0323     		movs	r3, #3
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 49
+
+
+ 129 0086 90E0     		b	.L5
+ 130              	.L7:
+2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ 131              		.loc 1 2601 12
+ 132 0088 4B4B     		ldr	r3, .L17+4
+ 133 008a 1B68     		ldr	r3, [r3]
+ 134 008c 03F00063 		and	r3, r3, #134217728
+2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ 135              		.loc 1 2601 52
+ 136 0090 002B     		cmp	r3, #0
+ 137 0092 F0D0     		beq	.L8
+ 138              	.L3:
 2607:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 2608:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2609:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2610:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2611:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*---------------------------- RTC configuration ---------------------------*/
 2612:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_RTC) == (RCC_PERIPHCLK_RTC))
-  57              		.loc 1 2612 3 is_stmt 1 view .LVU8
-  58              		.loc 1 2612 22 is_stmt 0 view .LVU9
-  59 000e 2368     		ldr	r3, [r4]
-  60              		.loc 1 2612 6 view .LVU10
-  61 0010 13F0020F 		tst	r3, #2
-  62 0014 2ED1     		bne	.L22
+ 139              		.loc 1 2612 22
+ 140 0094 7B68     		ldr	r3, [r7, #4]
+ 141 0096 1B68     		ldr	r3, [r3]
+ 142              		.loc 1 2612 46
+ 143 0098 03F00203 		and	r3, r3, #2
+ 144              		.loc 1 2612 6
+ 145 009c 002B     		cmp	r3, #0
+ 146 009e 00F08380 		beq	.L9
+ 147              	.LBB2:
 2613:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2614:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Check for RTC Parameters used to output RTCCLK */
 2615:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_RTCCLKSOURCE(PeriphClkInit->RTCClockSelection));
 2616:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2617:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable Power Clock*/
 2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_PWR_CLK_ENABLE();
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 48
-
-
+ 148              		.loc 1 2618 5
+ 149 00a2 0023     		movs	r3, #0
+ 150 00a4 FB60     		str	r3, [r7, #12]
+ 151 00a6 444B     		ldr	r3, .L17+4
+ 152 00a8 1B6C     		ldr	r3, [r3, #64]
+ 153 00aa 434A     		ldr	r2, .L17+4
+ 154 00ac 43F08053 		orr	r3, r3, #268435456
+ 155 00b0 1364     		str	r3, [r2, #64]
+ 156 00b2 414B     		ldr	r3, .L17+4
+ 157 00b4 1B6C     		ldr	r3, [r3, #64]
+ 158 00b6 03F08053 		and	r3, r3, #268435456
+ 159 00ba FB60     		str	r3, [r7, #12]
+ 160 00bc FB68     		ldr	r3, [r7, #12]
+ 161              	.LBE2:
 2619:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2620:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Enable write access to Backup domain */
 2621:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     PWR->CR |= PWR_CR_DBP;
+ 162              		.loc 1 2621 8
+ 163 00be 3F4B     		ldr	r3, .L17+8
+ 164 00c0 1B68     		ldr	r3, [r3]
+ 165 00c2 3E4A     		ldr	r2, .L17+8
+ 166              		.loc 1 2621 13
+ 167 00c4 43F48073 		orr	r3, r3, #256
+ 168 00c8 1360     		str	r3, [r2]
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 50
+
+
 2622:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2623:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
 2624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tickstart = HAL_GetTick();
+ 169              		.loc 1 2624 17
+ 170 00ca FFF7FEFF 		bl	HAL_GetTick
+ 171 00ce 7861     		str	r0, [r7, #20]
 2625:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     while ((PWR->CR & PWR_CR_DBP) == RESET)
+ 172              		.loc 1 2626 11
+ 173 00d0 08E0     		b	.L10
+ 174              	.L11:
 2627:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if ((HAL_GetTick() - tickstart) > RCC_DBP_TIMEOUT_VALUE)
+ 175              		.loc 1 2628 12
+ 176 00d2 FFF7FEFF 		bl	HAL_GetTick
+ 177 00d6 0246     		mov	r2, r0
+ 178              		.loc 1 2628 26 discriminator 1
+ 179 00d8 7B69     		ldr	r3, [r7, #20]
+ 180 00da D31A     		subs	r3, r2, r3
+ 181              		.loc 1 2628 10 discriminator 1
+ 182 00dc 022B     		cmp	r3, #2
+ 183 00de 01D9     		bls	.L10
 2629:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2630:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         return HAL_TIMEOUT;
+ 184              		.loc 1 2630 16
+ 185 00e0 0323     		movs	r3, #3
+ 186 00e2 62E0     		b	.L5
+ 187              	.L10:
+2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ 188              		.loc 1 2626 16
+ 189 00e4 354B     		ldr	r3, .L17+8
+ 190 00e6 1B68     		ldr	r3, [r3]
+2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ 191              		.loc 1 2626 21
+ 192 00e8 03F48073 		and	r3, r3, #256
+2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
+ 193              		.loc 1 2626 35
+ 194 00ec 002B     		cmp	r3, #0
+ 195 00ee F0D0     		beq	.L11
 2631:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 2632:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2633:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Reset the Backup domain only if the RTC Clock source selection is modified from reset value 
 2634:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     tmpreg1 = (RCC->BDCR & RCC_BDCR_RTCSEL);
+ 196              		.loc 1 2634 19
+ 197 00f0 314B     		ldr	r3, .L17+4
+ 198 00f2 1B6F     		ldr	r3, [r3, #112]
+ 199              		.loc 1 2634 13
+ 200 00f4 03F44073 		and	r3, r3, #768
+ 201 00f8 3B61     		str	r3, [r7, #16]
 2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((tmpreg1 != 0x00000000U) && ((tmpreg1) != (PeriphClkInit->RTCClockSelection & RCC_BDCR_RTCS
+ 202              		.loc 1 2635 8
+ 203 00fa 3B69     		ldr	r3, [r7, #16]
+ 204 00fc 002B     		cmp	r3, #0
+ 205 00fe 2FD0     		beq	.L12
+ 206              		.loc 1 2635 65 discriminator 1
+ 207 0100 7B68     		ldr	r3, [r7, #4]
+ 208 0102 DB68     		ldr	r3, [r3, #12]
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 51
+
+
+ 209              		.loc 1 2635 85 discriminator 1
+ 210 0104 03F44073 		and	r3, r3, #768
+ 211              		.loc 1 2635 34 discriminator 1
+ 212 0108 3A69     		ldr	r2, [r7, #16]
+ 213 010a 9A42     		cmp	r2, r3
+ 214 010c 28D0     		beq	.L12
 2636:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2637:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Store the content of BDCR register before the reset of Backup Domain */
 2638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       tmpreg1 = (RCC->BDCR & ~(RCC_BDCR_RTCSEL));
+ 215              		.loc 1 2638 21
+ 216 010e 2A4B     		ldr	r3, .L17+4
+ 217 0110 1B6F     		ldr	r3, [r3, #112]
+ 218              		.loc 1 2638 15
+ 219 0112 23F44073 		bic	r3, r3, #768
+ 220 0116 3B61     		str	r3, [r7, #16]
 2639:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* RTC Clock selection can be changed only if the Backup Domain is reset */
 2640:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       __HAL_RCC_BACKUPRESET_FORCE();
+ 221              		.loc 1 2640 7
+ 222 0118 294B     		ldr	r3, .L17+12
+ 223 011a 0122     		movs	r2, #1
+ 224 011c 1A60     		str	r2, [r3]
 2641:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       __HAL_RCC_BACKUPRESET_RELEASE();
+ 225              		.loc 1 2641 7
+ 226 011e 284B     		ldr	r3, .L17+12
+ 227 0120 0022     		movs	r2, #0
+ 228 0122 1A60     		str	r2, [r3]
 2642:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Restore the Content of BDCR register */
 2643:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       RCC->BDCR = tmpreg1;
+ 229              		.loc 1 2643 10
+ 230 0124 244A     		ldr	r2, .L17+4
+ 231              		.loc 1 2643 17
+ 232 0126 3B69     		ldr	r3, [r7, #16]
+ 233 0128 1367     		str	r3, [r2, #112]
 2644:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2645:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Wait for LSE reactivation if LSE was enable prior to Backup Domain reset */
 2646:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       if (HAL_IS_BIT_SET(RCC->BDCR, RCC_BDCR_LSEON))
+ 234              		.loc 1 2646 11
+ 235 012a 234B     		ldr	r3, .L17+4
+ 236 012c 1B6F     		ldr	r3, [r3, #112]
+ 237 012e 03F00103 		and	r3, r3, #1
+ 238              		.loc 1 2646 10
+ 239 0132 012B     		cmp	r3, #1
+ 240 0134 14D1     		bne	.L12
 2647:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2648:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Get tick */
 2649:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         tickstart = HAL_GetTick();
+ 241              		.loc 1 2649 21
+ 242 0136 FFF7FEFF 		bl	HAL_GetTick
+ 243 013a 7861     		str	r0, [r7, #20]
 2650:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2651:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Wait till LSE is ready */
 2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         while (__HAL_RCC_GET_FLAG(RCC_FLAG_LSERDY) == RESET)
+ 244              		.loc 1 2652 15
+ 245 013c 0AE0     		b	.L13
+ 246              	.L14:
 2653:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
 2654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           if ((HAL_GetTick() - tickstart) > RCC_LSE_TIMEOUT_VALUE)
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 52
+
+
+ 247              		.loc 1 2654 16
+ 248 013e FFF7FEFF 		bl	HAL_GetTick
+ 249 0142 0246     		mov	r2, r0
+ 250              		.loc 1 2654 30 discriminator 1
+ 251 0144 7B69     		ldr	r3, [r7, #20]
+ 252 0146 D31A     		subs	r3, r2, r3
+ 253              		.loc 1 2654 14 discriminator 1
+ 254 0148 41F28832 		movw	r2, #5000
+ 255 014c 9342     		cmp	r3, r2
+ 256 014e 01D9     		bls	.L13
 2655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
 2656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             return HAL_TIMEOUT;
+ 257              		.loc 1 2656 20
+ 258 0150 0323     		movs	r3, #3
+ 259 0152 2AE0     		b	.L5
+ 260              	.L13:
+2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
+ 261              		.loc 1 2652 16
+ 262 0154 184B     		ldr	r3, .L17+4
+ 263 0156 1B6F     		ldr	r3, [r3, #112]
+ 264 0158 03F00203 		and	r3, r3, #2
+2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
+ 265              		.loc 1 2652 52
+ 266 015c 002B     		cmp	r3, #0
+ 267 015e EED0     		beq	.L14
+ 268              	.L12:
 2657:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
 2658:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
 2659:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 2660:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     __HAL_RCC_RTC_CONFIG(PeriphClkInit->RTCClockSelection);
+ 269              		.loc 1 2661 5
+ 270 0160 7B68     		ldr	r3, [r7, #4]
+ 271 0162 DB68     		ldr	r3, [r3, #12]
+ 272 0164 03F44073 		and	r3, r3, #768
+ 273 0168 B3F5407F 		cmp	r3, #768
+ 274 016c 0DD1     		bne	.L15
+ 275              		.loc 1 2661 5 is_stmt 0 discriminator 1
+ 276 016e 124B     		ldr	r3, .L17+4
+ 277 0170 9B68     		ldr	r3, [r3, #8]
+ 278 0172 23F4F812 		bic	r2, r3, #2031616
+ 279 0176 7B68     		ldr	r3, [r7, #4]
+ 280 0178 DB68     		ldr	r3, [r3, #12]
+ 281 017a 23F07043 		bic	r3, r3, #-268435456
+ 282 017e 23F44073 		bic	r3, r3, #768
+ 283 0182 0D49     		ldr	r1, .L17+4
+ 284 0184 1343     		orrs	r3, r3, r2
+ 285 0186 8B60     		str	r3, [r1, #8]
+ 286 0188 05E0     		b	.L16
+ 287              	.L15:
+ 288              		.loc 1 2661 5 discriminator 2
+ 289 018a 0B4B     		ldr	r3, .L17+4
+ 290 018c 9B68     		ldr	r3, [r3, #8]
+ 291 018e 0A4A     		ldr	r2, .L17+4
+ 292 0190 23F4F813 		bic	r3, r3, #2031616
+ 293 0194 9360     		str	r3, [r2, #8]
+ 294              	.L16:
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 53
+
+
+ 295              		.loc 1 2661 5 discriminator 4
+ 296 0196 084B     		ldr	r3, .L17+4
+ 297 0198 1A6F     		ldr	r2, [r3, #112]
+ 298 019a 7B68     		ldr	r3, [r7, #4]
+ 299 019c DB68     		ldr	r3, [r3, #12]
+ 300 019e C3F30B03 		ubfx	r3, r3, #0, #12
+ 301 01a2 0549     		ldr	r1, .L17+4
+ 302 01a4 1343     		orrs	r3, r3, r2
+ 303 01a6 0B67     		str	r3, [r1, #112]
+ 304              	.L9:
 2662:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2663:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE)
 2664:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /*---------------------------- TIM configuration ---------------------------*/
@@ -2873,384 +3140,37 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2668:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2669:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F401xC || STM32F401xE || STM32F411xE */
 2670:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return HAL_OK;
-  63              		.loc 1 2670 10 view .LVU11
-  64 0016 0020     		movs	r0, #0
-  65              	.LVL3:
-  66              	.L4:
+ 305              		.loc 1 2670 10 is_stmt 1
+ 306 01a8 0023     		movs	r3, #0
+ 307              	.L5:
 2671:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 49
-
-
-  67              		.loc 1 2671 1 view .LVU12
-  68 0018 03B0     		add	sp, sp, #12
-  69              	.LCFI2:
-  70              		.cfi_remember_state
-  71              		.cfi_def_cfa_offset 12
-  72              		@ sp needed
-  73 001a 30BD     		pop	{r4, r5, pc}
-  74              	.LVL4:
-  75              	.L21:
-  76              	.LCFI3:
-  77              		.cfi_restore_state
-2564:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     assert_param(IS_RCC_PLLI2SN_VALUE(PeriphClkInit->PLLI2S.PLLI2SN));
-  78              		.loc 1 2564 5 is_stmt 1 view .LVU13
-2565:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F411xE)
-  79              		.loc 1 2565 5 view .LVU14
-2570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
-  80              		.loc 1 2570 5 view .LVU15
-  81 001c 4A4B     		ldr	r3, .L27
-  82 001e 0022     		movs	r2, #0
-  83 0020 9A66     		str	r2, [r3, #104]
-2572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is disabled */
-  84              		.loc 1 2572 5 view .LVU16
-2572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is disabled */
-  85              		.loc 1 2572 17 is_stmt 0 view .LVU17
-  86 0022 FFF7FEFF 		bl	HAL_GetTick
-  87              	.LVL5:
-2572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is disabled */
-  88              		.loc 1 2572 17 view .LVU18
-  89 0026 0546     		mov	r5, r0
-  90              	.LVL6:
-2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
-  91              		.loc 1 2574 5 is_stmt 1 view .LVU19
-  92              	.L3:
-2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
-  93              		.loc 1 2574 52 view .LVU20
-2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
-  94              		.loc 1 2574 12 is_stmt 0 view .LVU21
-  95 0028 484B     		ldr	r3, .L27+4
-  96 002a 1B68     		ldr	r3, [r3]
-2574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
-  97              		.loc 1 2574 52 view .LVU22
-  98 002c 13F0006F 		tst	r3, #134217728
-  99 0030 06D0     		beq	.L23
-2576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 100              		.loc 1 2576 7 is_stmt 1 view .LVU23
-2576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 101              		.loc 1 2576 12 is_stmt 0 view .LVU24
- 102 0032 FFF7FEFF 		bl	HAL_GetTick
- 103              	.LVL7:
-2576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 104              		.loc 1 2576 26 discriminator 1 view .LVU25
- 105 0036 431B     		subs	r3, r0, r5
-2576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 106              		.loc 1 2576 10 discriminator 1 view .LVU26
- 107 0038 022B     		cmp	r3, #2
- 108 003a F5D9     		bls	.L3
-2579:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 50
-
-
- 109              		.loc 1 2579 16 view .LVU27
- 110 003c 0320     		movs	r0, #3
- 111 003e EBE7     		b	.L4
- 112              	.L23:
-2593:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F411xE */
- 113              		.loc 1 2593 5 is_stmt 1 view .LVU28
- 114 0040 6268     		ldr	r2, [r4, #4]
- 115 0042 A368     		ldr	r3, [r4, #8]
- 116 0044 1B07     		lsls	r3, r3, #28
- 117 0046 43EA8213 		orr	r3, r3, r2, lsl #6
- 118 004a 404A     		ldr	r2, .L27+4
- 119 004c C2F88430 		str	r3, [r2, #132]
-2597:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Get tick */
- 120              		.loc 1 2597 5 view .LVU29
- 121 0050 3D4B     		ldr	r3, .L27
- 122 0052 0122     		movs	r2, #1
- 123 0054 9A66     		str	r2, [r3, #104]
-2599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is ready */
- 124              		.loc 1 2599 5 view .LVU30
-2599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     /* Wait till PLLI2S is ready */
- 125              		.loc 1 2599 17 is_stmt 0 view .LVU31
- 126 0056 FFF7FEFF 		bl	HAL_GetTick
- 127              	.LVL8:
- 128 005a 0546     		mov	r5, r0
- 129              	.LVL9:
-2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 130              		.loc 1 2601 5 is_stmt 1 view .LVU32
- 131              	.L6:
-2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 132              		.loc 1 2601 52 view .LVU33
-2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 133              		.loc 1 2601 12 is_stmt 0 view .LVU34
- 134 005c 3B4B     		ldr	r3, .L27+4
- 135 005e 1B68     		ldr	r3, [r3]
-2601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 136              		.loc 1 2601 52 view .LVU35
- 137 0060 13F0006F 		tst	r3, #134217728
- 138 0064 D3D1     		bne	.L2
-2603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 139              		.loc 1 2603 7 is_stmt 1 view .LVU36
-2603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 140              		.loc 1 2603 12 is_stmt 0 view .LVU37
- 141 0066 FFF7FEFF 		bl	HAL_GetTick
- 142              	.LVL10:
-2603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 143              		.loc 1 2603 26 discriminator 1 view .LVU38
- 144 006a 431B     		subs	r3, r0, r5
-2603:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 145              		.loc 1 2603 10 discriminator 1 view .LVU39
- 146 006c 022B     		cmp	r3, #2
- 147 006e F5D9     		bls	.L6
-2606:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
- 148              		.loc 1 2606 16 view .LVU40
- 149 0070 0320     		movs	r0, #3
- 150 0072 D1E7     		b	.L4
- 151              	.LVL11:
- 152              	.L22:
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 51
-
-
-2615:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 153              		.loc 1 2615 5 is_stmt 1 view .LVU41
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 154              		.loc 1 2618 5 view .LVU42
- 155              	.LBB2:
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 156              		.loc 1 2618 5 view .LVU43
- 157 0074 0023     		movs	r3, #0
- 158 0076 0193     		str	r3, [sp, #4]
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 159              		.loc 1 2618 5 view .LVU44
- 160 0078 344B     		ldr	r3, .L27+4
- 161 007a 1A6C     		ldr	r2, [r3, #64]
- 162 007c 42F08052 		orr	r2, r2, #268435456
- 163 0080 1A64     		str	r2, [r3, #64]
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 164              		.loc 1 2618 5 view .LVU45
- 165 0082 1B6C     		ldr	r3, [r3, #64]
- 166 0084 03F08053 		and	r3, r3, #268435456
- 167 0088 0193     		str	r3, [sp, #4]
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 168              		.loc 1 2618 5 view .LVU46
- 169 008a 019B     		ldr	r3, [sp, #4]
- 170              	.LBE2:
-2618:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 171              		.loc 1 2618 5 view .LVU47
-2621:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 172              		.loc 1 2621 5 view .LVU48
-2621:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 173              		.loc 1 2621 8 is_stmt 0 view .LVU49
- 174 008c 304A     		ldr	r2, .L27+8
- 175 008e 1368     		ldr	r3, [r2]
-2621:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 176              		.loc 1 2621 13 view .LVU50
- 177 0090 43F48073 		orr	r3, r3, #256
- 178 0094 1360     		str	r3, [r2]
-2624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 179              		.loc 1 2624 5 is_stmt 1 view .LVU51
-2624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 180              		.loc 1 2624 17 is_stmt 0 view .LVU52
- 181 0096 FFF7FEFF 		bl	HAL_GetTick
- 182              	.LVL12:
- 183 009a 0546     		mov	r5, r0
- 184              	.LVL13:
-2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 185              		.loc 1 2626 5 is_stmt 1 view .LVU53
- 186              	.L8:
-2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 187              		.loc 1 2626 35 view .LVU54
-2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 188              		.loc 1 2626 16 is_stmt 0 view .LVU55
- 189 009c 2C4B     		ldr	r3, .L27+8
- 190 009e 1B68     		ldr	r3, [r3]
-2626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 191              		.loc 1 2626 35 view .LVU56
- 192 00a0 13F4807F 		tst	r3, #256
- 193 00a4 06D1     		bne	.L24
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 52
-
-
-2628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 194              		.loc 1 2628 7 is_stmt 1 view .LVU57
-2628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 195              		.loc 1 2628 12 is_stmt 0 view .LVU58
- 196 00a6 FFF7FEFF 		bl	HAL_GetTick
- 197              	.LVL14:
-2628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 198              		.loc 1 2628 26 discriminator 1 view .LVU59
- 199 00aa 431B     		subs	r3, r0, r5
-2628:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 200              		.loc 1 2628 10 discriminator 1 view .LVU60
- 201 00ac 022B     		cmp	r3, #2
- 202 00ae F5D9     		bls	.L8
-2630:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
- 203              		.loc 1 2630 16 view .LVU61
- 204 00b0 0320     		movs	r0, #3
- 205 00b2 B1E7     		b	.L4
- 206              	.L24:
-2634:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((tmpreg1 != 0x00000000U) && ((tmpreg1) != (PeriphClkInit->RTCClockSelection & RCC_BDCR_RTCS
- 207              		.loc 1 2634 5 is_stmt 1 view .LVU62
-2634:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((tmpreg1 != 0x00000000U) && ((tmpreg1) != (PeriphClkInit->RTCClockSelection & RCC_BDCR_RTCS
- 208              		.loc 1 2634 19 is_stmt 0 view .LVU63
- 209 00b4 254B     		ldr	r3, .L27+4
- 210 00b6 1B6F     		ldr	r3, [r3, #112]
- 211              	.LVL15:
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 212              		.loc 1 2635 5 is_stmt 1 view .LVU64
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 213              		.loc 1 2635 8 is_stmt 0 view .LVU65
- 214 00b8 13F44073 		ands	r3, r3, #768
- 215              	.LVL16:
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 216              		.loc 1 2635 8 view .LVU66
- 217 00bc 14D0     		beq	.L10
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 218              		.loc 1 2635 65 discriminator 1 view .LVU67
- 219 00be E268     		ldr	r2, [r4, #12]
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 220              		.loc 1 2635 85 discriminator 1 view .LVU68
- 221 00c0 02F44072 		and	r2, r2, #768
-2635:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 222              		.loc 1 2635 34 discriminator 1 view .LVU69
- 223 00c4 9A42     		cmp	r2, r3
- 224 00c6 0FD0     		beq	.L10
-2638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* RTC Clock selection can be changed only if the Backup Domain is reset */
- 225              		.loc 1 2638 7 is_stmt 1 view .LVU70
-2638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* RTC Clock selection can be changed only if the Backup Domain is reset */
- 226              		.loc 1 2638 21 is_stmt 0 view .LVU71
- 227 00c8 204B     		ldr	r3, .L27+4
- 228              	.LVL17:
-2638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* RTC Clock selection can be changed only if the Backup Domain is reset */
- 229              		.loc 1 2638 21 view .LVU72
- 230 00ca 1A6F     		ldr	r2, [r3, #112]
-2638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* RTC Clock selection can be changed only if the Backup Domain is reset */
- 231              		.loc 1 2638 15 view .LVU73
- 232 00cc 22F44072 		bic	r2, r2, #768
- 233              	.LVL18:
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 53
-
-
-2640:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       __HAL_RCC_BACKUPRESET_RELEASE();
- 234              		.loc 1 2640 7 is_stmt 1 view .LVU74
- 235 00d0 1D49     		ldr	r1, .L27
- 236 00d2 0120     		movs	r0, #1
- 237 00d4 C1F8400E 		str	r0, [r1, #3648]
-2641:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Restore the Content of BDCR register */
- 238              		.loc 1 2641 7 view .LVU75
- 239 00d8 0020     		movs	r0, #0
- 240 00da C1F8400E 		str	r0, [r1, #3648]
-2643:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 241              		.loc 1 2643 7 view .LVU76
-2643:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 242              		.loc 1 2643 17 is_stmt 0 view .LVU77
- 243 00de 1A67     		str	r2, [r3, #112]
-2646:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 244              		.loc 1 2646 7 is_stmt 1 view .LVU78
-2646:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 245              		.loc 1 2646 11 is_stmt 0 view .LVU79
- 246 00e0 1B6F     		ldr	r3, [r3, #112]
-2646:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
- 247              		.loc 1 2646 10 view .LVU80
- 248 00e2 13F0010F 		tst	r3, #1
- 249 00e6 13D1     		bne	.L25
- 250              	.LVL19:
- 251              	.L10:
-2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 252              		.loc 1 2661 5 is_stmt 1 view .LVU81
-2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 253              		.loc 1 2661 5 view .LVU82
- 254 00e8 E368     		ldr	r3, [r4, #12]
- 255 00ea 03F44072 		and	r2, r3, #768
- 256 00ee B2F5407F 		cmp	r2, #768
- 257 00f2 1ED0     		beq	.L26
-2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 258              		.loc 1 2661 5 is_stmt 0 discriminator 2 view .LVU83
- 259 00f4 154A     		ldr	r2, .L27+4
- 260 00f6 9368     		ldr	r3, [r2, #8]
- 261 00f8 23F4F813 		bic	r3, r3, #2031616
- 262 00fc 9360     		str	r3, [r2, #8]
- 263              	.L14:
-2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 264              		.loc 1 2661 5 is_stmt 1 discriminator 4 view .LVU84
- 265 00fe 1349     		ldr	r1, .L27+4
- 266 0100 0B6F     		ldr	r3, [r1, #112]
- 267 0102 E268     		ldr	r2, [r4, #12]
- 268 0104 C2F30B02 		ubfx	r2, r2, #0, #12
- 269 0108 1343     		orrs	r3, r3, r2
- 270 010a 0B67     		str	r3, [r1, #112]
-2670:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 271              		.loc 1 2670 10 is_stmt 0 view .LVU85
- 272 010c 0020     		movs	r0, #0
- 273 010e 83E7     		b	.L4
- 274              	.LVL20:
- 275              	.L25:
-2649:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 276              		.loc 1 2649 9 is_stmt 1 view .LVU86
-2649:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 54
-
-
- 277              		.loc 1 2649 21 is_stmt 0 view .LVU87
- 278 0110 FFF7FEFF 		bl	HAL_GetTick
- 279              	.LVL21:
-2649:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 280              		.loc 1 2649 21 view .LVU88
- 281 0114 0546     		mov	r5, r0
- 282              	.LVL22:
-2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
- 283              		.loc 1 2652 9 is_stmt 1 view .LVU89
- 284              	.L11:
-2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
- 285              		.loc 1 2652 52 view .LVU90
-2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
- 286              		.loc 1 2652 16 is_stmt 0 view .LVU91
- 287 0116 0D4B     		ldr	r3, .L27+4
- 288 0118 1B6F     		ldr	r3, [r3, #112]
-2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
- 289              		.loc 1 2652 52 view .LVU92
- 290 011a 13F0020F 		tst	r3, #2
- 291 011e E3D1     		bne	.L10
-2654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
- 292              		.loc 1 2654 11 is_stmt 1 view .LVU93
-2654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
- 293              		.loc 1 2654 16 is_stmt 0 view .LVU94
- 294 0120 FFF7FEFF 		bl	HAL_GetTick
- 295              	.LVL23:
-2654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
- 296              		.loc 1 2654 30 discriminator 1 view .LVU95
- 297 0124 401B     		subs	r0, r0, r5
-2654:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
- 298              		.loc 1 2654 14 discriminator 1 view .LVU96
- 299 0126 41F28833 		movw	r3, #5000
- 300 012a 9842     		cmp	r0, r3
- 301 012c F3D9     		bls	.L11
-2656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 302              		.loc 1 2656 20 view .LVU97
- 303 012e 0320     		movs	r0, #3
- 304 0130 72E7     		b	.L4
- 305              	.LVL24:
- 306              	.L26:
-2661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 307              		.loc 1 2661 5 discriminator 1 view .LVU98
- 308 0132 0649     		ldr	r1, .L27+4
- 309 0134 8A68     		ldr	r2, [r1, #8]
- 310 0136 22F4F812 		bic	r2, r2, #2031616
- 311 013a 23F07043 		bic	r3, r3, #-268435456
- 312 013e 23F44073 		bic	r3, r3, #768
- 313 0142 1343     		orrs	r3, r3, r2
- 314 0144 8B60     		str	r3, [r1, #8]
- 315 0146 DAE7     		b	.L14
- 316              	.L28:
- 317              		.align	2
- 318              	.L27:
- 319 0148 00004742 		.word	1111949312
- 320 014c 00380240 		.word	1073887232
- 321 0150 00700040 		.word	1073770496
- 322              		.cfi_endproc
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 55
-
-
- 323              	.LFE134:
- 325              		.section	.text.HAL_RCCEx_GetPeriphCLKConfig,"ax",%progbits
- 326              		.align	1
- 327              		.global	HAL_RCCEx_GetPeriphCLKConfig
- 328              		.syntax unified
- 329              		.thumb
- 330              		.thumb_func
- 332              	HAL_RCCEx_GetPeriphCLKConfig:
- 333              	.LVL25:
- 334              	.LFB135:
+ 308              		.loc 1 2671 1
+ 309 01aa 1846     		mov	r0, r3
+ 310 01ac 1837     		adds	r7, r7, #24
+ 311              	.LCFI3:
+ 312              		.cfi_def_cfa_offset 8
+ 313 01ae BD46     		mov	sp, r7
+ 314              	.LCFI4:
+ 315              		.cfi_def_cfa_register 13
+ 316              		@ sp needed
+ 317 01b0 80BD     		pop	{r7, pc}
+ 318              	.L18:
+ 319 01b2 00BF     		.align	2
+ 320              	.L17:
+ 321 01b4 68004742 		.word	1111949416
+ 322 01b8 00380240 		.word	1073887232
+ 323 01bc 00700040 		.word	1073770496
+ 324 01c0 400E4742 		.word	1111952960
+ 325              		.cfi_endproc
+ 326              	.LFE134:
+ 328              		.section	.text.HAL_RCCEx_GetPeriphCLKConfig,"ax",%progbits
+ 329              		.align	1
+ 330              		.global	HAL_RCCEx_GetPeriphCLKConfig
+ 331              		.syntax unified
+ 332              		.thumb
+ 333              		.thumb_func
+ 335              	HAL_RCCEx_GetPeriphCLKConfig:
+ 336              	.LFB135:
 2672:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2673:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 2674:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Configures the RCC_OscInitStruct according to the internal
@@ -3258,66 +3178,84 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2676:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @param  PeriphClkInit pointer to an RCC_PeriphCLKInitTypeDef structure that
 2677:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * will be configured.
 2678:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval None
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 54
+
+
 2679:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 2680:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
 2681:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
- 335              		.loc 1 2681 1 is_stmt 1 view -0
- 336              		.cfi_startproc
- 337              		@ args = 0, pretend = 0, frame = 0
- 338              		@ frame_needed = 0, uses_anonymous_args = 0
- 339              		@ link register save eliminated.
+ 337              		.loc 1 2681 1
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 16
+ 340              		@ frame_needed = 1, uses_anonymous_args = 0
+ 341              		@ link register save eliminated.
+ 342 0000 80B4     		push	{r7}
+ 343              	.LCFI5:
+ 344              		.cfi_def_cfa_offset 4
+ 345              		.cfi_offset 7, -4
+ 346 0002 85B0     		sub	sp, sp, #20
+ 347              	.LCFI6:
+ 348              		.cfi_def_cfa_offset 24
+ 349 0004 00AF     		add	r7, sp, #0
+ 350              	.LCFI7:
+ 351              		.cfi_def_cfa_register 7
+ 352 0006 7860     		str	r0, [r7, #4]
 2682:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tempreg;
- 340              		.loc 1 2682 3 view .LVU100
 2683:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2684:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Set all possible values for the extended clock type parameter------------*/
 2685:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PeriphClockSelection = RCC_PERIPHCLK_I2S | RCC_PERIPHCLK_RTC;
- 341              		.loc 1 2685 3 view .LVU101
- 342              		.loc 1 2685 39 is_stmt 0 view .LVU102
- 343 0000 0323     		movs	r3, #3
- 344 0002 0360     		str	r3, [r0]
+ 353              		.loc 1 2685 39
+ 354 0008 7B68     		ldr	r3, [r7, #4]
+ 355 000a 0322     		movs	r2, #3
+ 356 000c 1A60     		str	r2, [r3]
 2686:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2687:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the PLLI2S Clock configuration --------------------------------------*/
 2688:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SN = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SN) >> RCC_PLLI
- 345              		.loc 1 2688 3 is_stmt 1 view .LVU103
- 346              		.loc 1 2688 50 is_stmt 0 view .LVU104
- 347 0004 094B     		ldr	r3, .L30
- 348 0006 D3F88420 		ldr	r2, [r3, #132]
- 349              		.loc 1 2688 35 view .LVU105
- 350 000a C2F38812 		ubfx	r2, r2, #6, #9
- 351              		.loc 1 2688 33 view .LVU106
- 352 000e 4260     		str	r2, [r0, #4]
+ 357              		.loc 1 2688 50
+ 358 000e 114B     		ldr	r3, .L20
+ 359 0010 D3F88430 		ldr	r3, [r3, #132]
+ 360              		.loc 1 2688 35
+ 361 0014 9B09     		lsrs	r3, r3, #6
+ 362 0016 C3F30802 		ubfx	r2, r3, #0, #9
+ 363              		.loc 1 2688 33
+ 364 001a 7B68     		ldr	r3, [r7, #4]
+ 365 001c 5A60     		str	r2, [r3, #4]
 2689:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SR = (uint32_t)((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SR) >> RCC_PLLI
- 353              		.loc 1 2689 3 is_stmt 1 view .LVU107
- 354              		.loc 1 2689 50 is_stmt 0 view .LVU108
- 355 0010 D3F88420 		ldr	r2, [r3, #132]
- 356              		.loc 1 2689 35 view .LVU109
- 357 0014 C2F30272 		ubfx	r2, r2, #28, #3
- 358              		.loc 1 2689 33 view .LVU110
- 359 0018 8260     		str	r2, [r0, #8]
+ 366              		.loc 1 2689 50
+ 367 001e 0D4B     		ldr	r3, .L20
+ 368 0020 D3F88430 		ldr	r3, [r3, #132]
+ 369              		.loc 1 2689 35
+ 370 0024 1B0F     		lsrs	r3, r3, #28
+ 371 0026 03F00702 		and	r2, r3, #7
+ 372              		.loc 1 2689 33
+ 373 002a 7B68     		ldr	r3, [r7, #4]
+ 374 002c 9A60     		str	r2, [r3, #8]
 2690:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F411xE)
 2691:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->PLLI2S.PLLI2SM = (uint32_t)(RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM);
 2692:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F411xE */
 2693:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the RTC Clock configuration -----------------------------------------*/
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 56
-
-
 2694:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tempreg = (RCC->CFGR & RCC_CFGR_RTCPRE);
- 360              		.loc 1 2694 3 is_stmt 1 view .LVU111
- 361              		.loc 1 2694 17 is_stmt 0 view .LVU112
- 362 001a 9A68     		ldr	r2, [r3, #8]
- 363              		.loc 1 2694 11 view .LVU113
- 364 001c 02F4F812 		and	r2, r2, #2031616
- 365              	.LVL26:
+ 375              		.loc 1 2694 17
+ 376 002e 094B     		ldr	r3, .L20
+ 377 0030 9B68     		ldr	r3, [r3, #8]
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 55
+
+
+ 378              		.loc 1 2694 11
+ 379 0032 03F4F813 		and	r3, r3, #2031616
+ 380 0036 FB60     		str	r3, [r7, #12]
 2695:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   PeriphClkInit->RTCClockSelection = (uint32_t)((tempreg) | (RCC->BDCR & RCC_BDCR_RTCSEL));
- 366              		.loc 1 2695 3 is_stmt 1 view .LVU114
- 367              		.loc 1 2695 65 is_stmt 0 view .LVU115
- 368 0020 1B6F     		ldr	r3, [r3, #112]
- 369              		.loc 1 2695 72 view .LVU116
- 370 0022 03F44073 		and	r3, r3, #768
- 371              		.loc 1 2695 38 view .LVU117
- 372 0026 1343     		orrs	r3, r3, r2
- 373              		.loc 1 2695 36 view .LVU118
- 374 0028 C360     		str	r3, [r0, #12]
+ 381              		.loc 1 2695 65
+ 382 0038 064B     		ldr	r3, .L20
+ 383 003a 1B6F     		ldr	r3, [r3, #112]
+ 384              		.loc 1 2695 72
+ 385 003c 03F44072 		and	r2, r3, #768
+ 386              		.loc 1 2695 38
+ 387 0040 FB68     		ldr	r3, [r7, #12]
+ 388 0042 1A43     		orrs	r2, r2, r3
+ 389              		.loc 1 2695 36
+ 390 0044 7B68     		ldr	r3, [r7, #4]
+ 391 0046 DA60     		str	r2, [r3, #12]
 2696:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2697:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE)
 2698:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get the TIM Prescaler configuration -------------------------------------*/
@@ -3331,24 +3269,38 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2706:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2707:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F401xC || STM32F401xE || STM32F411xE */
 2708:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 375              		.loc 1 2708 1 view .LVU119
- 376 002a 7047     		bx	lr
- 377              	.L31:
- 378              		.align	2
- 379              	.L30:
- 380 002c 00380240 		.word	1073887232
- 381              		.cfi_endproc
- 382              	.LFE135:
- 384              		.section	.text.HAL_RCCEx_GetPeriphCLKFreq,"ax",%progbits
- 385              		.align	1
- 386              		.global	HAL_RCCEx_GetPeriphCLKFreq
- 387              		.syntax unified
- 388              		.thumb
- 389              		.thumb_func
- 391              	HAL_RCCEx_GetPeriphCLKFreq:
- 392              	.LVL27:
- 393              	.LFB136:
+ 392              		.loc 1 2708 1
+ 393 0048 00BF     		nop
+ 394 004a 1437     		adds	r7, r7, #20
+ 395              	.LCFI8:
+ 396              		.cfi_def_cfa_offset 4
+ 397 004c BD46     		mov	sp, r7
+ 398              	.LCFI9:
+ 399              		.cfi_def_cfa_register 13
+ 400              		@ sp needed
+ 401 004e 5DF8047B 		ldr	r7, [sp], #4
+ 402              	.LCFI10:
+ 403              		.cfi_restore 7
+ 404              		.cfi_def_cfa_offset 0
+ 405 0052 7047     		bx	lr
+ 406              	.L21:
+ 407              		.align	2
+ 408              	.L20:
+ 409 0054 00380240 		.word	1073887232
+ 410              		.cfi_endproc
+ 411              	.LFE135:
+ 413              		.section	.text.HAL_RCCEx_GetPeriphCLKFreq,"ax",%progbits
+ 414              		.align	1
+ 415              		.global	HAL_RCCEx_GetPeriphCLKFreq
+ 416              		.syntax unified
+ 417              		.thumb
+ 418              		.thumb_func
+ 420              	HAL_RCCEx_GetPeriphCLKFreq:
+ 421              	.LFB136:
 2709:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 56
+
+
 2710:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 2711:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Return the peripheral clock frequency for a given peripheral(SAI..)
 2712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @note   Return 0 if peripheral clock identifier not managed by this API
@@ -3358,72 +3310,82 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2716:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval Frequency in KHz
 2717:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 2718:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 57
-
-
 2719:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
- 394              		.loc 1 2719 1 is_stmt 1 view -0
- 395              		.cfi_startproc
- 396              		@ args = 0, pretend = 0, frame = 0
- 397              		@ frame_needed = 0, uses_anonymous_args = 0
- 398              		@ link register save eliminated.
+ 422              		.loc 1 2719 1
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 24
+ 425              		@ frame_needed = 1, uses_anonymous_args = 0
+ 426              		@ link register save eliminated.
+ 427 0000 80B4     		push	{r7}
+ 428              	.LCFI11:
+ 429              		.cfi_def_cfa_offset 4
+ 430              		.cfi_offset 7, -4
+ 431 0002 87B0     		sub	sp, sp, #28
+ 432              	.LCFI12:
+ 433              		.cfi_def_cfa_offset 32
+ 434 0004 00AF     		add	r7, sp, #0
+ 435              	.LCFI13:
+ 436              		.cfi_def_cfa_register 7
+ 437 0006 7860     		str	r0, [r7, #4]
 2720:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the I2S clock frequency (value in Hz) */
 2721:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t frequency = 0U;
- 399              		.loc 1 2721 3 view .LVU121
+ 438              		.loc 1 2721 12
+ 439 0008 0023     		movs	r3, #0
+ 440 000a 7B61     		str	r3, [r7, #20]
 2722:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Input (value in Hz) */
 2723:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t vcoinput = 0U;
- 400              		.loc 1 2723 3 view .LVU122
+ 441              		.loc 1 2723 12
+ 442 000c 0023     		movs	r3, #0
+ 443 000e 3B61     		str	r3, [r7, #16]
 2724:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t srcclk = 0U;
- 401              		.loc 1 2724 3 view .LVU123
+ 444              		.loc 1 2724 12
+ 445 0010 0023     		movs	r3, #0
+ 446 0012 FB60     		str	r3, [r7, #12]
 2725:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Output (value in Hz) */
 2726:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t vcooutput = 0U;
- 402              		.loc 1 2726 3 view .LVU124
+ 447              		.loc 1 2726 12
+ 448 0014 0023     		movs	r3, #0
+ 449 0016 BB60     		str	r3, [r7, #8]
 2727:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   switch (PeriphClk)
- 403              		.loc 1 2727 3 view .LVU125
- 404 0000 0128     		cmp	r0, #1
- 405 0002 01D0     		beq	.L39
-2721:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Input (value in Hz) */
- 406              		.loc 1 2721 12 is_stmt 0 view .LVU126
- 407 0004 0020     		movs	r0, #0
- 408              	.LVL28:
-2721:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* This variable used to store the VCO Input (value in Hz) */
- 409              		.loc 1 2721 12 view .LVU127
- 410 0006 7047     		bx	lr
- 411              	.LVL29:
- 412              	.L39:
+ 450              		.loc 1 2727 3
+ 451 0018 7B68     		ldr	r3, [r7, #4]
+ 452 001a 012B     		cmp	r3, #1
+ 453 001c 3FD1     		bne	.L31
 2728:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2729:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_PERIPHCLK_I2S:
 2730:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2731:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* Get the current I2S source */
 2732:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       srcclk = __HAL_RCC_GET_I2S_SOURCE();
- 413              		.loc 1 2732 7 is_stmt 1 view .LVU128
- 414              		.loc 1 2732 16 is_stmt 0 view .LVU129
- 415 0008 154B     		ldr	r3, .L40
- 416 000a 9B68     		ldr	r3, [r3, #8]
- 417              	.LVL30:
+ 454              		.loc 1 2732 16
+ 455 001e 244B     		ldr	r3, .L32
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 57
+
+
+ 456 0020 9B68     		ldr	r3, [r3, #8]
+ 457              		.loc 1 2732 14
+ 458 0022 03F40003 		and	r3, r3, #8388608
+ 459 0026 FB60     		str	r3, [r7, #12]
 2733:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       switch (srcclk)
- 418              		.loc 1 2733 7 is_stmt 1 view .LVU130
- 419 000c 13F40003 		ands	r3, r3, #8388608
- 420              	.LVL31:
- 421              		.loc 1 2733 7 is_stmt 0 view .LVU131
- 422 0010 02D0     		beq	.L34
- 423 0012 1BB3     		cbz	r3, .L38
- 424 0014 1348     		ldr	r0, .L40+4
- 425              	.LVL32:
- 426              		.loc 1 2733 7 view .LVU132
- 427 0016 7047     		bx	lr
- 428              	.LVL33:
- 429              	.L34:
+ 460              		.loc 1 2733 7
+ 461 0028 FB68     		ldr	r3, [r7, #12]
+ 462 002a 002B     		cmp	r3, #0
+ 463 002c 06D0     		beq	.L24
+ 464 002e FB68     		ldr	r3, [r7, #12]
+ 465 0030 B3F5000F 		cmp	r3, #8388608
+ 466 0034 2FD1     		bne	.L25
 2734:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 2735:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Check if I2S clock selection is External clock mapped on the I2S_CKIN pin used as I2S cl
 2736:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         case RCC_I2SCLKSOURCE_EXT:
 2737:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 58
-
-
 2738:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* Set the I2S clock to the external clock  value */
 2739:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           frequency = EXTERNAL_CLOCK_VALUE;
+ 467              		.loc 1 2739 21
+ 468 0036 1F4B     		ldr	r3, .L32+4
+ 469 0038 7B61     		str	r3, [r7, #20]
 2740:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           break;
+ 470              		.loc 1 2740 11
+ 471 003a 2FE0     		b	.L26
+ 472              	.L24:
 2741:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
 2742:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Check if I2S clock selection is PLLI2S VCO output clock divided by PLLI2SR used as I2S c
 2743:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         case RCC_I2SCLKSOURCE_PLLI2S:
@@ -3445,130 +3407,146 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2759:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* Configure the PLLI2S division factor */
 2760:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLLI2S_VCO Input  = PLL_SOURCE/PLLM */
 2761:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           if ((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSE)
- 430              		.loc 1 2761 11 is_stmt 1 view .LVU133
- 431              		.loc 1 2761 19 is_stmt 0 view .LVU134
- 432 0018 114B     		ldr	r3, .L40
- 433              	.LVL34:
- 434              		.loc 1 2761 19 view .LVU135
- 435 001a 5B68     		ldr	r3, [r3, #4]
- 436              		.loc 1 2761 14 view .LVU136
- 437 001c 13F4800F 		tst	r3, #4194304
- 438 0020 14D0     		beq	.L35
+ 473              		.loc 1 2761 19
+ 474 003c 1C4B     		ldr	r3, .L32
+ 475 003e 5B68     		ldr	r3, [r3, #4]
+ 476              		.loc 1 2761 29
+ 477 0040 03F48003 		and	r3, r3, #4194304
+ 478              		.loc 1 2761 14
+ 479 0044 B3F5800F 		cmp	r3, #4194304
+ 480 0048 08D1     		bne	.L27
 2762:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
 2763:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             /* Get the I2S source clock value */
 2764:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (uint32_t)(HSE_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
- 439              		.loc 1 2764 13 is_stmt 1 view .LVU137
- 440              		.loc 1 2764 61 is_stmt 0 view .LVU138
- 441 0022 0F4B     		ldr	r3, .L40
- 442 0024 5A68     		ldr	r2, [r3, #4]
- 443              		.loc 1 2764 47 view .LVU139
- 444 0026 02F03F02 		and	r2, r2, #63
- 445              		.loc 1 2764 22 view .LVU140
- 446 002a 0F4B     		ldr	r3, .L40+8
- 447 002c B3FBF2F3 		udiv	r3, r3, r2
- 448              	.LVL35:
- 449              	.L36:
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 58
+
+
+ 481              		.loc 1 2764 61
+ 482 004a 194B     		ldr	r3, .L32
+ 483 004c 5B68     		ldr	r3, [r3, #4]
+ 484              		.loc 1 2764 47
+ 485 004e 03F03F03 		and	r3, r3, #63
+ 486              		.loc 1 2764 22
+ 487 0052 194A     		ldr	r2, .L32+8
+ 488 0054 B2FBF3F3 		udiv	r3, r2, r3
+ 489 0058 3B61     		str	r3, [r7, #16]
+ 490 005a 07E0     		b	.L28
+ 491              	.L27:
 2765:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
 2766:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           else
 2767:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           {
 2768:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             /* Get the I2S source clock value */
 2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****             vcoinput = (uint32_t)(HSI_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
+ 492              		.loc 1 2769 61
+ 493 005c 144B     		ldr	r3, .L32
+ 494 005e 5B68     		ldr	r3, [r3, #4]
+ 495              		.loc 1 2769 47
+ 496 0060 03F03F03 		and	r3, r3, #63
+ 497              		.loc 1 2769 22
+ 498 0064 154A     		ldr	r2, .L32+12
+ 499 0066 B2FBF3F3 		udiv	r3, r2, r3
+ 500 006a 3B61     		str	r3, [r7, #16]
+ 501              	.L28:
 2770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
 2771:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F411xE */
 2772:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* PLLI2S_VCO Output = PLLI2S_VCO Input * PLLI2SN */
 2773:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           vcooutput = (uint32_t)(vcoinput * (((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SN) >> 6U) & (
- 450              		.loc 1 2773 11 is_stmt 1 view .LVU141
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 59
-
-
- 451              		.loc 1 2773 51 is_stmt 0 view .LVU142
- 452 0030 0B4A     		ldr	r2, .L40
- 453 0032 D2F88400 		ldr	r0, [r2, #132]
- 454              	.LVL36:
- 455              		.loc 1 2773 97 view .LVU143
- 456 0036 C0F38810 		ubfx	r0, r0, #6, #9
- 457              		.loc 1 2773 21 view .LVU144
- 458 003a 03FB00F0 		mul	r0, r3, r0
- 459              	.LVL37:
+ 502              		.loc 1 2773 51
+ 503 006c 104B     		ldr	r3, .L32
+ 504 006e D3F88430 		ldr	r3, [r3, #132]
+ 505              		.loc 1 2773 90
+ 506 0072 9B09     		lsrs	r3, r3, #6
+ 507              		.loc 1 2773 97
+ 508 0074 C3F30802 		ubfx	r2, r3, #0, #9
+ 509              		.loc 1 2773 21
+ 510 0078 3B69     		ldr	r3, [r7, #16]
+ 511 007a 02FB03F3 		mul	r3, r2, r3
+ 512 007e BB60     		str	r3, [r7, #8]
 2774:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           /* I2S_CLK = PLLI2S_VCO Output/PLLI2SR */
 2775:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           frequency = (uint32_t)(vcooutput / (((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SR) >> 28U) &
- 460              		.loc 1 2775 11 is_stmt 1 view .LVU145
- 461              		.loc 1 2775 52 is_stmt 0 view .LVU146
- 462 003e D2F88430 		ldr	r3, [r2, #132]
- 463              	.LVL38:
- 464              		.loc 1 2775 99 view .LVU147
- 465 0042 C3F30273 		ubfx	r3, r3, #28, #3
- 466              		.loc 1 2775 21 view .LVU148
- 467 0046 B0FBF3F0 		udiv	r0, r0, r3
- 468              	.LVL39:
+ 513              		.loc 1 2775 52
+ 514 0080 0B4B     		ldr	r3, .L32
+ 515 0082 D3F88430 		ldr	r3, [r3, #132]
+ 516              		.loc 1 2775 91
+ 517 0086 1B0F     		lsrs	r3, r3, #28
+ 518              		.loc 1 2775 99
+ 519 0088 03F00703 		and	r3, r3, #7
+ 520              		.loc 1 2775 21
+ 521 008c BA68     		ldr	r2, [r7, #8]
+ 522 008e B2FBF3F3 		udiv	r3, r2, r3
+ 523 0092 7B61     		str	r3, [r7, #20]
 2776:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           break;
- 469              		.loc 1 2776 11 is_stmt 1 view .LVU149
- 470 004a 7047     		bx	lr
- 471              	.LVL40:
- 472              	.L35:
-2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 473              		.loc 1 2769 13 view .LVU150
-2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 474              		.loc 1 2769 61 is_stmt 0 view .LVU151
- 475 004c 044B     		ldr	r3, .L40
- 476 004e 5A68     		ldr	r2, [r3, #4]
-2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 477              		.loc 1 2769 47 view .LVU152
- 478 0050 02F03F02 		and	r2, r2, #63
-2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 479              		.loc 1 2769 22 view .LVU153
- 480 0054 054B     		ldr	r3, .L40+12
- 481 0056 B3FBF2F3 		udiv	r3, r3, r2
- 482              	.LVL41:
-2769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           }
- 483              		.loc 1 2769 22 view .LVU154
- 484 005a E9E7     		b	.L36
- 485              	.LVL42:
- 486              	.L38:
+ 524              		.loc 1 2776 11
+ 525 0094 02E0     		b	.L26
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 59
+
+
+ 526              	.L25:
 2777:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
 2778:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* Clock not enabled for I2S*/
 2779:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         default:
 2780:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         {
 2781:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           frequency = 0U;
- 487              		.loc 1 2781 21 view .LVU155
- 488 005c 0020     		movs	r0, #0
- 489              	.LVL43:
+ 527              		.loc 1 2781 21
+ 528 0096 0023     		movs	r3, #0
+ 529 0098 7B61     		str	r3, [r7, #20]
 2782:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           break;
+ 530              		.loc 1 2782 11
+ 531 009a 00BF     		nop
+ 532              	.L26:
 2783:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         }
 2784:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 2785:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       break;
+ 533              		.loc 1 2785 7
+ 534 009c 00E0     		b	.L29
+ 535              	.L31:
 2786:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 60
-
-
 2787:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     default:
 2788:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2789:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       break;
+ 536              		.loc 1 2789 7
+ 537 009e 00BF     		nop
+ 538              	.L29:
 2790:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2791:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2792:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return frequency;
- 490              		.loc 1 2792 3 is_stmt 1 view .LVU156
+ 539              		.loc 1 2792 10
+ 540 00a0 7B69     		ldr	r3, [r7, #20]
 2793:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 491              		.loc 1 2793 1 is_stmt 0 view .LVU157
- 492 005e 7047     		bx	lr
- 493              	.L41:
- 494              		.align	2
- 495              	.L40:
- 496 0060 00380240 		.word	1073887232
- 497 0064 0080BB00 		.word	12288000
- 498 0068 001BB700 		.word	12000000
- 499 006c 0024F400 		.word	16000000
- 500              		.cfi_endproc
- 501              	.LFE136:
- 503              		.section	.text.HAL_RCCEx_EnablePLLI2S,"ax",%progbits
- 504              		.align	1
- 505              		.global	HAL_RCCEx_EnablePLLI2S
- 506              		.syntax unified
- 507              		.thumb
- 508              		.thumb_func
- 510              	HAL_RCCEx_EnablePLLI2S:
- 511              	.LVL44:
- 512              	.LFB137:
+ 541              		.loc 1 2793 1
+ 542 00a2 1846     		mov	r0, r3
+ 543 00a4 1C37     		adds	r7, r7, #28
+ 544              	.LCFI14:
+ 545              		.cfi_def_cfa_offset 4
+ 546 00a6 BD46     		mov	sp, r7
+ 547              	.LCFI15:
+ 548              		.cfi_def_cfa_register 13
+ 549              		@ sp needed
+ 550 00a8 5DF8047B 		ldr	r7, [sp], #4
+ 551              	.LCFI16:
+ 552              		.cfi_restore 7
+ 553              		.cfi_def_cfa_offset 0
+ 554 00ac 7047     		bx	lr
+ 555              	.L33:
+ 556 00ae 00BF     		.align	2
+ 557              	.L32:
+ 558 00b0 00380240 		.word	1073887232
+ 559 00b4 0080BB00 		.word	12288000
+ 560 00b8 001BB700 		.word	12000000
+ 561 00bc 0024F400 		.word	16000000
+ 562              		.cfi_endproc
+ 563              	.LFE136:
+ 565              		.section	.text.HAL_RCCEx_EnablePLLI2S,"ax",%progbits
+ 566              		.align	1
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 60
+
+
+ 567              		.global	HAL_RCCEx_EnablePLLI2S
+ 568              		.syntax unified
+ 569              		.thumb
+ 570              		.thumb_func
+ 572              	HAL_RCCEx_EnablePLLI2S:
+ 573              	.LFB137:
 2794:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx || STM32F401xC || STM32F401xE  |
 2795:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2796:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx) || defined(STM32F411xE) ||
@@ -3598,9 +3576,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2820:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2821:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
 2822:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 61
-
-
 2823:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F410xx || STM32F411xE || STM32F446xx || STM32F469xx || STM32F479xx || STM32F412Zx ||
 2824:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2825:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /** @defgroup RCCEx_Exported_Functions_Group2 Extended Clock management functions
@@ -3623,30 +3598,33 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2842:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @param  PLLI2SInit  pointer to an RCC_PLLI2SInitTypeDef structure that
 2843:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         contains the configuration information for the PLLI2S
 2844:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval HAL status
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 61
+
+
 2845:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 2846:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_EnablePLLI2S(RCC_PLLI2SInitTypeDef  *PLLI2SInit)
 2847:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
- 513              		.loc 1 2847 1 is_stmt 1 view -0
- 514              		.cfi_startproc
- 515              		@ args = 0, pretend = 0, frame = 0
- 516              		@ frame_needed = 0, uses_anonymous_args = 0
- 517              		.loc 1 2847 1 is_stmt 0 view .LVU159
- 518 0000 38B5     		push	{r3, r4, r5, lr}
- 519              	.LCFI4:
- 520              		.cfi_def_cfa_offset 16
- 521              		.cfi_offset 3, -16
- 522              		.cfi_offset 4, -12
- 523              		.cfi_offset 5, -8
- 524              		.cfi_offset 14, -4
- 525 0002 0546     		mov	r5, r0
+ 574              		.loc 1 2847 1
+ 575              		.cfi_startproc
+ 576              		@ args = 0, pretend = 0, frame = 16
+ 577              		@ frame_needed = 1, uses_anonymous_args = 0
+ 578 0000 80B5     		push	{r7, lr}
+ 579              	.LCFI17:
+ 580              		.cfi_def_cfa_offset 8
+ 581              		.cfi_offset 7, -8
+ 582              		.cfi_offset 14, -4
+ 583 0002 84B0     		sub	sp, sp, #16
+ 584              	.LCFI18:
+ 585              		.cfi_def_cfa_offset 24
+ 586 0004 00AF     		add	r7, sp, #0
+ 587              	.LCFI19:
+ 588              		.cfi_def_cfa_register 7
+ 589 0006 7860     		str	r0, [r7, #4]
 2848:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart;
- 526              		.loc 1 2848 3 is_stmt 1 view .LVU160
 2849:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2850:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Check for parameters */
 2851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PLLI2SN_VALUE(PLLI2SInit->PLLI2SN));
- 527              		.loc 1 2851 3 view .LVU161
 2852:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PLLI2SR_VALUE(PLLI2SInit->PLLI2SR));
- 528              		.loc 1 2852 3 view .LVU162
 2853:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_PLLI2SCFGR_PLLI2SM)
 2854:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PLLI2SM_VALUE(PLLI2SInit->PLLI2SM));
 2855:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_PLLI2SCFGR_PLLI2SM */
@@ -3658,51 +3636,51 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2861:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_PLLI2SCFGR_PLLI2SQ */
 2862:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2863:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Disable the PLLI2S */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 62
-
-
 2864:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLI2S_DISABLE();
- 529              		.loc 1 2864 3 view .LVU163
- 530 0004 164B     		ldr	r3, .L53
- 531 0006 0022     		movs	r2, #0
- 532 0008 9A66     		str	r2, [r3, #104]
+ 590              		.loc 1 2864 3
+ 591 0008 1D4B     		ldr	r3, .L40
+ 592 000a 0022     		movs	r2, #0
+ 593 000c 1A60     		str	r2, [r3]
 2865:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2866:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLI2S is disabled */
 2867:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
- 533              		.loc 1 2867 3 view .LVU164
- 534              		.loc 1 2867 15 is_stmt 0 view .LVU165
- 535 000a FFF7FEFF 		bl	HAL_GetTick
- 536              	.LVL45:
- 537              		.loc 1 2867 15 view .LVU166
- 538 000e 0446     		mov	r4, r0
- 539              	.LVL46:
+ 594              		.loc 1 2867 15
+ 595 000e FFF7FEFF 		bl	HAL_GetTick
+ 596 0012 F860     		str	r0, [r7, #12]
 2868:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY) != RESET)
- 540              		.loc 1 2868 3 is_stmt 1 view .LVU167
- 541              	.L43:
- 542              		.loc 1 2868 49 view .LVU168
- 543              		.loc 1 2868 10 is_stmt 0 view .LVU169
- 544 0010 144B     		ldr	r3, .L53+4
- 545 0012 1B68     		ldr	r3, [r3]
- 546              		.loc 1 2868 49 view .LVU170
- 547 0014 13F0006F 		tst	r3, #134217728
- 548 0018 06D0     		beq	.L51
+ 597              		.loc 1 2868 9
+ 598 0014 08E0     		b	.L35
+ 599              	.L37:
 2869:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2870:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
- 549              		.loc 1 2870 5 is_stmt 1 view .LVU171
- 550              		.loc 1 2870 10 is_stmt 0 view .LVU172
- 551 001a FFF7FEFF 		bl	HAL_GetTick
- 552              	.LVL47:
- 553              		.loc 1 2870 24 discriminator 1 view .LVU173
- 554 001e 001B     		subs	r0, r0, r4
- 555              		.loc 1 2870 8 discriminator 1 view .LVU174
- 556 0020 0228     		cmp	r0, #2
- 557 0022 F5D9     		bls	.L43
+ 600              		.loc 1 2870 10
+ 601 0016 FFF7FEFF 		bl	HAL_GetTick
+ 602 001a 0246     		mov	r2, r0
+ 603              		.loc 1 2870 24 discriminator 1
+ 604 001c FB68     		ldr	r3, [r7, #12]
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 62
+
+
+ 605 001e D31A     		subs	r3, r2, r3
+ 606              		.loc 1 2870 8 discriminator 1
+ 607 0020 022B     		cmp	r3, #2
+ 608 0022 01D9     		bls	.L35
 2871:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2872:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* return in case of Timeout detected */
 2873:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
- 558              		.loc 1 2873 14 view .LVU175
- 559 0024 0320     		movs	r0, #3
- 560              	.L44:
+ 609              		.loc 1 2873 14
+ 610 0024 0323     		movs	r3, #3
+ 611 0026 26E0     		b	.L36
+ 612              	.L35:
+2868:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 613              		.loc 1 2868 10
+ 614 0028 164B     		ldr	r3, .L40+4
+ 615 002a 1B68     		ldr	r3, [r3]
+ 616 002c 03F00063 		and	r3, r3, #134217728
+2868:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 617              		.loc 1 2868 49
+ 618 0030 002B     		cmp	r3, #0
+ 619 0032 F0D1     		bne	.L37
 2874:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2875:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2876:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -3718,9 +3696,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2886:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       defined(STM32F413xx) || defined(STM32F423xx)
 2887:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* PLLI2S_VCO = f(VCO clock) = f(PLLI2S clock input) * (PLLI2SN/PLLI2SM)*/
 2888:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* I2SQCLK = PLLI2S_VCO / PLLI2SQ */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 63
-
-
 2889:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* I2SRCLK = PLLI2S_VCO / PLLI2SR */
 2890:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLI2S_CONFIG(PLLI2SInit->PLLI2SM, PLLI2SInit->PLLI2SN, \
 2891:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****                           PLLI2SInit->PLLI2SQ, PLLI2SInit->PLLI2SR);
@@ -3738,197 +3713,206 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2903:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* PLLI2S_VCO = f(VCO clock) = f(PLLI2S clock input) x PLLI2SN */
 2904:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* I2SRCLK = PLLI2S_VCO / PLLI2SR */
 2905:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLI2S_CONFIG(PLLI2SInit->PLLI2SN, PLLI2SInit->PLLI2SR);
+ 620              		.loc 1 2905 3
+ 621 0034 7B68     		ldr	r3, [r7, #4]
+ 622 0036 1B68     		ldr	r3, [r3]
+ 623 0038 9A01     		lsls	r2, r3, #6
+ 624 003a 7B68     		ldr	r3, [r7, #4]
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 63
+
+
+ 625 003c 5B68     		ldr	r3, [r3, #4]
+ 626 003e 1B07     		lsls	r3, r3, #28
+ 627 0040 1049     		ldr	r1, .L40+4
+ 628 0042 1343     		orrs	r3, r3, r2
+ 629 0044 C1F88430 		str	r3, [r1, #132]
 2906:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F446xx */
 2907:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2908:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Enable the PLLI2S */
 2909:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLI2S_ENABLE();
+ 630              		.loc 1 2909 3
+ 631 0048 0D4B     		ldr	r3, .L40
+ 632 004a 0122     		movs	r2, #1
+ 633 004c 1A60     		str	r2, [r3]
 2910:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2911:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLI2S is ready */
 2912:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
+ 634              		.loc 1 2912 15
+ 635 004e FFF7FEFF 		bl	HAL_GetTick
+ 636 0052 F860     		str	r0, [r7, #12]
 2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY) == RESET)
+ 637              		.loc 1 2913 9
+ 638 0054 08E0     		b	.L38
+ 639              	.L39:
 2914:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
+ 640              		.loc 1 2915 10
+ 641 0056 FFF7FEFF 		bl	HAL_GetTick
+ 642 005a 0246     		mov	r2, r0
+ 643              		.loc 1 2915 24 discriminator 1
+ 644 005c FB68     		ldr	r3, [r7, #12]
+ 645 005e D31A     		subs	r3, r2, r3
+ 646              		.loc 1 2915 8 discriminator 1
+ 647 0060 022B     		cmp	r3, #2
+ 648 0062 01D9     		bls	.L38
 2916:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2917:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* return in case of Timeout detected */
 2918:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
+ 649              		.loc 1 2918 14
+ 650 0064 0323     		movs	r3, #3
+ 651 0066 06E0     		b	.L36
+ 652              	.L38:
+2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 653              		.loc 1 2913 10
+ 654 0068 064B     		ldr	r3, .L40+4
+ 655 006a 1B68     		ldr	r3, [r3]
+ 656 006c 03F00063 		and	r3, r3, #134217728
+2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 657              		.loc 1 2913 49
+ 658 0070 002B     		cmp	r3, #0
+ 659 0072 F0D0     		beq	.L39
 2919:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2920:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2921:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2922:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return HAL_OK;
+ 660              		.loc 1 2922 10
+ 661 0074 0023     		movs	r3, #0
+ 662              	.L36:
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 64
+
+
 2923:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 561              		.loc 1 2923 1 view .LVU176
- 562 0026 38BD     		pop	{r3, r4, r5, pc}
- 563              	.LVL48:
- 564              	.L51:
-2905:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F446xx */
- 565              		.loc 1 2905 3 is_stmt 1 view .LVU177
- 566 0028 2A68     		ldr	r2, [r5]
- 567 002a 6B68     		ldr	r3, [r5, #4]
- 568 002c 1B07     		lsls	r3, r3, #28
- 569 002e 43EA8213 		orr	r3, r3, r2, lsl #6
- 570 0032 0C4A     		ldr	r2, .L53+4
- 571 0034 C2F88430 		str	r3, [r2, #132]
-2909:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 572              		.loc 1 2909 3 view .LVU178
- 573 0038 094B     		ldr	r3, .L53
- 574 003a 0122     		movs	r2, #1
- 575 003c 9A66     		str	r2, [r3, #104]
-2912:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY) == RESET)
- 576              		.loc 1 2912 3 view .LVU179
-2912:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY) == RESET)
- 577              		.loc 1 2912 15 is_stmt 0 view .LVU180
- 578 003e FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 64
-
-
- 579              	.LVL49:
- 580 0042 0446     		mov	r4, r0
- 581              	.LVL50:
-2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 582              		.loc 1 2913 3 is_stmt 1 view .LVU181
- 583              	.L46:
-2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 584              		.loc 1 2913 49 view .LVU182
-2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 585              		.loc 1 2913 10 is_stmt 0 view .LVU183
- 586 0044 074B     		ldr	r3, .L53+4
- 587 0046 1B68     		ldr	r3, [r3]
-2913:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 588              		.loc 1 2913 49 view .LVU184
- 589 0048 13F0006F 		tst	r3, #134217728
- 590 004c 06D1     		bne	.L52
-2915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 591              		.loc 1 2915 5 is_stmt 1 view .LVU185
-2915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 592              		.loc 1 2915 10 is_stmt 0 view .LVU186
- 593 004e FFF7FEFF 		bl	HAL_GetTick
- 594              	.LVL51:
-2915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 595              		.loc 1 2915 24 discriminator 1 view .LVU187
- 596 0052 001B     		subs	r0, r0, r4
-2915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 597              		.loc 1 2915 8 discriminator 1 view .LVU188
- 598 0054 0228     		cmp	r0, #2
- 599 0056 F5D9     		bls	.L46
-2918:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
- 600              		.loc 1 2918 14 view .LVU189
- 601 0058 0320     		movs	r0, #3
- 602 005a E4E7     		b	.L44
- 603              	.L52:
-2922:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 604              		.loc 1 2922 10 view .LVU190
- 605 005c 0020     		movs	r0, #0
- 606 005e E2E7     		b	.L44
- 607              	.L54:
- 608              		.align	2
- 609              	.L53:
- 610 0060 00004742 		.word	1111949312
- 611 0064 00380240 		.word	1073887232
- 612              		.cfi_endproc
- 613              	.LFE137:
- 615              		.section	.text.HAL_RCCEx_DisablePLLI2S,"ax",%progbits
- 616              		.align	1
- 617              		.global	HAL_RCCEx_DisablePLLI2S
- 618              		.syntax unified
- 619              		.thumb
- 620              		.thumb_func
- 622              	HAL_RCCEx_DisablePLLI2S:
- 623              	.LFB138:
+ 663              		.loc 1 2923 1
+ 664 0076 1846     		mov	r0, r3
+ 665 0078 1037     		adds	r7, r7, #16
+ 666              	.LCFI20:
+ 667              		.cfi_def_cfa_offset 8
+ 668 007a BD46     		mov	sp, r7
+ 669              	.LCFI21:
+ 670              		.cfi_def_cfa_register 13
+ 671              		@ sp needed
+ 672 007c 80BD     		pop	{r7, pc}
+ 673              	.L41:
+ 674 007e 00BF     		.align	2
+ 675              	.L40:
+ 676 0080 68004742 		.word	1111949416
+ 677 0084 00380240 		.word	1073887232
+ 678              		.cfi_endproc
+ 679              	.LFE137:
+ 681              		.section	.text.HAL_RCCEx_DisablePLLI2S,"ax",%progbits
+ 682              		.align	1
+ 683              		.global	HAL_RCCEx_DisablePLLI2S
+ 684              		.syntax unified
+ 685              		.thumb
+ 686              		.thumb_func
+ 688              	HAL_RCCEx_DisablePLLI2S:
+ 689              	.LFB138:
 2924:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2925:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 2926:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @brief  Disable PLLI2S.
 2927:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval HAL status
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 65
-
-
 2928:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 2929:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_DisablePLLI2S(void)
 2930:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
- 624              		.loc 1 2930 1 is_stmt 1 view -0
- 625              		.cfi_startproc
- 626              		@ args = 0, pretend = 0, frame = 0
- 627              		@ frame_needed = 0, uses_anonymous_args = 0
- 628 0000 10B5     		push	{r4, lr}
- 629              	.LCFI5:
- 630              		.cfi_def_cfa_offset 8
- 631              		.cfi_offset 4, -8
- 632              		.cfi_offset 14, -4
+ 690              		.loc 1 2930 1
+ 691              		.cfi_startproc
+ 692              		@ args = 0, pretend = 0, frame = 8
+ 693              		@ frame_needed = 1, uses_anonymous_args = 0
+ 694 0000 80B5     		push	{r7, lr}
+ 695              	.LCFI22:
+ 696              		.cfi_def_cfa_offset 8
+ 697              		.cfi_offset 7, -8
+ 698              		.cfi_offset 14, -4
+ 699 0002 82B0     		sub	sp, sp, #8
+ 700              	.LCFI23:
+ 701              		.cfi_def_cfa_offset 16
+ 702 0004 00AF     		add	r7, sp, #0
+ 703              	.LCFI24:
+ 704              		.cfi_def_cfa_register 7
 2931:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart;
- 633              		.loc 1 2931 3 view .LVU192
 2932:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2933:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Disable the PLLI2S */
 2934:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLI2S_DISABLE();
- 634              		.loc 1 2934 3 view .LVU193
- 635 0002 0A4B     		ldr	r3, .L62
- 636 0004 0022     		movs	r2, #0
- 637 0006 9A66     		str	r2, [r3, #104]
+ 705              		.loc 1 2934 3
+ 706 0006 0D4B     		ldr	r3, .L46
+ 707 0008 0022     		movs	r2, #0
+ 708 000a 1A60     		str	r2, [r3]
 2935:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 65
+
+
 2936:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLI2S is disabled */
 2937:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
- 638              		.loc 1 2937 3 view .LVU194
- 639              		.loc 1 2937 15 is_stmt 0 view .LVU195
- 640 0008 FFF7FEFF 		bl	HAL_GetTick
- 641              	.LVL52:
- 642 000c 0446     		mov	r4, r0
- 643              	.LVL53:
+ 709              		.loc 1 2937 15
+ 710 000c FFF7FEFF 		bl	HAL_GetTick
+ 711 0010 7860     		str	r0, [r7, #4]
 2938:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CR, RCC_CR_PLLI2SRDY) != RESET)
- 644              		.loc 1 2938 3 is_stmt 1 view .LVU196
- 645              	.L56:
- 646              		.loc 1 2938 46 view .LVU197
- 647              		.loc 1 2938 10 is_stmt 0 view .LVU198
- 648 000e 084B     		ldr	r3, .L62+4
- 649 0010 1B68     		ldr	r3, [r3]
- 650              		.loc 1 2938 46 view .LVU199
- 651 0012 13F0006F 		tst	r3, #134217728
- 652 0016 06D0     		beq	.L61
+ 712              		.loc 1 2938 9
+ 713 0012 08E0     		b	.L43
+ 714              	.L45:
 2939:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 2940:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
- 653              		.loc 1 2940 5 is_stmt 1 view .LVU200
- 654              		.loc 1 2940 10 is_stmt 0 view .LVU201
- 655 0018 FFF7FEFF 		bl	HAL_GetTick
- 656              	.LVL54:
- 657              		.loc 1 2940 24 discriminator 1 view .LVU202
- 658 001c 001B     		subs	r0, r0, r4
- 659              		.loc 1 2940 8 discriminator 1 view .LVU203
- 660 001e 0228     		cmp	r0, #2
- 661 0020 F5D9     		bls	.L56
+ 715              		.loc 1 2940 10
+ 716 0014 FFF7FEFF 		bl	HAL_GetTick
+ 717 0018 0246     		mov	r2, r0
+ 718              		.loc 1 2940 24 discriminator 1
+ 719 001a 7B68     		ldr	r3, [r7, #4]
+ 720 001c D31A     		subs	r3, r2, r3
+ 721              		.loc 1 2940 8 discriminator 1
+ 722 001e 022B     		cmp	r3, #2
+ 723 0020 01D9     		bls	.L43
 2941:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 2942:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       /* return in case of Timeout detected */
 2943:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
- 662              		.loc 1 2943 14 view .LVU204
- 663 0022 0320     		movs	r0, #3
- 664 0024 00E0     		b	.L57
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 66
-
-
- 665              	.L61:
+ 724              		.loc 1 2943 14
+ 725 0022 0323     		movs	r3, #3
+ 726 0024 06E0     		b	.L44
+ 727              	.L43:
+2938:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 728              		.loc 1 2938 10
+ 729 0026 064B     		ldr	r3, .L46+4
+ 730 0028 1B68     		ldr	r3, [r3]
+ 731 002a 03F00063 		and	r3, r3, #134217728
+2938:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 732              		.loc 1 2938 46
+ 733 002e 002B     		cmp	r3, #0
+ 734 0030 F0D1     		bne	.L45
 2944:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 2945:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 2946:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2947:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return HAL_OK;
- 666              		.loc 1 2947 10 view .LVU205
- 667 0026 0020     		movs	r0, #0
- 668              	.L57:
+ 735              		.loc 1 2947 10
+ 736 0032 0023     		movs	r3, #0
+ 737              	.L44:
 2948:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 669              		.loc 1 2948 1 view .LVU206
- 670 0028 10BD     		pop	{r4, pc}
- 671              	.LVL55:
- 672              	.L63:
- 673              		.loc 1 2948 1 view .LVU207
- 674 002a 00BF     		.align	2
- 675              	.L62:
- 676 002c 00004742 		.word	1111949312
- 677 0030 00380240 		.word	1073887232
- 678              		.cfi_endproc
- 679              	.LFE138:
- 681              		.section	.text.HAL_RCC_DeInit,"ax",%progbits
- 682              		.align	1
- 683              		.global	HAL_RCC_DeInit
- 684              		.syntax unified
- 685              		.thumb
- 686              		.thumb_func
- 688              	HAL_RCC_DeInit:
- 689              	.LFB139:
+ 738              		.loc 1 2948 1
+ 739 0034 1846     		mov	r0, r3
+ 740 0036 0837     		adds	r7, r7, #8
+ 741              	.LCFI25:
+ 742              		.cfi_def_cfa_offset 8
+ 743 0038 BD46     		mov	sp, r7
+ 744              	.LCFI26:
+ 745              		.cfi_def_cfa_register 13
+ 746              		@ sp needed
+ 747 003a 80BD     		pop	{r7, pc}
+ 748              	.L47:
+ 749              		.align	2
+ 750              	.L46:
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 66
+
+
+ 751 003c 68004742 		.word	1111949416
+ 752 0040 00380240 		.word	1073887232
+ 753              		.cfi_endproc
+ 754              	.LFE138:
+ 756              		.section	.text.HAL_RCC_DeInit,"ax",%progbits
+ 757              		.align	1
+ 758              		.global	HAL_RCC_DeInit
+ 759              		.syntax unified
+ 760              		.thumb
+ 761              		.thumb_func
+ 763              	HAL_RCC_DeInit:
+ 764              	.LFB139:
 2949:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2950:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_PLLI2S_SUPPORT */
 2951:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -3958,9 +3942,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2975:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2976:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Disable the PLLSAI */
 2977:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLSAI_DISABLE();
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 67
-
-
 2978:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 2979:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLSAI is disabled */
 2980:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
@@ -3977,6 +3958,9 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 2991:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(STM32F446xx)
 2992:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* PLLSAI_VCO = f(VCO clock) = f(PLLSAI clock input) * (PLLSAIN/PLLSAIM) */
 2993:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* SAIPCLK = PLLSAI_VCO / PLLSAIP */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 67
+
+
 2994:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* SAIQCLK = PLLSAI_VCO / PLLSAIQ */
 2995:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* SAIRCLK = PLLSAI_VCO / PLLSAIR */
 2996:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   __HAL_RCC_PLLSAI_CONFIG(PLLSAIInit->PLLSAIM, PLLSAIInit->PLLSAIN, \
@@ -4018,9 +4002,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3032:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 3033:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCCEx_DisablePLLSAI(void)
 3034:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 68
-
-
 3035:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart;
 3036:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3037:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Disable the PLLSAI */
@@ -4037,6 +4018,9 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3048:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3049:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3050:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 68
+
+
 3051:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   return HAL_OK;
 3052:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
 3053:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -4078,9 +4062,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3089:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *         right SYSCLK value. Otherwise, any configuration based on this function will be incorre
 3090:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *
 3091:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   *
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 69
-
-
 3092:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @retval SYSCLK frequency
 3093:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 3094:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** uint32_t HAL_RCC_GetSysClockFreq(void)
@@ -4097,6 +4078,9 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3105:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_CFGR_SWS_HSI:  /* HSI used as system clock source */
 3106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       sysclockfreq = HSI_VALUE;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 69
+
+
 3108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       break;
 3109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     case RCC_CFGR_SWS_HSE:  /* HSE used as system clock  source */
@@ -4138,9 +4122,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       {
 3147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         /* HSI used as PLL clock source */
 3148:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****         pllvco = (uint32_t)((((uint64_t) HSI_VALUE * ((uint64_t)((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) 
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 70
-
-
 3149:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       }
 3150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       pllr = ((RCC->PLLCFGR & RCC_PLLCFGR_PLLR) >> RCC_PLLCFGR_PLLR_Pos);
 3151:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
@@ -4157,6 +4138,9 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
 3163:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F446xx */
 3164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 70
+
+
 3165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** /**
 3166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   * @}
 3167:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
@@ -4180,135 +4164,289 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3185:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   */
 3186:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** HAL_StatusTypeDef HAL_RCC_DeInit(void)
 3187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** {
- 690              		.loc 1 3187 1 is_stmt 1 view -0
- 691              		.cfi_startproc
- 692              		@ args = 0, pretend = 0, frame = 0
- 693              		@ frame_needed = 0, uses_anonymous_args = 0
- 694 0000 38B5     		push	{r3, r4, r5, lr}
- 695              	.LCFI6:
- 696              		.cfi_def_cfa_offset 16
- 697              		.cfi_offset 3, -16
- 698              		.cfi_offset 4, -12
- 699              		.cfi_offset 5, -8
- 700              		.cfi_offset 14, -4
+ 765              		.loc 1 3187 1
+ 766              		.cfi_startproc
+ 767              		@ args = 0, pretend = 0, frame = 8
+ 768              		@ frame_needed = 1, uses_anonymous_args = 0
+ 769 0000 80B5     		push	{r7, lr}
+ 770              	.LCFI27:
+ 771              		.cfi_def_cfa_offset 8
+ 772              		.cfi_offset 7, -8
+ 773              		.cfi_offset 14, -4
+ 774 0002 82B0     		sub	sp, sp, #8
+ 775              	.LCFI28:
+ 776              		.cfi_def_cfa_offset 16
+ 777 0004 00AF     		add	r7, sp, #0
+ 778              	.LCFI29:
+ 779              		.cfi_def_cfa_register 7
 3188:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   uint32_t tickstart;
- 701              		.loc 1 3188 3 view .LVU209
 3189:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get Start Tick */
 3191:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
- 702              		.loc 1 3191 3 view .LVU210
- 703              		.loc 1 3191 15 is_stmt 0 view .LVU211
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 71
-
-
- 704 0002 FFF7FEFF 		bl	HAL_GetTick
- 705              	.LVL56:
- 706 0006 0446     		mov	r4, r0
- 707              	.LVL57:
+ 780              		.loc 1 3191 15
+ 781 0006 FFF7FEFF 		bl	HAL_GetTick
+ 782 000a 7860     		str	r0, [r7, #4]
 3192:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Set HSION bit to the reset value */
 3194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SET_BIT(RCC->CR, RCC_CR_HSION);
- 708              		.loc 1 3194 3 is_stmt 1 view .LVU212
- 709 0008 464A     		ldr	r2, .L87
- 710 000a 1368     		ldr	r3, [r2]
- 711 000c 43F00103 		orr	r3, r3, #1
- 712 0010 1360     		str	r3, [r2]
+ 783              		.loc 1 3194 3
+ 784 000c 5D4B     		ldr	r3, .L61
+ 785 000e 1B68     		ldr	r3, [r3]
+ 786 0010 5C4A     		ldr	r2, .L61
+ 787 0012 43F00103 		orr	r3, r3, #1
+ 788 0016 1360     		str	r3, [r2]
 3195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till HSI is ready */
 3197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CR, RCC_CR_HSIRDY) == RESET)
- 713              		.loc 1 3197 3 view .LVU213
- 714              	.LVL58:
- 715              	.L65:
- 716              		.loc 1 3197 43 view .LVU214
- 717              		.loc 1 3197 10 is_stmt 0 view .LVU215
- 718 0012 444B     		ldr	r3, .L87
- 719 0014 1B68     		ldr	r3, [r3]
- 720              		.loc 1 3197 43 view .LVU216
- 721 0016 13F0020F 		tst	r3, #2
- 722 001a 06D1     		bne	.L82
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 71
+
+
+ 789              		.loc 1 3197 9
+ 790 0018 08E0     		b	.L49
+ 791              	.L51:
 3198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > HSI_TIMEOUT_VALUE)
- 723              		.loc 1 3199 5 is_stmt 1 view .LVU217
- 724              		.loc 1 3199 10 is_stmt 0 view .LVU218
- 725 001c FFF7FEFF 		bl	HAL_GetTick
- 726              	.LVL59:
- 727              		.loc 1 3199 24 discriminator 1 view .LVU219
- 728 0020 001B     		subs	r0, r0, r4
- 729              		.loc 1 3199 8 discriminator 1 view .LVU220
- 730 0022 0228     		cmp	r0, #2
- 731 0024 F5D9     		bls	.L65
+ 792              		.loc 1 3199 10
+ 793 001a FFF7FEFF 		bl	HAL_GetTick
+ 794 001e 0246     		mov	r2, r0
+ 795              		.loc 1 3199 24 discriminator 1
+ 796 0020 7B68     		ldr	r3, [r7, #4]
+ 797 0022 D31A     		subs	r3, r2, r3
+ 798              		.loc 1 3199 8 discriminator 1
+ 799 0024 022B     		cmp	r3, #2
+ 800 0026 01D9     		bls	.L49
 3200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
- 732              		.loc 1 3201 14 view .LVU221
- 733 0026 0320     		movs	r0, #3
- 734              	.L66:
+ 801              		.loc 1 3201 14
+ 802 0028 0323     		movs	r3, #3
+ 803 002a A7E0     		b	.L50
+ 804              	.L49:
+3197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 805              		.loc 1 3197 10
+ 806 002c 554B     		ldr	r3, .L61
+ 807 002e 1B68     		ldr	r3, [r3]
+ 808 0030 03F00203 		and	r3, r3, #2
+3197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 809              		.loc 1 3197 43
+ 810 0034 002B     		cmp	r3, #0
+ 811 0036 F0D0     		beq	.L51
 3202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3205:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Set HSITRIM[4:0] bits to the reset value */
 3206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SET_BIT(RCC->CR, RCC_CR_HSITRIM_4);
+ 812              		.loc 1 3206 3
+ 813 0038 524B     		ldr	r3, .L61
+ 814 003a 1B68     		ldr	r3, [r3]
+ 815 003c 514A     		ldr	r2, .L61
+ 816 003e 43F08003 		orr	r3, r3, #128
+ 817 0042 1360     		str	r3, [r2]
 3207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get Start Tick */
 3209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
+ 818              		.loc 1 3209 15
+ 819 0044 FFF7FEFF 		bl	HAL_GetTick
+ 820 0048 7860     		str	r0, [r7, #4]
 3210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset CFGR register */
 3212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_REG(RCC->CFGR);
+ 821              		.loc 1 3212 3
+ 822 004a 4E4B     		ldr	r3, .L61
+ 823 004c 0022     		movs	r2, #0
+ 824 004e 9A60     		str	r2, [r3, #8]
 3213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till clock switch is ready */
 3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CFGR, RCC_CFGR_SWS) != RESET)
+ 825              		.loc 1 3215 9
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 72
+
+
+ 826 0050 0AE0     		b	.L52
+ 827              	.L53:
 3216:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > CLOCKSWITCH_TIMEOUT_VALUE)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 72
-
-
+ 828              		.loc 1 3217 10
+ 829 0052 FFF7FEFF 		bl	HAL_GetTick
+ 830 0056 0246     		mov	r2, r0
+ 831              		.loc 1 3217 24 discriminator 1
+ 832 0058 7B68     		ldr	r3, [r7, #4]
+ 833 005a D31A     		subs	r3, r2, r3
+ 834              		.loc 1 3217 8 discriminator 1
+ 835 005c 41F28832 		movw	r2, #5000
+ 836 0060 9342     		cmp	r3, r2
+ 837 0062 01D9     		bls	.L52
 3218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
+ 838              		.loc 1 3219 14
+ 839 0064 0323     		movs	r3, #3
+ 840 0066 89E0     		b	.L50
+ 841              	.L52:
+3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 842              		.loc 1 3215 10
+ 843 0068 464B     		ldr	r3, .L61
+ 844 006a 9B68     		ldr	r3, [r3, #8]
+ 845 006c 03F00C03 		and	r3, r3, #12
+3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 846              		.loc 1 3215 44
+ 847 0070 002B     		cmp	r3, #0
+ 848 0072 EED1     		bne	.L53
 3220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3221:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get Start Tick */
 3224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
+ 849              		.loc 1 3224 15
+ 850 0074 FFF7FEFF 		bl	HAL_GetTick
+ 851 0078 7860     		str	r0, [r7, #4]
 3225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Clear HSEON, HSEBYP and CSSON bits */
 3227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CR, RCC_CR_HSEON | RCC_CR_HSEBYP | RCC_CR_CSSON);
+ 852              		.loc 1 3227 3
+ 853 007a 424B     		ldr	r3, .L61
+ 854 007c 1B68     		ldr	r3, [r3]
+ 855 007e 414A     		ldr	r2, .L61
+ 856 0080 23F45023 		bic	r3, r3, #851968
+ 857 0084 1360     		str	r3, [r2]
 3228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3229:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till HSE is disabled */
 3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CR, RCC_CR_HSERDY) != RESET)
+ 858              		.loc 1 3230 9
+ 859 0086 08E0     		b	.L54
+ 860              	.L55:
 3231:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > HSE_TIMEOUT_VALUE)
+ 861              		.loc 1 3232 10
+ 862 0088 FFF7FEFF 		bl	HAL_GetTick
+ 863 008c 0246     		mov	r2, r0
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 73
+
+
+ 864              		.loc 1 3232 24 discriminator 1
+ 865 008e 7B68     		ldr	r3, [r7, #4]
+ 866 0090 D31A     		subs	r3, r2, r3
+ 867              		.loc 1 3232 8 discriminator 1
+ 868 0092 642B     		cmp	r3, #100
+ 869 0094 01D9     		bls	.L54
 3233:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
+ 870              		.loc 1 3234 14
+ 871 0096 0323     		movs	r3, #3
+ 872 0098 70E0     		b	.L50
+ 873              	.L54:
+3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 874              		.loc 1 3230 10
+ 875 009a 3A4B     		ldr	r3, .L61
+ 876 009c 1B68     		ldr	r3, [r3]
+ 877 009e 03F40033 		and	r3, r3, #131072
+3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 878              		.loc 1 3230 43
+ 879 00a2 002B     		cmp	r3, #0
+ 880 00a4 F0D1     		bne	.L55
 3235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3237:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3238:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get Start Tick */
 3239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
+ 881              		.loc 1 3239 15
+ 882 00a6 FFF7FEFF 		bl	HAL_GetTick
+ 883 00aa 7860     		str	r0, [r7, #4]
 3240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Clear PLLON bit */
 3242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CR, RCC_CR_PLLON);
+ 884              		.loc 1 3242 3
+ 885 00ac 354B     		ldr	r3, .L61
+ 886 00ae 1B68     		ldr	r3, [r3]
+ 887 00b0 344A     		ldr	r2, .L61
+ 888 00b2 23F08073 		bic	r3, r3, #16777216
+ 889 00b6 1360     		str	r3, [r2]
 3243:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLL is disabled */
 3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CR, RCC_CR_PLLRDY) != RESET)
+ 890              		.loc 1 3245 9
+ 891 00b8 08E0     		b	.L56
+ 892              	.L57:
 3246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE)
+ 893              		.loc 1 3247 10
+ 894 00ba FFF7FEFF 		bl	HAL_GetTick
+ 895 00be 0246     		mov	r2, r0
+ 896              		.loc 1 3247 24 discriminator 1
+ 897 00c0 7B68     		ldr	r3, [r7, #4]
+ 898 00c2 D31A     		subs	r3, r2, r3
+ 899              		.loc 1 3247 8 discriminator 1
+ 900 00c4 022B     		cmp	r3, #2
+ 901 00c6 01D9     		bls	.L56
 3248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 74
+
+
+ 902              		.loc 1 3249 14
+ 903 00c8 0323     		movs	r3, #3
+ 904 00ca 57E0     		b	.L50
+ 905              	.L56:
+3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 906              		.loc 1 3245 10
+ 907 00cc 2D4B     		ldr	r3, .L61
+ 908 00ce 1B68     		ldr	r3, [r3]
+ 909 00d0 03F00073 		and	r3, r3, #33554432
+3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 910              		.loc 1 3245 43
+ 911 00d4 002B     		cmp	r3, #0
+ 912 00d6 F0D1     		bne	.L57
 3250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_PLLI2S_SUPPORT)
 3254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Get Start Tick */
 3255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
+ 913              		.loc 1 3255 15
+ 914 00d8 FFF7FEFF 		bl	HAL_GetTick
+ 915 00dc 7860     		str	r0, [r7, #4]
 3256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset PLLI2SON bit */
 3258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CR, RCC_CR_PLLI2SON);
+ 916              		.loc 1 3258 3
+ 917 00de 294B     		ldr	r3, .L61
+ 918 00e0 1B68     		ldr	r3, [r3]
+ 919 00e2 284A     		ldr	r2, .L61
+ 920 00e4 23F08063 		bic	r3, r3, #67108864
+ 921 00e8 1360     		str	r3, [r2]
 3259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLI2S is disabled */
 3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   while (READ_BIT(RCC->CR, RCC_CR_PLLI2SRDY) != RESET)
+ 922              		.loc 1 3261 9
+ 923 00ea 08E0     		b	.L58
+ 924              	.L59:
 3262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     if ((HAL_GetTick() - tickstart) > PLLI2S_TIMEOUT_VALUE)
+ 925              		.loc 1 3263 10
+ 926 00ec FFF7FEFF 		bl	HAL_GetTick
+ 927 00f0 0246     		mov	r2, r0
+ 928              		.loc 1 3263 24 discriminator 1
+ 929 00f2 7B68     		ldr	r3, [r7, #4]
+ 930 00f4 D31A     		subs	r3, r2, r3
+ 931              		.loc 1 3263 8 discriminator 1
+ 932 00f6 022B     		cmp	r3, #2
+ 933 00f8 01D9     		bls	.L58
 3264:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
 3265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****       return HAL_TIMEOUT;
+ 934              		.loc 1 3265 14
+ 935 00fa 0323     		movs	r3, #3
+ 936 00fc 3EE0     		b	.L50
+ 937              	.L58:
+3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 938              		.loc 1 3261 10
+ 939 00fe 214B     		ldr	r3, .L61
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 75
+
+
+ 940 0100 1B68     		ldr	r3, [r3]
+ 941 0102 03F00063 		and	r3, r3, #134217728
+3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
+ 942              		.loc 1 3261 46
+ 943 0106 002B     		cmp	r3, #0
+ 944 0108 F0D1     		bne	.L59
 3266:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
 3267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3268:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_PLLI2S_SUPPORT */
@@ -4318,9 +4456,6 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3272:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   tickstart = HAL_GetTick();
 3273:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3274:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset PLLSAI bit */
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 73
-
-
 3275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CR, RCC_CR_PLLSAION);
 3276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Wait till PLLSAI is disabled */
@@ -4341,6 +4476,11 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLCFGR = RCC_PLLCFGR_PLLR_0 | RCC_PLLCFGR_PLLR_1 | RCC_PLLCFGR_PLLR_2 | RCC_PLLCFGR_PLLM_4 
 3293:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #else
 3294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLCFGR = RCC_PLLCFGR_PLLM_4 | RCC_PLLCFGR_PLLN_6 | RCC_PLLCFGR_PLLN_7 | RCC_PLLCFGR_PLLQ_2;
+ 945              		.loc 1 3294 6
+ 946 010a 1E4B     		ldr	r3, .L61
+ 947              		.loc 1 3294 16
+ 948 010c 1E4A     		ldr	r2, .L61+4
+ 949 010e 5A60     		str	r2, [r3, #4]
 3295:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F412Cx || STM32F412Rx || STM32F412Vx || STM32F412Zx || STM32F413xx || STM32F423xx ||
 3296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset PLLI2SCFGR register to default value */
@@ -4349,10 +4489,18 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3300:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLI2SCFGR = RCC_PLLI2SCFGR_PLLI2SM_4 | RCC_PLLI2SCFGR_PLLI2SN_6 | RCC_PLLI2SCFGR_PLLI2SN_7 
 3301:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F405xx) || defined(STM32F415xx) 
 3302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLI2SCFGR = RCC_PLLI2SCFGR_PLLI2SN_6 | RCC_PLLI2SCFGR_PLLI2SN_7 | RCC_PLLI2SCFGR_PLLI2SR_1;
+ 950              		.loc 1 3302 6
+ 951 0110 1C4B     		ldr	r3, .L61
+ 952              		.loc 1 3302 19
+ 953 0112 1E4A     		ldr	r2, .L61+8
+ 954 0114 C3F88420 		str	r2, [r3, #132]
 3303:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #elif defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) 
 3304:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLI2SCFGR = RCC_PLLI2SCFGR_PLLI2SN_6 | RCC_PLLI2SCFGR_PLLI2SN_7 | RCC_PLLI2SCFGR_PLLI2SQ_2 
 3305:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #elif defined(STM32F411xE)
 3306:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   RCC->PLLI2SCFGR = RCC_PLLI2SCFGR_PLLI2SM_4 | RCC_PLLI2SCFGR_PLLI2SN_6 | RCC_PLLI2SCFGR_PLLI2SN_7 
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 76
+
+
 3307:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F412Cx || STM32F412Rx || STM32F412Vx || STM32F412Zx || STM32F413xx || STM32F423xx ||
 3308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset PLLSAICFGR register */
@@ -4364,9 +4512,21 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Disable all interrupts */
 3317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CIR, RCC_CIR_LSIRDYIE | RCC_CIR_LSERDYIE | RCC_CIR_HSIRDYIE | RCC_CIR_HSERDYIE | R
+ 955              		.loc 1 3317 3
+ 956 0118 1A4B     		ldr	r3, .L61
+ 957 011a DB68     		ldr	r3, [r3, #12]
+ 958 011c 194A     		ldr	r2, .L61
+ 959 011e 23F4F853 		bic	r3, r3, #7936
+ 960 0122 D360     		str	r3, [r2, #12]
 3318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3319:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_CIR_PLLI2SRDYIE)
 3320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CIR, RCC_CIR_PLLI2SRDYIE);
+ 961              		.loc 1 3320 3
+ 962 0124 174B     		ldr	r3, .L61
+ 963 0126 DB68     		ldr	r3, [r3, #12]
+ 964 0128 164A     		ldr	r2, .L61
+ 965 012a 23F40053 		bic	r3, r3, #8192
+ 966 012e D360     		str	r3, [r2, #12]
 3321:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_CIR_PLLI2SRDYIE */
 3322:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_CIR_PLLSAIRDYIE)
@@ -4375,13 +4535,22 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3327:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Clear all interrupt flags */
 3328:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SET_BIT(RCC->CIR, RCC_CIR_LSIRDYC | RCC_CIR_LSERDYC | RCC_CIR_HSIRDYC | RCC_CIR_HSERDYC | RCC_CIR
+ 967              		.loc 1 3328 3
+ 968 0130 144B     		ldr	r3, .L61
+ 969 0132 DB68     		ldr	r3, [r3, #12]
+ 970 0134 134A     		ldr	r2, .L61
+ 971 0136 43F41F03 		orr	r3, r3, #10420224
+ 972 013a D360     		str	r3, [r2, #12]
 3329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           RCC_CIR_CSSC);
 3330:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3331:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_CIR_PLLI2SRDYC)
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 74
-
-
 3332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SET_BIT(RCC->CIR, RCC_CIR_PLLI2SRDYC);
+ 973              		.loc 1 3332 3
+ 974 013c 114B     		ldr	r3, .L61
+ 975 013e DB68     		ldr	r3, [r3, #12]
+ 976 0140 104A     		ldr	r2, .L61
+ 977 0142 43F40013 		orr	r3, r3, #2097152
+ 978 0146 D360     		str	r3, [r2, #12]
 3333:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_CIR_PLLI2SRDYC */
 3334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #if defined(RCC_CIR_PLLSAIRDYC)
@@ -4389,342 +4558,116 @@ ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 1
 3337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_CIR_PLLSAIRDYC */
 3338:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Clear LSION bit */
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 77
+
+
 3340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   CLEAR_BIT(RCC->CSR, RCC_CSR_LSION);
+ 979              		.loc 1 3340 3
+ 980 0148 0E4B     		ldr	r3, .L61
+ 981 014a 5B6F     		ldr	r3, [r3, #116]
+ 982 014c 0D4A     		ldr	r2, .L61
+ 983 014e 23F00103 		bic	r3, r3, #1
+ 984 0152 5367     		str	r3, [r2, #116]
 3341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Reset all CSR flags */
 3343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SET_BIT(RCC->CSR, RCC_CSR_RMVF);
+ 985              		.loc 1 3343 3
+ 986 0154 0B4B     		ldr	r3, .L61
+ 987 0156 5B6F     		ldr	r3, [r3, #116]
+ 988 0158 0A4A     		ldr	r2, .L61
+ 989 015a 43F08073 		orr	r3, r3, #16777216
+ 990 015e 5367     		str	r3, [r2, #116]
 3344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3345:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Update the SystemCoreClock global variable */
 3346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   SystemCoreClock = HSI_VALUE;
+ 991              		.loc 1 3346 19
+ 992 0160 0B4B     		ldr	r3, .L61+12
+ 993 0162 0C4A     		ldr	r2, .L61+16
+ 994 0164 1A60     		str	r2, [r3]
 3347:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
 3348:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   /* Adapt Systick interrupt period */
 3349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   if (HAL_InitTick(uwTickPrio) != HAL_OK)
+ 995              		.loc 1 3349 7
+ 996 0166 0C4B     		ldr	r3, .L61+20
+ 997 0168 1B68     		ldr	r3, [r3]
+ 998 016a 1846     		mov	r0, r3
+ 999 016c FFF7FEFF 		bl	HAL_InitTick
+ 1000 0170 0346     		mov	r3, r0
+ 1001              		.loc 1 3349 6 discriminator 1
+ 1002 0172 002B     		cmp	r3, #0
+ 1003 0174 01D0     		beq	.L60
 3350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3351:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     return HAL_ERROR;
+ 1004              		.loc 1 3351 12
+ 1005 0176 0123     		movs	r3, #1
+ 1006 0178 00E0     		b	.L50
+ 1007              	.L60:
 3352:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3353:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   else
 3354:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
 3355:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     return HAL_OK;
+ 1008              		.loc 1 3355 12
+ 1009 017a 0023     		movs	r3, #0
+ 1010              	.L50:
 3356:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
 3357:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** }
- 735              		.loc 1 3357 1 view .LVU222
- 736 0028 38BD     		pop	{r3, r4, r5, pc}
- 737              	.LVL60:
- 738              	.L82:
-3206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 739              		.loc 1 3206 3 is_stmt 1 view .LVU223
- 740 002a 3E4D     		ldr	r5, .L87
- 741 002c 2B68     		ldr	r3, [r5]
- 742 002e 43F08003 		orr	r3, r3, #128
- 743 0032 2B60     		str	r3, [r5]
-3209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 744              		.loc 1 3209 3 view .LVU224
-3209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 745              		.loc 1 3209 15 is_stmt 0 view .LVU225
- 746 0034 FFF7FEFF 		bl	HAL_GetTick
- 747              	.LVL61:
- 748 0038 0446     		mov	r4, r0
- 749              	.LVL62:
-3212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 750              		.loc 1 3212 3 is_stmt 1 view .LVU226
- 751 003a 0023     		movs	r3, #0
- 752 003c AB60     		str	r3, [r5, #8]
-3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 753              		.loc 1 3215 3 view .LVU227
- 754              	.LVL63:
- 755              	.L68:
-3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 756              		.loc 1 3215 44 view .LVU228
-3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 757              		.loc 1 3215 10 is_stmt 0 view .LVU229
- 758 003e 394B     		ldr	r3, .L87
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 75
+ 1011              		.loc 1 3357 1
+ 1012 017c 1846     		mov	r0, r3
+ 1013 017e 0837     		adds	r7, r7, #8
+ 1014              	.LCFI30:
+ 1015              		.cfi_def_cfa_offset 8
+ 1016 0180 BD46     		mov	sp, r7
+ 1017              	.LCFI31:
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 78
 
 
- 759 0040 9B68     		ldr	r3, [r3, #8]
-3215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 760              		.loc 1 3215 44 view .LVU230
- 761 0042 13F00C0F 		tst	r3, #12
- 762 0046 08D0     		beq	.L83
-3217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 763              		.loc 1 3217 5 is_stmt 1 view .LVU231
-3217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 764              		.loc 1 3217 10 is_stmt 0 view .LVU232
- 765 0048 FFF7FEFF 		bl	HAL_GetTick
- 766              	.LVL64:
-3217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 767              		.loc 1 3217 24 discriminator 1 view .LVU233
- 768 004c 001B     		subs	r0, r0, r4
-3217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 769              		.loc 1 3217 8 discriminator 1 view .LVU234
- 770 004e 41F28833 		movw	r3, #5000
- 771 0052 9842     		cmp	r0, r3
- 772 0054 F3D9     		bls	.L68
-3219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
- 773              		.loc 1 3219 14 view .LVU235
- 774 0056 0320     		movs	r0, #3
- 775 0058 E6E7     		b	.L66
- 776              	.L83:
-3224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 777              		.loc 1 3224 3 is_stmt 1 view .LVU236
-3224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 778              		.loc 1 3224 15 is_stmt 0 view .LVU237
- 779 005a FFF7FEFF 		bl	HAL_GetTick
- 780              	.LVL65:
- 781 005e 0446     		mov	r4, r0
- 782              	.LVL66:
-3227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 783              		.loc 1 3227 3 is_stmt 1 view .LVU238
- 784 0060 304A     		ldr	r2, .L87
- 785 0062 1368     		ldr	r3, [r2]
- 786 0064 23F45023 		bic	r3, r3, #851968
- 787 0068 1360     		str	r3, [r2]
-3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 788              		.loc 1 3230 3 view .LVU239
- 789              	.LVL67:
- 790              	.L70:
-3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 791              		.loc 1 3230 43 view .LVU240
-3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 792              		.loc 1 3230 10 is_stmt 0 view .LVU241
- 793 006a 2E4B     		ldr	r3, .L87
- 794 006c 1B68     		ldr	r3, [r3]
-3230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 795              		.loc 1 3230 43 view .LVU242
- 796 006e 13F4003F 		tst	r3, #131072
- 797 0072 06D0     		beq	.L84
-3232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 798              		.loc 1 3232 5 is_stmt 1 view .LVU243
-3232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 799              		.loc 1 3232 10 is_stmt 0 view .LVU244
- 800 0074 FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 76
-
-
- 801              	.LVL68:
-3232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 802              		.loc 1 3232 24 discriminator 1 view .LVU245
- 803 0078 001B     		subs	r0, r0, r4
-3232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 804              		.loc 1 3232 8 discriminator 1 view .LVU246
- 805 007a 6428     		cmp	r0, #100
- 806 007c F5D9     		bls	.L70
-3234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
- 807              		.loc 1 3234 14 view .LVU247
- 808 007e 0320     		movs	r0, #3
- 809 0080 D2E7     		b	.L66
- 810              	.L84:
-3239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 811              		.loc 1 3239 3 is_stmt 1 view .LVU248
-3239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 812              		.loc 1 3239 15 is_stmt 0 view .LVU249
- 813 0082 FFF7FEFF 		bl	HAL_GetTick
- 814              	.LVL69:
- 815 0086 0446     		mov	r4, r0
- 816              	.LVL70:
-3242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 817              		.loc 1 3242 3 is_stmt 1 view .LVU250
- 818 0088 264A     		ldr	r2, .L87
- 819 008a 1368     		ldr	r3, [r2]
- 820 008c 23F08073 		bic	r3, r3, #16777216
- 821 0090 1360     		str	r3, [r2]
-3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 822              		.loc 1 3245 3 view .LVU251
- 823              	.LVL71:
- 824              	.L72:
-3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 825              		.loc 1 3245 43 view .LVU252
-3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 826              		.loc 1 3245 10 is_stmt 0 view .LVU253
- 827 0092 244B     		ldr	r3, .L87
- 828 0094 1B68     		ldr	r3, [r3]
-3245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 829              		.loc 1 3245 43 view .LVU254
- 830 0096 13F0007F 		tst	r3, #33554432
- 831 009a 06D0     		beq	.L85
-3247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 832              		.loc 1 3247 5 is_stmt 1 view .LVU255
-3247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 833              		.loc 1 3247 10 is_stmt 0 view .LVU256
- 834 009c FFF7FEFF 		bl	HAL_GetTick
- 835              	.LVL72:
-3247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 836              		.loc 1 3247 24 discriminator 1 view .LVU257
- 837 00a0 001B     		subs	r0, r0, r4
-3247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 838              		.loc 1 3247 8 discriminator 1 view .LVU258
- 839 00a2 0228     		cmp	r0, #2
- 840 00a4 F5D9     		bls	.L72
-3249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
- 841              		.loc 1 3249 14 view .LVU259
- 842 00a6 0320     		movs	r0, #3
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 77
-
-
- 843 00a8 BEE7     		b	.L66
- 844              	.L85:
-3255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 845              		.loc 1 3255 3 is_stmt 1 view .LVU260
-3255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 846              		.loc 1 3255 15 is_stmt 0 view .LVU261
- 847 00aa FFF7FEFF 		bl	HAL_GetTick
- 848              	.LVL73:
- 849 00ae 0446     		mov	r4, r0
- 850              	.LVL74:
-3258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 851              		.loc 1 3258 3 is_stmt 1 view .LVU262
- 852 00b0 1C4A     		ldr	r2, .L87
- 853 00b2 1368     		ldr	r3, [r2]
- 854 00b4 23F08063 		bic	r3, r3, #67108864
- 855 00b8 1360     		str	r3, [r2]
-3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 856              		.loc 1 3261 3 view .LVU263
- 857              	.LVL75:
- 858              	.L74:
-3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 859              		.loc 1 3261 46 view .LVU264
-3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 860              		.loc 1 3261 10 is_stmt 0 view .LVU265
- 861 00ba 1A4B     		ldr	r3, .L87
- 862 00bc 1B68     		ldr	r3, [r3]
-3261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 863              		.loc 1 3261 46 view .LVU266
- 864 00be 13F0006F 		tst	r3, #134217728
- 865 00c2 06D0     		beq	.L86
-3263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 866              		.loc 1 3263 5 is_stmt 1 view .LVU267
-3263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 867              		.loc 1 3263 10 is_stmt 0 view .LVU268
- 868 00c4 FFF7FEFF 		bl	HAL_GetTick
- 869              	.LVL76:
-3263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 870              		.loc 1 3263 24 discriminator 1 view .LVU269
- 871 00c8 001B     		subs	r0, r0, r4
-3263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     {
- 872              		.loc 1 3263 8 discriminator 1 view .LVU270
- 873 00ca 0228     		cmp	r0, #2
- 874 00cc F5D9     		bls	.L74
-3265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****     }
- 875              		.loc 1 3265 14 view .LVU271
- 876 00ce 0320     		movs	r0, #3
- 877 00d0 AAE7     		b	.L66
- 878              	.L86:
-3294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F412Cx || STM32F412Rx || STM32F412Vx || STM32F412Zx || STM32F413xx || STM32F423xx ||
- 879              		.loc 1 3294 3 is_stmt 1 view .LVU272
-3294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* STM32F412Cx || STM32F412Rx || STM32F412Vx || STM32F412Zx || STM32F413xx || STM32F423xx ||
- 880              		.loc 1 3294 16 is_stmt 0 view .LVU273
- 881 00d2 144B     		ldr	r3, .L87
- 882 00d4 144A     		ldr	r2, .L87+4
- 883 00d6 5A60     		str	r2, [r3, #4]
-3302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #elif defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) 
- 884              		.loc 1 3302 3 is_stmt 1 view .LVU274
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 78
-
-
-3302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #elif defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) 
- 885              		.loc 1 3302 19 is_stmt 0 view .LVU275
- 886 00d8 144A     		ldr	r2, .L87+8
- 887 00da C3F88420 		str	r2, [r3, #132]
-3317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 888              		.loc 1 3317 3 is_stmt 1 view .LVU276
- 889 00de DA68     		ldr	r2, [r3, #12]
- 890 00e0 22F4F852 		bic	r2, r2, #7936
- 891 00e4 DA60     		str	r2, [r3, #12]
-3320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_CIR_PLLI2SRDYIE */
- 892              		.loc 1 3320 3 view .LVU277
- 893 00e6 DA68     		ldr	r2, [r3, #12]
- 894 00e8 22F40052 		bic	r2, r2, #8192
- 895 00ec DA60     		str	r2, [r3, #12]
-3328:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****           RCC_CIR_CSSC);
- 896              		.loc 1 3328 3 view .LVU278
- 897 00ee DA68     		ldr	r2, [r3, #12]
- 898 00f0 42F41F02 		orr	r2, r2, #10420224
- 899 00f4 DA60     		str	r2, [r3, #12]
-3332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** #endif /* RCC_CIR_PLLI2SRDYC */
- 900              		.loc 1 3332 3 view .LVU279
- 901 00f6 DA68     		ldr	r2, [r3, #12]
- 902 00f8 42F40012 		orr	r2, r2, #2097152
- 903 00fc DA60     		str	r2, [r3, #12]
-3340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 904              		.loc 1 3340 3 view .LVU280
- 905 00fe 5A6F     		ldr	r2, [r3, #116]
- 906 0100 22F00102 		bic	r2, r2, #1
- 907 0104 5A67     		str	r2, [r3, #116]
-3343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 908              		.loc 1 3343 3 view .LVU281
- 909 0106 5A6F     		ldr	r2, [r3, #116]
- 910 0108 42F08072 		orr	r2, r2, #16777216
- 911 010c 5A67     		str	r2, [r3, #116]
-3346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 912              		.loc 1 3346 3 view .LVU282
-3346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c **** 
- 913              		.loc 1 3346 19 is_stmt 0 view .LVU283
- 914 010e 084B     		ldr	r3, .L87+12
- 915 0110 084A     		ldr	r2, .L87+16
- 916 0112 1A60     		str	r2, [r3]
-3349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 917              		.loc 1 3349 3 is_stmt 1 view .LVU284
-3349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 918              		.loc 1 3349 7 is_stmt 0 view .LVU285
- 919 0114 084B     		ldr	r3, .L87+20
- 920 0116 1868     		ldr	r0, [r3]
- 921 0118 FFF7FEFF 		bl	HAL_InitTick
- 922              	.LVL77:
-3349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   {
- 923              		.loc 1 3349 6 discriminator 1 view .LVU286
- 924 011c 0028     		cmp	r0, #0
- 925 011e 83D0     		beq	.L66
-3351:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c ****   }
- 926              		.loc 1 3351 12 view .LVU287
- 927 0120 0120     		movs	r0, #1
- 928 0122 81E7     		b	.L66
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 79
-
-
- 929              	.L88:
- 930              		.align	2
- 931              	.L87:
- 932 0124 00380240 		.word	1073887232
- 933 0128 10300004 		.word	67121168
- 934 012c 00300020 		.word	536883200
- 935 0130 00000000 		.word	SystemCoreClock
- 936 0134 0024F400 		.word	16000000
- 937 0138 00000000 		.word	uwTickPrio
- 938              		.cfi_endproc
- 939              	.LFE139:
- 941              		.text
- 942              	.Letext0:
- 943              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 944              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 945              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 946              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 947              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 948              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
- 949              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 950              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  D:\msys64\tmp\ccIKShum.s 			page 80
+ 1018              		.cfi_def_cfa_register 13
+ 1019              		@ sp needed
+ 1020 0182 80BD     		pop	{r7, pc}
+ 1021              	.L62:
+ 1022              		.align	2
+ 1023              	.L61:
+ 1024 0184 00380240 		.word	1073887232
+ 1025 0188 10300004 		.word	67121168
+ 1026 018c 00300020 		.word	536883200
+ 1027 0190 00000000 		.word	SystemCoreClock
+ 1028 0194 0024F400 		.word	16000000
+ 1029 0198 00000000 		.word	uwTickPrio
+ 1030              		.cfi_endproc
+ 1031              	.LFE139:
+ 1033              		.text
+ 1034              	.Letext0:
+ 1035              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 1036              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 1037              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1038              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1039              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1040              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 1041              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1042              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  D:\msys64\tmp\ccZOqxfV.s 			page 79
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_rcc_ex.c
-D:\msys64\tmp\ccIKShum.s:21     .text.HAL_RCCEx_PeriphCLKConfig:00000000 $t
-D:\msys64\tmp\ccIKShum.s:27     .text.HAL_RCCEx_PeriphCLKConfig:00000000 HAL_RCCEx_PeriphCLKConfig
-D:\msys64\tmp\ccIKShum.s:319    .text.HAL_RCCEx_PeriphCLKConfig:00000148 $d
-D:\msys64\tmp\ccIKShum.s:326    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 $t
-D:\msys64\tmp\ccIKShum.s:332    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 HAL_RCCEx_GetPeriphCLKConfig
-D:\msys64\tmp\ccIKShum.s:380    .text.HAL_RCCEx_GetPeriphCLKConfig:0000002c $d
-D:\msys64\tmp\ccIKShum.s:385    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 $t
-D:\msys64\tmp\ccIKShum.s:391    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 HAL_RCCEx_GetPeriphCLKFreq
-D:\msys64\tmp\ccIKShum.s:496    .text.HAL_RCCEx_GetPeriphCLKFreq:00000060 $d
-D:\msys64\tmp\ccIKShum.s:504    .text.HAL_RCCEx_EnablePLLI2S:00000000 $t
-D:\msys64\tmp\ccIKShum.s:510    .text.HAL_RCCEx_EnablePLLI2S:00000000 HAL_RCCEx_EnablePLLI2S
-D:\msys64\tmp\ccIKShum.s:610    .text.HAL_RCCEx_EnablePLLI2S:00000060 $d
-D:\msys64\tmp\ccIKShum.s:616    .text.HAL_RCCEx_DisablePLLI2S:00000000 $t
-D:\msys64\tmp\ccIKShum.s:622    .text.HAL_RCCEx_DisablePLLI2S:00000000 HAL_RCCEx_DisablePLLI2S
-D:\msys64\tmp\ccIKShum.s:676    .text.HAL_RCCEx_DisablePLLI2S:0000002c $d
-D:\msys64\tmp\ccIKShum.s:682    .text.HAL_RCC_DeInit:00000000 $t
-D:\msys64\tmp\ccIKShum.s:688    .text.HAL_RCC_DeInit:00000000 HAL_RCC_DeInit
-D:\msys64\tmp\ccIKShum.s:932    .text.HAL_RCC_DeInit:00000124 $d
+D:\msys64\tmp\ccZOqxfV.s:21     .text.HAL_RCCEx_PeriphCLKConfig:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:27     .text.HAL_RCCEx_PeriphCLKConfig:00000000 HAL_RCCEx_PeriphCLKConfig
+D:\msys64\tmp\ccZOqxfV.s:321    .text.HAL_RCCEx_PeriphCLKConfig:000001b4 $d
+D:\msys64\tmp\ccZOqxfV.s:329    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:335    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 HAL_RCCEx_GetPeriphCLKConfig
+D:\msys64\tmp\ccZOqxfV.s:409    .text.HAL_RCCEx_GetPeriphCLKConfig:00000054 $d
+D:\msys64\tmp\ccZOqxfV.s:414    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:420    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 HAL_RCCEx_GetPeriphCLKFreq
+D:\msys64\tmp\ccZOqxfV.s:558    .text.HAL_RCCEx_GetPeriphCLKFreq:000000b0 $d
+D:\msys64\tmp\ccZOqxfV.s:566    .text.HAL_RCCEx_EnablePLLI2S:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:572    .text.HAL_RCCEx_EnablePLLI2S:00000000 HAL_RCCEx_EnablePLLI2S
+D:\msys64\tmp\ccZOqxfV.s:676    .text.HAL_RCCEx_EnablePLLI2S:00000080 $d
+D:\msys64\tmp\ccZOqxfV.s:682    .text.HAL_RCCEx_DisablePLLI2S:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:688    .text.HAL_RCCEx_DisablePLLI2S:00000000 HAL_RCCEx_DisablePLLI2S
+D:\msys64\tmp\ccZOqxfV.s:751    .text.HAL_RCCEx_DisablePLLI2S:0000003c $d
+D:\msys64\tmp\ccZOqxfV.s:757    .text.HAL_RCC_DeInit:00000000 $t
+D:\msys64\tmp\ccZOqxfV.s:763    .text.HAL_RCC_DeInit:00000000 HAL_RCC_DeInit
+D:\msys64\tmp\ccZOqxfV.s:1024   .text.HAL_RCC_DeInit:00000184 $d
 
 UNDEFINED SYMBOLS
 HAL_GetTick

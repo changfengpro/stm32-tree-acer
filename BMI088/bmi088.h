@@ -1,4 +1,7 @@
 #ifndef __BMI_H
+
+#include "stdint.h"
+
 #define BMI088_ACCEL_3G_SEN 0.0008974358974f
 #define BMI088_ACCEL_6G_SEN BMI088_ACCEL_3G_SEN*2.0f
 #define BMI088_GYRO_2000_SEN 0.00106526443603169529841533860381f 
@@ -7,6 +10,7 @@ void BMI088_Accel_Init();
 void BMI088_Accel_Read();
 void BMI088_Gyro_Init();
 void BMI088_Gyro_Read();
-void BMI088_Temper_read();
+void BMI088_Temper_read(uint8_t tempbuf[], uint8_t len);
+void BMI088_Temper_Calc();
 
 #endif 

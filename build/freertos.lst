@@ -1,4 +1,4 @@
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"freertos.c"
@@ -20,14 +20,65 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Core/Src/freertos.c"
-  20              		.section	.text.StartDefaultTask,"ax",%progbits
-  21              		.align	1
-  22              		.global	StartDefaultTask
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	StartDefaultTask:
-  28              	.LFB139:
+  20              		.global	defaultTaskHandle
+  21              		.section	.bss.defaultTaskHandle,"aw",%nobits
+  22              		.align	2
+  25              	defaultTaskHandle:
+  26 0000 00000000 		.space	4
+  27              		.global	defaultTask_attributes
+  28              		.section	.rodata
+  29              		.align	2
+  30              	.LC0:
+  31 0000 64656661 		.ascii	"defaultTask\000"
+  31      756C7454 
+  31      61736B00 
+  32              		.section	.rodata.defaultTask_attributes,"a"
+  33              		.align	2
+  36              	defaultTask_attributes:
+  37 0000 00000000 		.word	.LC0
+  38 0004 00000000 		.space	16
+  38      00000000 
+  38      00000000 
+  38      00000000 
+  39 0014 00020000 		.word	512
+  40 0018 18000000 		.word	24
+  41 001c 00000000 		.space	8
+  41      00000000 
+  42              		.global	BMI088TaskHandle
+  43              		.section	.bss.BMI088TaskHandle,"aw",%nobits
+  44              		.align	2
+  47              	BMI088TaskHandle:
+  48 0000 00000000 		.space	4
+  49              		.global	BMI088Task_attributes
+  50              		.section	.rodata
+  51              		.align	2
+  52              	.LC1:
+  53 000c 424D4930 		.ascii	"BMI088Task\000"
+  53      38385461 
+  53      736B00
+  54              		.section	.rodata.BMI088Task_attributes,"a"
+  55              		.align	2
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 2
+
+
+  58              	BMI088Task_attributes:
+  59 0000 0C000000 		.word	.LC1
+  60 0004 00000000 		.space	16
+  60      00000000 
+  60      00000000 
+  60      00000000 
+  61 0014 00020000 		.word	512
+  62 0018 20000000 		.word	32
+  63 001c 00000000 		.space	8
+  63      00000000 
+  64              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+  65              		.align	1
+  66              		.global	MX_FREERTOS_Init
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	MX_FREERTOS_Init:
+  72              	.LFB138:
    1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
    2:Core/Src/freertos.c **** /**
    3:Core/Src/freertos.c ****   ******************************************************************************
@@ -58,9 +109,6 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
   28:Core/Src/freertos.c **** #include "bmi088.h"
   29:Core/Src/freertos.c **** /* USER CODE END Includes */
   30:Core/Src/freertos.c **** 
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 2
-
-
   31:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
   32:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
   33:Core/Src/freertos.c **** 
@@ -70,6 +118,9 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
   37:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
   38:Core/Src/freertos.c **** 
   39:Core/Src/freertos.c **** /* USER CODE END PD */
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 3
+
+
   40:Core/Src/freertos.c **** 
   41:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
   42:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
@@ -109,18 +160,30 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
   76:Core/Src/freertos.c ****   * @retval None
   77:Core/Src/freertos.c ****   */
   78:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  73              		.loc 1 78 29
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 1, uses_anonymous_args = 0
+  77 0000 80B5     		push	{r7, lr}
+  78              	.LCFI0:
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 7, -8
+  81              		.cfi_offset 14, -4
+  82 0002 00AF     		add	r7, sp, #0
+  83              	.LCFI1:
+  84              		.cfi_def_cfa_register 7
   79:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
   80:Core/Src/freertos.c **** 
   81:Core/Src/freertos.c ****   /* USER CODE END Init */
   82:Core/Src/freertos.c **** 
   83:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
   84:Core/Src/freertos.c ****   /* add mutexes, ... */
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 4
+
+
   85:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
   86:Core/Src/freertos.c **** 
   87:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 3
-
-
   88:Core/Src/freertos.c ****   /* add semaphores, ... */
   89:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
   90:Core/Src/freertos.c **** 
@@ -135,7 +198,25 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
   99:Core/Src/freertos.c ****   /* Create the thread(s) */
  100:Core/Src/freertos.c ****   /* creation of defaultTask */
  101:Core/Src/freertos.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  85              		.loc 1 101 23
+  86 0004 084A     		ldr	r2, .L2
+  87 0006 0021     		movs	r1, #0
+  88 0008 0848     		ldr	r0, .L2+4
+  89 000a FFF7FEFF 		bl	osThreadNew
+  90 000e 0346     		mov	r3, r0
+  91              		.loc 1 101 21 discriminator 1
+  92 0010 074A     		ldr	r2, .L2+8
+  93 0012 1360     		str	r3, [r2]
  102:Core/Src/freertos.c ****   BMI088TaskHandle = osThreadNew(StartBMI088Task, NULL, &BMI088Task_attributes);
+  94              		.loc 1 102 22
+  95 0014 074A     		ldr	r2, .L2+12
+  96 0016 0021     		movs	r1, #0
+  97 0018 0748     		ldr	r0, .L2+16
+  98 001a FFF7FEFF 		bl	osThreadNew
+  99 001e 0346     		mov	r3, r0
+ 100              		.loc 1 102 20 discriminator 1
+ 101 0020 064A     		ldr	r2, .L2+20
+ 102 0022 1360     		str	r3, [r2]
  103:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
  104:Core/Src/freertos.c ****   /* add threads, ... */
  105:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
@@ -145,6 +226,31 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
  109:Core/Src/freertos.c ****   /* USER CODE END RTOS_EVENTS */
  110:Core/Src/freertos.c **** 
  111:Core/Src/freertos.c **** }
+ 103              		.loc 1 111 1
+ 104 0024 00BF     		nop
+ 105 0026 80BD     		pop	{r7, pc}
+ 106              	.L3:
+ 107              		.align	2
+ 108              	.L2:
+ 109 0028 00000000 		.word	defaultTask_attributes
+ 110 002c 00000000 		.word	StartDefaultTask
+ 111 0030 00000000 		.word	defaultTaskHandle
+ 112 0034 00000000 		.word	BMI088Task_attributes
+ 113 0038 00000000 		.word	StartBMI088Task
+ 114 003c 00000000 		.word	BMI088TaskHandle
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 5
+
+
+ 115              		.cfi_endproc
+ 116              	.LFE138:
+ 118              		.section	.text.StartDefaultTask,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	StartDefaultTask
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	StartDefaultTask:
+ 126              	.LFB139:
  112:Core/Src/freertos.c **** 
  113:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartDefaultTask */
  114:Core/Src/freertos.c **** /**
@@ -155,40 +261,47 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
  119:Core/Src/freertos.c **** /* USER CODE END Header_StartDefaultTask */
  120:Core/Src/freertos.c **** void StartDefaultTask(void *argument)
  121:Core/Src/freertos.c **** {
-  29              		.loc 1 121 1 view -0
-  30              		.cfi_startproc
-  31              		@ Volatile: function does not return.
-  32              		@ args = 0, pretend = 0, frame = 0
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		@ link register save eliminated.
-  35              	.LVL0:
-  36              	.L2:
+ 127              		.loc 1 121 1
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 8
+ 130              		@ frame_needed = 1, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132 0000 80B4     		push	{r7}
+ 133              	.LCFI2:
+ 134              		.cfi_def_cfa_offset 4
+ 135              		.cfi_offset 7, -4
+ 136 0002 83B0     		sub	sp, sp, #12
+ 137              	.LCFI3:
+ 138              		.cfi_def_cfa_offset 16
+ 139 0004 00AF     		add	r7, sp, #0
+ 140              	.LCFI4:
+ 141              		.cfi_def_cfa_register 7
+ 142 0006 7860     		str	r0, [r7, #4]
+ 143              	.L5:
  122:Core/Src/freertos.c ****   /* USER CODE BEGIN StartDefaultTask */
  123:Core/Src/freertos.c ****     
  124:Core/Src/freertos.c ****     //vTaskDelete(NULL);
  125:Core/Src/freertos.c ****   /* Infinite loop */
  126:Core/Src/freertos.c ****   for(;;)
-  37              		.loc 1 126 3 view .LVU1
+ 144              		.loc 1 126 3
+ 145 0008 00BF     		nop
+ 146 000a FDE7     		b	.L5
+ 147              		.cfi_endproc
+ 148              	.LFE139:
+ 150              		.section	.text.StartBMI088Task,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	StartBMI088Task
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	StartBMI088Task:
+ 158              	.LFB140:
  127:Core/Src/freertos.c ****   {
  128:Core/Src/freertos.c ****     
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 6
+
+
  129:Core/Src/freertos.c ****   }
-  38              		.loc 1 129 3 view .LVU2
- 126:Core/Src/freertos.c ****   {
-  39              		.loc 1 126 3 view .LVU3
-  40 0000 FEE7     		b	.L2
-  41              		.cfi_endproc
-  42              	.LFE139:
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 4
-
-
-  44              		.section	.text.StartBMI088Task,"ax",%progbits
-  45              		.align	1
-  46              		.global	StartBMI088Task
-  47              		.syntax unified
-  48              		.thumb
-  49              		.thumb_func
-  51              	StartBMI088Task:
-  52              	.LFB140:
  130:Core/Src/freertos.c ****   /* USER CODE END StartDefaultTask */
  131:Core/Src/freertos.c **** }
  132:Core/Src/freertos.c **** 
@@ -196,183 +309,71 @@ ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 1
  134:Core/Src/freertos.c **** /* USER CODE BEGIN Application */
  135:Core/Src/freertos.c **** void StartBMI088Task(void *argumen)
  136:Core/Src/freertos.c **** {
-  53              		.loc 1 136 1 view -0
-  54              		.cfi_startproc
-  55              		@ Volatile: function does not return.
-  56              		@ args = 0, pretend = 0, frame = 0
-  57              		@ frame_needed = 0, uses_anonymous_args = 0
-  58              	.LVL1:
-  59              		.loc 1 136 1 is_stmt 0 view .LVU5
-  60 0000 08B5     		push	{r3, lr}
-  61              	.LCFI0:
-  62              		.cfi_def_cfa_offset 8
-  63              		.cfi_offset 3, -8
-  64              		.cfi_offset 14, -4
-  65              	.LVL2:
-  66              	.L4:
+ 159              		.loc 1 136 1
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 8
+ 162              		@ frame_needed = 1, uses_anonymous_args = 0
+ 163 0000 80B5     		push	{r7, lr}
+ 164              	.LCFI5:
+ 165              		.cfi_def_cfa_offset 8
+ 166              		.cfi_offset 7, -8
+ 167              		.cfi_offset 14, -4
+ 168 0002 82B0     		sub	sp, sp, #8
+ 169              	.LCFI6:
+ 170              		.cfi_def_cfa_offset 16
+ 171 0004 00AF     		add	r7, sp, #0
+ 172              	.LCFI7:
+ 173              		.cfi_def_cfa_register 7
+ 174 0006 7860     		str	r0, [r7, #4]
+ 175              	.L7:
  137:Core/Src/freertos.c ****   for(;;)
-  67              		.loc 1 137 3 is_stmt 1 view .LVU6
  138:Core/Src/freertos.c ****   {
  139:Core/Src/freertos.c ****     BMI088_Accel_Read();
-  68              		.loc 1 139 5 view .LVU7
-  69 0002 FFF7FEFF 		bl	BMI088_Accel_Read
-  70              	.LVL3:
+ 176              		.loc 1 139 5
+ 177 0008 FFF7FEFF 		bl	BMI088_Accel_Read
  140:Core/Src/freertos.c ****     BMI088_Gyro_Read();
-  71              		.loc 1 140 5 view .LVU8
-  72 0006 FFF7FEFF 		bl	BMI088_Gyro_Read
-  73              	.LVL4:
+ 178              		.loc 1 140 5
+ 179 000c FFF7FEFF 		bl	BMI088_Gyro_Read
  141:Core/Src/freertos.c ****     osDelay(1);
-  74              		.loc 1 141 5 discriminator 1 view .LVU9
-  75 000a 0120     		movs	r0, #1
-  76 000c FFF7FEFF 		bl	osDelay
-  77              	.LVL5:
- 137:Core/Src/freertos.c ****   {
-  78              		.loc 1 137 3 view .LVU10
-  79 0010 F7E7     		b	.L4
-  80              		.cfi_endproc
-  81              	.LFE140:
-  83              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
-  84              		.align	1
-  85              		.global	MX_FREERTOS_Init
-  86              		.syntax unified
-  87              		.thumb
-  88              		.thumb_func
-  90              	MX_FREERTOS_Init:
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 5
-
-
-  91              	.LFB138:
-  78:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
-  92              		.loc 1 78 29 view -0
-  93              		.cfi_startproc
-  94              		@ args = 0, pretend = 0, frame = 0
-  95              		@ frame_needed = 0, uses_anonymous_args = 0
-  96 0000 08B5     		push	{r3, lr}
-  97              	.LCFI1:
-  98              		.cfi_def_cfa_offset 8
-  99              		.cfi_offset 3, -8
- 100              		.cfi_offset 14, -4
- 101:Core/Src/freertos.c ****   BMI088TaskHandle = osThreadNew(StartBMI088Task, NULL, &BMI088Task_attributes);
- 101              		.loc 1 101 3 view .LVU12
- 101:Core/Src/freertos.c ****   BMI088TaskHandle = osThreadNew(StartBMI088Task, NULL, &BMI088Task_attributes);
- 102              		.loc 1 101 23 is_stmt 0 view .LVU13
- 103 0002 074A     		ldr	r2, .L8
- 104 0004 0021     		movs	r1, #0
- 105 0006 0748     		ldr	r0, .L8+4
- 106 0008 FFF7FEFF 		bl	osThreadNew
- 107              	.LVL6:
- 101:Core/Src/freertos.c ****   BMI088TaskHandle = osThreadNew(StartBMI088Task, NULL, &BMI088Task_attributes);
- 108              		.loc 1 101 21 discriminator 1 view .LVU14
- 109 000c 064B     		ldr	r3, .L8+8
- 110 000e 1860     		str	r0, [r3]
- 102:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
- 111              		.loc 1 102 3 is_stmt 1 view .LVU15
- 102:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
- 112              		.loc 1 102 22 is_stmt 0 view .LVU16
- 113 0010 064A     		ldr	r2, .L8+12
- 114 0012 0021     		movs	r1, #0
- 115 0014 0648     		ldr	r0, .L8+16
- 116 0016 FFF7FEFF 		bl	osThreadNew
- 117              	.LVL7:
- 102:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
- 118              		.loc 1 102 20 discriminator 1 view .LVU17
- 119 001a 064B     		ldr	r3, .L8+20
- 120 001c 1860     		str	r0, [r3]
- 111:Core/Src/freertos.c **** 
- 121              		.loc 1 111 1 view .LVU18
- 122 001e 08BD     		pop	{r3, pc}
- 123              	.L9:
- 124              		.align	2
- 125              	.L8:
- 126 0020 00000000 		.word	defaultTask_attributes
- 127 0024 00000000 		.word	StartDefaultTask
- 128 0028 00000000 		.word	defaultTaskHandle
- 129 002c 00000000 		.word	BMI088Task_attributes
- 130 0030 00000000 		.word	StartBMI088Task
- 131 0034 00000000 		.word	BMI088TaskHandle
- 132              		.cfi_endproc
- 133              	.LFE138:
- 135              		.global	BMI088Task_attributes
- 136              		.section	.rodata.str1.4,"aMS",%progbits,1
- 137              		.align	2
- 138              	.LC0:
- 139 0000 424D4930 		.ascii	"BMI088Task\000"
- 139      38385461 
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 6
-
-
- 139      736B00
- 140              		.section	.rodata.BMI088Task_attributes,"a"
- 141              		.align	2
- 144              	BMI088Task_attributes:
- 145 0000 00000000 		.word	.LC0
- 146 0004 00000000 		.space	16
- 146      00000000 
- 146      00000000 
- 146      00000000 
- 147 0014 00020000 		.word	512
- 148 0018 20000000 		.word	32
- 149 001c 00000000 		.space	8
- 149      00000000 
- 150              		.global	BMI088TaskHandle
- 151              		.section	.bss.BMI088TaskHandle,"aw",%nobits
- 152              		.align	2
- 155              	BMI088TaskHandle:
- 156 0000 00000000 		.space	4
- 157              		.global	defaultTask_attributes
- 158              		.section	.rodata.str1.4
- 159 000b 00       		.align	2
- 160              	.LC1:
- 161 000c 64656661 		.ascii	"defaultTask\000"
- 161      756C7454 
- 161      61736B00 
- 162              		.section	.rodata.defaultTask_attributes,"a"
- 163              		.align	2
- 166              	defaultTask_attributes:
- 167 0000 0C000000 		.word	.LC1
- 168 0004 00000000 		.space	16
- 168      00000000 
- 168      00000000 
- 168      00000000 
- 169 0014 00020000 		.word	512
- 170 0018 18000000 		.word	24
- 171 001c 00000000 		.space	8
- 171      00000000 
- 172              		.global	defaultTaskHandle
- 173              		.section	.bss.defaultTaskHandle,"aw",%nobits
- 174              		.align	2
- 177              	defaultTaskHandle:
- 178 0000 00000000 		.space	4
- 179              		.text
- 180              	.Letext0:
- 181              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 182              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 183              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
- 184              		.file 5 "BMI088/bmi088.h"
-ARM GAS  D:\msys64\tmp\ccxbbwGx.s 			page 7
+ 180              		.loc 1 141 5 discriminator 1
+ 181 0010 0120     		movs	r0, #1
+ 182 0012 FFF7FEFF 		bl	osDelay
+ 139:Core/Src/freertos.c ****     BMI088_Gyro_Read();
+ 183              		.loc 1 139 5
+ 184 0016 00BF     		nop
+ 185 0018 F6E7     		b	.L7
+ 186              		.cfi_endproc
+ 187              	.LFE140:
+ 189              		.text
+ 190              	.Letext0:
+ 191              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 192              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 193              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 194              		.file 5 "BMI088/bmi088.h"
+ARM GAS  D:\msys64\tmp\cc2hCdxq.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-D:\msys64\tmp\ccxbbwGx.s:21     .text.StartDefaultTask:00000000 $t
-D:\msys64\tmp\ccxbbwGx.s:27     .text.StartDefaultTask:00000000 StartDefaultTask
-D:\msys64\tmp\ccxbbwGx.s:45     .text.StartBMI088Task:00000000 $t
-D:\msys64\tmp\ccxbbwGx.s:51     .text.StartBMI088Task:00000000 StartBMI088Task
-D:\msys64\tmp\ccxbbwGx.s:84     .text.MX_FREERTOS_Init:00000000 $t
-D:\msys64\tmp\ccxbbwGx.s:90     .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-D:\msys64\tmp\ccxbbwGx.s:126    .text.MX_FREERTOS_Init:00000020 $d
-D:\msys64\tmp\ccxbbwGx.s:166    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
-D:\msys64\tmp\ccxbbwGx.s:177    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-D:\msys64\tmp\ccxbbwGx.s:144    .rodata.BMI088Task_attributes:00000000 BMI088Task_attributes
-D:\msys64\tmp\ccxbbwGx.s:155    .bss.BMI088TaskHandle:00000000 BMI088TaskHandle
-D:\msys64\tmp\ccxbbwGx.s:137    .rodata.str1.4:00000000 $d
-D:\msys64\tmp\ccxbbwGx.s:141    .rodata.BMI088Task_attributes:00000000 $d
-D:\msys64\tmp\ccxbbwGx.s:152    .bss.BMI088TaskHandle:00000000 $d
-D:\msys64\tmp\ccxbbwGx.s:163    .rodata.defaultTask_attributes:00000000 $d
-D:\msys64\tmp\ccxbbwGx.s:174    .bss.defaultTaskHandle:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:25     .bss.defaultTaskHandle:00000000 defaultTaskHandle
+D:\msys64\tmp\cc2hCdxq.s:22     .bss.defaultTaskHandle:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:36     .rodata.defaultTask_attributes:00000000 defaultTask_attributes
+D:\msys64\tmp\cc2hCdxq.s:29     .rodata:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:33     .rodata.defaultTask_attributes:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:47     .bss.BMI088TaskHandle:00000000 BMI088TaskHandle
+D:\msys64\tmp\cc2hCdxq.s:44     .bss.BMI088TaskHandle:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:58     .rodata.BMI088Task_attributes:00000000 BMI088Task_attributes
+D:\msys64\tmp\cc2hCdxq.s:55     .rodata.BMI088Task_attributes:00000000 $d
+D:\msys64\tmp\cc2hCdxq.s:65     .text.MX_FREERTOS_Init:00000000 $t
+D:\msys64\tmp\cc2hCdxq.s:71     .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+D:\msys64\tmp\cc2hCdxq.s:109    .text.MX_FREERTOS_Init:00000028 $d
+D:\msys64\tmp\cc2hCdxq.s:125    .text.StartDefaultTask:00000000 StartDefaultTask
+D:\msys64\tmp\cc2hCdxq.s:157    .text.StartBMI088Task:00000000 StartBMI088Task
+D:\msys64\tmp\cc2hCdxq.s:119    .text.StartDefaultTask:00000000 $t
+D:\msys64\tmp\cc2hCdxq.s:151    .text.StartBMI088Task:00000000 $t
 
 UNDEFINED SYMBOLS
+osThreadNew
 BMI088_Accel_Read
 BMI088_Gyro_Read
 osDelay
-osThreadNew

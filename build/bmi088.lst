@@ -1,4 +1,4 @@
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 1
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"bmi088.c"
@@ -20,1049 +20,1308 @@ ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "BMI088/bmi088.c"
-  20              		.section	.text.BMI088_Accel_Init,"ax",%progbits
-  21              		.align	1
-  22              		.global	BMI088_Accel_Init
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	BMI088_Accel_Init:
-  28              	.LFB134:
+  20              		.global	BMI088_ACCEL_SEN
+  21              		.section	.data.BMI088_ACCEL_SEN,"aw"
+  22              		.align	2
+  25              	BMI088_ACCEL_SEN:
+  26 0000 E741EB3A 		.word	988496359
+  27              		.global	BMI088_GYRO_SEN
+  28              		.section	.data.BMI088_GYRO_SEN,"aw"
+  29              		.align	2
+  32              	BMI088_GYRO_SEN:
+  33 0000 58A08B3A 		.word	982229080
+  34              		.global	gyro
+  35              		.section	.bss.gyro,"aw",%nobits
+  36              		.align	2
+  39              	gyro:
+  40 0000 00000000 		.space	12
+  40      00000000 
+  40      00000000 
+  41              		.global	accel
+  42              		.section	.bss.accel,"aw",%nobits
+  43              		.align	2
+  46              	accel:
+  47 0000 00000000 		.space	12
+  47      00000000 
+  47      00000000 
+  48              		.global	Temperature
+  49              		.section	.bss.Temperature,"aw",%nobits
+  50              		.align	2
+  53              	Temperature:
+  54 0000 00000000 		.space	4
+  55              		.global	temp
+  56              		.section	.bss.temp,"aw",%nobits
+  57              		.align	2
+  60              	temp:
+  61 0000 00000000 		.space	4
+  62              		.global	i
+  63              		.section	.bss.i,"aw",%nobits
+  66              	i:
+  67 0000 00       		.space	1
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 2
+
+
+  68              		.global	buf
+  69              		.section	.bss.buf,"aw",%nobits
+  70              		.align	2
+  73              	buf:
+  74 0000 00000000 		.space	6
+  74      0000
+  75              		.global	buffer
+  76              		.section	.bss.buffer,"aw",%nobits
+  77              		.align	2
+  80              	buffer:
+  81 0000 00000000 		.space	8
+  81      00000000 
+  82              		.global	pTxData
+  83              		.section	.bss.pTxData,"aw",%nobits
+  86              	pTxData:
+  87 0000 00       		.space	1
+  88              		.global	pRxData
+  89              		.section	.bss.pRxData,"aw",%nobits
+  92              	pRxData:
+  93 0000 00       		.space	1
+  94              		.global	pTxData_gyro
+  95              		.section	.bss.pTxData_gyro,"aw",%nobits
+  98              	pTxData_gyro:
+  99 0000 00       		.space	1
+ 100              		.global	pRxData_gyro
+ 101              		.section	.bss.pRxData_gyro,"aw",%nobits
+ 104              	pRxData_gyro:
+ 105 0000 00       		.space	1
+ 106              		.global	pTxData_Temperature
+ 107              		.section	.bss.pTxData_Temperature,"aw",%nobits
+ 110              	pTxData_Temperature:
+ 111 0000 00       		.space	1
+ 112              		.global	pRxData_Temperature
+ 113              		.section	.bss.pRxData_Temperature,"aw",%nobits
+ 116              	pRxData_Temperature:
+ 117 0000 00       		.space	1
+ 118              		.global	bmi088_raw_temp
+ 119              		.section	.bss.bmi088_raw_temp,"aw",%nobits
+ 120              		.align	1
+ 123              	bmi088_raw_temp:
+ 124 0000 0000     		.space	2
+ 125              		.global	buf_temp
+ 126              		.section	.bss.buf_temp,"aw",%nobits
+ 127              		.align	2
+ 130              	buf_temp:
+ 131 0000 00000000 		.space	8
+ 131      00000000 
+ 132              		.section	.text.BMI088_Accel_Init,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	BMI088_Accel_Init
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	BMI088_Accel_Init:
+ 140              	.LFB134:
    1:BMI088/bmi088.c **** #include "bmi088.h"
    2:BMI088/bmi088.c **** #include "stdint.h"
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 3
+
+
    3:BMI088/bmi088.c **** #include "main.h"
-   4:BMI088/bmi088.c **** 
+   4:BMI088/bmi088.c **** #include "cmsis_os2.h"
    5:BMI088/bmi088.c **** 
-   6:BMI088/bmi088.c **** float BMI088_ACCEL_SEN = BMI088_ACCEL_6G_SEN;   
-   7:BMI088/bmi088.c **** float BMI088_GYRO_SEN = BMI088_GYRO_2000_SEN;
-   8:BMI088/bmi088.c **** float gyro[3];
-   9:BMI088/bmi088.c **** float accel[3];
-  10:BMI088/bmi088.c **** float Temperature;
-  11:BMI088/bmi088.c **** uint8_t i = 0;
-  12:BMI088/bmi088.c **** uint8_t buf[6] = {0};
-  13:BMI088/bmi088.c **** uint8_t buffer[8] = {0};
-  14:BMI088/bmi088.c **** uint8_t pTxData;
-  15:BMI088/bmi088.c **** uint8_t pRxData;
-  16:BMI088/bmi088.c **** uint8_t pTxData_gyro;
-  17:BMI088/bmi088.c **** uint8_t pRxData_gyro;
-  18:BMI088/bmi088.c **** uint8_t pTxData_Temperature;
-  19:BMI088/bmi088.c **** uint8_t pRxData_Temperature;
-  20:BMI088/bmi088.c **** 
-  21:BMI088/bmi088.c **** extern SPI_HandleTypeDef hspi1;
-  22:BMI088/bmi088.c **** 
-  23:BMI088/bmi088.c **** void BMI088_Accel_Init()
-  24:BMI088/bmi088.c **** {
-  29              		.loc 1 24 1 view -0
-  30              		.cfi_startproc
-  31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 10B5     		push	{r4, lr}
-  34              	.LCFI0:
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 2
+   6:BMI088/bmi088.c **** static void BMI088_read_muli_reg(uint8_t reg, uint8_t *buf, uint8_t len);
+   7:BMI088/bmi088.c **** uint8_t BMI088_read_write_byte(uint8_t txdata);
+   8:BMI088/bmi088.c **** 
+   9:BMI088/bmi088.c **** 
+  10:BMI088/bmi088.c **** #define BMI088_TEMP_FACTOR 0.125f
+  11:BMI088/bmi088.c **** #define BMI088_TEMP_OFFSET 23.0f
+  12:BMI088/bmi088.c **** 
+  13:BMI088/bmi088.c **** #define BMI088_ACCEL_NS_L HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET)
+  14:BMI088/bmi088.c **** #define BMI088_ACCEL_NS_H HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET)
+  15:BMI088/bmi088.c **** 
+  16:BMI088/bmi088.c **** #define BMI088_accel_read_muli_reg(reg, data, len) \
+  17:BMI088/bmi088.c ****     {                                              \
+  18:BMI088/bmi088.c ****         BMI088_ACCEL_NS_L;                       \
+  19:BMI088/bmi088.c ****         BMI088_read_write_byte((reg) | 0x80);      \
+  20:BMI088/bmi088.c ****         BMI088_read_muli_reg(reg, data, len);      \
+  21:BMI088/bmi088.c ****         BMI088_ACCEL_NS_H;                       \
+  22:BMI088/bmi088.c ****     }
+  23:BMI088/bmi088.c **** 
+  24:BMI088/bmi088.c **** #define BMI088_TEMP_M 0x22
+  25:BMI088/bmi088.c **** 
+  26:BMI088/bmi088.c **** 
+  27:BMI088/bmi088.c **** 
+  28:BMI088/bmi088.c **** float BMI088_ACCEL_SEN = BMI088_ACCEL_6G_SEN;   
+  29:BMI088/bmi088.c **** float BMI088_GYRO_SEN = BMI088_GYRO_2000_SEN;
+  30:BMI088/bmi088.c **** float gyro[3];
+  31:BMI088/bmi088.c **** float accel[3];
+  32:BMI088/bmi088.c **** float Temperature;
+  33:BMI088/bmi088.c **** float temp;
+  34:BMI088/bmi088.c **** uint8_t i = 0;
+  35:BMI088/bmi088.c **** uint8_t buf[6] = {0};
+  36:BMI088/bmi088.c **** uint8_t buffer[8] = {0};
+  37:BMI088/bmi088.c **** uint8_t pTxData;
+  38:BMI088/bmi088.c **** uint8_t pRxData;
+  39:BMI088/bmi088.c **** uint8_t pTxData_gyro;
+  40:BMI088/bmi088.c **** uint8_t pRxData_gyro;
+  41:BMI088/bmi088.c **** uint8_t pTxData_Temperature;
+  42:BMI088/bmi088.c **** uint8_t pRxData_Temperature;
+  43:BMI088/bmi088.c **** int16_t bmi088_raw_temp;
+  44:BMI088/bmi088.c **** uint8_t buf_temp[8] = {0};
+  45:BMI088/bmi088.c **** 
+  46:BMI088/bmi088.c **** extern SPI_HandleTypeDef hspi1;
+  47:BMI088/bmi088.c **** 
+  48:BMI088/bmi088.c **** void BMI088_Accel_Init()
+  49:BMI088/bmi088.c **** {
+ 141              		.loc 1 49 1
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              	.LCFI0:
+ 147              		.cfi_def_cfa_offset 8
+ 148              		.cfi_offset 7, -8
+ 149              		.cfi_offset 14, -4
+ 150 0002 00AF     		add	r7, sp, #0
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 4
 
 
-  35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 4, -8
-  37              		.cfi_offset 14, -4
-  25:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
-  38              		.loc 1 25 5 view .LVU1
-  39 0002 0022     		movs	r2, #0
-  40 0004 1021     		movs	r1, #16
-  41 0006 2348     		ldr	r0, .L7
-  42 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  43              	.LVL0:
-  26:BMI088/bmi088.c ****     pTxData = (0x7E & 0x7F);
-  44              		.loc 1 26 5 view .LVU2
-  45              		.loc 1 26 13 is_stmt 0 view .LVU3
-  46 000c 2249     		ldr	r1, .L7+4
-  47 000e 7E23     		movs	r3, #126
-  48 0010 0B70     		strb	r3, [r1]
-  27:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
-  49              		.loc 1 27 5 is_stmt 1 view .LVU4
-  50 0012 4FF47A73 		mov	r3, #1000
-  51 0016 0122     		movs	r2, #1
-  52 0018 2048     		ldr	r0, .L7+8
-  53 001a FFF7FEFF 		bl	HAL_SPI_Transmit
-  54              	.LVL1:
-  28:BMI088/bmi088.c ****     //HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
-  29:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
-  55              		.loc 1 29 5 view .LVU5
-  56              	.L2:
-  57              		.loc 1 29 36 discriminator 1 view .LVU6
-  58              		.loc 1 29 11 is_stmt 0 discriminator 1 view .LVU7
-  59 001e 1F48     		ldr	r0, .L7+8
-  60 0020 FFF7FEFF 		bl	HAL_SPI_GetState
-  61              	.LVL2:
-  62              		.loc 1 29 36 discriminator 1 view .LVU8
-  63 0024 0328     		cmp	r0, #3
-  64 0026 FAD0     		beq	.L2
-  30:BMI088/bmi088.c ****     pTxData = 0xB6;
-  65              		.loc 1 30 5 is_stmt 1 view .LVU9
-  66              		.loc 1 30 13 is_stmt 0 view .LVU10
-  67 0028 1B49     		ldr	r1, .L7+4
-  68 002a B623     		movs	r3, #182
-  69 002c 0B70     		strb	r3, [r1]
-  31:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
-  70              		.loc 1 31 5 is_stmt 1 view .LVU11
-  71 002e 4FF47A73 		mov	r3, #1000
-  72 0032 0122     		movs	r2, #1
-  73 0034 1948     		ldr	r0, .L7+8
-  74 0036 FFF7FEFF 		bl	HAL_SPI_Transmit
-  75              	.LVL3:
-  32:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
-  33:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
-  76              		.loc 1 33 5 view .LVU12
-  77              	.L3:
-  78              		.loc 1 33 36 discriminator 1 view .LVU13
-  79              		.loc 1 33 11 is_stmt 0 discriminator 1 view .LVU14
-  80 003a 1848     		ldr	r0, .L7+8
-  81 003c FFF7FEFF 		bl	HAL_SPI_GetState
-  82              	.LVL4:
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 3
+ 151              	.LCFI1:
+ 152              		.cfi_def_cfa_register 7
+  50:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
+ 153              		.loc 1 50 5
+ 154 0004 0022     		movs	r2, #0
+ 155 0006 1021     		movs	r1, #16
+ 156 0008 2848     		ldr	r0, .L6
+ 157 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  51:BMI088/bmi088.c ****     pTxData = (0x7E & 0x7F);
+ 158              		.loc 1 51 13
+ 159 000e 284B     		ldr	r3, .L6+4
+ 160 0010 7E22     		movs	r2, #126
+ 161 0012 1A70     		strb	r2, [r3]
+  52:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
+ 162              		.loc 1 52 5
+ 163 0014 4FF47A73 		mov	r3, #1000
+ 164 0018 0122     		movs	r2, #1
+ 165 001a 2549     		ldr	r1, .L6+4
+ 166 001c 2548     		ldr	r0, .L6+8
+ 167 001e FFF7FEFF 		bl	HAL_SPI_Transmit
+  53:BMI088/bmi088.c ****     //HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
+  54:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+ 168              		.loc 1 54 10
+ 169 0022 00BF     		nop
+ 170              	.L2:
+ 171              		.loc 1 54 11 discriminator 1
+ 172 0024 2348     		ldr	r0, .L6+8
+ 173 0026 FFF7FEFF 		bl	HAL_SPI_GetState
+ 174 002a 0346     		mov	r3, r0
+ 175              		.loc 1 54 36 discriminator 1
+ 176 002c 032B     		cmp	r3, #3
+ 177 002e F9D0     		beq	.L2
+  55:BMI088/bmi088.c ****     pTxData = 0xB6;
+ 178              		.loc 1 55 13
+ 179 0030 1F4B     		ldr	r3, .L6+4
+ 180 0032 B622     		movs	r2, #182
+ 181 0034 1A70     		strb	r2, [r3]
+  56:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
+ 182              		.loc 1 56 5
+ 183 0036 4FF47A73 		mov	r3, #1000
+ 184 003a 0122     		movs	r2, #1
+ 185 003c 1C49     		ldr	r1, .L6+4
+ 186 003e 1D48     		ldr	r0, .L6+8
+ 187 0040 FFF7FEFF 		bl	HAL_SPI_Transmit
+  57:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
+  58:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+ 188              		.loc 1 58 10
+ 189 0044 00BF     		nop
+ 190              	.L3:
+ 191              		.loc 1 58 11 discriminator 1
+ 192 0046 1B48     		ldr	r0, .L6+8
+ 193 0048 FFF7FEFF 		bl	HAL_SPI_GetState
+ 194 004c 0346     		mov	r3, r0
+ 195              		.loc 1 58 36 discriminator 1
+ 196 004e 032B     		cmp	r3, #3
+ 197 0050 F9D0     		beq	.L3
+  59:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 5
 
 
-  83              		.loc 1 33 36 discriminator 1 view .LVU15
-  84 0040 0328     		cmp	r0, #3
-  85 0042 FAD0     		beq	.L3
-  34:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
-  86              		.loc 1 34 5 is_stmt 1 view .LVU16
-  87 0044 134C     		ldr	r4, .L7
-  88 0046 0122     		movs	r2, #1
-  89 0048 1021     		movs	r1, #16
-  90 004a 2046     		mov	r0, r4
-  91 004c FFF7FEFF 		bl	HAL_GPIO_WritePin
-  92              	.LVL5:
-  35:BMI088/bmi088.c ****     //加速度计复位后默认是暂停模式，这9行代码，向地址0x7D处写入0x04值，
-  36:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
-  93              		.loc 1 36 5 view .LVU17
-  94 0050 0022     		movs	r2, #0
-  95 0052 1021     		movs	r1, #16
-  96 0054 2046     		mov	r0, r4
-  97 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  98              	.LVL6:
-  37:BMI088/bmi088.c ****     pTxData = (0x7D & 0x7F);
-  99              		.loc 1 37 5 view .LVU18
- 100              		.loc 1 37 13 is_stmt 0 view .LVU19
- 101 005a 0F49     		ldr	r1, .L7+4
- 102 005c 7D23     		movs	r3, #125
- 103 005e 0B70     		strb	r3, [r1]
-  38:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
- 104              		.loc 1 38 5 is_stmt 1 view .LVU20
- 105 0060 4FF47A73 		mov	r3, #1000
- 106 0064 0122     		movs	r2, #1
- 107 0066 0D48     		ldr	r0, .L7+8
- 108 0068 FFF7FEFF 		bl	HAL_SPI_Transmit
- 109              	.LVL7:
-  39:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
-  40:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 110              		.loc 1 40 5 view .LVU21
- 111              	.L4:
- 112              		.loc 1 40 36 discriminator 1 view .LVU22
- 113              		.loc 1 40 11 is_stmt 0 discriminator 1 view .LVU23
- 114 006c 0B48     		ldr	r0, .L7+8
- 115 006e FFF7FEFF 		bl	HAL_SPI_GetState
- 116              	.LVL8:
- 117              		.loc 1 40 36 discriminator 1 view .LVU24
- 118 0072 0328     		cmp	r0, #3
- 119 0074 FAD0     		beq	.L4
-  41:BMI088/bmi088.c ****     pTxData = 0x04;
- 120              		.loc 1 41 5 is_stmt 1 view .LVU25
- 121              		.loc 1 41 13 is_stmt 0 view .LVU26
- 122 0076 084B     		ldr	r3, .L7+4
- 123 0078 0422     		movs	r2, #4
- 124 007a 1A70     		strb	r2, [r3]
-  42:BMI088/bmi088.c ****     // HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
-  43:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 125              		.loc 1 43 5 is_stmt 1 view .LVU27
- 126              	.L5:
- 127              		.loc 1 43 36 discriminator 1 view .LVU28
- 128              		.loc 1 43 11 is_stmt 0 discriminator 1 view .LVU29
- 129 007c 0748     		ldr	r0, .L7+8
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 4
+ 198              		.loc 1 59 5
+ 199 0052 0122     		movs	r2, #1
+ 200 0054 1021     		movs	r1, #16
+ 201 0056 1548     		ldr	r0, .L6
+ 202 0058 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  60:BMI088/bmi088.c ****     //加速度计复位后默认是暂停模式，这9行代码，向地址0x7D处写入0x04值，
+  61:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
+ 203              		.loc 1 61 5
+ 204 005c 0022     		movs	r2, #0
+ 205 005e 1021     		movs	r1, #16
+ 206 0060 1248     		ldr	r0, .L6
+ 207 0062 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  62:BMI088/bmi088.c ****     pTxData = (0x7D & 0x7F);
+ 208              		.loc 1 62 13
+ 209 0066 124B     		ldr	r3, .L6+4
+ 210 0068 7D22     		movs	r2, #125
+ 211 006a 1A70     		strb	r2, [r3]
+  63:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
+ 212              		.loc 1 63 5
+ 213 006c 4FF47A73 		mov	r3, #1000
+ 214 0070 0122     		movs	r2, #1
+ 215 0072 0F49     		ldr	r1, .L6+4
+ 216 0074 0F48     		ldr	r0, .L6+8
+ 217 0076 FFF7FEFF 		bl	HAL_SPI_Transmit
+  64:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
+  65:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+ 218              		.loc 1 65 10
+ 219 007a 00BF     		nop
+ 220              	.L4:
+ 221              		.loc 1 65 11 discriminator 1
+ 222 007c 0D48     		ldr	r0, .L6+8
+ 223 007e FFF7FEFF 		bl	HAL_SPI_GetState
+ 224 0082 0346     		mov	r3, r0
+ 225              		.loc 1 65 36 discriminator 1
+ 226 0084 032B     		cmp	r3, #3
+ 227 0086 F9D0     		beq	.L4
+  66:BMI088/bmi088.c ****     pTxData = 0x04;
+ 228              		.loc 1 66 13
+ 229 0088 094B     		ldr	r3, .L6+4
+ 230 008a 0422     		movs	r2, #4
+ 231 008c 1A70     		strb	r2, [r3]
+  67:BMI088/bmi088.c ****     // HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
+  68:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+ 232              		.loc 1 68 10
+ 233 008e 00BF     		nop
+ 234              	.L5:
+ 235              		.loc 1 68 11 discriminator 1
+ 236 0090 0848     		ldr	r0, .L6+8
+ 237 0092 FFF7FEFF 		bl	HAL_SPI_GetState
+ 238 0096 0346     		mov	r3, r0
+ 239              		.loc 1 68 36 discriminator 1
+ 240 0098 032B     		cmp	r3, #3
+ 241 009a F9D0     		beq	.L5
+  69:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
+ 242              		.loc 1 69 5
+ 243 009c 0122     		movs	r2, #1
+ 244 009e 1021     		movs	r1, #16
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 6
 
 
- 130 007e FFF7FEFF 		bl	HAL_SPI_GetState
- 131              	.LVL9:
- 132              		.loc 1 43 36 discriminator 1 view .LVU30
- 133 0082 0328     		cmp	r0, #3
- 134 0084 FAD0     		beq	.L5
-  44:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
- 135              		.loc 1 44 5 is_stmt 1 view .LVU31
- 136 0086 0122     		movs	r2, #1
- 137 0088 1021     		movs	r1, #16
- 138 008a 0248     		ldr	r0, .L7
- 139 008c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 140              	.LVL10:
-  45:BMI088/bmi088.c **** }
- 141              		.loc 1 45 1 is_stmt 0 view .LVU32
- 142 0090 10BD     		pop	{r4, pc}
- 143              	.L8:
- 144 0092 00BF     		.align	2
- 145              	.L7:
- 146 0094 00000240 		.word	1073872896
- 147 0098 00000000 		.word	pTxData
- 148 009c 00000000 		.word	hspi1
- 149              		.cfi_endproc
- 150              	.LFE134:
- 152              		.section	.text.BMI088_Gyro_Init,"ax",%progbits
- 153              		.align	1
- 154              		.global	BMI088_Gyro_Init
- 155              		.syntax unified
- 156              		.thumb
- 157              		.thumb_func
- 159              	BMI088_Gyro_Init:
- 160              	.LFB136:
-  46:BMI088/bmi088.c **** 
-  47:BMI088/bmi088.c **** void BMI088_Accel_Read()
-  48:BMI088/bmi088.c **** {
-  49:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);    //PA4置0，片选加速度计
-  50:BMI088/bmi088.c ****     pTxData = (0x12 | 0x80);                                 //#0 是1 表示读
-  51:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
-  52:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
-  53:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
-  54:BMI088/bmi088.c ****     HAL_SPI_Receive(&hspi1,&pRxData,1,1000);
-  55:BMI088/bmi088.c ****     // HAL_SPI_Receive_DMA(&hspi1,&pRxData,1);
-  56:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
-  57:BMI088/bmi088.c ****     for(int i = 0; i < 6; i++)
-  58:BMI088/bmi088.c ****     {
-  59:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData,1,1000);    //Bit #16-23，寄存器0x12的值，然后是�
-  60:BMI088/bmi088.c ****         // HAL_SPI_Receive_DMA(&hspi1,&pRxData,1);
-  61:BMI088/bmi088.c ****         while(HAL_SPI_GetState == HAL_SPI_STATE_BUSY_RX);
-  62:BMI088/bmi088.c ****         buf[i] = pRxData;
-  63:BMI088/bmi088.c ****     }
-  64:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET); //取消片选加速度计
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
-  68:BMI088/bmi088.c **** 
-  69:BMI088/bmi088.c ****     BMI088_Temper_read();  
+ 245 00a0 0248     		ldr	r0, .L6
+ 246 00a2 FFF7FEFF 		bl	HAL_GPIO_WritePin
   70:BMI088/bmi088.c **** }
+ 247              		.loc 1 70 1
+ 248 00a6 00BF     		nop
+ 249 00a8 80BD     		pop	{r7, pc}
+ 250              	.L7:
+ 251 00aa 00BF     		.align	2
+ 252              	.L6:
+ 253 00ac 00000240 		.word	1073872896
+ 254 00b0 00000000 		.word	pTxData
+ 255 00b4 00000000 		.word	hspi1
+ 256              		.cfi_endproc
+ 257              	.LFE134:
+ 259              		.section	.text.BMI088_Accel_Read,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	BMI088_Accel_Read
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	BMI088_Accel_Read:
+ 267              	.LFB135:
   71:BMI088/bmi088.c **** 
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 5
-
-
-  72:BMI088/bmi088.c **** void BMI088_Gyro_Init()
+  72:BMI088/bmi088.c **** void BMI088_Accel_Read()
   73:BMI088/bmi088.c **** {
- 161              		.loc 1 73 1 is_stmt 1 view -0
- 162              		.cfi_startproc
- 163              		@ args = 0, pretend = 0, frame = 0
- 164              		@ frame_needed = 0, uses_anonymous_args = 0
- 165 0000 08B5     		push	{r3, lr}
- 166              	.LCFI1:
- 167              		.cfi_def_cfa_offset 8
- 168              		.cfi_offset 3, -8
- 169              		.cfi_offset 14, -4
-  74:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);     //片选陀螺仪
- 170              		.loc 1 74 5 view .LVU34
- 171 0002 0022     		movs	r2, #0
- 172 0004 0121     		movs	r1, #1
- 173 0006 1448     		ldr	r0, .L13
- 174 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 175              	.LVL11:
-  75:BMI088/bmi088.c ****     pTxData_gyro = (0x14 & 0x7F);   //陀螺仪复位
- 176              		.loc 1 75 5 view .LVU35
- 177              		.loc 1 75 18 is_stmt 0 view .LVU36
- 178 000c 1349     		ldr	r1, .L13+4
- 179 000e 1423     		movs	r3, #20
- 180 0010 0B70     		strb	r3, [r1]
-  76:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
- 181              		.loc 1 76 5 is_stmt 1 view .LVU37
- 182 0012 4FF47A73 		mov	r3, #1000
- 183 0016 0122     		movs	r2, #1
- 184 0018 1148     		ldr	r0, .L13+8
- 185 001a FFF7FEFF 		bl	HAL_SPI_Transmit
- 186              	.LVL12:
-  77:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
-  78:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
- 187              		.loc 1 78 5 view .LVU38
- 188              	.L10:
- 189              		.loc 1 78 36 discriminator 1 view .LVU39
- 190              		.loc 1 78 11 is_stmt 0 discriminator 1 view .LVU40
- 191 001e 1048     		ldr	r0, .L13+8
- 192 0020 FFF7FEFF 		bl	HAL_SPI_GetState
- 193              	.LVL13:
- 194              		.loc 1 78 36 discriminator 1 view .LVU41
- 195 0024 0328     		cmp	r0, #3
- 196 0026 FAD0     		beq	.L10
-  79:BMI088/bmi088.c ****     pTxData_gyro = 0xB6;
- 197              		.loc 1 79 5 is_stmt 1 view .LVU42
- 198              		.loc 1 79 18 is_stmt 0 view .LVU43
- 199 0028 0C49     		ldr	r1, .L13+4
- 200 002a B623     		movs	r3, #182
- 201 002c 0B70     		strb	r3, [r1]
-  80:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
- 202              		.loc 1 80 5 is_stmt 1 view .LVU44
- 203 002e 4FF47A73 		mov	r3, #1000
- 204 0032 0122     		movs	r2, #1
- 205 0034 0A48     		ldr	r0, .L13+8
- 206 0036 FFF7FEFF 		bl	HAL_SPI_Transmit
- 207              	.LVL14:
-  81:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 6
+ 268              		.loc 1 73 1
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 8
+ 271              		@ frame_needed = 1, uses_anonymous_args = 0
+ 272 0000 80B5     		push	{r7, lr}
+ 273              	.LCFI2:
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 7, -8
+ 276              		.cfi_offset 14, -4
+ 277 0002 82B0     		sub	sp, sp, #8
+ 278              	.LCFI3:
+ 279              		.cfi_def_cfa_offset 16
+ 280 0004 00AF     		add	r7, sp, #0
+ 281              	.LCFI4:
+ 282              		.cfi_def_cfa_register 7
+  74:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);    //PA4置0，片选加速度计
+ 283              		.loc 1 74 5
+ 284 0006 0022     		movs	r2, #0
+ 285 0008 1021     		movs	r1, #16
+ 286 000a 4748     		ldr	r0, .L14
+ 287 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  75:BMI088/bmi088.c ****     pTxData = (0x12 | 0x80);                                 //#0 是1 表示读
+ 288              		.loc 1 75 13
+ 289 0010 464B     		ldr	r3, .L14+4
+ 290 0012 9222     		movs	r2, #146
+ 291 0014 1A70     		strb	r2, [r3]
+  76:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
+ 292              		.loc 1 76 5
+ 293 0016 4FF47A73 		mov	r3, #1000
+ 294 001a 0122     		movs	r2, #1
+ 295 001c 4349     		ldr	r1, .L14+4
+ 296 001e 4448     		ldr	r0, .L14+8
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 7
 
 
-  82:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
- 208              		.loc 1 82 5 view .LVU45
- 209              	.L11:
- 210              		.loc 1 82 36 discriminator 1 view .LVU46
- 211              		.loc 1 82 11 is_stmt 0 discriminator 1 view .LVU47
- 212 003a 0948     		ldr	r0, .L13+8
- 213 003c FFF7FEFF 		bl	HAL_SPI_GetState
- 214              	.LVL15:
- 215              		.loc 1 82 36 discriminator 1 view .LVU48
- 216 0040 0328     		cmp	r0, #3
- 217 0042 FAD0     		beq	.L11
-  83:BMI088/bmi088.c ****     // osDelay(30);
-  84:BMI088/bmi088.c ****     HAL_Delay(30);
- 218              		.loc 1 84 5 is_stmt 1 view .LVU49
- 219 0044 1E20     		movs	r0, #30
- 220 0046 FFF7FEFF 		bl	HAL_Delay
- 221              	.LVL16:
-  85:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);     //取消片选陀螺仪
- 222              		.loc 1 85 5 view .LVU50
- 223 004a 0122     		movs	r2, #1
- 224 004c 1146     		mov	r1, r2
- 225 004e 0248     		ldr	r0, .L13
- 226 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 227              	.LVL17:
-  86:BMI088/bmi088.c **** }
- 228              		.loc 1 86 1 is_stmt 0 view .LVU51
- 229 0054 08BD     		pop	{r3, pc}
- 230              	.L14:
- 231 0056 00BF     		.align	2
- 232              	.L13:
- 233 0058 00040240 		.word	1073873920
- 234 005c 00000000 		.word	pTxData_gyro
- 235 0060 00000000 		.word	hspi1
- 236              		.cfi_endproc
- 237              	.LFE136:
- 239              		.section	.text.BMI088_Gyro_Read,"ax",%progbits
- 240              		.align	1
- 241              		.global	BMI088_Gyro_Read
- 242              		.syntax unified
- 243              		.thumb
- 244              		.thumb_func
- 246              	BMI088_Gyro_Read:
- 247              	.LFB137:
-  87:BMI088/bmi088.c **** 
-  88:BMI088/bmi088.c **** void BMI088_Gyro_Read()
-  89:BMI088/bmi088.c **** {
- 248              		.loc 1 89 1 is_stmt 1 view -0
- 249              		.cfi_startproc
- 250              		@ args = 0, pretend = 0, frame = 0
- 251              		@ frame_needed = 0, uses_anonymous_args = 0
- 252 0000 10B5     		push	{r4, lr}
- 253              	.LCFI2:
- 254              		.cfi_def_cfa_offset 8
- 255              		.cfi_offset 4, -8
- 256              		.cfi_offset 14, -4
-  90:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);     //片选陀螺仪
- 257              		.loc 1 90 5 view .LVU53
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 7
+ 297 0020 FFF7FEFF 		bl	HAL_SPI_Transmit
+  77:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData,1);
+  78:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
+ 298              		.loc 1 78 10
+ 299 0024 00BF     		nop
+ 300              	.L9:
+ 301              		.loc 1 78 11 discriminator 1
+ 302 0026 4248     		ldr	r0, .L14+8
+ 303 0028 FFF7FEFF 		bl	HAL_SPI_GetState
+ 304 002c 0346     		mov	r3, r0
+ 305              		.loc 1 78 36 discriminator 1
+ 306 002e 032B     		cmp	r3, #3
+ 307 0030 F9D0     		beq	.L9
+  79:BMI088/bmi088.c ****     HAL_SPI_Receive(&hspi1,&pRxData,1,1000);
+ 308              		.loc 1 79 5
+ 309 0032 4FF47A73 		mov	r3, #1000
+ 310 0036 0122     		movs	r2, #1
+ 311 0038 3E49     		ldr	r1, .L14+12
+ 312 003a 3D48     		ldr	r0, .L14+8
+ 313 003c FFF7FEFF 		bl	HAL_SPI_Receive
+  80:BMI088/bmi088.c ****     // HAL_SPI_Receive_DMA(&hspi1,&pRxData,1);
+  81:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
+ 314              		.loc 1 81 10
+ 315 0040 00BF     		nop
+ 316              	.L10:
+ 317              		.loc 1 81 11 discriminator 1
+ 318 0042 3B48     		ldr	r0, .L14+8
+ 319 0044 FFF7FEFF 		bl	HAL_SPI_GetState
+ 320 0048 0346     		mov	r3, r0
+ 321              		.loc 1 81 36 discriminator 1
+ 322 004a 042B     		cmp	r3, #4
+ 323 004c F9D0     		beq	.L10
+ 324              	.LBB2:
+  82:BMI088/bmi088.c ****     for(int i = 0; i < 6; i++)
+ 325              		.loc 1 82 13
+ 326 004e 0023     		movs	r3, #0
+ 327 0050 7B60     		str	r3, [r7, #4]
+ 328              		.loc 1 82 5
+ 329 0052 17E0     		b	.L11
+ 330              	.L13:
+  83:BMI088/bmi088.c ****     {
+  84:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData,1,1000);    //Bit #16-23，寄存器0x12的值，然后是�
+ 331              		.loc 1 84 9
+ 332 0054 4FF47A73 		mov	r3, #1000
+ 333 0058 0122     		movs	r2, #1
+ 334 005a 3649     		ldr	r1, .L14+12
+ 335 005c 3448     		ldr	r0, .L14+8
+ 336 005e FFF7FEFF 		bl	HAL_SPI_Receive
+  85:BMI088/bmi088.c ****         // HAL_SPI_Receive_DMA(&hspi1,&pRxData,1);
+  86:BMI088/bmi088.c ****         while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
+ 337              		.loc 1 86 14
+ 338 0062 00BF     		nop
+ 339              	.L12:
+ 340              		.loc 1 86 15 discriminator 1
+ 341 0064 3248     		ldr	r0, .L14+8
+ 342 0066 FFF7FEFF 		bl	HAL_SPI_GetState
+ 343 006a 0346     		mov	r3, r0
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 8
 
 
- 258 0002 0022     		movs	r2, #0
- 259 0004 0121     		movs	r1, #1
- 260 0006 2B48     		ldr	r0, .L21
- 261 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 262              	.LVL18:
-  91:BMI088/bmi088.c ****     pTxData_gyro = (0x00 | 0x80);
- 263              		.loc 1 91 5 view .LVU54
- 264              		.loc 1 91 18 is_stmt 0 view .LVU55
- 265 000c 2A49     		ldr	r1, .L21+4
- 266 000e 8023     		movs	r3, #128
- 267 0010 0B70     		strb	r3, [r1]
-  92:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
- 268              		.loc 1 92 5 is_stmt 1 view .LVU56
- 269 0012 4FF47A73 		mov	r3, #1000
- 270 0016 0122     		movs	r2, #1
- 271 0018 2848     		ldr	r0, .L21+8
- 272 001a FFF7FEFF 		bl	HAL_SPI_Transmit
- 273              	.LVL19:
-  93:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
-  94:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
- 274              		.loc 1 94 5 view .LVU57
- 275              	.L16:
- 276              		.loc 1 94 36 discriminator 1 view .LVU58
- 277              		.loc 1 94 11 is_stmt 0 discriminator 1 view .LVU59
- 278 001e 2748     		ldr	r0, .L21+8
- 279 0020 FFF7FEFF 		bl	HAL_SPI_GetState
- 280              	.LVL20:
- 281              		.loc 1 94 36 discriminator 1 view .LVU60
- 282 0024 0328     		cmp	r0, #3
- 283 0026 FAD0     		beq	.L16
- 284              	.LBB2:
-  95:BMI088/bmi088.c ****     for(int i = 0; i < 8; i++)
- 285              		.loc 1 95 13 view .LVU61
- 286 0028 0024     		movs	r4, #0
- 287 002a 0EE0     		b	.L17
- 288              	.LVL21:
- 289              	.L19:
-  96:BMI088/bmi088.c ****     {
-  97:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData_gyro,1,1000);
- 290              		.loc 1 97 9 is_stmt 1 view .LVU62
- 291 002c 4FF47A73 		mov	r3, #1000
- 292 0030 0122     		movs	r2, #1
- 293 0032 2349     		ldr	r1, .L21+12
- 294 0034 2148     		ldr	r0, .L21+8
- 295 0036 FFF7FEFF 		bl	HAL_SPI_Receive
- 296              	.LVL22:
-  98:BMI088/bmi088.c ****         // HAL_SPI_Receive_DMA(&hspi1,&pRxData_gyro,1);
-  99:BMI088/bmi088.c ****         while(HAL_SPI_GetState == HAL_SPI_STATE_BUSY_RX);
- 297              		.loc 1 99 9 view .LVU63
- 298              	.L18:
- 299              		.loc 1 99 32 discriminator 1 view .LVU64
- 300 003a 224B     		ldr	r3, .L21+16
- 301 003c 042B     		cmp	r3, #4
- 302 003e FCD0     		beq	.L18
- 100:BMI088/bmi088.c ****         buffer[i] = pRxData_gyro;
- 303              		.loc 1 100 9 view .LVU65
- 304              		.loc 1 100 19 is_stmt 0 view .LVU66
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 8
+ 344              		.loc 1 86 40 discriminator 1
+ 345 006c 042B     		cmp	r3, #4
+ 346 006e F9D0     		beq	.L12
+  87:BMI088/bmi088.c ****         buf[i] = pRxData;
+ 347              		.loc 1 87 16
+ 348 0070 304B     		ldr	r3, .L14+12
+ 349 0072 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 350 0074 304A     		ldr	r2, .L14+16
+ 351 0076 7B68     		ldr	r3, [r7, #4]
+ 352 0078 1344     		add	r3, r3, r2
+ 353 007a 0A46     		mov	r2, r1
+ 354 007c 1A70     		strb	r2, [r3]
+  82:BMI088/bmi088.c ****     {
+ 355              		.loc 1 82 28 discriminator 2
+ 356 007e 7B68     		ldr	r3, [r7, #4]
+ 357 0080 0133     		adds	r3, r3, #1
+ 358 0082 7B60     		str	r3, [r7, #4]
+ 359              	.L11:
+  82:BMI088/bmi088.c ****     {
+ 360              		.loc 1 82 22 discriminator 1
+ 361 0084 7B68     		ldr	r3, [r7, #4]
+ 362 0086 052B     		cmp	r3, #5
+ 363 0088 E4DD     		ble	.L13
+ 364              	.LBE2:
+  88:BMI088/bmi088.c ****     }
+  89:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET); //取消片选加速度计
+ 365              		.loc 1 89 5
+ 366 008a 0122     		movs	r2, #1
+ 367 008c 1021     		movs	r1, #16
+ 368 008e 2648     		ldr	r0, .L14
+ 369 0090 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  90:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
+ 370              		.loc 1 90 30
+ 371 0094 284B     		ldr	r3, .L14+16
+ 372 0096 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 373              		.loc 1 90 16
+ 374 0098 1BB2     		sxth	r3, r3
+ 375 009a 1B02     		lsls	r3, r3, #8
+ 376 009c 1AB2     		sxth	r2, r3
+ 377              		.loc 1 90 45
+ 378 009e 264B     		ldr	r3, .L14+16
+ 379 00a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 380 00a2 1BB2     		sxth	r3, r3
+ 381              		.loc 1 90 16
+ 382 00a4 1343     		orrs	r3, r3, r2
+ 383 00a6 1BB2     		sxth	r3, r3
+ 384              		.loc 1 90 50
+ 385 00a8 07EE903A 		vmov	s15, r3	@ int
+ 386 00ac B8EEE77A 		vcvt.f32.s32	s14, s15
+ 387 00b0 224B     		ldr	r3, .L14+20
+ 388 00b2 D3ED007A 		vldr.32	s15, [r3]
+ 389 00b6 67EE277A 		vmul.f32	s15, s14, s15
+ 390              		.loc 1 90 14
+ 391 00ba 214B     		ldr	r3, .L14+24
+ 392 00bc C3ED007A 		vstr.32	s15, [r3]
+  91:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
+ 393              		.loc 1 91 30
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 9
 
 
- 305 0040 1F4B     		ldr	r3, .L21+12
- 306 0042 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 307 0044 204B     		ldr	r3, .L21+20
- 308 0046 1A55     		strb	r2, [r3, r4]
-  95:BMI088/bmi088.c ****     {
- 309              		.loc 1 95 28 is_stmt 1 discriminator 2 view .LVU67
- 310 0048 0134     		adds	r4, r4, #1
- 311              	.LVL23:
- 312              	.L17:
-  95:BMI088/bmi088.c ****     {
- 313              		.loc 1 95 22 discriminator 1 view .LVU68
- 314 004a 072C     		cmp	r4, #7
- 315 004c EEDD     		ble	.L19
- 316              	.LBE2:
- 101:BMI088/bmi088.c ****     }
- 102:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);     //取消片选陀螺仪
- 317              		.loc 1 102 5 view .LVU69
- 318 004e 0122     		movs	r2, #1
- 319 0050 1146     		mov	r1, r2
- 320 0052 1848     		ldr	r0, .L21
- 321 0054 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 322              	.LVL24:
- 103:BMI088/bmi088.c ****     // if(buf[0] == 0x0F)
- 104:BMI088/bmi088.c ****     // {
- 105:BMI088/bmi088.c ****         gyro[0] = ((int16_t)((buffer[3] << 8) | buffer[2])) * BMI088_GYRO_SEN; 
- 323              		.loc 1 105 9 view .LVU70
- 324              		.loc 1 105 37 is_stmt 0 view .LVU71
- 325 0058 1B4A     		ldr	r2, .L21+20
- 326 005a D178     		ldrb	r1, [r2, #3]	@ zero_extendqisi2
- 327              		.loc 1 105 55 view .LVU72
- 328 005c 9378     		ldrb	r3, [r2, #2]	@ zero_extendqisi2
- 329              		.loc 1 105 20 view .LVU73
- 330 005e 43EA0123 		orr	r3, r3, r1, lsl #8
- 331 0062 1BB2     		sxth	r3, r3
- 332 0064 07EE903A 		vmov	s15, r3	@ int
- 333              		.loc 1 105 61 view .LVU74
- 334 0068 184B     		ldr	r3, .L21+24
- 335 006a 93ED007A 		vldr.32	s14, [r3]
- 336 006e F8EEE77A 		vcvt.f32.s32	s15, s15
- 337 0072 67EE877A 		vmul.f32	s15, s15, s14
- 338              		.loc 1 105 17 view .LVU75
- 339 0076 1649     		ldr	r1, .L21+28
- 340 0078 C1ED007A 		vstr.32	s15, [r1]
- 106:BMI088/bmi088.c ****         gyro[1] = ((int16_t)((buffer[5] << 8) | buffer[4])) * BMI088_GYRO_SEN;
- 341              		.loc 1 106 9 is_stmt 1 view .LVU76
- 342              		.loc 1 106 37 is_stmt 0 view .LVU77
- 343 007c 5079     		ldrb	r0, [r2, #5]	@ zero_extendqisi2
- 344              		.loc 1 106 55 view .LVU78
- 345 007e 1379     		ldrb	r3, [r2, #4]	@ zero_extendqisi2
- 346              		.loc 1 106 20 view .LVU79
- 347 0080 43EA0023 		orr	r3, r3, r0, lsl #8
- 348 0084 1BB2     		sxth	r3, r3
- 349 0086 07EE903A 		vmov	s15, r3	@ int
- 350              		.loc 1 106 61 view .LVU80
- 351 008a F8EEE77A 		vcvt.f32.s32	s15, s15
- 352 008e 67EE877A 		vmul.f32	s15, s15, s14
- 353              		.loc 1 106 17 view .LVU81
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 9
+ 394 00c0 1D4B     		ldr	r3, .L14+16
+ 395 00c2 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 396              		.loc 1 91 16
+ 397 00c4 1BB2     		sxth	r3, r3
+ 398 00c6 1B02     		lsls	r3, r3, #8
+ 399 00c8 1AB2     		sxth	r2, r3
+ 400              		.loc 1 91 45
+ 401 00ca 1B4B     		ldr	r3, .L14+16
+ 402 00cc 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 403 00ce 1BB2     		sxth	r3, r3
+ 404              		.loc 1 91 16
+ 405 00d0 1343     		orrs	r3, r3, r2
+ 406 00d2 1BB2     		sxth	r3, r3
+ 407              		.loc 1 91 50
+ 408 00d4 07EE903A 		vmov	s15, r3	@ int
+ 409 00d8 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 410 00dc 174B     		ldr	r3, .L14+20
+ 411 00de D3ED007A 		vldr.32	s15, [r3]
+ 412 00e2 67EE277A 		vmul.f32	s15, s14, s15
+ 413              		.loc 1 91 14
+ 414 00e6 164B     		ldr	r3, .L14+24
+ 415 00e8 C3ED017A 		vstr.32	s15, [r3, #4]
+  92:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
+ 416              		.loc 1 92 30
+ 417 00ec 124B     		ldr	r3, .L14+16
+ 418 00ee 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 419              		.loc 1 92 16
+ 420 00f0 1BB2     		sxth	r3, r3
+ 421 00f2 1B02     		lsls	r3, r3, #8
+ 422 00f4 1AB2     		sxth	r2, r3
+ 423              		.loc 1 92 45
+ 424 00f6 104B     		ldr	r3, .L14+16
+ 425 00f8 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 426 00fa 1BB2     		sxth	r3, r3
+ 427              		.loc 1 92 16
+ 428 00fc 1343     		orrs	r3, r3, r2
+ 429 00fe 1BB2     		sxth	r3, r3
+ 430              		.loc 1 92 50
+ 431 0100 07EE903A 		vmov	s15, r3	@ int
+ 432 0104 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 433 0108 0C4B     		ldr	r3, .L14+20
+ 434 010a D3ED007A 		vldr.32	s15, [r3]
+ 435 010e 67EE277A 		vmul.f32	s15, s14, s15
+ 436              		.loc 1 92 14
+ 437 0112 0B4B     		ldr	r3, .L14+24
+ 438 0114 C3ED027A 		vstr.32	s15, [r3, #8]
+  93:BMI088/bmi088.c ****     
+  94:BMI088/bmi088.c ****     // BMI088_accel_read_muli_reg(BMI088_TEMP_M, buffer, 2);
+  95:BMI088/bmi088.c ****     // bmi088_raw_temp = (int16_t)((buffer[0] << 3) | (buffer[1] >> 5));
+  96:BMI088/bmi088.c ****     //     if (bmi088_raw_temp > 1023)
+  97:BMI088/bmi088.c ****     //         bmi088_raw_temp -= 2048;
+  98:BMI088/bmi088.c ****     //   Temperature  = bmi088_raw_temp * BMI088_TEMP_FACTOR + BMI088_TEMP_OFFSET;
+  99:BMI088/bmi088.c **** 
+ 100:BMI088/bmi088.c ****     BMI088_Temper_read(buf_temp,2);
+ 439              		.loc 1 100 5
+ 440 0118 0221     		movs	r1, #2
+ 441 011a 0A48     		ldr	r0, .L14+28
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 10
 
 
- 354 0092 C1ED017A 		vstr.32	s15, [r1, #4]
- 107:BMI088/bmi088.c ****         gyro[2] = ((int16_t)((buffer[7] << 8) | buffer[6])) * BMI088_GYRO_SEN;
- 355              		.loc 1 107 9 is_stmt 1 view .LVU82
- 356              		.loc 1 107 37 is_stmt 0 view .LVU83
- 357 0096 D079     		ldrb	r0, [r2, #7]	@ zero_extendqisi2
- 358              		.loc 1 107 55 view .LVU84
- 359 0098 9379     		ldrb	r3, [r2, #6]	@ zero_extendqisi2
- 360              		.loc 1 107 20 view .LVU85
- 361 009a 43EA0023 		orr	r3, r3, r0, lsl #8
- 362 009e 1BB2     		sxth	r3, r3
- 363 00a0 07EE903A 		vmov	s15, r3	@ int
- 364              		.loc 1 107 61 view .LVU86
- 365 00a4 F8EEE77A 		vcvt.f32.s32	s15, s15
- 366 00a8 67EE877A 		vmul.f32	s15, s15, s14
- 367              		.loc 1 107 17 view .LVU87
- 368 00ac C1ED027A 		vstr.32	s15, [r1, #8]
- 108:BMI088/bmi088.c ****     // }
- 109:BMI088/bmi088.c ****     
- 110:BMI088/bmi088.c **** }
- 369              		.loc 1 110 1 view .LVU88
- 370 00b0 10BD     		pop	{r4, pc}
- 371              	.LVL25:
- 372              	.L22:
- 373              		.loc 1 110 1 view .LVU89
- 374 00b2 00BF     		.align	2
- 375              	.L21:
- 376 00b4 00040240 		.word	1073873920
- 377 00b8 00000000 		.word	pTxData_gyro
- 378 00bc 00000000 		.word	hspi1
- 379 00c0 00000000 		.word	pRxData_gyro
- 380 00c4 00000000 		.word	HAL_SPI_GetState
- 381 00c8 00000000 		.word	buffer
- 382 00cc 00000000 		.word	BMI088_GYRO_SEN
- 383 00d0 00000000 		.word	gyro
- 384              		.cfi_endproc
- 385              	.LFE137:
- 387              		.section	.text.BMI088_Temper_read,"ax",%progbits
- 388              		.align	1
- 389              		.global	BMI088_Temper_read
- 390              		.syntax unified
- 391              		.thumb
- 392              		.thumb_func
- 394              	BMI088_Temper_read:
- 395              	.LFB138:
- 111:BMI088/bmi088.c **** 
- 112:BMI088/bmi088.c **** void BMI088_Temper_read()
- 113:BMI088/bmi088.c **** {   
- 396              		.loc 1 113 1 is_stmt 1 view -0
- 397              		.cfi_startproc
- 398              		@ args = 0, pretend = 0, frame = 8
- 399              		@ frame_needed = 0, uses_anonymous_args = 0
- 400 0000 10B5     		push	{r4, lr}
- 401              	.LCFI3:
- 402              		.cfi_def_cfa_offset 8
- 403              		.cfi_offset 4, -8
- 404              		.cfi_offset 14, -4
- 405 0002 82B0     		sub	sp, sp, #8
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 10
+ 442 011c FFF7FEFF 		bl	BMI088_Temper_read
+ 101:BMI088/bmi088.c **** }
+ 443              		.loc 1 101 1
+ 444 0120 00BF     		nop
+ 445 0122 0837     		adds	r7, r7, #8
+ 446              	.LCFI5:
+ 447              		.cfi_def_cfa_offset 8
+ 448 0124 BD46     		mov	sp, r7
+ 449              	.LCFI6:
+ 450              		.cfi_def_cfa_register 13
+ 451              		@ sp needed
+ 452 0126 80BD     		pop	{r7, pc}
+ 453              	.L15:
+ 454              		.align	2
+ 455              	.L14:
+ 456 0128 00000240 		.word	1073872896
+ 457 012c 00000000 		.word	pTxData
+ 458 0130 00000000 		.word	hspi1
+ 459 0134 00000000 		.word	pRxData
+ 460 0138 00000000 		.word	buf
+ 461 013c 00000000 		.word	BMI088_ACCEL_SEN
+ 462 0140 00000000 		.word	accel
+ 463 0144 00000000 		.word	buf_temp
+ 464              		.cfi_endproc
+ 465              	.LFE135:
+ 467              		.section	.text.BMI088_Gyro_Init,"ax",%progbits
+ 468              		.align	1
+ 469              		.global	BMI088_Gyro_Init
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	BMI088_Gyro_Init:
+ 475              	.LFB136:
+ 102:BMI088/bmi088.c **** 
+ 103:BMI088/bmi088.c **** void BMI088_Gyro_Init()
+ 104:BMI088/bmi088.c **** {
+ 476              		.loc 1 104 1
+ 477              		.cfi_startproc
+ 478              		@ args = 0, pretend = 0, frame = 0
+ 479              		@ frame_needed = 1, uses_anonymous_args = 0
+ 480 0000 80B5     		push	{r7, lr}
+ 481              	.LCFI7:
+ 482              		.cfi_def_cfa_offset 8
+ 483              		.cfi_offset 7, -8
+ 484              		.cfi_offset 14, -4
+ 485 0002 00AF     		add	r7, sp, #0
+ 486              	.LCFI8:
+ 487              		.cfi_def_cfa_register 7
+ 105:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);     //片选陀螺仪
+ 488              		.loc 1 105 5
+ 489 0004 0022     		movs	r2, #0
+ 490 0006 0121     		movs	r1, #1
+ 491 0008 1748     		ldr	r0, .L19
+ 492 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106:BMI088/bmi088.c ****     pTxData_gyro = (0x14 & 0x7F);   //陀螺仪复位
+ 493              		.loc 1 106 18
+ 494 000e 174B     		ldr	r3, .L19+4
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 11
 
 
- 406              	.LCFI4:
- 407              		.cfi_def_cfa_offset 16
- 114:BMI088/bmi088.c ****     uint8_t buf[1];
- 408              		.loc 1 114 5 view .LVU91
- 115:BMI088/bmi088.c ****     float temp;
- 409              		.loc 1 115 5 view .LVU92
- 116:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
- 410              		.loc 1 116 5 view .LVU93
- 411 0004 0022     		movs	r2, #0
- 412 0006 1021     		movs	r1, #16
- 413 0008 2948     		ldr	r0, .L30
- 414 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 415              	.LVL26:
- 117:BMI088/bmi088.c ****     pTxData_Temperature = (0x22 | 0x80); //读温度寄存器
- 416              		.loc 1 117 5 view .LVU94
- 417              		.loc 1 117 25 is_stmt 0 view .LVU95
- 418 000e 2949     		ldr	r1, .L30+4
- 419 0010 A223     		movs	r3, #162
- 420 0012 0B70     		strb	r3, [r1]
- 118:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_Temperature,1,1000);
- 421              		.loc 1 118 5 is_stmt 1 view .LVU96
- 422 0014 4FF47A73 		mov	r3, #1000
- 423 0018 0122     		movs	r2, #1
- 424 001a 2748     		ldr	r0, .L30+8
- 425 001c FFF7FEFF 		bl	HAL_SPI_Transmit
- 426              	.LVL27:
- 119:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 427              		.loc 1 119 5 view .LVU97
- 428              	.L24:
- 429              		.loc 1 119 36 discriminator 1 view .LVU98
- 430              		.loc 1 119 11 is_stmt 0 discriminator 1 view .LVU99
- 431 0020 2548     		ldr	r0, .L30+8
- 432 0022 FFF7FEFF 		bl	HAL_SPI_GetState
- 433              	.LVL28:
- 434              		.loc 1 119 36 discriminator 1 view .LVU100
- 435 0026 0328     		cmp	r0, #3
- 436 0028 FAD0     		beq	.L24
- 437              	.LBB3:
- 120:BMI088/bmi088.c ****     for(int i = 0; i < 2; i++)
- 438              		.loc 1 120 13 view .LVU101
- 439 002a 0024     		movs	r4, #0
- 440 002c 13E0     		b	.L25
- 441              	.LVL29:
- 442              	.L27:
- 121:BMI088/bmi088.c ****     {
- 122:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData_Temperature,1,1000);
- 443              		.loc 1 122 9 is_stmt 1 view .LVU102
- 444 002e 4FF47A73 		mov	r3, #1000
- 445 0032 0122     		movs	r2, #1
- 446 0034 2149     		ldr	r1, .L30+12
- 447 0036 2048     		ldr	r0, .L30+8
- 448 0038 FFF7FEFF 		bl	HAL_SPI_Receive
- 449              	.LVL30:
- 123:BMI088/bmi088.c ****         while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX); //等待数据接收完成
- 450              		.loc 1 123 9 view .LVU103
- 451              	.L26:
- 452              		.loc 1 123 40 discriminator 1 view .LVU104
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 11
+ 495 0010 1422     		movs	r2, #20
+ 496 0012 1A70     		strb	r2, [r3]
+ 107:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
+ 497              		.loc 1 107 5
+ 498 0014 4FF47A73 		mov	r3, #1000
+ 499 0018 0122     		movs	r2, #1
+ 500 001a 1449     		ldr	r1, .L19+4
+ 501 001c 1448     		ldr	r0, .L19+8
+ 502 001e FFF7FEFF 		bl	HAL_SPI_Transmit
+ 108:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
+ 109:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
+ 503              		.loc 1 109 10
+ 504 0022 00BF     		nop
+ 505              	.L17:
+ 506              		.loc 1 109 11 discriminator 1
+ 507 0024 1248     		ldr	r0, .L19+8
+ 508 0026 FFF7FEFF 		bl	HAL_SPI_GetState
+ 509 002a 0346     		mov	r3, r0
+ 510              		.loc 1 109 36 discriminator 1
+ 511 002c 032B     		cmp	r3, #3
+ 512 002e F9D0     		beq	.L17
+ 110:BMI088/bmi088.c ****     pTxData_gyro = 0xB6;
+ 513              		.loc 1 110 18
+ 514 0030 0E4B     		ldr	r3, .L19+4
+ 515 0032 B622     		movs	r2, #182
+ 516 0034 1A70     		strb	r2, [r3]
+ 111:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
+ 517              		.loc 1 111 5
+ 518 0036 4FF47A73 		mov	r3, #1000
+ 519 003a 0122     		movs	r2, #1
+ 520 003c 0B49     		ldr	r1, .L19+4
+ 521 003e 0C48     		ldr	r0, .L19+8
+ 522 0040 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 112:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
+ 113:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
+ 523              		.loc 1 113 10
+ 524 0044 00BF     		nop
+ 525              	.L18:
+ 526              		.loc 1 113 11 discriminator 1
+ 527 0046 0A48     		ldr	r0, .L19+8
+ 528 0048 FFF7FEFF 		bl	HAL_SPI_GetState
+ 529 004c 0346     		mov	r3, r0
+ 530              		.loc 1 113 36 discriminator 1
+ 531 004e 032B     		cmp	r3, #3
+ 532 0050 F9D0     		beq	.L18
+ 114:BMI088/bmi088.c ****     // osDelay(30);
+ 115:BMI088/bmi088.c ****     HAL_Delay(30);
+ 533              		.loc 1 115 5
+ 534 0052 1E20     		movs	r0, #30
+ 535 0054 FFF7FEFF 		bl	HAL_Delay
+ 116:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);     //取消片选陀螺仪
+ 536              		.loc 1 116 5
+ 537 0058 0122     		movs	r2, #1
+ 538 005a 0121     		movs	r1, #1
+ 539 005c 0248     		ldr	r0, .L19
+ 540 005e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 117:BMI088/bmi088.c **** }
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 12
 
 
- 453              		.loc 1 123 15 is_stmt 0 discriminator 1 view .LVU105
- 454 003c 1E48     		ldr	r0, .L30+8
- 455 003e FFF7FEFF 		bl	HAL_SPI_GetState
- 456              	.LVL31:
- 457              		.loc 1 123 40 discriminator 1 view .LVU106
- 458 0042 0428     		cmp	r0, #4
- 459 0044 FAD0     		beq	.L26
- 124:BMI088/bmi088.c ****         buf[i] = pRxData_Temperature;
- 460              		.loc 1 124 9 is_stmt 1 view .LVU107
- 461              		.loc 1 124 16 is_stmt 0 view .LVU108
- 462 0046 04F10803 		add	r3, r4, #8
- 463 004a 6B44     		add	r3, sp, r3
- 464 004c 1B4A     		ldr	r2, .L30+12
- 465 004e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 466 0050 03F8042C 		strb	r2, [r3, #-4]
- 120:BMI088/bmi088.c ****     {
- 467              		.loc 1 120 28 is_stmt 1 discriminator 2 view .LVU109
- 468 0054 0134     		adds	r4, r4, #1
- 469              	.LVL32:
- 470              	.L25:
- 120:BMI088/bmi088.c ****     {
- 471              		.loc 1 120 22 discriminator 1 view .LVU110
- 472 0056 012C     		cmp	r4, #1
- 473 0058 E9DD     		ble	.L27
- 474              	.LBE3:
- 125:BMI088/bmi088.c ****     }
- 126:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
- 475              		.loc 1 126 5 view .LVU111
- 476 005a 0122     		movs	r2, #1
- 477 005c 1021     		movs	r1, #16
- 478 005e 1448     		ldr	r0, .L30
- 479 0060 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 480              	.LVL33:
- 127:BMI088/bmi088.c ****     temp = (int16_t)((buf[0] << 3) | (buf[1] >> 5));
- 481              		.loc 1 127 5 view .LVU112
- 482              		.loc 1 127 26 is_stmt 0 view .LVU113
- 483 0064 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
- 484              		.loc 1 127 42 view .LVU114
- 485 0068 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
- 486              		.loc 1 127 12 view .LVU115
- 487 006c 5A09     		lsrs	r2, r3, #5
- 488 006e 42EAC102 		orr	r2, r2, r1, lsl #3
- 489              		.loc 1 127 10 view .LVU116
- 490 0072 07EE902A 		vmov	s15, r2	@ int
- 491 0076 F8EEE77A 		vcvt.f32.s32	s15, s15
- 492              	.LVL34:
- 128:BMI088/bmi088.c ****     if(temp > 1023)
- 493              		.loc 1 128 5 is_stmt 1 view .LVU117
- 494              		.loc 1 128 7 is_stmt 0 view .LVU118
- 495 007a B2F5806F 		cmp	r2, #1024
- 496 007e 03DB     		blt	.L28
- 129:BMI088/bmi088.c ****     {
- 130:BMI088/bmi088.c ****         temp = temp - 2048;
- 497              		.loc 1 130 9 is_stmt 1 view .LVU119
- 498              		.loc 1 130 14 is_stmt 0 view .LVU120
- 499 0080 9FED0F7A 		vldr.32	s14, .L30+16
- 500 0084 77EEC77A 		vsub.f32	s15, s15, s14
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 12
+ 541              		.loc 1 117 1
+ 542 0062 00BF     		nop
+ 543 0064 80BD     		pop	{r7, pc}
+ 544              	.L20:
+ 545 0066 00BF     		.align	2
+ 546              	.L19:
+ 547 0068 00040240 		.word	1073873920
+ 548 006c 00000000 		.word	pTxData_gyro
+ 549 0070 00000000 		.word	hspi1
+ 550              		.cfi_endproc
+ 551              	.LFE136:
+ 553              		.section	.text.BMI088_Gyro_Read,"ax",%progbits
+ 554              		.align	1
+ 555              		.global	BMI088_Gyro_Read
+ 556              		.syntax unified
+ 557              		.thumb
+ 558              		.thumb_func
+ 560              	BMI088_Gyro_Read:
+ 561              	.LFB137:
+ 118:BMI088/bmi088.c **** 
+ 119:BMI088/bmi088.c **** void BMI088_Gyro_Read()
+ 120:BMI088/bmi088.c **** {
+ 562              		.loc 1 120 1
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 8
+ 565              		@ frame_needed = 1, uses_anonymous_args = 0
+ 566 0000 80B5     		push	{r7, lr}
+ 567              	.LCFI9:
+ 568              		.cfi_def_cfa_offset 8
+ 569              		.cfi_offset 7, -8
+ 570              		.cfi_offset 14, -4
+ 571 0002 82B0     		sub	sp, sp, #8
+ 572              	.LCFI10:
+ 573              		.cfi_def_cfa_offset 16
+ 574 0004 00AF     		add	r7, sp, #0
+ 575              	.LCFI11:
+ 576              		.cfi_def_cfa_register 7
+ 121:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);     //片选陀螺仪
+ 577              		.loc 1 121 5
+ 578 0006 0022     		movs	r2, #0
+ 579 0008 0121     		movs	r1, #1
+ 580 000a 3E48     		ldr	r0, .L26
+ 581 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 122:BMI088/bmi088.c ****     pTxData_gyro = (0x00 | 0x80);
+ 582              		.loc 1 122 18
+ 583 0010 3D4B     		ldr	r3, .L26+4
+ 584 0012 8022     		movs	r2, #128
+ 585 0014 1A70     		strb	r2, [r3]
+ 123:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_gyro,1,1000);
+ 586              		.loc 1 123 5
+ 587 0016 4FF47A73 		mov	r3, #1000
+ 588 001a 0122     		movs	r2, #1
+ 589 001c 3A49     		ldr	r1, .L26+4
+ 590 001e 3B48     		ldr	r0, .L26+8
+ 591 0020 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 124:BMI088/bmi088.c ****     // HAL_SPI_Transmit_DMA(&hspi1,&pTxData_gyro,1);
+ 125:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX);
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 13
 
 
- 501              	.LVL35:
- 502              	.L28:
- 131:BMI088/bmi088.c ****     }
- 132:BMI088/bmi088.c ****     else
- 133:BMI088/bmi088.c ****     {
- 134:BMI088/bmi088.c ****         temp = temp;
- 135:BMI088/bmi088.c ****     }
- 136:BMI088/bmi088.c ****     Temperature = temp * 0.125f / buf[1] + 23.0f;
- 503              		.loc 1 136 5 is_stmt 1 view .LVU121
- 504              		.loc 1 136 24 is_stmt 0 view .LVU122
- 505 0088 B4EE007A 		vmov.f32	s14, #1.25e-1
- 506 008c 27EE877A 		vmul.f32	s14, s15, s14
- 507              		.loc 1 136 33 view .LVU123
- 508 0090 07EE903A 		vmov	s15, r3	@ int
- 509              	.LVL36:
- 510              		.loc 1 136 33 view .LVU124
- 511 0094 F8EEE77A 		vcvt.f32.s32	s15, s15
- 512 0098 C7EE276A 		vdiv.f32	s13, s14, s15
- 513              		.loc 1 136 42 view .LVU125
- 514 009c F3EE077A 		vmov.f32	s15, #2.3e+1
- 515 00a0 76EEA77A 		vadd.f32	s15, s13, s15
- 516              		.loc 1 136 17 view .LVU126
- 517 00a4 074B     		ldr	r3, .L30+20
- 518 00a6 C3ED007A 		vstr.32	s15, [r3]
- 137:BMI088/bmi088.c ****     
- 138:BMI088/bmi088.c **** }...
- 519              		.loc 1 138 1 view .LVU127
- 520 00aa 02B0     		add	sp, sp, #8
- 521              	.LCFI5:
- 522              		.cfi_def_cfa_offset 8
- 523              		@ sp needed
- 524 00ac 10BD     		pop	{r4, pc}
- 525              	.LVL37:
- 526              	.L31:
- 527              		.loc 1 138 1 view .LVU128
- 528 00ae 00BF     		.align	2
- 529              	.L30:
- 530 00b0 00000240 		.word	1073872896
- 531 00b4 00000000 		.word	pTxData_Temperature
- 532 00b8 00000000 		.word	hspi1
- 533 00bc 00000000 		.word	pRxData_Temperature
- 534 00c0 00000045 		.word	1157627904
- 535 00c4 00000000 		.word	Temperature
- 536              		.cfi_endproc
- 537              	.LFE138:
- 539              		.section	.text.BMI088_Accel_Read,"ax",%progbits
- 540              		.align	1
- 541              		.global	BMI088_Accel_Read
- 542              		.syntax unified
- 543              		.thumb
- 544              		.thumb_func
- 546              	BMI088_Accel_Read:
- 547              	.LFB135:
-  48:BMI088/bmi088.c **** {
- 548              		.loc 1 48 1 is_stmt 1 view -0
- 549              		.cfi_startproc
- 550              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 13
+ 592              		.loc 1 125 10
+ 593 0024 00BF     		nop
+ 594              	.L22:
+ 595              		.loc 1 125 11 discriminator 1
+ 596 0026 3948     		ldr	r0, .L26+8
+ 597 0028 FFF7FEFF 		bl	HAL_SPI_GetState
+ 598 002c 0346     		mov	r3, r0
+ 599              		.loc 1 125 36 discriminator 1
+ 600 002e 032B     		cmp	r3, #3
+ 601 0030 F9D0     		beq	.L22
+ 602              	.LBB3:
+ 126:BMI088/bmi088.c ****     for(int i = 0; i < 8; i++)
+ 603              		.loc 1 126 13
+ 604 0032 0023     		movs	r3, #0
+ 605 0034 7B60     		str	r3, [r7, #4]
+ 606              		.loc 1 126 5
+ 607 0036 17E0     		b	.L23
+ 608              	.L25:
+ 127:BMI088/bmi088.c ****     {
+ 128:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData_gyro,1,1000);
+ 609              		.loc 1 128 9
+ 610 0038 4FF47A73 		mov	r3, #1000
+ 611 003c 0122     		movs	r2, #1
+ 612 003e 3449     		ldr	r1, .L26+12
+ 613 0040 3248     		ldr	r0, .L26+8
+ 614 0042 FFF7FEFF 		bl	HAL_SPI_Receive
+ 129:BMI088/bmi088.c ****         // HAL_SPI_Receive_DMA(&hspi1,&pRxData_gyro,1);
+ 130:BMI088/bmi088.c ****         while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
+ 615              		.loc 1 130 14
+ 616 0046 00BF     		nop
+ 617              	.L24:
+ 618              		.loc 1 130 15 discriminator 1
+ 619 0048 3048     		ldr	r0, .L26+8
+ 620 004a FFF7FEFF 		bl	HAL_SPI_GetState
+ 621 004e 0346     		mov	r3, r0
+ 622              		.loc 1 130 40 discriminator 1
+ 623 0050 042B     		cmp	r3, #4
+ 624 0052 F9D0     		beq	.L24
+ 131:BMI088/bmi088.c ****         buffer[i] = pRxData_gyro;
+ 625              		.loc 1 131 19
+ 626 0054 2E4B     		ldr	r3, .L26+12
+ 627 0056 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 628 0058 2E4A     		ldr	r2, .L26+16
+ 629 005a 7B68     		ldr	r3, [r7, #4]
+ 630 005c 1344     		add	r3, r3, r2
+ 631 005e 0A46     		mov	r2, r1
+ 632 0060 1A70     		strb	r2, [r3]
+ 126:BMI088/bmi088.c ****     {
+ 633              		.loc 1 126 28 discriminator 2
+ 634 0062 7B68     		ldr	r3, [r7, #4]
+ 635 0064 0133     		adds	r3, r3, #1
+ 636 0066 7B60     		str	r3, [r7, #4]
+ 637              	.L23:
+ 126:BMI088/bmi088.c ****     {
+ 638              		.loc 1 126 22 discriminator 1
+ 639 0068 7B68     		ldr	r3, [r7, #4]
+ 640 006a 072B     		cmp	r3, #7
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 14
 
 
- 551              		@ frame_needed = 0, uses_anonymous_args = 0
- 552 0000 10B5     		push	{r4, lr}
- 553              	.LCFI6:
- 554              		.cfi_def_cfa_offset 8
- 555              		.cfi_offset 4, -8
- 556              		.cfi_offset 14, -4
-  49:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);    //PA4置0，片选加速度计
- 557              		.loc 1 49 5 view .LVU130
- 558 0002 0022     		movs	r2, #0
- 559 0004 1021     		movs	r1, #16
- 560 0006 3248     		ldr	r0, .L39
- 561 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 562              	.LVL38:
-  50:BMI088/bmi088.c ****     pTxData = (0x12 | 0x80);                                 //#0 是1 表示读
- 563              		.loc 1 50 5 view .LVU131
-  50:BMI088/bmi088.c ****     pTxData = (0x12 | 0x80);                                 //#0 是1 表示读
- 564              		.loc 1 50 13 is_stmt 0 view .LVU132
- 565 000c 3149     		ldr	r1, .L39+4
- 566 000e 9223     		movs	r3, #146
- 567 0010 0B70     		strb	r3, [r1]
-  51:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData,1,1000);
- 568              		.loc 1 51 5 is_stmt 1 view .LVU133
- 569 0012 4FF47A73 		mov	r3, #1000
- 570 0016 0122     		movs	r2, #1
- 571 0018 2F48     		ldr	r0, .L39+8
- 572 001a FFF7FEFF 		bl	HAL_SPI_Transmit
- 573              	.LVL39:
-  53:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 574              		.loc 1 53 5 view .LVU134
- 575              	.L33:
-  53:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 576              		.loc 1 53 36 discriminator 1 view .LVU135
-  53:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 577              		.loc 1 53 11 is_stmt 0 discriminator 1 view .LVU136
- 578 001e 2E48     		ldr	r0, .L39+8
- 579 0020 FFF7FEFF 		bl	HAL_SPI_GetState
- 580              	.LVL40:
-  53:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_TX); //等待数据发送完成
- 581              		.loc 1 53 36 discriminator 1 view .LVU137
- 582 0024 0328     		cmp	r0, #3
- 583 0026 FAD0     		beq	.L33
-  54:BMI088/bmi088.c ****     HAL_SPI_Receive(&hspi1,&pRxData,1,1000);
- 584              		.loc 1 54 5 is_stmt 1 view .LVU138
- 585 0028 4FF47A73 		mov	r3, #1000
- 586 002c 0122     		movs	r2, #1
- 587 002e 2B49     		ldr	r1, .L39+12
- 588 0030 2948     		ldr	r0, .L39+8
- 589 0032 FFF7FEFF 		bl	HAL_SPI_Receive
- 590              	.LVL41:
-  56:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
- 591              		.loc 1 56 5 view .LVU139
- 592              	.L34:
-  56:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
- 593              		.loc 1 56 36 discriminator 1 view .LVU140
-  56:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
- 594              		.loc 1 56 11 is_stmt 0 discriminator 1 view .LVU141
- 595 0036 2848     		ldr	r0, .L39+8
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 14
+ 641 006c E4DD     		ble	.L25
+ 642              	.LBE3:
+ 132:BMI088/bmi088.c ****     }
+ 133:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);     //取消片选陀螺仪
+ 643              		.loc 1 133 5
+ 644 006e 0122     		movs	r2, #1
+ 645 0070 0121     		movs	r1, #1
+ 646 0072 2448     		ldr	r0, .L26
+ 647 0074 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 134:BMI088/bmi088.c ****     // if(buf[0] == 0x0F)
+ 135:BMI088/bmi088.c ****     // {
+ 136:BMI088/bmi088.c ****         gyro[0] = ((int16_t)((buffer[3] << 8) | buffer[2])) * BMI088_GYRO_SEN; 
+ 648              		.loc 1 136 37
+ 649 0078 264B     		ldr	r3, .L26+16
+ 650 007a DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 651              		.loc 1 136 20
+ 652 007c 1BB2     		sxth	r3, r3
+ 653 007e 1B02     		lsls	r3, r3, #8
+ 654 0080 1AB2     		sxth	r2, r3
+ 655              		.loc 1 136 55
+ 656 0082 244B     		ldr	r3, .L26+16
+ 657 0084 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 658 0086 1BB2     		sxth	r3, r3
+ 659              		.loc 1 136 20
+ 660 0088 1343     		orrs	r3, r3, r2
+ 661 008a 1BB2     		sxth	r3, r3
+ 662              		.loc 1 136 61
+ 663 008c 07EE903A 		vmov	s15, r3	@ int
+ 664 0090 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 665 0094 204B     		ldr	r3, .L26+20
+ 666 0096 D3ED007A 		vldr.32	s15, [r3]
+ 667 009a 67EE277A 		vmul.f32	s15, s14, s15
+ 668              		.loc 1 136 17
+ 669 009e 1F4B     		ldr	r3, .L26+24
+ 670 00a0 C3ED007A 		vstr.32	s15, [r3]
+ 137:BMI088/bmi088.c ****         gyro[1] = ((int16_t)((buffer[5] << 8) | buffer[4])) * BMI088_GYRO_SEN;
+ 671              		.loc 1 137 37
+ 672 00a4 1B4B     		ldr	r3, .L26+16
+ 673 00a6 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 674              		.loc 1 137 20
+ 675 00a8 1BB2     		sxth	r3, r3
+ 676 00aa 1B02     		lsls	r3, r3, #8
+ 677 00ac 1AB2     		sxth	r2, r3
+ 678              		.loc 1 137 55
+ 679 00ae 194B     		ldr	r3, .L26+16
+ 680 00b0 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 681 00b2 1BB2     		sxth	r3, r3
+ 682              		.loc 1 137 20
+ 683 00b4 1343     		orrs	r3, r3, r2
+ 684 00b6 1BB2     		sxth	r3, r3
+ 685              		.loc 1 137 61
+ 686 00b8 07EE903A 		vmov	s15, r3	@ int
+ 687 00bc B8EEE77A 		vcvt.f32.s32	s14, s15
+ 688 00c0 154B     		ldr	r3, .L26+20
+ 689 00c2 D3ED007A 		vldr.32	s15, [r3]
+ 690 00c6 67EE277A 		vmul.f32	s15, s14, s15
+ 691              		.loc 1 137 17
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 15
 
 
- 596 0038 FFF7FEFF 		bl	HAL_SPI_GetState
- 597              	.LVL42:
-  56:BMI088/bmi088.c ****     while(HAL_SPI_GetState(&hspi1) == HAL_SPI_STATE_BUSY_RX);
- 598              		.loc 1 56 36 discriminator 1 view .LVU142
- 599 003c 0428     		cmp	r0, #4
- 600 003e FAD0     		beq	.L34
- 601              	.LBB4:
-  57:BMI088/bmi088.c ****     for(int i = 0; i < 6; i++)
- 602              		.loc 1 57 13 view .LVU143
- 603 0040 0024     		movs	r4, #0
- 604 0042 0EE0     		b	.L35
- 605              	.LVL43:
- 606              	.L37:
-  59:BMI088/bmi088.c ****         HAL_SPI_Receive(&hspi1,&pRxData,1,1000);    //Bit #16-23，寄存器0x12的值，然后是�
- 607              		.loc 1 59 9 is_stmt 1 view .LVU144
- 608 0044 4FF47A73 		mov	r3, #1000
- 609 0048 0122     		movs	r2, #1
- 610 004a 2449     		ldr	r1, .L39+12
- 611 004c 2248     		ldr	r0, .L39+8
- 612 004e FFF7FEFF 		bl	HAL_SPI_Receive
- 613              	.LVL44:
-  61:BMI088/bmi088.c ****         while(HAL_SPI_GetState == HAL_SPI_STATE_BUSY_RX);
- 614              		.loc 1 61 9 view .LVU145
- 615              	.L36:
-  61:BMI088/bmi088.c ****         while(HAL_SPI_GetState == HAL_SPI_STATE_BUSY_RX);
- 616              		.loc 1 61 32 discriminator 1 view .LVU146
- 617 0052 234B     		ldr	r3, .L39+16
- 618 0054 042B     		cmp	r3, #4
- 619 0056 FCD0     		beq	.L36
-  62:BMI088/bmi088.c ****         buf[i] = pRxData;
- 620              		.loc 1 62 9 view .LVU147
-  62:BMI088/bmi088.c ****         buf[i] = pRxData;
- 621              		.loc 1 62 16 is_stmt 0 view .LVU148
- 622 0058 204B     		ldr	r3, .L39+12
- 623 005a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 624 005c 214B     		ldr	r3, .L39+20
- 625 005e 1A55     		strb	r2, [r3, r4]
-  57:BMI088/bmi088.c ****     for(int i = 0; i < 6; i++)
- 626              		.loc 1 57 28 is_stmt 1 discriminator 2 view .LVU149
- 627 0060 0134     		adds	r4, r4, #1
- 628              	.LVL45:
- 629              	.L35:
-  57:BMI088/bmi088.c ****     for(int i = 0; i < 6; i++)
- 630              		.loc 1 57 22 discriminator 1 view .LVU150
- 631 0062 052C     		cmp	r4, #5
- 632 0064 EEDD     		ble	.L37
- 633              	.LBE4:
-  64:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET); //取消片选加速度计
- 634              		.loc 1 64 5 view .LVU151
- 635 0066 0122     		movs	r2, #1
- 636 0068 1021     		movs	r1, #16
- 637 006a 1948     		ldr	r0, .L39
- 638 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 639              	.LVL46:
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
- 640              		.loc 1 65 5 view .LVU152
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 15
+ 692 00ca 144B     		ldr	r3, .L26+24
+ 693 00cc C3ED017A 		vstr.32	s15, [r3, #4]
+ 138:BMI088/bmi088.c ****         gyro[2] = ((int16_t)((buffer[7] << 8) | buffer[6])) * BMI088_GYRO_SEN;
+ 694              		.loc 1 138 37
+ 695 00d0 104B     		ldr	r3, .L26+16
+ 696 00d2 DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
+ 697              		.loc 1 138 20
+ 698 00d4 1BB2     		sxth	r3, r3
+ 699 00d6 1B02     		lsls	r3, r3, #8
+ 700 00d8 1AB2     		sxth	r2, r3
+ 701              		.loc 1 138 55
+ 702 00da 0E4B     		ldr	r3, .L26+16
+ 703 00dc 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 704 00de 1BB2     		sxth	r3, r3
+ 705              		.loc 1 138 20
+ 706 00e0 1343     		orrs	r3, r3, r2
+ 707 00e2 1BB2     		sxth	r3, r3
+ 708              		.loc 1 138 61
+ 709 00e4 07EE903A 		vmov	s15, r3	@ int
+ 710 00e8 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 711 00ec 0A4B     		ldr	r3, .L26+20
+ 712 00ee D3ED007A 		vldr.32	s15, [r3]
+ 713 00f2 67EE277A 		vmul.f32	s15, s14, s15
+ 714              		.loc 1 138 17
+ 715 00f6 094B     		ldr	r3, .L26+24
+ 716 00f8 C3ED027A 		vstr.32	s15, [r3, #8]
+ 139:BMI088/bmi088.c ****     // }
+ 140:BMI088/bmi088.c ****     
+ 141:BMI088/bmi088.c **** }
+ 717              		.loc 1 141 1
+ 718 00fc 00BF     		nop
+ 719 00fe 0837     		adds	r7, r7, #8
+ 720              	.LCFI12:
+ 721              		.cfi_def_cfa_offset 8
+ 722 0100 BD46     		mov	sp, r7
+ 723              	.LCFI13:
+ 724              		.cfi_def_cfa_register 13
+ 725              		@ sp needed
+ 726 0102 80BD     		pop	{r7, pc}
+ 727              	.L27:
+ 728              		.align	2
+ 729              	.L26:
+ 730 0104 00040240 		.word	1073873920
+ 731 0108 00000000 		.word	pTxData_gyro
+ 732 010c 00000000 		.word	hspi1
+ 733 0110 00000000 		.word	pRxData_gyro
+ 734 0114 00000000 		.word	buffer
+ 735 0118 00000000 		.word	BMI088_GYRO_SEN
+ 736 011c 00000000 		.word	gyro
+ 737              		.cfi_endproc
+ 738              	.LFE137:
+ 740              		.section	.text.BMI088_Temper_read,"ax",%progbits
+ 741              		.align	1
+ 742              		.global	BMI088_Temper_read
+ 743              		.syntax unified
+ 744              		.thumb
+ 745              		.thumb_func
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 16
 
 
- 641              		.loc 1 65 30 is_stmt 0 view .LVU153
- 642 0070 1C4A     		ldr	r2, .L39+20
- 643 0072 5178     		ldrb	r1, [r2, #1]	@ zero_extendqisi2
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
- 644              		.loc 1 65 45 view .LVU154
- 645 0074 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
- 646              		.loc 1 65 16 view .LVU155
- 647 0076 43EA0123 		orr	r3, r3, r1, lsl #8
- 648 007a 1BB2     		sxth	r3, r3
- 649 007c 07EE903A 		vmov	s15, r3	@ int
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
- 650              		.loc 1 65 50 view .LVU156
- 651 0080 194B     		ldr	r3, .L39+24
- 652 0082 93ED007A 		vldr.32	s14, [r3]
- 653 0086 F8EEE77A 		vcvt.f32.s32	s15, s15
- 654 008a 67EE877A 		vmul.f32	s15, s15, s14
-  65:BMI088/bmi088.c ****     accel[0] = (int16_t)((buf[1] << 8) | buf[0]) * BMI088_ACCEL_SEN;
- 655              		.loc 1 65 14 view .LVU157
- 656 008e 1749     		ldr	r1, .L39+28
- 657 0090 C1ED007A 		vstr.32	s15, [r1]
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 658              		.loc 1 66 5 is_stmt 1 view .LVU158
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 659              		.loc 1 66 30 is_stmt 0 view .LVU159
- 660 0094 D078     		ldrb	r0, [r2, #3]	@ zero_extendqisi2
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 661              		.loc 1 66 45 view .LVU160
- 662 0096 9378     		ldrb	r3, [r2, #2]	@ zero_extendqisi2
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 663              		.loc 1 66 16 view .LVU161
- 664 0098 43EA0023 		orr	r3, r3, r0, lsl #8
- 665 009c 1BB2     		sxth	r3, r3
- 666 009e 07EE903A 		vmov	s15, r3	@ int
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 667              		.loc 1 66 50 view .LVU162
- 668 00a2 F8EEE77A 		vcvt.f32.s32	s15, s15
- 669 00a6 67EE877A 		vmul.f32	s15, s15, s14
-  66:BMI088/bmi088.c ****     accel[1] = (int16_t)((buf[3] << 8) | buf[2]) * BMI088_ACCEL_SEN;
- 670              		.loc 1 66 14 view .LVU163
- 671 00aa C1ED017A 		vstr.32	s15, [r1, #4]
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 672              		.loc 1 67 5 is_stmt 1 view .LVU164
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 673              		.loc 1 67 30 is_stmt 0 view .LVU165
- 674 00ae 5079     		ldrb	r0, [r2, #5]	@ zero_extendqisi2
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 675              		.loc 1 67 45 view .LVU166
- 676 00b0 1379     		ldrb	r3, [r2, #4]	@ zero_extendqisi2
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 677              		.loc 1 67 16 view .LVU167
- 678 00b2 43EA0023 		orr	r3, r3, r0, lsl #8
- 679 00b6 1BB2     		sxth	r3, r3
- 680 00b8 07EE903A 		vmov	s15, r3	@ int
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 681              		.loc 1 67 50 view .LVU168
- 682 00bc F8EEE77A 		vcvt.f32.s32	s15, s15
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 16
+ 747              	BMI088_Temper_read:
+ 748              	.LFB138:
+ 142:BMI088/bmi088.c **** 
+ 143:BMI088/bmi088.c **** //不要写成这样，太混乱了，为什么要传入一个缓冲区和长度？读温度不是�
+ 144:BMI088/bmi088.c **** void BMI088_Temper_read(uint8_t tempbuf[], uint8_t len)
+ 145:BMI088/bmi088.c **** {   
+ 749              		.loc 1 145 1
+ 750              		.cfi_startproc
+ 751              		@ args = 0, pretend = 0, frame = 16
+ 752              		@ frame_needed = 1, uses_anonymous_args = 0
+ 753 0000 90B5     		push	{r4, r7, lr}
+ 754              	.LCFI14:
+ 755              		.cfi_def_cfa_offset 12
+ 756              		.cfi_offset 4, -12
+ 757              		.cfi_offset 7, -8
+ 758              		.cfi_offset 14, -4
+ 759 0002 85B0     		sub	sp, sp, #20
+ 760              	.LCFI15:
+ 761              		.cfi_def_cfa_offset 32
+ 762 0004 00AF     		add	r7, sp, #0
+ 763              	.LCFI16:
+ 764              		.cfi_def_cfa_register 7
+ 765 0006 7860     		str	r0, [r7, #4]
+ 766 0008 0B46     		mov	r3, r1
+ 767 000a FB70     		strb	r3, [r7, #3]
+ 146:BMI088/bmi088.c ****     uint8_t tempdata[2],index=0;
+ 768              		.loc 1 146 25
+ 769 000c 0023     		movs	r3, #0
+ 770 000e FB73     		strb	r3, [r7, #15]
+ 147:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);    //PA4置零，片选加速度计
+ 771              		.loc 1 147 5
+ 772 0010 0022     		movs	r2, #0
+ 773 0012 1021     		movs	r1, #16
+ 774 0014 3248     		ldr	r0, .L34
+ 775 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 148:BMI088/bmi088.c ****     pTxData_Temperature = (0x22 | 0x80); //读温度寄存器
+ 776              		.loc 1 148 25
+ 777 001a 324B     		ldr	r3, .L34+4
+ 778 001c A222     		movs	r2, #162
+ 779 001e 1A70     		strb	r2, [r3]
+ 149:BMI088/bmi088.c ****     HAL_SPI_Transmit(&hspi1,&pTxData_Temperature,1,1000);
+ 780              		.loc 1 149 5
+ 781 0020 4FF47A73 		mov	r3, #1000
+ 782 0024 0122     		movs	r2, #1
+ 783 0026 2F49     		ldr	r1, .L34+4
+ 784 0028 2F48     		ldr	r0, .L34+8
+ 785 002a FFF7FEFF 		bl	HAL_SPI_Transmit
+ 150:BMI088/bmi088.c ****     HAL_SPI_Receive(&hspi1,&pRxData,1,1000);
+ 786              		.loc 1 150 5
+ 787 002e 4FF47A73 		mov	r3, #1000
+ 788 0032 0122     		movs	r2, #1
+ 789 0034 2D49     		ldr	r1, .L34+12
+ 790 0036 2C48     		ldr	r0, .L34+8
+ 791 0038 FFF7FEFF 		bl	HAL_SPI_Receive
+ 151:BMI088/bmi088.c ****     // for(int i = 0; i < 2; i++)
+ 152:BMI088/bmi088.c ****     // {
+ 153:BMI088/bmi088.c ****     //     HAL_SPI_Receive(&hspi1,&pRxData_Temperature,1,1000);
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 17
 
 
- 683 00c0 67EE877A 		vmul.f32	s15, s15, s14
-  67:BMI088/bmi088.c ****     accel[2] = (int16_t)((buf[5] << 8) | buf[4]) * BMI088_ACCEL_SEN;
- 684              		.loc 1 67 14 view .LVU169
- 685 00c4 C1ED027A 		vstr.32	s15, [r1, #8]
-  69:BMI088/bmi088.c ****     BMI088_Temper_read();  
- 686              		.loc 1 69 5 is_stmt 1 view .LVU170
- 687 00c8 FFF7FEFF 		bl	BMI088_Temper_read
- 688              	.LVL47:
-  70:BMI088/bmi088.c **** }
- 689              		.loc 1 70 1 is_stmt 0 view .LVU171
- 690 00cc 10BD     		pop	{r4, pc}
- 691              	.LVL48:
- 692              	.L40:
-  70:BMI088/bmi088.c **** }
- 693              		.loc 1 70 1 view .LVU172
- 694 00ce 00BF     		.align	2
- 695              	.L39:
- 696 00d0 00000240 		.word	1073872896
- 697 00d4 00000000 		.word	pTxData
- 698 00d8 00000000 		.word	hspi1
- 699 00dc 00000000 		.word	pRxData
- 700 00e0 00000000 		.word	HAL_SPI_GetState
- 701 00e4 00000000 		.word	buf
- 702 00e8 00000000 		.word	BMI088_ACCEL_SEN
- 703 00ec 00000000 		.word	accel
- 704              		.cfi_endproc
- 705              	.LFE135:
- 707              		.global	pRxData_Temperature
- 708              		.section	.bss.pRxData_Temperature,"aw",%nobits
- 711              	pRxData_Temperature:
- 712 0000 00       		.space	1
- 713              		.global	pTxData_Temperature
- 714              		.section	.bss.pTxData_Temperature,"aw",%nobits
- 717              	pTxData_Temperature:
- 718 0000 00       		.space	1
- 719              		.global	pRxData_gyro
- 720              		.section	.bss.pRxData_gyro,"aw",%nobits
- 723              	pRxData_gyro:
- 724 0000 00       		.space	1
- 725              		.global	pTxData_gyro
- 726              		.section	.bss.pTxData_gyro,"aw",%nobits
- 729              	pTxData_gyro:
- 730 0000 00       		.space	1
- 731              		.global	pRxData
- 732              		.section	.bss.pRxData,"aw",%nobits
- 735              	pRxData:
- 736 0000 00       		.space	1
- 737              		.global	pTxData
- 738              		.section	.bss.pTxData,"aw",%nobits
- 741              	pTxData:
- 742 0000 00       		.space	1
- 743              		.global	buffer
- 744              		.section	.bss.buffer,"aw",%nobits
- 745              		.align	2
- 748              	buffer:
- 749 0000 00000000 		.space	8
- 749      00000000 
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 17
+ 154:BMI088/bmi088.c ****     //     buf[i] = pRxData_Temperature;
+ 155:BMI088/bmi088.c ****     //     // buf[i] = BMI088_read_write_byte(0x55);
+ 156:BMI088/bmi088.c ****     // }
+ 157:BMI088/bmi088.c **** 
+ 158:BMI088/bmi088.c ****     // while(len != 0)
+ 159:BMI088/bmi088.c ****     // {
+ 160:BMI088/bmi088.c ****     //     *tempbuf = BMI088_read_write_byte(0x55);
+ 161:BMI088/bmi088.c ****     //     tempbuf++;
+ 162:BMI088/bmi088.c ****     //     len--;
+ 163:BMI088/bmi088.c ****     // }
+ 164:BMI088/bmi088.c **** 
+ 165:BMI088/bmi088.c ****     while(len != 0)
+ 792              		.loc 1 165 10
+ 793 003c 10E0     		b	.L29
+ 794              	.L30:
+ 166:BMI088/bmi088.c ****     {
+ 167:BMI088/bmi088.c ****         tempdata[index] = BMI088_read_write_byte(0x55);
+ 795              		.loc 1 167 17
+ 796 003e FC7B     		ldrb	r4, [r7, #15]	@ zero_extendqisi2
+ 797              		.loc 1 167 27
+ 798 0040 5520     		movs	r0, #85
+ 799 0042 FFF7FEFF 		bl	BMI088_read_write_byte
+ 800 0046 0346     		mov	r3, r0
+ 801 0048 1A46     		mov	r2, r3
+ 802              		.loc 1 167 25 discriminator 1
+ 803 004a 04F11003 		add	r3, r4, #16
+ 804 004e 3B44     		add	r3, r3, r7
+ 805 0050 03F8042C 		strb	r2, [r3, #-4]
+ 168:BMI088/bmi088.c ****         index++;
+ 806              		.loc 1 168 14
+ 807 0054 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 808 0056 0133     		adds	r3, r3, #1
+ 809 0058 FB73     		strb	r3, [r7, #15]
+ 169:BMI088/bmi088.c ****         len--;
+ 810              		.loc 1 169 12
+ 811 005a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 812 005c 013B     		subs	r3, r3, #1
+ 813 005e FB70     		strb	r3, [r7, #3]
+ 814              	.L29:
+ 165:BMI088/bmi088.c ****     {
+ 815              		.loc 1 165 15
+ 816 0060 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 817 0062 002B     		cmp	r3, #0
+ 818 0064 EBD1     		bne	.L30
+ 170:BMI088/bmi088.c ****     }
+ 171:BMI088/bmi088.c **** 
+ 172:BMI088/bmi088.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);    //PA4置1，取消片选加速度计
+ 819              		.loc 1 172 5
+ 820 0066 0122     		movs	r2, #1
+ 821 0068 1021     		movs	r1, #16
+ 822 006a 1D48     		ldr	r0, .L34
+ 823 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 173:BMI088/bmi088.c ****     temp = (int16_t)((tempdata[0] << 3) | (tempdata[1] >> 5));
+ 824              		.loc 1 173 31
+ 825 0070 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 826              		.loc 1 173 12
+ 827 0072 1BB2     		sxth	r3, r3
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 18
 
 
- 750              		.global	buf
- 751              		.section	.bss.buf,"aw",%nobits
- 752              		.align	2
- 755              	buf:
- 756 0000 00000000 		.space	6
- 756      0000
- 757              		.global	i
- 758              		.section	.bss.i,"aw",%nobits
- 761              	i:
- 762 0000 00       		.space	1
- 763              		.global	Temperature
- 764              		.section	.bss.Temperature,"aw",%nobits
- 765              		.align	2
- 768              	Temperature:
- 769 0000 00000000 		.space	4
- 770              		.global	accel
- 771              		.section	.bss.accel,"aw",%nobits
- 772              		.align	2
- 775              	accel:
- 776 0000 00000000 		.space	12
- 776      00000000 
- 776      00000000 
- 777              		.global	gyro
- 778              		.section	.bss.gyro,"aw",%nobits
- 779              		.align	2
- 782              	gyro:
- 783 0000 00000000 		.space	12
- 783      00000000 
- 783      00000000 
- 784              		.global	BMI088_GYRO_SEN
- 785              		.section	.data.BMI088_GYRO_SEN,"aw"
- 786              		.align	2
- 789              	BMI088_GYRO_SEN:
- 790 0000 58A08B3A 		.word	982229080
- 791              		.global	BMI088_ACCEL_SEN
- 792              		.section	.data.BMI088_ACCEL_SEN,"aw"
- 793              		.align	2
- 796              	BMI088_ACCEL_SEN:
- 797 0000 E741EB3A 		.word	988496359
- 798              		.text
- 799              	.Letext0:
- 800              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 801              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 802              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 803              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 804              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 805              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 806              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
- 807              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  D:\msys64\tmp\ccTWtW5r.s 			page 18
+ 828 0074 DB00     		lsls	r3, r3, #3
+ 829 0076 1AB2     		sxth	r2, r3
+ 830              		.loc 1 173 52
+ 831 0078 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 832              		.loc 1 173 12
+ 833 007a 5B09     		lsrs	r3, r3, #5
+ 834 007c DBB2     		uxtb	r3, r3
+ 835 007e 1BB2     		sxth	r3, r3
+ 836 0080 1343     		orrs	r3, r3, r2
+ 837 0082 1BB2     		sxth	r3, r3
+ 838              		.loc 1 173 10
+ 839 0084 07EE903A 		vmov	s15, r3	@ int
+ 840 0088 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 841 008c 184B     		ldr	r3, .L34+16
+ 842 008e C3ED007A 		vstr.32	s15, [r3]
+ 174:BMI088/bmi088.c ****     if(temp > 1023)
+ 843              		.loc 1 174 13
+ 844 0092 174B     		ldr	r3, .L34+16
+ 845 0094 D3ED007A 		vldr.32	s15, [r3]
+ 846              		.loc 1 174 7
+ 847 0098 9FED167A 		vldr.32	s14, .L34+20
+ 848 009c F4EEC77A 		vcmpe.f32	s15, s14
+ 849 00a0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 850 00a4 09DD     		ble	.L31
+ 175:BMI088/bmi088.c ****     {
+ 176:BMI088/bmi088.c ****         temp -= 2048;
+ 851              		.loc 1 176 14
+ 852 00a6 124B     		ldr	r3, .L34+16
+ 853 00a8 D3ED007A 		vldr.32	s15, [r3]
+ 854 00ac 9FED127A 		vldr.32	s14, .L34+24
+ 855 00b0 77EEC77A 		vsub.f32	s15, s15, s14
+ 856 00b4 0E4B     		ldr	r3, .L34+16
+ 857 00b6 C3ED007A 		vstr.32	s15, [r3]
+ 858              	.L31:
+ 177:BMI088/bmi088.c ****     }
+ 178:BMI088/bmi088.c ****     // Temperature = temp * 0.125f / buf[1] + 23.0f;
+ 179:BMI088/bmi088.c ****     Temperature = temp * BMI088_TEMP_FACTOR + BMI088_TEMP_OFFSET;
+ 859              		.loc 1 179 24
+ 860 00ba 0D4B     		ldr	r3, .L34+16
+ 861 00bc D3ED007A 		vldr.32	s15, [r3]
+ 862 00c0 B4EE007A 		vmov.f32	s14, #1.25e-1
+ 863 00c4 67EE877A 		vmul.f32	s15, s15, s14
+ 864              		.loc 1 179 45
+ 865 00c8 B3EE077A 		vmov.f32	s14, #2.3e+1
+ 866 00cc 77EE877A 		vadd.f32	s15, s15, s14
+ 867              		.loc 1 179 17
+ 868 00d0 0A4B     		ldr	r3, .L34+28
+ 869 00d2 C3ED007A 		vstr.32	s15, [r3]
+ 180:BMI088/bmi088.c ****     
+ 181:BMI088/bmi088.c **** }
+ 870              		.loc 1 181 1
+ 871 00d6 00BF     		nop
+ 872 00d8 1437     		adds	r7, r7, #20
+ 873              	.LCFI17:
+ 874              		.cfi_def_cfa_offset 12
+ 875 00da BD46     		mov	sp, r7
+ 876              	.LCFI18:
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 19
+
+
+ 877              		.cfi_def_cfa_register 13
+ 878              		@ sp needed
+ 879 00dc 90BD     		pop	{r4, r7, pc}
+ 880              	.L35:
+ 881 00de 00BF     		.align	2
+ 882              	.L34:
+ 883 00e0 00000240 		.word	1073872896
+ 884 00e4 00000000 		.word	pTxData_Temperature
+ 885 00e8 00000000 		.word	hspi1
+ 886 00ec 00000000 		.word	pRxData
+ 887 00f0 00000000 		.word	temp
+ 888 00f4 00C07F44 		.word	1149222912
+ 889 00f8 00000045 		.word	1157627904
+ 890 00fc 00000000 		.word	Temperature
+ 891              		.cfi_endproc
+ 892              	.LFE138:
+ 894              		.section	.text.BMI088_read_write_byte,"ax",%progbits
+ 895              		.align	1
+ 896              		.global	BMI088_read_write_byte
+ 897              		.syntax unified
+ 898              		.thumb
+ 899              		.thumb_func
+ 901              	BMI088_read_write_byte:
+ 902              	.LFB139:
+ 182:BMI088/bmi088.c **** 
+ 183:BMI088/bmi088.c **** uint8_t BMI088_read_write_byte(uint8_t txdata)
+ 184:BMI088/bmi088.c **** {
+ 903              		.loc 1 184 1
+ 904              		.cfi_startproc
+ 905              		@ args = 0, pretend = 0, frame = 16
+ 906              		@ frame_needed = 1, uses_anonymous_args = 0
+ 907 0000 80B5     		push	{r7, lr}
+ 908              	.LCFI19:
+ 909              		.cfi_def_cfa_offset 8
+ 910              		.cfi_offset 7, -8
+ 911              		.cfi_offset 14, -4
+ 912 0002 86B0     		sub	sp, sp, #24
+ 913              	.LCFI20:
+ 914              		.cfi_def_cfa_offset 32
+ 915 0004 02AF     		add	r7, sp, #8
+ 916              	.LCFI21:
+ 917              		.cfi_def_cfa 7, 24
+ 918 0006 0346     		mov	r3, r0
+ 919 0008 FB71     		strb	r3, [r7, #7]
+ 185:BMI088/bmi088.c ****     uint8_t rx_data;
+ 186:BMI088/bmi088.c ****     HAL_SPI_TransmitReceive(&hspi1, &txdata, &rx_data, 1, 1000);
+ 920              		.loc 1 186 5
+ 921 000a 07F10F02 		add	r2, r7, #15
+ 922 000e F91D     		adds	r1, r7, #7
+ 923 0010 4FF47A73 		mov	r3, #1000
+ 924 0014 0093     		str	r3, [sp]
+ 925 0016 0123     		movs	r3, #1
+ 926 0018 0348     		ldr	r0, .L38
+ 927 001a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 187:BMI088/bmi088.c ****     return rx_data;
+ 928              		.loc 1 187 12
+ 929 001e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 20
+
+
+ 188:BMI088/bmi088.c **** }
+ 930              		.loc 1 188 1
+ 931 0020 1846     		mov	r0, r3
+ 932 0022 1037     		adds	r7, r7, #16
+ 933              	.LCFI22:
+ 934              		.cfi_def_cfa_offset 8
+ 935 0024 BD46     		mov	sp, r7
+ 936              	.LCFI23:
+ 937              		.cfi_def_cfa_register 13
+ 938              		@ sp needed
+ 939 0026 80BD     		pop	{r7, pc}
+ 940              	.L39:
+ 941              		.align	2
+ 942              	.L38:
+ 943 0028 00000000 		.word	hspi1
+ 944              		.cfi_endproc
+ 945              	.LFE139:
+ 947              		.section	.text.BMI088_read_muli_reg,"ax",%progbits
+ 948              		.align	1
+ 949              		.syntax unified
+ 950              		.thumb
+ 951              		.thumb_func
+ 953              	BMI088_read_muli_reg:
+ 954              	.LFB140:
+ 189:BMI088/bmi088.c **** 
+ 190:BMI088/bmi088.c **** static void BMI088_read_muli_reg(uint8_t reg, uint8_t *buf, uint8_t len)
+ 191:BMI088/bmi088.c **** {
+ 955              		.loc 1 191 1
+ 956              		.cfi_startproc
+ 957              		@ args = 0, pretend = 0, frame = 8
+ 958              		@ frame_needed = 1, uses_anonymous_args = 0
+ 959 0000 80B5     		push	{r7, lr}
+ 960              	.LCFI24:
+ 961              		.cfi_def_cfa_offset 8
+ 962              		.cfi_offset 7, -8
+ 963              		.cfi_offset 14, -4
+ 964 0002 82B0     		sub	sp, sp, #8
+ 965              	.LCFI25:
+ 966              		.cfi_def_cfa_offset 16
+ 967 0004 00AF     		add	r7, sp, #0
+ 968              	.LCFI26:
+ 969              		.cfi_def_cfa_register 7
+ 970 0006 0346     		mov	r3, r0
+ 971 0008 3960     		str	r1, [r7]
+ 972 000a FB71     		strb	r3, [r7, #7]
+ 973 000c 1346     		mov	r3, r2
+ 974 000e BB71     		strb	r3, [r7, #6]
+ 192:BMI088/bmi088.c ****     BMI088_read_write_byte(reg | 0x80);
+ 975              		.loc 1 192 5
+ 976 0010 FB79     		ldrb	r3, [r7, #7]
+ 977 0012 63F07F03 		orn	r3, r3, #127
+ 978 0016 DBB2     		uxtb	r3, r3
+ 979 0018 1846     		mov	r0, r3
+ 980 001a FFF7FEFF 		bl	BMI088_read_write_byte
+ 193:BMI088/bmi088.c **** 
+ 194:BMI088/bmi088.c ****     while (len != 0)
+ 981              		.loc 1 194 11
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 21
+
+
+ 982 001e 0CE0     		b	.L41
+ 983              	.L42:
+ 195:BMI088/bmi088.c ****     {
+ 196:BMI088/bmi088.c ****         *buf = BMI088_read_write_byte(0x55);
+ 984              		.loc 1 196 16
+ 985 0020 5520     		movs	r0, #85
+ 986 0022 FFF7FEFF 		bl	BMI088_read_write_byte
+ 987 0026 0346     		mov	r3, r0
+ 988 0028 1A46     		mov	r2, r3
+ 989              		.loc 1 196 14 discriminator 1
+ 990 002a 3B68     		ldr	r3, [r7]
+ 991 002c 1A70     		strb	r2, [r3]
+ 197:BMI088/bmi088.c ****         buf++;
+ 992              		.loc 1 197 12
+ 993 002e 3B68     		ldr	r3, [r7]
+ 994 0030 0133     		adds	r3, r3, #1
+ 995 0032 3B60     		str	r3, [r7]
+ 198:BMI088/bmi088.c ****         len--;
+ 996              		.loc 1 198 12
+ 997 0034 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 998 0036 013B     		subs	r3, r3, #1
+ 999 0038 BB71     		strb	r3, [r7, #6]
+ 1000              	.L41:
+ 194:BMI088/bmi088.c ****     {
+ 1001              		.loc 1 194 16
+ 1002 003a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 1003 003c 002B     		cmp	r3, #0
+ 1004 003e EFD1     		bne	.L42
+ 199:BMI088/bmi088.c ****     }
+ 200:BMI088/bmi088.c **** }
+ 1005              		.loc 1 200 1
+ 1006 0040 00BF     		nop
+ 1007 0042 00BF     		nop
+ 1008 0044 0837     		adds	r7, r7, #8
+ 1009              	.LCFI27:
+ 1010              		.cfi_def_cfa_offset 8
+ 1011 0046 BD46     		mov	sp, r7
+ 1012              	.LCFI28:
+ 1013              		.cfi_def_cfa_register 13
+ 1014              		@ sp needed
+ 1015 0048 80BD     		pop	{r7, pc}
+ 1016              		.cfi_endproc
+ 1017              	.LFE140:
+ 1019              		.text
+ 1020              	.Letext0:
+ 1021              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 1022              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 1023              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1024              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1025              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1026              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1027              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1028              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bmi088.c
-D:\msys64\tmp\ccTWtW5r.s:21     .text.BMI088_Accel_Init:00000000 $t
-D:\msys64\tmp\ccTWtW5r.s:27     .text.BMI088_Accel_Init:00000000 BMI088_Accel_Init
-D:\msys64\tmp\ccTWtW5r.s:146    .text.BMI088_Accel_Init:00000094 $d
-D:\msys64\tmp\ccTWtW5r.s:741    .bss.pTxData:00000000 pTxData
-D:\msys64\tmp\ccTWtW5r.s:153    .text.BMI088_Gyro_Init:00000000 $t
-D:\msys64\tmp\ccTWtW5r.s:159    .text.BMI088_Gyro_Init:00000000 BMI088_Gyro_Init
-D:\msys64\tmp\ccTWtW5r.s:233    .text.BMI088_Gyro_Init:00000058 $d
-D:\msys64\tmp\ccTWtW5r.s:729    .bss.pTxData_gyro:00000000 pTxData_gyro
-D:\msys64\tmp\ccTWtW5r.s:240    .text.BMI088_Gyro_Read:00000000 $t
-D:\msys64\tmp\ccTWtW5r.s:246    .text.BMI088_Gyro_Read:00000000 BMI088_Gyro_Read
-D:\msys64\tmp\ccTWtW5r.s:376    .text.BMI088_Gyro_Read:000000b4 $d
-D:\msys64\tmp\ccTWtW5r.s:723    .bss.pRxData_gyro:00000000 pRxData_gyro
-D:\msys64\tmp\ccTWtW5r.s:748    .bss.buffer:00000000 buffer
-D:\msys64\tmp\ccTWtW5r.s:789    .data.BMI088_GYRO_SEN:00000000 BMI088_GYRO_SEN
-D:\msys64\tmp\ccTWtW5r.s:782    .bss.gyro:00000000 gyro
-D:\msys64\tmp\ccTWtW5r.s:388    .text.BMI088_Temper_read:00000000 $t
-D:\msys64\tmp\ccTWtW5r.s:394    .text.BMI088_Temper_read:00000000 BMI088_Temper_read
-D:\msys64\tmp\ccTWtW5r.s:530    .text.BMI088_Temper_read:000000b0 $d
-D:\msys64\tmp\ccTWtW5r.s:717    .bss.pTxData_Temperature:00000000 pTxData_Temperature
-D:\msys64\tmp\ccTWtW5r.s:711    .bss.pRxData_Temperature:00000000 pRxData_Temperature
-D:\msys64\tmp\ccTWtW5r.s:768    .bss.Temperature:00000000 Temperature
-D:\msys64\tmp\ccTWtW5r.s:540    .text.BMI088_Accel_Read:00000000 $t
-D:\msys64\tmp\ccTWtW5r.s:546    .text.BMI088_Accel_Read:00000000 BMI088_Accel_Read
-D:\msys64\tmp\ccTWtW5r.s:696    .text.BMI088_Accel_Read:000000d0 $d
-D:\msys64\tmp\ccTWtW5r.s:735    .bss.pRxData:00000000 pRxData
-D:\msys64\tmp\ccTWtW5r.s:755    .bss.buf:00000000 buf
-D:\msys64\tmp\ccTWtW5r.s:796    .data.BMI088_ACCEL_SEN:00000000 BMI088_ACCEL_SEN
-D:\msys64\tmp\ccTWtW5r.s:775    .bss.accel:00000000 accel
-D:\msys64\tmp\ccTWtW5r.s:712    .bss.pRxData_Temperature:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:718    .bss.pTxData_Temperature:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:724    .bss.pRxData_gyro:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:730    .bss.pTxData_gyro:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:736    .bss.pRxData:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:742    .bss.pTxData:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:745    .bss.buffer:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:752    .bss.buf:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:761    .bss.i:00000000 i
-D:\msys64\tmp\ccTWtW5r.s:762    .bss.i:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:765    .bss.Temperature:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:772    .bss.accel:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:779    .bss.gyro:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:786    .data.BMI088_GYRO_SEN:00000000 $d
-D:\msys64\tmp\ccTWtW5r.s:793    .data.BMI088_ACCEL_SEN:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:25     .data.BMI088_ACCEL_SEN:00000000 BMI088_ACCEL_SEN
+D:\msys64\tmp\ccirTI0t.s:22     .data.BMI088_ACCEL_SEN:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:32     .data.BMI088_GYRO_SEN:00000000 BMI088_GYRO_SEN
+D:\msys64\tmp\ccirTI0t.s:29     .data.BMI088_GYRO_SEN:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:39     .bss.gyro:00000000 gyro
+D:\msys64\tmp\ccirTI0t.s:36     .bss.gyro:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:46     .bss.accel:00000000 accel
+D:\msys64\tmp\ccirTI0t.s:43     .bss.accel:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:53     .bss.Temperature:00000000 Temperature
+D:\msys64\tmp\ccirTI0t.s:50     .bss.Temperature:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:60     .bss.temp:00000000 temp
+D:\msys64\tmp\ccirTI0t.s:57     .bss.temp:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:66     .bss.i:00000000 i
+D:\msys64\tmp\ccirTI0t.s:67     .bss.i:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:73     .bss.buf:00000000 buf
+D:\msys64\tmp\ccirTI0t.s:70     .bss.buf:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:80     .bss.buffer:00000000 buffer
+D:\msys64\tmp\ccirTI0t.s:77     .bss.buffer:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:86     .bss.pTxData:00000000 pTxData
+D:\msys64\tmp\ccirTI0t.s:87     .bss.pTxData:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:92     .bss.pRxData:00000000 pRxData
+D:\msys64\tmp\ccirTI0t.s:93     .bss.pRxData:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:98     .bss.pTxData_gyro:00000000 pTxData_gyro
+D:\msys64\tmp\ccirTI0t.s:99     .bss.pTxData_gyro:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:104    .bss.pRxData_gyro:00000000 pRxData_gyro
+D:\msys64\tmp\ccirTI0t.s:105    .bss.pRxData_gyro:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:110    .bss.pTxData_Temperature:00000000 pTxData_Temperature
+D:\msys64\tmp\ccirTI0t.s:111    .bss.pTxData_Temperature:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:116    .bss.pRxData_Temperature:00000000 pRxData_Temperature
+D:\msys64\tmp\ccirTI0t.s:117    .bss.pRxData_Temperature:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:123    .bss.bmi088_raw_temp:00000000 bmi088_raw_temp
+D:\msys64\tmp\ccirTI0t.s:120    .bss.bmi088_raw_temp:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:130    .bss.buf_temp:00000000 buf_temp
+D:\msys64\tmp\ccirTI0t.s:127    .bss.buf_temp:00000000 $d
+D:\msys64\tmp\ccirTI0t.s:133    .text.BMI088_Accel_Init:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:139    .text.BMI088_Accel_Init:00000000 BMI088_Accel_Init
+D:\msys64\tmp\ccirTI0t.s:253    .text.BMI088_Accel_Init:000000ac $d
+D:\msys64\tmp\ccirTI0t.s:260    .text.BMI088_Accel_Read:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:266    .text.BMI088_Accel_Read:00000000 BMI088_Accel_Read
+D:\msys64\tmp\ccirTI0t.s:747    .text.BMI088_Temper_read:00000000 BMI088_Temper_read
+D:\msys64\tmp\ccirTI0t.s:456    .text.BMI088_Accel_Read:00000128 $d
+D:\msys64\tmp\ccirTI0t.s:468    .text.BMI088_Gyro_Init:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:474    .text.BMI088_Gyro_Init:00000000 BMI088_Gyro_Init
+D:\msys64\tmp\ccirTI0t.s:547    .text.BMI088_Gyro_Init:00000068 $d
+D:\msys64\tmp\ccirTI0t.s:554    .text.BMI088_Gyro_Read:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:560    .text.BMI088_Gyro_Read:00000000 BMI088_Gyro_Read
+D:\msys64\tmp\ccirTI0t.s:730    .text.BMI088_Gyro_Read:00000104 $d
+D:\msys64\tmp\ccirTI0t.s:741    .text.BMI088_Temper_read:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:901    .text.BMI088_read_write_byte:00000000 BMI088_read_write_byte
+D:\msys64\tmp\ccirTI0t.s:883    .text.BMI088_Temper_read:000000e0 $d
+D:\msys64\tmp\ccirTI0t.s:895    .text.BMI088_read_write_byte:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:943    .text.BMI088_read_write_byte:00000028 $d
+D:\msys64\tmp\ccirTI0t.s:948    .text.BMI088_read_muli_reg:00000000 $t
+D:\msys64\tmp\ccirTI0t.s:953    .text.BMI088_read_muli_reg:00000000 BMI088_read_muli_reg
+
+ARM GAS  D:\msys64\tmp\ccirTI0t.s 			page 23
+
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
 HAL_SPI_Transmit
 HAL_SPI_GetState
 hspi1
-HAL_Delay
 HAL_SPI_Receive
+HAL_Delay
+HAL_SPI_TransmitReceive

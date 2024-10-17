@@ -95,6 +95,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   BMI088_Accel_Init();
   BMI088_Gyro_Init();
+  HAL_Delay(500);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -112,10 +113,7 @@ int main(void)
   while (1)
   { 
     
-    BMI088_Accel_Read();
-    // osDelay(1);
-    HAL_Delay(1);
-    BMI088_Gyro_Read();
+ 
     // HAL_Delay(1);
     // BMI088_Gyro_Init();
     // HAL_Delay(1);
