@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "can.h": "c",
+        "cmsis_os.h": "c",
+        "bsp_can.h": "c",
+        "robot_cmd.h": "c",
+        "chassis_control.h": "c",
+        "pid.h": "c"
+    }
+}

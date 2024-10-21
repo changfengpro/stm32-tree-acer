@@ -1,0 +1,148 @@
+ARM GAS  D:\msys64\tmp\ccB3CYRd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"djimotor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Modules/Motor/DJimotor/djimotor.c"
+  20              		.section	.text.DJIMotorStop,"ax",%progbits
+  21              		.align	1
+  22              		.global	DJIMotorStop
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	DJIMotorStop:
+  28              	.LFB134:
+   1:Modules/Motor/DJimotor/djimotor.c **** /*
+   2:Modules/Motor/DJimotor/djimotor.c ****  * djimotor.c
+   3:Modules/Motor/DJimotor/djimotor.c ****  *
+   4:Modules/Motor/DJimotor/djimotor.c ****  *  Created on: Jul 14, 2024
+   5:Modules/Motor/DJimotor/djimotor.c ****  *      Author: auroranebulas
+   6:Modules/Motor/DJimotor/djimotor.c ****  */
+   7:Modules/Motor/DJimotor/djimotor.c **** 
+   8:Modules/Motor/DJimotor/djimotor.c **** #include "chassis_control.h"
+   9:Modules/Motor/DJimotor/djimotor.c **** #include "pid.h"
+  10:Modules/Motor/DJimotor/djimotor.c **** #include "Bsp_can.h"
+  11:Modules/Motor/DJimotor/djimotor.c **** #include "robot_cmd.h"
+  12:Modules/Motor/DJimotor/djimotor.c **** #include "chassis_control.h"
+  13:Modules/Motor/DJimotor/djimotor.c **** #include "djimotor.h"
+  14:Modules/Motor/DJimotor/djimotor.c **** 
+  15:Modules/Motor/DJimotor/djimotor.c **** 
+  16:Modules/Motor/DJimotor/djimotor.c **** 
+  17:Modules/Motor/DJimotor/djimotor.c **** 
+  18:Modules/Motor/DJimotor/djimotor.c **** extern moto_info_t motor_info[MOTOR_MAX_NUM]; //前四位为底盘，后两位为云台
+  19:Modules/Motor/DJimotor/djimotor.c **** extern rc RC_ctrl;
+  20:Modules/Motor/DJimotor/djimotor.c **** static float position[5];
+  21:Modules/Motor/DJimotor/djimotor.c **** static float last_position[5];
+  22:Modules/Motor/DJimotor/djimotor.c **** float Velocity[5];
+  23:Modules/Motor/DJimotor/djimotor.c **** float Last_Velocity[5];
+  24:Modules/Motor/DJimotor/djimotor.c **** float Velocity_filter[5];
+  25:Modules/Motor/DJimotor/djimotor.c **** 
+  26:Modules/Motor/DJimotor/djimotor.c **** extern float vt_lf, vt_rf, vt_lb, vt_rb;
+  27:Modules/Motor/DJimotor/djimotor.c **** 
+  28:Modules/Motor/DJimotor/djimotor.c **** 
+  29:Modules/Motor/DJimotor/djimotor.c **** 
+  30:Modules/Motor/DJimotor/djimotor.c **** 
+ARM GAS  D:\msys64\tmp\ccB3CYRd.s 			page 2
+
+
+  31:Modules/Motor/DJimotor/djimotor.c **** 
+  32:Modules/Motor/DJimotor/djimotor.c **** 
+  33:Modules/Motor/DJimotor/djimotor.c **** 
+  34:Modules/Motor/DJimotor/djimotor.c **** void DJIMotorStop()
+  35:Modules/Motor/DJimotor/djimotor.c **** {
+  29              		.loc 1 35 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 00B5     		push	{lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 14, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  36:Modules/Motor/DJimotor/djimotor.c **** 	set_motor_value(0x200, 0, 0, 0, 0);
+  40              		.loc 1 36 2 view .LVU1
+  41 0004 0021     		movs	r1, #0
+  42 0006 0091     		str	r1, [sp]
+  43 0008 0B46     		mov	r3, r1
+  44 000a 0A46     		mov	r2, r1
+  45 000c 4FF40070 		mov	r0, #512
+  46 0010 FFF7FEFF 		bl	set_motor_value
+  47              	.LVL0:
+  37:Modules/Motor/DJimotor/djimotor.c **** }
+  48              		.loc 1 37 1 is_stmt 0 view .LVU2
+  49 0014 03B0     		add	sp, sp, #12
+  50              	.LCFI2:
+  51              		.cfi_def_cfa_offset 4
+  52              		@ sp needed
+  53 0016 5DF804FB 		ldr	pc, [sp], #4
+  54              		.cfi_endproc
+  55              	.LFE134:
+  57              		.global	Velocity_filter
+  58              		.section	.bss.Velocity_filter,"aw",%nobits
+  59              		.align	2
+  62              	Velocity_filter:
+  63 0000 00000000 		.space	20
+  63      00000000 
+  63      00000000 
+  63      00000000 
+  63      00000000 
+  64              		.global	Last_Velocity
+  65              		.section	.bss.Last_Velocity,"aw",%nobits
+  66              		.align	2
+  69              	Last_Velocity:
+  70 0000 00000000 		.space	20
+  70      00000000 
+  70      00000000 
+  70      00000000 
+  70      00000000 
+  71              		.global	Velocity
+  72              		.section	.bss.Velocity,"aw",%nobits
+  73              		.align	2
+  76              	Velocity:
+  77 0000 00000000 		.space	20
+ARM GAS  D:\msys64\tmp\ccB3CYRd.s 			page 3
+
+
+  77      00000000 
+  77      00000000 
+  77      00000000 
+  77      00000000 
+  78              		.text
+  79              	.Letext0:
+  80              		.file 2 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+  81              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+  82              		.file 4 "Bsp/Bsp_can.h"
+ARM GAS  D:\msys64\tmp\ccB3CYRd.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 djimotor.c
+D:\msys64\tmp\ccB3CYRd.s:21     .text.DJIMotorStop:00000000 $t
+D:\msys64\tmp\ccB3CYRd.s:27     .text.DJIMotorStop:00000000 DJIMotorStop
+D:\msys64\tmp\ccB3CYRd.s:62     .bss.Velocity_filter:00000000 Velocity_filter
+D:\msys64\tmp\ccB3CYRd.s:59     .bss.Velocity_filter:00000000 $d
+D:\msys64\tmp\ccB3CYRd.s:69     .bss.Last_Velocity:00000000 Last_Velocity
+D:\msys64\tmp\ccB3CYRd.s:66     .bss.Last_Velocity:00000000 $d
+D:\msys64\tmp\ccB3CYRd.s:76     .bss.Velocity:00000000 Velocity
+D:\msys64\tmp\ccB3CYRd.s:73     .bss.Velocity:00000000 $d
+
+UNDEFINED SYMBOLS
+set_motor_value

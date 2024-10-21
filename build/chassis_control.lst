@@ -1,0 +1,343 @@
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"chassis_control.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Application/chassis/chassis_control.c"
+  20              		.section	.text.MecanumCalculate,"ax",%progbits
+  21              		.align	1
+  22              		.global	MecanumCalculate
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	MecanumCalculate:
+  28              	.LFB178:
+   1:Application/chassis/chassis_control.c **** /*
+   2:Application/chassis/chassis_control.c ****  * chassis_control.c
+   3:Application/chassis/chassis_control.c ****  *
+   4:Application/chassis/chassis_control.c ****  *  Created on: Jul 14, 2024
+   5:Application/chassis/chassis_control.c ****  *      Author: auroranebulas
+   6:Application/chassis/chassis_control.c ****  */
+   7:Application/chassis/chassis_control.c **** 
+   8:Application/chassis/chassis_control.c **** 
+   9:Application/chassis/chassis_control.c **** #include "chassis_control.h"
+  10:Application/chassis/chassis_control.c **** #include "robot_def.h"
+  11:Application/chassis/chassis_control.c **** #include "arm_math.h"
+  12:Application/chassis/chassis_control.c **** #include "Bsp_can.h"
+  13:Application/chassis/chassis_control.c **** #include "robot_cmd.h"
+  14:Application/chassis/chassis_control.c **** #include "pid.h"
+  15:Application/chassis/chassis_control.c **** #include "djimotor.h"
+  16:Application/chassis/chassis_control.c **** 
+  17:Application/chassis/chassis_control.c **** #define HALF_WHEEL_BASE (WHEEL_BASE / 2.0f)    	//半轴距
+  18:Application/chassis/chassis_control.c **** #define HALF_TRACK_WIDTH (TRACK_WIDTH / 2.0f)	//半轮距
+  19:Application/chassis/chassis_control.c **** #define PERIMETER_WHEEL (RADIUS_WHEEL  * 2 * PI)
+  20:Application/chassis/chassis_control.c **** #define DEGREE_2_RAD 0.01745329252f // pi/180
+  21:Application/chassis/chassis_control.c **** 
+  22:Application/chassis/chassis_control.c **** #define LF_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
+  23:Application/chassis/chassis_control.c **** #define RF_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
+  24:Application/chassis/chassis_control.c **** #define LB_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
+  25:Application/chassis/chassis_control.c **** #define RB_CENTER ((HALF_TRACK_WIDTH + HALF_WHEEL_BASE) * DEGREE_2_RAD)
+  26:Application/chassis/chassis_control.c **** extern Chassis_Ctrl_Cmd_s chassis_cmd_recv; //底盘接收到的控制命令
+  27:Application/chassis/chassis_control.c **** extern moto_info_t motor_info[MOTOR_MAX_NUM];
+  28:Application/chassis/chassis_control.c **** float vt_lf, vt_rf, vt_lb, vt_rb;
+  29:Application/chassis/chassis_control.c **** extern pid_struct_t pid[9];
+  30:Application/chassis/chassis_control.c **** extern float pid_ref[9];
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 2
+
+
+  31:Application/chassis/chassis_control.c **** extern float Velocity[5];
+  32:Application/chassis/chassis_control.c **** extern float Velocity_Filter[5];
+  33:Application/chassis/chassis_control.c **** static uint32_t count;
+  34:Application/chassis/chassis_control.c **** static uint32_t count_3;
+  35:Application/chassis/chassis_control.c **** 
+  36:Application/chassis/chassis_control.c **** void MecanumCalculate()
+  37:Application/chassis/chassis_control.c **** {
+  29              		.loc 1 37 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  38:Application/chassis/chassis_control.c ****     // chassis_cmd_recv.vx = -RC_ctrl.ch0 * 0.68f;
+  39:Application/chassis/chassis_control.c **** 	// chassis_cmd_recv.vy = -RC_ctrl.ch1 * 0.68f;
+  40:Application/chassis/chassis_control.c **** 	// chassis_cmd_recv.wz = -RC_ctrl.ch2 * 0.68f;
+  41:Application/chassis/chassis_control.c **** 
+  42:Application/chassis/chassis_control.c **** 
+  43:Application/chassis/chassis_control.c ****     vt_lf = -chassis_cmd_recv.vx - chassis_cmd_recv.vy - chassis_cmd_recv.wz * LF_CENTER;
+  34              		.loc 1 43 5 view .LVU1
+  35              		.loc 1 43 30 is_stmt 0 view .LVU2
+  36 0000 144B     		ldr	r3, .L2
+  37 0002 D3ED007A 		vldr.32	s15, [r3]
+  38              		.loc 1 43 13 view .LVU3
+  39 0006 F1EE676A 		vneg.f32	s13, s15
+  40              		.loc 1 43 52 view .LVU4
+  41 000a 93ED016A 		vldr.32	s12, [r3, #4]
+  42              		.loc 1 43 34 view .LVU5
+  43 000e 76EEC66A 		vsub.f32	s13, s13, s12
+  44              		.loc 1 43 74 view .LVU6
+  45 0012 93ED027A 		vldr.32	s14, [r3, #8]
+  46              		.loc 1 43 78 view .LVU7
+  47 0016 DFED105A 		vldr.32	s11, .L2+4
+  48 001a 27EE257A 		vmul.f32	s14, s14, s11
+  49              		.loc 1 43 56 view .LVU8
+  50 001e 76EEC76A 		vsub.f32	s13, s13, s14
+  51              		.loc 1 43 11 view .LVU9
+  52 0022 0E4B     		ldr	r3, .L2+8
+  53 0024 C3ED006A 		vstr.32	s13, [r3]
+  44:Application/chassis/chassis_control.c **** 	vt_rf = -chassis_cmd_recv.vx + chassis_cmd_recv.vy - chassis_cmd_recv.wz * RF_CENTER;
+  54              		.loc 1 44 2 is_stmt 1 view .LVU10
+  55              		.loc 1 44 31 is_stmt 0 view .LVU11
+  56 0028 76EE676A 		vsub.f32	s13, s12, s15
+  57              		.loc 1 44 53 view .LVU12
+  58 002c 76EEC76A 		vsub.f32	s13, s13, s14
+  59              		.loc 1 44 8 view .LVU13
+  60 0030 0B4B     		ldr	r3, .L2+12
+  61 0032 C3ED006A 		vstr.32	s13, [r3]
+  45:Application/chassis/chassis_control.c **** 	vt_lb =  chassis_cmd_recv.vx - chassis_cmd_recv.vy - chassis_cmd_recv.wz * LB_CENTER;
+  62              		.loc 1 45 2 is_stmt 1 view .LVU14
+  63              		.loc 1 45 31 is_stmt 0 view .LVU15
+  64 0036 77EEC66A 		vsub.f32	s13, s15, s12
+  65              		.loc 1 45 53 view .LVU16
+  66 003a 76EEC76A 		vsub.f32	s13, s13, s14
+  67              		.loc 1 45 8 view .LVU17
+  68 003e 094B     		ldr	r3, .L2+16
+  69 0040 C3ED006A 		vstr.32	s13, [r3]
+  46:Application/chassis/chassis_control.c **** 	vt_rb =  chassis_cmd_recv.vx + chassis_cmd_recv.vy - chassis_cmd_recv.wz * RB_CENTER;
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 3
+
+
+  70              		.loc 1 46 2 is_stmt 1 view .LVU18
+  71              		.loc 1 46 31 is_stmt 0 view .LVU19
+  72 0044 77EE867A 		vadd.f32	s15, s15, s12
+  73              		.loc 1 46 53 view .LVU20
+  74 0048 77EEC77A 		vsub.f32	s15, s15, s14
+  75              		.loc 1 46 8 view .LVU21
+  76 004c 064B     		ldr	r3, .L2+20
+  77 004e C3ED007A 		vstr.32	s15, [r3]
+  47:Application/chassis/chassis_control.c **** }
+  78              		.loc 1 47 1 view .LVU22
+  79 0052 7047     		bx	lr
+  80              	.L3:
+  81              		.align	2
+  82              	.L2:
+  83 0054 00000000 		.word	chassis_cmd_recv
+  84 0058 1E369140 		.word	1083258398
+  85 005c 00000000 		.word	vt_lf
+  86 0060 00000000 		.word	vt_rf
+  87 0064 00000000 		.word	vt_lb
+  88 0068 00000000 		.word	vt_rb
+  89              		.cfi_endproc
+  90              	.LFE178:
+  92              		.section	.text.ChassisTask,"ax",%progbits
+  93              		.align	1
+  94              		.global	ChassisTask
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	ChassisTask:
+ 100              	.LFB179:
+  48:Application/chassis/chassis_control.c **** 
+  49:Application/chassis/chassis_control.c **** void ChassisTask()
+  50:Application/chassis/chassis_control.c **** {
+ 101              		.loc 1 50 1 is_stmt 1 view -0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105 0000 70B5     		push	{r4, r5, r6, lr}
+ 106              	.LCFI0:
+ 107              		.cfi_def_cfa_offset 16
+ 108              		.cfi_offset 4, -16
+ 109              		.cfi_offset 5, -12
+ 110              		.cfi_offset 6, -8
+ 111              		.cfi_offset 14, -4
+ 112 0002 82B0     		sub	sp, sp, #8
+ 113              	.LCFI1:
+ 114              		.cfi_def_cfa_offset 24
+  51:Application/chassis/chassis_control.c ****     MecanumCalculate();
+ 115              		.loc 1 51 5 view .LVU24
+ 116 0004 FFF7FEFF 		bl	MecanumCalculate
+ 117              	.LVL0:
+  52:Application/chassis/chassis_control.c **** 
+  53:Application/chassis/chassis_control.c ****     pid_ref[1] = ver_pid_calc(&pid[1], vt_rf, motor_info[1].rotor_speed);
+ 118              		.loc 1 53 5 view .LVU25
+ 119              		.loc 1 53 60 is_stmt 0 view .LVU26
+ 120 0008 2F4E     		ldr	r6, .L6
+ 121 000a B6F91130 		ldrsh	r3, [r6, #17]	@ unaligned
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 4
+
+
+ 122 000e 00EE903A 		vmov	s1, r3	@ int
+ 123              		.loc 1 53 18 view .LVU27
+ 124 0012 2E4D     		ldr	r5, .L6+4
+ 125 0014 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 126 0018 2D4B     		ldr	r3, .L6+8
+ 127 001a 93ED000A 		vldr.32	s0, [r3]
+ 128 001e 2846     		mov	r0, r5
+ 129 0020 FFF7FEFF 		bl	ver_pid_calc
+ 130              	.LVL1:
+ 131              		.loc 1 53 16 discriminator 1 view .LVU28
+ 132 0024 2B4C     		ldr	r4, .L6+12
+ 133 0026 84ED010A 		vstr.32	s0, [r4, #4]
+  54:Application/chassis/chassis_control.c ****     pid_ref[2] = ver_pid_calc(&pid[2], vt_lf, motor_info[2].rotor_speed);
+ 134              		.loc 1 54 5 is_stmt 1 view .LVU29
+ 135              		.loc 1 54 60 is_stmt 0 view .LVU30
+ 136 002a B6F91C30 		ldrsh	r3, [r6, #28]	@ unaligned
+ 137 002e 00EE903A 		vmov	s1, r3	@ int
+ 138              		.loc 1 54 18 view .LVU31
+ 139 0032 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 140 0036 284B     		ldr	r3, .L6+16
+ 141 0038 93ED000A 		vldr.32	s0, [r3]
+ 142 003c 05F13400 		add	r0, r5, #52
+ 143 0040 FFF7FEFF 		bl	ver_pid_calc
+ 144              	.LVL2:
+ 145              		.loc 1 54 16 discriminator 1 view .LVU32
+ 146 0044 84ED020A 		vstr.32	s0, [r4, #8]
+  55:Application/chassis/chassis_control.c ****     pid_ref[3] = ver_pid_calc(&pid[3], vt_lb, motor_info[3].rotor_speed);
+ 147              		.loc 1 55 5 is_stmt 1 view .LVU33
+ 148              		.loc 1 55 60 is_stmt 0 view .LVU34
+ 149 0048 B6F92730 		ldrsh	r3, [r6, #39]	@ unaligned
+ 150 004c 00EE903A 		vmov	s1, r3	@ int
+ 151              		.loc 1 55 18 view .LVU35
+ 152 0050 F8EEE00A 		vcvt.f32.s32	s1, s1
+ 153 0054 214B     		ldr	r3, .L6+20
+ 154 0056 93ED000A 		vldr.32	s0, [r3]
+ 155 005a 05F16800 		add	r0, r5, #104
+ 156 005e FFF7FEFF 		bl	ver_pid_calc
+ 157              	.LVL3:
+ 158              		.loc 1 55 16 discriminator 1 view .LVU36
+ 159 0062 84ED030A 		vstr.32	s0, [r4, #12]
+  56:Application/chassis/chassis_control.c ****     pid_ref[4] = ver_pid_calc(&pid[4], vt_rb, motor_info[4].rotor_speed);
+ 160              		.loc 1 56 5 is_stmt 1 view .LVU37
+ 161              		.loc 1 56 60 is_stmt 0 view .LVU38
+ 162 0066 B6F93230 		ldrsh	r3, [r6, #50]	@ unaligned
+ 163 006a 00EE903A 		vmov	s1, r3	@ int
+ 164              		.loc 1 56 18 view .LVU39
+ 165 006e F8EEE00A 		vcvt.f32.s32	s1, s1
+ 166 0072 1B4B     		ldr	r3, .L6+24
+ 167 0074 93ED000A 		vldr.32	s0, [r3]
+ 168 0078 05F19C00 		add	r0, r5, #156
+ 169 007c FFF7FEFF 		bl	ver_pid_calc
+ 170              	.LVL4:
+ 171              		.loc 1 56 16 discriminator 1 view .LVU40
+ 172 0080 84ED040A 		vstr.32	s0, [r4, #16]
+  57:Application/chassis/chassis_control.c **** 
+  58:Application/chassis/chassis_control.c ****     set_motor_value(0x200, pid_ref[1], pid_ref[2], pid_ref[3], pid_ref[4]);
+ 173              		.loc 1 58 5 is_stmt 1 view .LVU41
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 5
+
+
+ 174              		.loc 1 58 35 is_stmt 0 view .LVU42
+ 175 0084 D4ED017A 		vldr.32	s15, [r4, #4]
+ 176              		.loc 1 58 47 view .LVU43
+ 177 0088 94ED027A 		vldr.32	s14, [r4, #8]
+ 178              		.loc 1 58 59 view .LVU44
+ 179 008c D4ED036A 		vldr.32	s13, [r4, #12]
+ 180              		.loc 1 58 5 view .LVU45
+ 181 0090 FDEEE66A 		vcvt.s32.f32	s13, s13
+ 182 0094 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 183 0098 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 184 009c BDEEC00A 		vcvt.s32.f32	s0, s0
+ 185 00a0 10EE103A 		vmov	r3, s0	@ int
+ 186 00a4 1BB2     		sxth	r3, r3
+ 187 00a6 0093     		str	r3, [sp]
+ 188 00a8 16EE903A 		vmov	r3, s13	@ int
+ 189 00ac 1BB2     		sxth	r3, r3
+ 190 00ae 17EE102A 		vmov	r2, s14	@ int
+ 191 00b2 12B2     		sxth	r2, r2
+ 192 00b4 17EE901A 		vmov	r1, s15	@ int
+ 193 00b8 09B2     		sxth	r1, r1
+ 194 00ba 4FF40070 		mov	r0, #512
+ 195 00be FFF7FEFF 		bl	set_motor_value
+ 196              	.LVL5:
+  59:Application/chassis/chassis_control.c ****   
+  60:Application/chassis/chassis_control.c **** }...
+ 197              		.loc 1 60 1 view .LVU46
+ 198 00c2 02B0     		add	sp, sp, #8
+ 199              	.LCFI2:
+ 200              		.cfi_def_cfa_offset 16
+ 201              		@ sp needed
+ 202 00c4 70BD     		pop	{r4, r5, r6, pc}
+ 203              	.L7:
+ 204 00c6 00BF     		.align	2
+ 205              	.L6:
+ 206 00c8 00000000 		.word	motor_info
+ 207 00cc 34000000 		.word	pid+52
+ 208 00d0 00000000 		.word	vt_rf
+ 209 00d4 00000000 		.word	pid_ref
+ 210 00d8 00000000 		.word	vt_lf
+ 211 00dc 00000000 		.word	vt_lb
+ 212 00e0 00000000 		.word	vt_rb
+ 213              		.cfi_endproc
+ 214              	.LFE179:
+ 216              		.global	vt_rb
+ 217              		.section	.bss.vt_rb,"aw",%nobits
+ 218              		.align	2
+ 221              	vt_rb:
+ 222 0000 00000000 		.space	4
+ 223              		.global	vt_lb
+ 224              		.section	.bss.vt_lb,"aw",%nobits
+ 225              		.align	2
+ 228              	vt_lb:
+ 229 0000 00000000 		.space	4
+ 230              		.global	vt_rf
+ 231              		.section	.bss.vt_rf,"aw",%nobits
+ 232              		.align	2
+ 235              	vt_rf:
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 6
+
+
+ 236 0000 00000000 		.space	4
+ 237              		.global	vt_lf
+ 238              		.section	.bss.vt_lf,"aw",%nobits
+ 239              		.align	2
+ 242              	vt_lf:
+ 243 0000 00000000 		.space	4
+ 244              		.text
+ 245              	.Letext0:
+ 246              		.file 2 "Application/robot_def.h"
+ 247              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 248              		.file 4 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 249              		.file 5 "Bsp/Bsp_can.h"
+ 250              		.file 6 "Application/pid/pid.h"
+ARM GAS  D:\msys64\tmp\ccCeVoQ4.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chassis_control.c
+D:\msys64\tmp\ccCeVoQ4.s:21     .text.MecanumCalculate:00000000 $t
+D:\msys64\tmp\ccCeVoQ4.s:27     .text.MecanumCalculate:00000000 MecanumCalculate
+D:\msys64\tmp\ccCeVoQ4.s:83     .text.MecanumCalculate:00000054 $d
+D:\msys64\tmp\ccCeVoQ4.s:242    .bss.vt_lf:00000000 vt_lf
+D:\msys64\tmp\ccCeVoQ4.s:235    .bss.vt_rf:00000000 vt_rf
+D:\msys64\tmp\ccCeVoQ4.s:228    .bss.vt_lb:00000000 vt_lb
+D:\msys64\tmp\ccCeVoQ4.s:221    .bss.vt_rb:00000000 vt_rb
+D:\msys64\tmp\ccCeVoQ4.s:93     .text.ChassisTask:00000000 $t
+D:\msys64\tmp\ccCeVoQ4.s:99     .text.ChassisTask:00000000 ChassisTask
+D:\msys64\tmp\ccCeVoQ4.s:206    .text.ChassisTask:000000c8 $d
+D:\msys64\tmp\ccCeVoQ4.s:218    .bss.vt_rb:00000000 $d
+D:\msys64\tmp\ccCeVoQ4.s:225    .bss.vt_lb:00000000 $d
+D:\msys64\tmp\ccCeVoQ4.s:232    .bss.vt_rf:00000000 $d
+D:\msys64\tmp\ccCeVoQ4.s:239    .bss.vt_lf:00000000 $d
+
+UNDEFINED SYMBOLS
+chassis_cmd_recv
+ver_pid_calc
+set_motor_value
+motor_info
+pid
+pid_ref

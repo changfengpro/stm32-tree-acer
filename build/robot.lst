@@ -1,0 +1,352 @@
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"robot.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Application/robot.c"
+  20              		.section	.rodata.OSTaskInit.str1.4,"aMS",%progbits,1
+  21              		.align	2
+  22              	.LC0:
+  23 0000 726F626F 		.ascii	"robotTask\000"
+  23      74546173 
+  23      6B00
+  24              		.section	.text.OSTaskInit,"ax",%progbits
+  25              		.align	1
+  26              		.global	OSTaskInit
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  31              	OSTaskInit:
+  32              	.LFB138:
+  33              		.file 2 "Application/robot_task.h"
+   1:Application/robot_task.h **** #pragma once
+   2:Application/robot_task.h **** 
+   3:Application/robot_task.h **** #include "FreeRTOS.h"
+   4:Application/robot_task.h **** #include "task.h"
+   5:Application/robot_task.h **** #include "main.h"
+   6:Application/robot_task.h **** #include "cmsis_os.h"
+   7:Application/robot_task.h **** 
+   8:Application/robot_task.h **** #include "robot.h"
+   9:Application/robot_task.h **** 
+  10:Application/robot_task.h **** osThreadId_t robotTaskHandle;
+  11:Application/robot_task.h **** 
+  12:Application/robot_task.h **** void StartROBOTTASK(void const *argument);
+  13:Application/robot_task.h **** 
+  14:Application/robot_task.h **** 
+  15:Application/robot_task.h **** /**
+  16:Application/robot_task.h ****  * @brief 初始化机器人任务,所有持续运行的任务都在这里初始化
+  17:Application/robot_task.h ****  *
+  18:Application/robot_task.h ****  */
+  19:Application/robot_task.h **** void OSTaskInit()
+  20:Application/robot_task.h **** {
+  34              		.loc 2 20 1 view -0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 40
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 2
+
+
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38 0000 00B5     		push	{lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 4
+  41              		.cfi_offset 14, -4
+  42 0002 8BB0     		sub	sp, sp, #44
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 48
+  21:Application/robot_task.h ****     const osThreadAttr_t robotTask_attributes = {
+  45              		.loc 2 21 5 view .LVU1
+  46              		.loc 2 21 26 is_stmt 0 view .LVU2
+  47 0004 2422     		movs	r2, #36
+  48 0006 0021     		movs	r1, #0
+  49 0008 01A8     		add	r0, sp, #4
+  50 000a FFF7FEFF 		bl	memset
+  51              	.LVL0:
+  52 000e 084B     		ldr	r3, .L3
+  53 0010 0193     		str	r3, [sp, #4]
+  54 0012 4FF40073 		mov	r3, #512
+  55 0016 0693     		str	r3, [sp, #24]
+  56 0018 1823     		movs	r3, #24
+  57 001a 0793     		str	r3, [sp, #28]
+  22:Application/robot_task.h ****     .name = "robotTask",
+  23:Application/robot_task.h ****     .stack_size = 128 * 4,
+  24:Application/robot_task.h ****     .priority = (osPriority_t) osPriorityNormal,
+  25:Application/robot_task.h ****     };
+  26:Application/robot_task.h **** 
+  27:Application/robot_task.h ****     robotTaskHandle = osThreadNew(StartROBOTTASK, NULL, &robotTask_attributes);
+  58              		.loc 2 27 5 is_stmt 1 view .LVU3
+  59              		.loc 2 27 23 is_stmt 0 view .LVU4
+  60 001c 01AA     		add	r2, sp, #4
+  61 001e 0021     		movs	r1, #0
+  62 0020 0448     		ldr	r0, .L3+4
+  63 0022 FFF7FEFF 		bl	osThreadNew
+  64              	.LVL1:
+  65              		.loc 2 27 21 discriminator 1 view .LVU5
+  66 0026 044B     		ldr	r3, .L3+8
+  67 0028 1860     		str	r0, [r3]
+  28:Application/robot_task.h **** }
+  68              		.loc 2 28 1 view .LVU6
+  69 002a 0BB0     		add	sp, sp, #44
+  70              	.LCFI2:
+  71              		.cfi_def_cfa_offset 4
+  72              		@ sp needed
+  73 002c 5DF804FB 		ldr	pc, [sp], #4
+  74              	.L4:
+  75              		.align	2
+  76              	.L3:
+  77 0030 00000000 		.word	.LC0
+  78 0034 00000000 		.word	StartROBOTTASK
+  79 0038 00000000 		.word	robotTaskHandle
+  80              		.cfi_endproc
+  81              	.LFE138:
+  83              		.section	.text.RobotInit,"ax",%progbits
+  84              		.align	1
+  85              		.global	RobotInit
+  86              		.syntax unified
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 3
+
+
+  87              		.thumb
+  88              		.thumb_func
+  90              	RobotInit:
+  91              	.LFB140:
+   1:Application/robot.c **** #include "robot.h"
+   2:Application/robot.c **** #include "robot_def.h"
+   3:Application/robot.c **** #include "robot_task.h"
+   4:Application/robot.c **** 
+   5:Application/robot.c **** #include "robot_cmd.h"
+   6:Application/robot.c **** #include "chassis_control.h"
+   7:Application/robot.c **** #include "Bsp_can.h"
+   8:Application/robot.c **** #include "pid.h"
+   9:Application/robot.c **** #include "usart.h"
+  10:Application/robot.c **** 
+  11:Application/robot.c **** extern uint8_t buffer[36];
+  12:Application/robot.c **** extern pid_struct_t pid[9];
+  13:Application/robot.c **** void RobotInit()
+  14:Application/robot.c **** {
+  92              		.loc 1 14 1 is_stmt 1 view -0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 10B5     		push	{r4, lr}
+  97              	.LCFI3:
+  98              		.cfi_def_cfa_offset 8
+  99              		.cfi_offset 4, -8
+ 100              		.cfi_offset 14, -4
+  15:Application/robot.c ****     can_user_init(&hcan1);
+ 101              		.loc 1 15 5 view .LVU8
+ 102 0002 1048     		ldr	r0, .L9
+ 103 0004 FFF7FEFF 		bl	can_user_init
+ 104              	.LVL2:
+  16:Application/robot.c ****     HAL_UARTEx_ReceiveToIdle_IT(&huart3 , buffer, sizeof(buffer));
+ 105              		.loc 1 16 5 view .LVU9
+ 106 0008 2422     		movs	r2, #36
+ 107 000a 0F49     		ldr	r1, .L9+4
+ 108 000c 0F48     		ldr	r0, .L9+8
+ 109 000e FFF7FEFF 		bl	HAL_UARTEx_ReceiveToIdle_IT
+ 110              	.LVL3:
+  17:Application/robot.c ****     for(int i = 1; i < 5; i++)
+ 111              		.loc 1 17 5 view .LVU10
+ 112              	.LBB2:
+ 113              		.loc 1 17 9 view .LVU11
+ 114              		.loc 1 17 13 is_stmt 0 view .LVU12
+ 115 0012 0124     		movs	r4, #1
+ 116              		.loc 1 17 5 view .LVU13
+ 117 0014 10E0     		b	.L6
+ 118              	.LVL4:
+ 119              	.L7:
+  18:Application/robot.c ****     {
+  19:Application/robot.c ****         pid_init(&pid[i], 70, 3, 0.05, 12000, 12000);
+ 120              		.loc 1 19 9 is_stmt 1 view .LVU14
+ 121 0016 DFED0E1A 		vldr.32	s3, .L9+12
+ 122 001a B0EE612A 		vmov.f32	s4, s3
+ 123 001e 9FED0D1A 		vldr.32	s2, .L9+16
+ 124 0022 F0EE080A 		vmov.f32	s1, #3.0e+0
+ 125 0026 9FED0C0A 		vldr.32	s0, .L9+20
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 4
+
+
+ 126 002a 3420     		movs	r0, #52
+ 127 002c 0B4B     		ldr	r3, .L9+24
+ 128 002e 00FB0430 		mla	r0, r0, r4, r3
+ 129 0032 FFF7FEFF 		bl	pid_init
+ 130              	.LVL5:
+  17:Application/robot.c ****     for(int i = 1; i < 5; i++)
+ 131              		.loc 1 17 28 discriminator 3 view .LVU15
+ 132 0036 0134     		adds	r4, r4, #1
+ 133              	.LVL6:
+ 134              	.L6:
+  17:Application/robot.c ****     for(int i = 1; i < 5; i++)
+ 135              		.loc 1 17 22 discriminator 1 view .LVU16
+ 136 0038 042C     		cmp	r4, #4
+ 137 003a ECDD     		ble	.L7
+ 138              	.LBE2:
+  20:Application/robot.c ****     }
+  21:Application/robot.c ****     OSTaskInit();
+ 139              		.loc 1 21 5 view .LVU17
+ 140 003c FFF7FEFF 		bl	OSTaskInit
+ 141              	.LVL7:
+  22:Application/robot.c **** }
+ 142              		.loc 1 22 1 is_stmt 0 view .LVU18
+ 143 0040 10BD     		pop	{r4, pc}
+ 144              	.LVL8:
+ 145              	.L10:
+ 146              		.loc 1 22 1 view .LVU19
+ 147 0042 00BF     		.align	2
+ 148              	.L9:
+ 149 0044 00000000 		.word	hcan1
+ 150 0048 00000000 		.word	buffer
+ 151 004c 00000000 		.word	huart3
+ 152 0050 00803B46 		.word	1178304512
+ 153 0054 CDCC4C3D 		.word	1028443341
+ 154 0058 00008C42 		.word	1116471296
+ 155 005c 00000000 		.word	pid
+ 156              		.cfi_endproc
+ 157              	.LFE140:
+ 159              		.section	.text.RobotTask,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	RobotTask
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	RobotTask:
+ 167              	.LFB141:
+  23:Application/robot.c **** 
+  24:Application/robot.c **** void RobotTask()
+  25:Application/robot.c **** {
+ 168              		.loc 1 25 1 is_stmt 1 view -0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172 0000 08B5     		push	{r3, lr}
+ 173              	.LCFI4:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 3, -8
+ 176              		.cfi_offset 14, -4
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 5
+
+
+  26:Application/robot.c ****     RobotCMDTask();
+ 177              		.loc 1 26 5 view .LVU21
+ 178 0002 FFF7FEFF 		bl	RobotCMDTask
+ 179              	.LVL9:
+  27:Application/robot.c ****     ChassisTask();
+ 180              		.loc 1 27 5 view .LVU22
+ 181 0006 FFF7FEFF 		bl	ChassisTask
+ 182              	.LVL10:
+  28:Application/robot.c **** }...
+ 183              		.loc 1 28 1 is_stmt 0 view .LVU23
+ 184 000a 08BD     		pop	{r3, pc}
+ 185              		.cfi_endproc
+ 186              	.LFE141:
+ 188              		.section	.text.StartROBOTTASK,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	StartROBOTTASK
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	StartROBOTTASK:
+ 196              	.LVL11:
+ 197              	.LFB139:
+  29:Application/robot_task.h **** 
+  30:Application/robot_task.h **** 
+  31:Application/robot_task.h **** __attribute__((noreturn)) void StartROBOTTASK(void const *argument)
+  32:Application/robot_task.h **** {
+ 198              		.loc 2 32 1 is_stmt 1 view -0
+ 199              		.cfi_startproc
+ 200              		@ Volatile: function does not return.
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		.loc 2 32 1 is_stmt 0 view .LVU25
+ 204 0000 08B5     		push	{r3, lr}
+ 205              	.LCFI5:
+ 206              		.cfi_def_cfa_offset 8
+ 207              		.cfi_offset 3, -8
+ 208              		.cfi_offset 14, -4
+  33:Application/robot_task.h ****     RobotTask();
+ 209              		.loc 2 33 5 is_stmt 1 view .LVU26
+ 210 0002 FFF7FEFF 		bl	RobotTask
+ 211              	.LVL12:
+  34:Application/robot_task.h ****     osDelay(5);
+ 212              		.loc 2 34 5 view .LVU27
+ 213 0006 0520     		movs	r0, #5
+ 214 0008 FFF7FEFF 		bl	osDelay
+ 215              	.LVL13:
+  35:Application/robot_task.h **** }...
+ 216              		.loc 2 35 1 is_stmt 0 view .LVU28
+ 217 000c FFDE     		.inst	0xdeff
+ 218              		.cfi_endproc
+ 219              	.LFE139:
+ 221              		.global	robotTaskHandle
+ 222              		.section	.bss.robotTaskHandle,"aw",%nobits
+ 223              		.align	2
+ 226              	robotTaskHandle:
+ 227 0000 00000000 		.space	4
+ 228              		.text
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 6
+
+
+ 229              	.Letext0:
+ 230              		.file 3 "D:/msys64/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 231              		.file 4 "D:/msys64/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 232              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 233              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 234              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 235              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 236              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 237              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 238              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 239              		.file 12 "Core/Inc/can.h"
+ 240              		.file 13 "Application/pid/pid.h"
+ 241              		.file 14 "Core/Inc/usart.h"
+ 242              		.file 15 "Application/chassis/chassis_control.h"
+ 243              		.file 16 "Application/cmd/robot_cmd.h"
+ 244              		.file 17 "Bsp/Bsp_can.h"
+ 245              		.file 18 "<built-in>"
+ARM GAS  D:\msys64\tmp\ccMCmYTC.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 robot.c
+D:\msys64\tmp\ccMCmYTC.s:21     .rodata.OSTaskInit.str1.4:00000000 $d
+D:\msys64\tmp\ccMCmYTC.s:25     .text.OSTaskInit:00000000 $t
+D:\msys64\tmp\ccMCmYTC.s:31     .text.OSTaskInit:00000000 OSTaskInit
+D:\msys64\tmp\ccMCmYTC.s:77     .text.OSTaskInit:00000030 $d
+D:\msys64\tmp\ccMCmYTC.s:195    .text.StartROBOTTASK:00000000 StartROBOTTASK
+D:\msys64\tmp\ccMCmYTC.s:226    .bss.robotTaskHandle:00000000 robotTaskHandle
+D:\msys64\tmp\ccMCmYTC.s:84     .text.RobotInit:00000000 $t
+D:\msys64\tmp\ccMCmYTC.s:90     .text.RobotInit:00000000 RobotInit
+D:\msys64\tmp\ccMCmYTC.s:149    .text.RobotInit:00000044 $d
+D:\msys64\tmp\ccMCmYTC.s:160    .text.RobotTask:00000000 $t
+D:\msys64\tmp\ccMCmYTC.s:166    .text.RobotTask:00000000 RobotTask
+D:\msys64\tmp\ccMCmYTC.s:189    .text.StartROBOTTASK:00000000 $t
+D:\msys64\tmp\ccMCmYTC.s:223    .bss.robotTaskHandle:00000000 $d
+
+UNDEFINED SYMBOLS
+memset
+osThreadNew
+can_user_init
+HAL_UARTEx_ReceiveToIdle_IT
+pid_init
+hcan1
+buffer
+huart3
+pid
+RobotCMDTask
+ChassisTask
+osDelay
