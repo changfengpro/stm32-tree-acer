@@ -13,7 +13,7 @@
 #include "robot_def.h"
 #include "stm32f4xx_hal_tim.h"
 
-#define CHASSIS_COEF 0.25f
+#define CHASSIS_COEF 1
 #define COREXY_COEF 6.0f
 
 
@@ -70,9 +70,9 @@ void RemoteControlSet()
     // chassis_cmd_recv.vx = -RC_ctrl.ch0 * 0.68f;
     // chassis_cmd_recv.vy = -RC_ctrl.ch1 * 0.68f;
     // chassis_cmd_recv.wz = -RC_ctrl.ch2 * 0.68f;
-    chassis_cmd_recv.vx = -RC_ctrl.ch0 * CHASSIS_COEF;
-    chassis_cmd_recv.vy = -RC_ctrl.ch1 * CHASSIS_COEF;
-    chassis_cmd_recv.wz = -RC_ctrl.ch2 * CHASSIS_COEF;
+    chassis_cmd_recv.vx = -RC_ctrl.ch0 * RC_SPEED;
+    chassis_cmd_recv.vy = -RC_ctrl.ch1 * RC_SPEED;
+    chassis_cmd_recv.wz = -RC_ctrl.ch2 * RC_SPEED;
   }
 
   if(switch_is_mid(RC_ctrl.s2))        

@@ -52,6 +52,6 @@ typedef struct
 #define TIMER_FREQUENCY 1000 				//定时器频率 Hz
 #define TIMER_TIME (1 / TIMER_FREQUENCY)	//定时器周期
 #define MOTOR_ANGLE 360.0 / 8191.0		//电机反馈值到角度的转化
-#define RC_SPEED (450.0 / 660.0) 			//遥控器最大值到电机速度最大值的转化
+#define RC_SPEED (18000.0 / 660.0) 			//遥控器最大值到电机速度最大值的转化
 
 #endif /* ROBOT_DEF_H_ */

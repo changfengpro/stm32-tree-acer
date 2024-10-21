@@ -166,7 +166,15 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+extern uint8_t buffer[36];
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  if(huart->Instance==USART3)
+  {
+    HAL_UART_AbortReceive(huart);
+    HAL_UARTEx_ReceiveToIdle_IT(huart , buffer, sizeof(buffer));
+  }
+}
 /* USER CODE END 4 */
 
 /**

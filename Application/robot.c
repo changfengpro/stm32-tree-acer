@@ -13,10 +13,11 @@ extern pid_struct_t pid[9];
 void RobotInit()
 {
     can_user_init(&hcan1);
+    HAL_Delay(10);
     HAL_UARTEx_ReceiveToIdle_IT(&huart3 , buffer, sizeof(buffer));
     for(int i = 1; i < 5; i++)
     {
-        pid_init(&pid[i], 70, 3, 0.05, 12000, 12000);
+        pid_init(&pid[i], 5, 0.05, 0, 1000, 5000);
     }
     OSTaskInit();
 }

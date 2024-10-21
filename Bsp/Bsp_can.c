@@ -49,10 +49,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
   CAN_RxHeaderTypeDef rx_header;
   uint8_t             rx_data[8];
   uint8_t index;
-  // if(hcan->Instance == CAN1)
-  // {
+  if(hcan->Instance == CAN1)
+  {
   HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); //receive can data
-  // }
+  }
   if ((rx_header.StdId >= MOTOR_3508_FEEDBACK_ID_BASE)
    && (rx_header.StdId <  MOTOR_3508_FEEDBACK_ID_BASE + MOTOR_CHASSIS_MAX_NUM))                  // judge the can id
   {

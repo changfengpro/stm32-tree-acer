@@ -30,6 +30,9 @@ void OSTaskInit()
 
 __attribute__((noreturn)) void StartROBOTTASK(void const *argument)
 {
-    RobotTask();
-    osDelay(5);
+    for(;;)
+    {
+        RobotTask();
+        osDelay(5);
+    }
 }
