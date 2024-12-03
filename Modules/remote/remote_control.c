@@ -20,8 +20,6 @@ void sbus_to_rc(const uint8_t *sbus_buf)
     RC_ctrl.s1  = (buffer[5] >> 4 & 0x000C) >> 2;
     RC_ctrl.s2  = (buffer[5] >> 4 & 0x0003);
 
-
-
     RC_ctrl.ch0 -= RC_CH_VALUE_OFFSET;
     RC_ctrl.ch1 -= RC_CH_VALUE_OFFSET;
     RC_ctrl.ch2 -= RC_CH_VALUE_OFFSET;

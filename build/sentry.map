@@ -402,7 +402,7 @@ Discarded input sections
  .text.sbus_to_rc
                 0x00000000      0x104 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .debug_info    0x00000000      0x20f CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_abbrev  0x00000000      0x111 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_abbrev  0x00000000      0x113 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .debug_rnglists
