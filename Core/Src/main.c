@@ -18,13 +18,18 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "can.h"
+#include "dma.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_can.h"
 #include "remote_control.h"
+#include "string.h"
+#include "robot.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,6 +55,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -88,10 +94,26 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CAN1_Init();
+  MX_USART3_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  RobotInit();
   can_user_init(&hcan1);
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart3,buffer,sizeof(buffer));
   /* USER CODE END 2 */
+
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -150,7 +172,18 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+// void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+// {
+//   if(huart == &huart3)
+//   {
+//     sbus_to_rc(buffer);
+//     memset(buffer,0,Size);
 
+//   }
+  
+//   HAL_UARTEx_ReceiveToIdle_DMA(&huart3,buffer,sizeof(buffer));
+//   __HAL_DMA_DISABLE_IT(huart->hdmarx,DMA_IT_HT);
+// }
 /* USER CODE END 4 */
 
 /**
