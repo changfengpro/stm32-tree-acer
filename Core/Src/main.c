@@ -101,7 +101,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   RobotInit();
   can_user_init(&hcan1);
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart3,buffer,sizeof(buffer));
   /* USER CODE END 2 */
 
   /* Init scheduler */

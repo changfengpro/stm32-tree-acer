@@ -7,7 +7,9 @@
                 "${workspaceFolder}/Modules/remote",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
-                "${workspaceFolder}/Application"
+                "${workspaceFolder}/Application",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Bsp/dwt"
             ],
             "defines": [],
             "compilerPath": null,
