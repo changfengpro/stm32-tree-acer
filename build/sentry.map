@@ -49,9 +49,9 @@ Archive member included to satisfy reference by file (symbol)
 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-errno.o)
                               CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj (__errno)
 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-malloc.o)
-                              CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj (malloc)
+                              CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj (malloc)
 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-memcpy-stub.o)
-                              CMakeFiles/sentry.dir/Modules/algorithm/controller.c.obj (memcpy)
+                              CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj (memcpy)
 
 Discarded input sections
 
@@ -274,11 +274,45 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .text          0x00000000        0x0 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .data          0x00000000        0x0 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .bss           0x00000000        0x0 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .text.set_motor_value
-                0x00000000       0x94 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .text.CANAddFilter
+                0x00000000       0x80 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .text.CANServiceInit
+                0x00000000       0x3c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .rodata        0x00000000      0x149 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .text.CANRegister
+                0x00000000      0x138 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .text.CANTransmit
+                0x00000000       0xc8 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .text.CANSetDLC
+                0x00000000       0x38 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .bss.can1_filter_idx.4
+                0x00000000        0x1 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .data.can2_filter_idx.3
+                0x00000000        0x1 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .bss.busy_count.2
+                0x00000000        0x4 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .bss.wait_time.1
+                0x00000000        0x4 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/dwt/bsp_dwt.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/dwt/bsp_dwt.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Bsp/dwt/bsp_dwt.c.obj
@@ -571,6 +605,31 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .text          0x00000000        0x0 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .data          0x00000000        0x0 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .bss           0x00000000        0x0 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
@@ -612,7 +671,24 @@ Discarded input sections
  .debug_macro   0x00000000       0x89 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .debug_macro   0x00000000      0x2aa CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .debug_macro   0x00000000      0x12d CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_macro   0x00000000       0x1c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x7b CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x2a CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x3c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x34 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000      0x370 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x4a CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x34 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x58 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000      0x1e5 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x3c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x29 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/pid/pid.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Application/pid/pid.c.obj
  .text          0x00000000        0x0 CMakeFiles/sentry.dir/Application/pid/pid.c.obj
@@ -935,14 +1011,70 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .text          0x00000000        0x0 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .data          0x00000000        0x0 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .bss           0x00000000        0x0 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
- .debug_info    0x00000000       0x70 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
- .debug_abbrev  0x00000000       0x28 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .bss.idx       0x00000000        0x1 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .bss.dji_motor_instance
+                0x00000000       0x30 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .data.sender_assignment
+                0x00000000      0x186 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .bss.sender_enable_flag
+                0x00000000        0x6 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.MotorSenderGrouping
+                0x00000000      0x1b8 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DecodeDJIMotor
+                0x00000000      0x180 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorLostCallback
+                0x00000000       0x34 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorInit
+                0x00000000       0xfc CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .rodata        0x00000000       0x40 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorChangeFeed
+                0x00000000       0x40 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorStop
+                0x00000000       0x1c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorEnable
+                0x00000000       0x1c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorOuterLoop
+                0x00000000       0x1e CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorSetRef
+                0x00000000       0x20 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .text.DJIMotorControl
+                0x00000000      0x23c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_info    0x00000000     0x11f5 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_abbrev  0x00000000      0x306 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_aranges
-                0x00000000       0x18 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
- .debug_macro   0x00000000      0x1f1 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+                0x00000000       0x68 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_rnglists
+                0x00000000       0x4d CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x38d CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000      0xad8 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000      0x29b CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000       0x2e CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
@@ -981,10 +1113,37 @@ Discarded input sections
  .debug_macro   0x00000000       0x89 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000      0x2aa CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000      0x12d CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x7b CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x2a CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x3c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x34 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x370 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x4a CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x34 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x58 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x1e5 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x3c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x16 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x29 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x19b CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x201 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x7c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x17 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x118 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000      0x169 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x10 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .debug_macro   0x00000000       0x1c CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
- .debug_line    0x00000000      0x5c8 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
- .debug_str     0x00000000    0xbef05 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_macro   0x00000000       0x28 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_line    0x00000000      0xc89 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_str     0x00000000    0xc448d CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .comment       0x00000000       0x46 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
+ .debug_frame   0x00000000      0x194 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .ARM.attributes
                 0x00000000       0x34 CMakeFiles/sentry.dir/Modules/motor/DJImotor/dji_motor.c.obj
  .group         0x00000000        0xc CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
@@ -1455,7 +1614,7 @@ Discarded input sections
  .data          0x00000000        0x0 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .bss           0x00000000        0x0 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .text.HAL_CAN_MspDeInit
-                0x00000000       0x40 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x00000000       0xa4 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .debug_macro   0x00000000      0xad8 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .debug_macro   0x00000000      0x29b CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .debug_macro   0x00000000       0x2e CMakeFiles/sentry.dir/Core/Src/can.c.obj
@@ -1615,7 +1774,7 @@ Discarded input sections
  .data          0x00000000        0x0 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .bss           0x00000000        0x0 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .text.HAL_UART_MspDeInit
-                0x00000000       0x84 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x00000000       0x94 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .debug_macro   0x00000000      0xad8 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .debug_macro   0x00000000      0x29b CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .debug_macro   0x00000000       0x2e CMakeFiles/sentry.dir/Core/Src/usart.c.obj
@@ -1875,6 +2034,10 @@ Discarded input sections
                 0x00000000       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_MspDeInit
                 0x00000000       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .text.HAL_CAN_ConfigFilter
+                0x00000000      0x1c0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .text.HAL_CAN_Start
+                0x00000000       0x88 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_Stop
                 0x00000000       0x92 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_RequestSleep
@@ -1893,11 +2056,13 @@ Discarded input sections
                 0x00000000       0x48 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_GetTxTimestamp
                 0x00000000       0x6a CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .text.HAL_CAN_GetRxFifoFillLevel
-                0x00000000       0x50 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .text.HAL_CAN_ActivateNotification
+                0x00000000       0x4c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_DeactivateNotification
                 0x00000000       0x4e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_RxFifo0MsgPendingCallback
+                0x00000000       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .text.HAL_CAN_RxFifo1MsgPendingCallback
                 0x00000000       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .text.HAL_CAN_GetState
                 0x00000000       0x50 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -5206,7 +5371,7 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
                 0x08000000                g_pfnVectors
                 0x08000188                        . = ALIGN (0x4)
 
-.text           0x08000190     0x7568
+.text           0x08000190     0x7448
                 0x08000190                        . = ALIGN (0x4)
  *(.text)
  .text          0x08000190       0x30 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
@@ -5247,695 +5412,691 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
                 0x080003fc                __malloc_unlock
  .text._sbrk_r  0x08000408       0x20 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-sbrkr.o)
                 0x08000408                _sbrk_r
- .text.can_user_init
-                0x08000428       0x5c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
-                0x08000428                can_user_init
+ .text.CANFIFOxCallback
+                0x08000428       0xcc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .text.HAL_CAN_RxFifo0MsgPendingCallback
-                0x08000484       0xdc CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
-                0x08000484                HAL_CAN_RxFifo0MsgPendingCallback
- .text.USARTServiceInit
-                0x08000560       0x40 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
-                0x08000560                USARTServiceInit
- .text.USARTRegister
-                0x080005a0       0xa8 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
-                0x080005a0                USARTRegister
- .text.HAL_UARTEx_RxEventCallback
-                0x08000648       0xc8 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
-                0x08000648                HAL_UARTEx_RxEventCallback
- .text.HAL_UART_ErrorCallback
-                0x08000710       0x90 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
-                0x08000710                HAL_UART_ErrorCallback
- .text.RobotCMDInit
-                0x080007a0       0x28 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
-                0x080007a0                RobotCMDInit
- .text.RobotCMDTask
-                0x080007c8        0xe CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
-                0x080007c8                RobotCMDTask
- *fill*         0x080007d6        0x2 
- .text.OSTaskInit
-                0x080007d8       0x48 CMakeFiles/sentry.dir/Application/robot.c.obj
-                0x080007d8                OSTaskInit
- .text.StartRobotTask
-                0x08000820       0x16 CMakeFiles/sentry.dir/Application/robot.c.obj
-                0x08000820                StartRobotTask
- .text.RobotInit
-                0x08000836       0x14 CMakeFiles/sentry.dir/Application/robot.c.obj
-                0x08000836                RobotInit
- .text.RobotTask
-                0x0800084a        0xc CMakeFiles/sentry.dir/Application/robot.c.obj
-                0x0800084a                RobotTask
- *fill*         0x08000856        0x2 
- .text.RectifyRCjoystick
-                0x08000858       0x50 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .text.sbus_to_rc
-                0x080008a8      0x304 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .text.RemoteControlRxCallback
-                0x08000bac       0x18 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .text.RemoteControlInit
-                0x08000bc4       0x44 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
-                0x08000bc4                RemoteControlInit
- .text.main     0x08000c08       0x40 CMakeFiles/sentry.dir/Core/Src/main.c.obj
-                0x08000c08                main
- .text.SystemClock_Config
-                0x08000c48       0xd4 CMakeFiles/sentry.dir/Core/Src/main.c.obj
-                0x08000c48                SystemClock_Config
- .text.Error_Handler
-                0x08000d1c        0xc CMakeFiles/sentry.dir/Core/Src/main.c.obj
-                0x08000d1c                Error_Handler
- .text.MX_GPIO_Init
-                0x08000d28       0xa4 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
-                0x08000d28                MX_GPIO_Init
- .text.MX_FREERTOS_Init
-                0x08000dcc       0x24 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
-                0x08000dcc                MX_FREERTOS_Init
- .text.StartDefaultTask
-                0x08000df0       0x10 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
-                0x08000df0                StartDefaultTask
- .text.MX_CAN1_Init
-                0x08000e00       0x6c CMakeFiles/sentry.dir/Core/Src/can.c.obj
-                0x08000e00                MX_CAN1_Init
- .text.HAL_CAN_MspInit
-                0x08000e6c       0xa0 CMakeFiles/sentry.dir/Core/Src/can.c.obj
-                0x08000e6c                HAL_CAN_MspInit
- .text.MX_DMA_Init
-                0x08000f0c       0x6c CMakeFiles/sentry.dir/Core/Src/dma.c.obj
-                0x08000f0c                MX_DMA_Init
- .text.MX_USART1_UART_Init
-                0x08000f78       0x54 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x08000f78                MX_USART1_UART_Init
- .text.MX_USART3_UART_Init
-                0x08000fcc       0x58 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x08000fcc                MX_USART3_UART_Init
- .text.HAL_UART_MspInit
-                0x08001024      0x1e4 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x08001024                HAL_UART_MspInit
- .text.NMI_Handler
-                0x08001208        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001208                NMI_Handler
- .text.HardFault_Handler
-                0x08001210        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001210                HardFault_Handler
- .text.MemManage_Handler
-                0x08001218        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001218                MemManage_Handler
- .text.BusFault_Handler
-                0x08001220        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001220                BusFault_Handler
- .text.UsageFault_Handler
-                0x08001228        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001228                UsageFault_Handler
- .text.DebugMon_Handler
-                0x08001230        0xe CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001230                DebugMon_Handler
- .text.SysTick_Handler
-                0x0800123e       0x1a CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800123e                SysTick_Handler
- .text.DMA1_Stream1_IRQHandler
-                0x08001258       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001258                DMA1_Stream1_IRQHandler
- .text.CAN1_RX0_IRQHandler
-                0x0800126c       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x0800126c                CAN1_RX0_IRQHandler
- .text.USART1_IRQHandler
-                0x08001280       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001280                USART1_IRQHandler
- .text.USART3_IRQHandler
-                0x08001294       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x08001294                USART3_IRQHandler
- .text.DMA2_Stream7_IRQHandler
-                0x080012a8       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
-                0x080012a8                DMA2_Stream7_IRQHandler
- .text.HAL_MspInit
-                0x080012bc       0x58 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
-                0x080012bc                HAL_MspInit
- .text.HAL_CAN_Init
-                0x08001314      0x1f6 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001314                HAL_CAN_Init
- *fill*         0x0800150a        0x2 
- .text.HAL_CAN_ConfigFilter
-                0x0800150c      0x1c0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x0800150c                HAL_CAN_ConfigFilter
- .text.HAL_CAN_Start
-                0x080016cc       0x88 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x080016cc                HAL_CAN_Start
- .text.HAL_CAN_GetRxMessage
-                0x08001754      0x244 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001754                HAL_CAN_GetRxMessage
- .text.HAL_CAN_ActivateNotification
-                0x08001998       0x4c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001998                HAL_CAN_ActivateNotification
- .text.HAL_CAN_IRQHandler
-                0x080019e4      0x36e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x080019e4                HAL_CAN_IRQHandler
- .text.HAL_CAN_TxMailbox0CompleteCallback
-                0x08001d52       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001d52                HAL_CAN_TxMailbox0CompleteCallback
- .text.HAL_CAN_TxMailbox1CompleteCallback
-                0x08001d66       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001d66                HAL_CAN_TxMailbox1CompleteCallback
- .text.HAL_CAN_TxMailbox2CompleteCallback
-                0x08001d7a       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001d7a                HAL_CAN_TxMailbox2CompleteCallback
- .text.HAL_CAN_TxMailbox0AbortCallback
-                0x08001d8e       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001d8e                HAL_CAN_TxMailbox0AbortCallback
- .text.HAL_CAN_TxMailbox1AbortCallback
-                0x08001da2       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001da2                HAL_CAN_TxMailbox1AbortCallback
- .text.HAL_CAN_TxMailbox2AbortCallback
-                0x08001db6       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001db6                HAL_CAN_TxMailbox2AbortCallback
- .text.HAL_CAN_RxFifo0FullCallback
-                0x08001dca       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001dca                HAL_CAN_RxFifo0FullCallback
+                0x080004f4       0x18 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+                0x080004f4                HAL_CAN_RxFifo0MsgPendingCallback
  .text.HAL_CAN_RxFifo1MsgPendingCallback
-                0x08001dde       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001dde                HAL_CAN_RxFifo1MsgPendingCallback
+                0x0800050c       0x18 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+                0x0800050c                HAL_CAN_RxFifo1MsgPendingCallback
+ .text.USARTServiceInit
+                0x08000524       0x40 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x08000524                USARTServiceInit
+ .text.USARTRegister
+                0x08000564       0xa8 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x08000564                USARTRegister
+ .text.HAL_UARTEx_RxEventCallback
+                0x0800060c       0xc8 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x0800060c                HAL_UARTEx_RxEventCallback
+ .text.HAL_UART_ErrorCallback
+                0x080006d4       0x90 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x080006d4                HAL_UART_ErrorCallback
+ .text.RobotCMDInit
+                0x08000764       0x28 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+                0x08000764                RobotCMDInit
+ .text.RobotCMDTask
+                0x0800078c        0xe CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+                0x0800078c                RobotCMDTask
+ *fill*         0x0800079a        0x2 
+ .text.OSTaskInit
+                0x0800079c       0x48 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x0800079c                OSTaskInit
+ .text.StartRobotTask
+                0x080007e4       0x16 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x080007e4                StartRobotTask
+ .text.RobotInit
+                0x080007fa       0x14 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x080007fa                RobotInit
+ .text.RobotTask
+                0x0800080e        0xc CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x0800080e                RobotTask
+ *fill*         0x0800081a        0x2 
+ .text.RectifyRCjoystick
+                0x0800081c       0x50 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .text.sbus_to_rc
+                0x0800086c      0x304 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .text.RemoteControlRxCallback
+                0x08000b70       0x18 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .text.RemoteControlInit
+                0x08000b88       0x44 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+                0x08000b88                RemoteControlInit
+ .text.main     0x08000bcc       0x38 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+                0x08000bcc                main
+ .text.SystemClock_Config
+                0x08000c04       0xd4 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+                0x08000c04                SystemClock_Config
+ .text.Error_Handler
+                0x08000cd8        0xc CMakeFiles/sentry.dir/Core/Src/main.c.obj
+                0x08000cd8                Error_Handler
+ .text.MX_GPIO_Init
+                0x08000ce4       0xa4 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+                0x08000ce4                MX_GPIO_Init
+ .text.MX_FREERTOS_Init
+                0x08000d88       0x24 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x08000d88                MX_FREERTOS_Init
+ .text.StartDefaultTask
+                0x08000dac       0x10 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x08000dac                StartDefaultTask
+ .text.MX_CAN1_Init
+                0x08000dbc       0x6c CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x08000dbc                MX_CAN1_Init
+ .text.MX_CAN2_Init
+                0x08000e28       0x6c CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x08000e28                MX_CAN2_Init
+ .text.HAL_CAN_MspInit
+                0x08000e94      0x160 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x08000e94                HAL_CAN_MspInit
+ .text.MX_DMA_Init
+                0x08000ff4       0x6c CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+                0x08000ff4                MX_DMA_Init
+ .text.MX_USART1_UART_Init
+                0x08001060       0x54 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x08001060                MX_USART1_UART_Init
+ .text.MX_USART3_UART_Init
+                0x080010b4       0x58 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x080010b4                MX_USART3_UART_Init
+ .text.HAL_UART_MspInit
+                0x0800110c      0x228 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x0800110c                HAL_UART_MspInit
+ .text.NMI_Handler
+                0x08001334        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x08001334                NMI_Handler
+ .text.HardFault_Handler
+                0x0800133c        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x0800133c                HardFault_Handler
+ .text.MemManage_Handler
+                0x08001344        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x08001344                MemManage_Handler
+ .text.BusFault_Handler
+                0x0800134c        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x0800134c                BusFault_Handler
+ .text.UsageFault_Handler
+                0x08001354        0x8 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x08001354                UsageFault_Handler
+ .text.DebugMon_Handler
+                0x0800135c        0xe CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x0800135c                DebugMon_Handler
+ .text.SysTick_Handler
+                0x0800136a       0x1a CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x0800136a                SysTick_Handler
+ .text.DMA1_Stream1_IRQHandler
+                0x08001384       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x08001384                DMA1_Stream1_IRQHandler
+ .text.CAN1_RX0_IRQHandler
+                0x08001398       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x08001398                CAN1_RX0_IRQHandler
+ .text.USART1_IRQHandler
+                0x080013ac       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080013ac                USART1_IRQHandler
+ .text.USART3_IRQHandler
+                0x080013c0       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080013c0                USART3_IRQHandler
+ .text.CAN2_RX0_IRQHandler
+                0x080013d4       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080013d4                CAN2_RX0_IRQHandler
+ .text.DMA2_Stream7_IRQHandler
+                0x080013e8       0x14 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x080013e8                DMA2_Stream7_IRQHandler
+ .text.HAL_MspInit
+                0x080013fc       0x58 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+                0x080013fc                HAL_MspInit
+ .text.HAL_CAN_Init
+                0x08001454      0x1f6 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001454                HAL_CAN_Init
+ .text.HAL_CAN_GetRxMessage
+                0x0800164a      0x244 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800164a                HAL_CAN_GetRxMessage
+ .text.HAL_CAN_GetRxFifoFillLevel
+                0x0800188e       0x50 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x0800188e                HAL_CAN_GetRxFifoFillLevel
+ .text.HAL_CAN_IRQHandler
+                0x080018de      0x36e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x080018de                HAL_CAN_IRQHandler
+ .text.HAL_CAN_TxMailbox0CompleteCallback
+                0x08001c4c       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001c4c                HAL_CAN_TxMailbox0CompleteCallback
+ .text.HAL_CAN_TxMailbox1CompleteCallback
+                0x08001c60       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001c60                HAL_CAN_TxMailbox1CompleteCallback
+ .text.HAL_CAN_TxMailbox2CompleteCallback
+                0x08001c74       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001c74                HAL_CAN_TxMailbox2CompleteCallback
+ .text.HAL_CAN_TxMailbox0AbortCallback
+                0x08001c88       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001c88                HAL_CAN_TxMailbox0AbortCallback
+ .text.HAL_CAN_TxMailbox1AbortCallback
+                0x08001c9c       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001c9c                HAL_CAN_TxMailbox1AbortCallback
+ .text.HAL_CAN_TxMailbox2AbortCallback
+                0x08001cb0       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001cb0                HAL_CAN_TxMailbox2AbortCallback
+ .text.HAL_CAN_RxFifo0FullCallback
+                0x08001cc4       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001cc4                HAL_CAN_RxFifo0FullCallback
  .text.HAL_CAN_RxFifo1FullCallback
-                0x08001df2       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001df2                HAL_CAN_RxFifo1FullCallback
+                0x08001cd8       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001cd8                HAL_CAN_RxFifo1FullCallback
  .text.HAL_CAN_SleepCallback
-                0x08001e06       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001e06                HAL_CAN_SleepCallback
+                0x08001cec       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001cec                HAL_CAN_SleepCallback
  .text.HAL_CAN_WakeUpFromRxMsgCallback
-                0x08001e1a       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001e1a                HAL_CAN_WakeUpFromRxMsgCallback
+                0x08001d00       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001d00                HAL_CAN_WakeUpFromRxMsgCallback
  .text.HAL_CAN_ErrorCallback
-                0x08001e2e       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
-                0x08001e2e                HAL_CAN_ErrorCallback
- *fill*         0x08001e42        0x2 
+                0x08001d14       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x08001d14                HAL_CAN_ErrorCallback
  .text.HAL_RCC_OscConfig
-                0x08001e44      0x4f0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08001e44                HAL_RCC_OscConfig
+                0x08001d28      0x4f0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x08001d28                HAL_RCC_OscConfig
  .text.HAL_RCC_ClockConfig
-                0x08002334      0x1cc CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002334                HAL_RCC_ClockConfig
+                0x08002218      0x1cc CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x08002218                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08002500      0x18c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x08002500                HAL_RCC_GetSysClockFreq
+                0x080023e4      0x18c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080023e4                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_GetHCLKFreq
-                0x0800268c       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x0800268c                HAL_RCC_GetHCLKFreq
+                0x08002570       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x08002570                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x080026a4       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x080026a4                HAL_RCC_GetPCLK1Freq
+                0x08002588       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x08002588                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x080026cc       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
-                0x080026cc                HAL_RCC_GetPCLK2Freq
+                0x080025b0       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x080025b0                HAL_RCC_GetPCLK2Freq
  .text.HAL_GPIO_Init
-                0x080026f4      0x338 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
-                0x080026f4                HAL_GPIO_Init
+                0x080025d8      0x338 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+                0x080025d8                HAL_GPIO_Init
  .text.HAL_DMA_Init
-                0x08002a2c      0x15c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002a2c                HAL_DMA_Init
+                0x08002910      0x15c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002910                HAL_DMA_Init
  .text.HAL_DMA_Start_IT
-                0x08002b88       0xb0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002b88                HAL_DMA_Start_IT
+                0x08002a6c       0xb0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002a6c                HAL_DMA_Start_IT
  .text.HAL_DMA_Abort
-                0x08002c38       0xe0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002c38                HAL_DMA_Abort
+                0x08002b1c       0xe0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002b1c                HAL_DMA_Abort
  .text.HAL_DMA_Abort_IT
-                0x08002d18       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002d18                HAL_DMA_Abort_IT
+                0x08002bfc       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002bfc                HAL_DMA_Abort_IT
  .text.HAL_DMA_IRQHandler
-                0x08002d5c      0x314 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
-                0x08002d5c                HAL_DMA_IRQHandler
+                0x08002c40      0x314 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002c40                HAL_DMA_IRQHandler
  .text.DMA_SetConfig
-                0x08003070       0x5c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002f54       0x5c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .text.DMA_CalcBaseAndBitshift
-                0x080030cc       0x6c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x08002fb0       0x6c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .text.DMA_CheckFifoParam
-                0x08003138       0xf8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x0800301c       0xf8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .text.__NVIC_SetPriorityGrouping
-                0x08003230       0x48 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08003114       0x48 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.__NVIC_GetPriorityGrouping
-                0x08003278       0x1c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x0800315c       0x1c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.__NVIC_EnableIRQ
-                0x08003294       0x3c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08003178       0x3c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.__NVIC_SetPriority
-                0x080032d0       0x54 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x080031b4       0x54 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.NVIC_EncodePriority
-                0x08003324       0x66 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- *fill*         0x0800338a        0x2 
+                0x08003208       0x66 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ *fill*         0x0800326e        0x2 
  .text.SysTick_Config
-                0x0800338c       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08003270       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .text.HAL_NVIC_SetPriorityGrouping
-                0x080033d0       0x16 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x080033d0                HAL_NVIC_SetPriorityGrouping
+                0x080032b4       0x16 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x080032b4                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x080033e6       0x38 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x080033e6                HAL_NVIC_SetPriority
+                0x080032ca       0x38 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x080032ca                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x0800341e       0x1c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x0800341e                HAL_NVIC_EnableIRQ
+                0x08003302       0x1c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x08003302                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x0800343a       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
-                0x0800343a                HAL_SYSTICK_Config
- *fill*         0x08003452        0x2 
+                0x0800331e       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x0800331e                HAL_SYSTICK_Config
+ *fill*         0x08003336        0x2 
  .text.HAL_Init
-                0x08003454       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08003454                HAL_Init
+                0x08003338       0x44 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08003338                HAL_Init
  .text.HAL_InitTick
-                0x08003498       0x60 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08003498                HAL_InitTick
+                0x0800337c       0x60 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x0800337c                HAL_InitTick
  .text.HAL_IncTick
-                0x080034f8       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x080034f8                HAL_IncTick
+                0x080033dc       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x080033dc                HAL_IncTick
  .text.HAL_GetTick
-                0x08003520       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x08003520                HAL_GetTick
+                0x08003404       0x18 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x08003404                HAL_GetTick
  .text.HAL_UART_Init
-                0x08003538       0xa0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003538                HAL_UART_Init
+                0x0800341c       0xa0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x0800341c                HAL_UART_Init
  .text.HAL_UARTEx_ReceiveToIdle_DMA
-                0x080035d8       0xba CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x080035d8                HAL_UARTEx_ReceiveToIdle_DMA
- *fill*         0x08003692        0x2 
+                0x080034bc       0xba CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x080034bc                HAL_UARTEx_ReceiveToIdle_DMA
+ *fill*         0x08003576        0x2 
  .text.HAL_UART_IRQHandler
-                0x08003694      0x524 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003694                HAL_UART_IRQHandler
+                0x08003578      0x524 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003578                HAL_UART_IRQHandler
  .text.HAL_UART_TxCpltCallback
-                0x08003bb8       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003bb8                HAL_UART_TxCpltCallback
+                0x08003a9c       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003a9c                HAL_UART_TxCpltCallback
  .text.HAL_UART_RxCpltCallback
-                0x08003bcc       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003bcc                HAL_UART_RxCpltCallback
+                0x08003ab0       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003ab0                HAL_UART_RxCpltCallback
  .text.HAL_UART_RxHalfCpltCallback
-                0x08003be0       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003be0                HAL_UART_RxHalfCpltCallback
+                0x08003ac4       0x14 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003ac4                HAL_UART_RxHalfCpltCallback
  .text.UART_DMAReceiveCplt
-                0x08003bf4      0x12c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003ad8      0x12c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_DMARxHalfCplt
-                0x08003d20       0x3c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003c04       0x3c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_DMAError
-                0x08003d5c       0x94 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003c40       0x94 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_Start_Receive_DMA
-                0x08003df0      0x134 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
-                0x08003df0                UART_Start_Receive_DMA
+                0x08003cd4      0x134 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003cd4                UART_Start_Receive_DMA
  .text.UART_EndTxTransfer
-                0x08003f24       0x50 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003e08       0x50 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_EndRxTransfer
-                0x08003f74       0xc6 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003e58       0xc6 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_DMAAbortOnError
-                0x0800403a       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003f1e       0x28 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_Transmit_IT
-                0x08004062       0xa0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003f46       0xa0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_EndTransmit_IT
-                0x08004102       0x30 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08003fe6       0x30 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.UART_Receive_IT
-                0x08004132      0x17c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- *fill*         0x080042ae        0x2 
+                0x08004016      0x17c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ *fill*         0x08004192        0x2 
  .text.UART_SetConfig
-                0x080042b0      0x4e8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x08004194      0x4e8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .text.SystemInit
-                0x08004798       0x24 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
-                0x08004798                SystemInit
+                0x0800467c       0x24 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+                0x0800467c                SystemInit
  .text.vListInitialise
-                0x080047bc       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080047bc                vListInitialise
+                0x080046a0       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080046a0                vListInitialise
  .text.vListInitialiseItem
-                0x080047fc       0x1a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080047fc                vListInitialiseItem
+                0x080046e0       0x1a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080046e0                vListInitialiseItem
  .text.vListInsertEnd
-                0x08004816       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x08004816                vListInsertEnd
+                0x080046fa       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080046fa                vListInsertEnd
  .text.vListInsert
-                0x0800485e       0x72 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800485e                vListInsert
+                0x08004742       0x72 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08004742                vListInsert
  .text.uxListRemove
-                0x080048d0       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080048d0                uxListRemove
+                0x080047b4       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080047b4                uxListRemove
  .text.xQueueGenericReset
-                0x08004924       0xd4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004924                xQueueGenericReset
+                0x08004808       0xd4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004808                xQueueGenericReset
  .text.xQueueGenericCreateStatic
-                0x080049f8       0xfa CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080049f8                xQueueGenericCreateStatic
+                0x080048dc       0xfa CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080048dc                xQueueGenericCreateStatic
  .text.prvInitialiseNewQueue
-                0x08004af2       0x46 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080049d6       0x46 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.xQueueGenericSend
-                0x08004b38      0x204 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004b38                xQueueGenericSend
+                0x08004a1c      0x204 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004a1c                xQueueGenericSend
  .text.xQueueGenericSendFromISR
-                0x08004d3c      0x13c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004d3c                xQueueGenericSendFromISR
+                0x08004c20      0x13c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004c20                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x08004e78      0x1c4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004e78                xQueueReceive
+                0x08004d5c      0x1c4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004d5c                xQueueReceive
  .text.prvCopyDataToQueue
-                0x0800503c       0xd4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004f20       0xd4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvCopyDataFromQueue
-                0x08005110       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004ff4       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvUnlockQueue
-                0x0800515c       0xa4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08005040       0xa4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvIsQueueEmpty
-                0x08005200       0x2c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080050e4       0x2c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvIsQueueFull
-                0x0800522c       0x30 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08005110       0x30 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.vQueueAddToRegistry
-                0x0800525c       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x0800525c                vQueueAddToRegistry
+                0x08005140       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08005140                vQueueAddToRegistry
  .text.vQueueWaitForMessageRestricted
-                0x080052b0       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080052b0                vQueueWaitForMessageRestricted
+                0x08005194       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08005194                vQueueWaitForMessageRestricted
  .text.xTaskCreateStatic
-                0x08005318       0xc0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005318                xTaskCreateStatic
+                0x080051fc       0xc0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080051fc                xTaskCreateStatic
  .text.xTaskCreate
-                0x080053d8       0x8a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080053d8                xTaskCreate
+                0x080052bc       0x8a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080052bc                xTaskCreate
  .text.prvInitialiseNewTask
-                0x08005462      0x120 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- *fill*         0x08005582        0x2 
+                0x08005346      0x120 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ *fill*         0x08005466        0x2 
  .text.prvAddNewTaskToReadyList
-                0x08005584       0xe0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005468       0xe0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.vTaskDelay
-                0x08005664       0x6c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005664                vTaskDelay
+                0x08005548       0x6c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005548                vTaskDelay
  .text.vTaskStartScheduler
-                0x080056d0       0xd0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080056d0                vTaskStartScheduler
+                0x080055b4       0xd0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080055b4                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x080057a0       0x1c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080057a0                vTaskSuspendAll
+                0x08005684       0x1c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005684                vTaskSuspendAll
  .text.xTaskResumeAll
-                0x080057bc      0x13c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080057bc                xTaskResumeAll
+                0x080056a0      0x13c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080056a0                xTaskResumeAll
  .text.xTaskGetTickCount
-                0x080058f8       0x20 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080058f8                xTaskGetTickCount
+                0x080057dc       0x20 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080057dc                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x08005918      0x174 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005918                xTaskIncrementTick
+                0x080057fc      0x174 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080057fc                xTaskIncrementTick
  .text.vTaskSwitchContext
-                0x08005a8c       0xbc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005a8c                vTaskSwitchContext
+                0x08005970       0xbc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005970                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x08005b48       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005b48                vTaskPlaceOnEventList
+                0x08005a2c       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005a2c                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x08005b94       0x58 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005b94                vTaskPlaceOnEventListRestricted
+                0x08005a78       0x58 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005a78                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x08005bec       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005bec                xTaskRemoveFromEventList
+                0x08005ad0       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005ad0                xTaskRemoveFromEventList
  .text.vTaskInternalSetTimeOutState
-                0x08005cb4       0x2c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005cb4                vTaskInternalSetTimeOutState
+                0x08005b98       0x2c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005b98                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x08005ce0       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005ce0                xTaskCheckForTimeOut
+                0x08005bc4       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005bc4                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x08005da8       0x18 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005da8                vTaskMissedYield
+                0x08005c8c       0x18 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005c8c                vTaskMissedYield
  .text.prvIdleTask
-                0x08005dc0       0x30 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005ca4       0x30 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvInitialiseTaskLists
-                0x08005df0       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005cd4       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvCheckTasksWaitingTermination
-                0x08005e70       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005d54       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvDeleteTCB
-                0x08005ecc       0x60 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005db0       0x60 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvResetNextTaskUnblockTime
-                0x08005f2c       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005e10       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.xTaskGetSchedulerState
-                0x08005f6c       0x3c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005f6c                xTaskGetSchedulerState
+                0x08005e50       0x3c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005e50                xTaskGetSchedulerState
  .text.xTaskPriorityDisinherit
-                0x08005fa8       0xe0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005fa8                xTaskPriorityDisinherit
+                0x08005e8c       0xe0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005e8c                xTaskPriorityDisinherit
  .text.prvAddCurrentTaskToDelayedList
-                0x08006088       0xa8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005f6c       0xa8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.xTimerCreateTimerTask
-                0x08006130       0x94 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
-                0x08006130                xTimerCreateTimerTask
+                0x08006014       0x94 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08006014                xTimerCreateTimerTask
  .text.xTimerGenericCommand
-                0x080061c4       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
-                0x080061c4                xTimerGenericCommand
+                0x080060a8       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x080060a8                xTimerGenericCommand
  .text.prvProcessExpiredTimer
-                0x08006260       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08006144       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvTimerTask
-                0x080062fc       0x26 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- *fill*         0x08006322        0x2 
+                0x080061e0       0x26 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ *fill*         0x08006206        0x2 
  .text.prvProcessTimerOrBlockTask
-                0x08006324       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08006208       0x9c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvGetNextExpireTime
-                0x080063c0       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x080062a4       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvSampleTimeNow
-                0x08006408       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x080062ec       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvInsertTimerInActiveList
-                0x08006448       0x84 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x0800632c       0x84 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvProcessReceivedCommands
-                0x080064cc      0x1cc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x080063b0      0x1cc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvSwitchTimerLists
-                0x08006698       0xcc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x0800657c       0xcc CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.prvCheckForValidListAndQueue
-                0x08006764       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x08006648       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .text.__NVIC_SetPriority
-                0x080067e4       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x080066c8       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .text.SVC_Setup
-                0x08006838       0x12 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- *fill*         0x0800684a        0x2 
+                0x0800671c       0x12 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ *fill*         0x0800672e        0x2 
  .text.osKernelInitialize
-                0x0800684c       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x0800684c                osKernelInitialize
+                0x08006730       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x08006730                osKernelInitialize
  .text.osKernelStart
-                0x08006894       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x08006894                osKernelStart
+                0x08006778       0x4c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x08006778                osKernelStart
  .text.osThreadNew
-                0x080068e0      0x124 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x080068e0                osThreadNew
- .text.osDelay  0x08006a04       0x36 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x08006a04                osDelay
- *fill*         0x08006a3a        0x2 
+                0x080067c4      0x124 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x080067c4                osThreadNew
+ .text.osDelay  0x080068e8       0x36 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x080068e8                osDelay
+ *fill*         0x0800691e        0x2 
  .text.vApplicationGetIdleTaskMemory
-                0x08006a3c       0x34 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x08006a3c                vApplicationGetIdleTaskMemory
+                0x08006920       0x34 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x08006920                vApplicationGetIdleTaskMemory
  .text.vApplicationGetTimerTaskMemory
-                0x08006a70       0x34 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
-                0x08006a70                vApplicationGetTimerTaskMemory
+                0x08006954       0x34 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x08006954                vApplicationGetTimerTaskMemory
  .text.pvPortMalloc
-                0x08006aa4      0x19c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
-                0x08006aa4                pvPortMalloc
+                0x08006988      0x19c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08006988                pvPortMalloc
  .text.vPortFree
-                0x08006c40       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
-                0x08006c40                vPortFree
+                0x08006b24       0xc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08006b24                vPortFree
  .text.prvHeapInit
-                0x08006d08       0xc4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08006bec       0xc4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .text.prvInsertBlockIntoFreeList
-                0x08006dcc       0xb4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08006cb0       0xb4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .text.pxPortInitialiseStack
-                0x08006e80       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x08006e80                pxPortInitialiseStack
+                0x08006d64       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08006d64                pxPortInitialiseStack
  .text.prvTaskExitError
-                0x08006ee8       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- *fill*         0x08006f44        0xc 
+                0x08006dcc       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ *fill*         0x08006e28        0x8 
  .text.SVC_Handler
-                0x08006f50       0x28 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x08006f50                SVC_Handler
+                0x08006e30       0x28 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08006e30                SVC_Handler
  .text.prvPortStartFirstTask
-                0x08006f78       0x28 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08006e58       0x28 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
  .text.xPortStartScheduler
-                0x08006fa0      0x148 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x08006fa0                xPortStartScheduler
+                0x08006e80      0x148 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08006e80                xPortStartScheduler
  .text.vPortEnterCritical
-                0x080070e8       0x64 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x080070e8                vPortEnterCritical
+                0x08006fc8       0x64 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08006fc8                vPortEnterCritical
  .text.vPortExitCritical
-                0x0800714c       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x0800714c                vPortExitCritical
+                0x0800702c       0x54 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x0800702c                vPortExitCritical
  .text.PendSV_Handler
-                0x080071a0       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x080071a0                PendSV_Handler
+                0x08007080       0x68 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08007080                PendSV_Handler
  .text.xPortSysTickHandler
-                0x08007208       0x44 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x08007208                xPortSysTickHandler
+                0x080070e8       0x44 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x080070e8                xPortSysTickHandler
  .text.vPortSetupTimerInterrupt
-                0x0800724c       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x0800724c                vPortSetupTimerInterrupt
+                0x0800712c       0x48 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x0800712c                vPortSetupTimerInterrupt
  .text.vPortEnableVFP
-                0x08007294       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08007174       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
  .text.vPortValidateInterruptPriority
-                0x080072a8       0x84 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-                0x080072a8                vPortValidateInterruptPriority
- .text._sbrk    0x0800732c       0x6c CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
-                0x0800732c                _sbrk
+                0x08007188       0x84 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x08007188                vPortValidateInterruptPriority
+ .text._sbrk    0x0800720c       0x6c CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+                0x0800720c                _sbrk
  .text.Reset_Handler
-                0x08007398       0x50 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
-                0x08007398                Reset_Handler
+                0x08007278       0x50 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+                0x08007278                Reset_Handler
  .text.Default_Handler
-                0x080073e8        0x2 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
-                0x080073e8                RTC_Alarm_IRQHandler
-                0x080073e8                HASH_RNG_IRQHandler
-                0x080073e8                EXTI2_IRQHandler
-                0x080073e8                TIM8_CC_IRQHandler
-                0x080073e8                TIM1_CC_IRQHandler
-                0x080073e8                DMA2_Stream5_IRQHandler
-                0x080073e8                DMA1_Stream5_IRQHandler
-                0x080073e8                PVD_IRQHandler
-                0x080073e8                SDIO_IRQHandler
-                0x080073e8                TAMP_STAMP_IRQHandler
-                0x080073e8                CAN2_RX1_IRQHandler
-                0x080073e8                EXTI3_IRQHandler
-                0x080073e8                TIM8_TRG_COM_TIM14_IRQHandler
-                0x080073e8                TIM1_UP_TIM10_IRQHandler
-                0x080073e8                TIM8_UP_TIM13_IRQHandler
-                0x080073e8                I2C3_ER_IRQHandler
-                0x080073e8                EXTI0_IRQHandler
-                0x080073e8                I2C2_EV_IRQHandler
-                0x080073e8                DMA1_Stream2_IRQHandler
-                0x080073e8                FPU_IRQHandler
-                0x080073e8                OTG_HS_WKUP_IRQHandler
-                0x080073e8                CAN2_SCE_IRQHandler
-                0x080073e8                DMA2_Stream2_IRQHandler
-                0x080073e8                SPI1_IRQHandler
-                0x080073e8                TIM6_DAC_IRQHandler
-                0x080073e8                TIM1_BRK_TIM9_IRQHandler
-                0x080073e8                DCMI_IRQHandler
-                0x080073e8                CAN2_RX0_IRQHandler
-                0x080073e8                DMA2_Stream3_IRQHandler
-                0x080073e8                USART6_IRQHandler
-                0x080073e8                CAN1_RX1_IRQHandler
-                0x080073e8                UART5_IRQHandler
-                0x080073e8                DMA2_Stream0_IRQHandler
-                0x080073e8                TIM4_IRQHandler
-                0x080073e8                I2C1_EV_IRQHandler
-                0x080073e8                DMA1_Stream6_IRQHandler
-                0x080073e8                UART4_IRQHandler
-                0x080073e8                TIM3_IRQHandler
-                0x080073e8                RCC_IRQHandler
-                0x080073e8                TIM8_BRK_TIM12_IRQHandler
-                0x080073e8                Default_Handler
-                0x080073e8                EXTI15_10_IRQHandler
-                0x080073e8                ADC_IRQHandler
-                0x080073e8                DMA1_Stream7_IRQHandler
-                0x080073e8                TIM7_IRQHandler
-                0x080073e8                CAN2_TX_IRQHandler
-                0x080073e8                TIM5_IRQHandler
-                0x080073e8                I2C3_EV_IRQHandler
-                0x080073e8                EXTI9_5_IRQHandler
-                0x080073e8                RTC_WKUP_IRQHandler
-                0x080073e8                ETH_WKUP_IRQHandler
-                0x080073e8                SPI2_IRQHandler
-                0x080073e8                OTG_HS_EP1_IN_IRQHandler
-                0x080073e8                DMA1_Stream0_IRQHandler
-                0x080073e8                CAN1_TX_IRQHandler
-                0x080073e8                EXTI4_IRQHandler
-                0x080073e8                FSMC_IRQHandler
-                0x080073e8                ETH_IRQHandler
-                0x080073e8                OTG_HS_EP1_OUT_IRQHandler
-                0x080073e8                WWDG_IRQHandler
-                0x080073e8                TIM2_IRQHandler
-                0x080073e8                OTG_FS_WKUP_IRQHandler
-                0x080073e8                TIM1_TRG_COM_TIM11_IRQHandler
-                0x080073e8                OTG_HS_IRQHandler
-                0x080073e8                EXTI1_IRQHandler
-                0x080073e8                USART2_IRQHandler
-                0x080073e8                I2C2_ER_IRQHandler
-                0x080073e8                DMA2_Stream1_IRQHandler
-                0x080073e8                CAN1_SCE_IRQHandler
-                0x080073e8                FLASH_IRQHandler
-                0x080073e8                DMA2_Stream4_IRQHandler
-                0x080073e8                OTG_FS_IRQHandler
-                0x080073e8                SPI3_IRQHandler
-                0x080073e8                DMA1_Stream4_IRQHandler
-                0x080073e8                I2C1_ER_IRQHandler
-                0x080073e8                DMA2_Stream6_IRQHandler
-                0x080073e8                DMA1_Stream3_IRQHandler
- *fill*         0x080073ea        0x2 
+                0x080072c8        0x2 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+                0x080072c8                RTC_Alarm_IRQHandler
+                0x080072c8                HASH_RNG_IRQHandler
+                0x080072c8                EXTI2_IRQHandler
+                0x080072c8                TIM8_CC_IRQHandler
+                0x080072c8                TIM1_CC_IRQHandler
+                0x080072c8                DMA2_Stream5_IRQHandler
+                0x080072c8                DMA1_Stream5_IRQHandler
+                0x080072c8                PVD_IRQHandler
+                0x080072c8                SDIO_IRQHandler
+                0x080072c8                TAMP_STAMP_IRQHandler
+                0x080072c8                CAN2_RX1_IRQHandler
+                0x080072c8                EXTI3_IRQHandler
+                0x080072c8                TIM8_TRG_COM_TIM14_IRQHandler
+                0x080072c8                TIM1_UP_TIM10_IRQHandler
+                0x080072c8                TIM8_UP_TIM13_IRQHandler
+                0x080072c8                I2C3_ER_IRQHandler
+                0x080072c8                EXTI0_IRQHandler
+                0x080072c8                I2C2_EV_IRQHandler
+                0x080072c8                DMA1_Stream2_IRQHandler
+                0x080072c8                FPU_IRQHandler
+                0x080072c8                OTG_HS_WKUP_IRQHandler
+                0x080072c8                CAN2_SCE_IRQHandler
+                0x080072c8                DMA2_Stream2_IRQHandler
+                0x080072c8                SPI1_IRQHandler
+                0x080072c8                TIM6_DAC_IRQHandler
+                0x080072c8                TIM1_BRK_TIM9_IRQHandler
+                0x080072c8                DCMI_IRQHandler
+                0x080072c8                DMA2_Stream3_IRQHandler
+                0x080072c8                USART6_IRQHandler
+                0x080072c8                CAN1_RX1_IRQHandler
+                0x080072c8                UART5_IRQHandler
+                0x080072c8                DMA2_Stream0_IRQHandler
+                0x080072c8                TIM4_IRQHandler
+                0x080072c8                I2C1_EV_IRQHandler
+                0x080072c8                DMA1_Stream6_IRQHandler
+                0x080072c8                UART4_IRQHandler
+                0x080072c8                TIM3_IRQHandler
+                0x080072c8                RCC_IRQHandler
+                0x080072c8                TIM8_BRK_TIM12_IRQHandler
+                0x080072c8                Default_Handler
+                0x080072c8                EXTI15_10_IRQHandler
+                0x080072c8                ADC_IRQHandler
+                0x080072c8                DMA1_Stream7_IRQHandler
+                0x080072c8                TIM7_IRQHandler
+                0x080072c8                CAN2_TX_IRQHandler
+                0x080072c8                TIM5_IRQHandler
+                0x080072c8                I2C3_EV_IRQHandler
+                0x080072c8                EXTI9_5_IRQHandler
+                0x080072c8                RTC_WKUP_IRQHandler
+                0x080072c8                ETH_WKUP_IRQHandler
+                0x080072c8                SPI2_IRQHandler
+                0x080072c8                OTG_HS_EP1_IN_IRQHandler
+                0x080072c8                DMA1_Stream0_IRQHandler
+                0x080072c8                CAN1_TX_IRQHandler
+                0x080072c8                EXTI4_IRQHandler
+                0x080072c8                FSMC_IRQHandler
+                0x080072c8                ETH_IRQHandler
+                0x080072c8                OTG_HS_EP1_OUT_IRQHandler
+                0x080072c8                WWDG_IRQHandler
+                0x080072c8                TIM2_IRQHandler
+                0x080072c8                OTG_FS_WKUP_IRQHandler
+                0x080072c8                TIM1_TRG_COM_TIM11_IRQHandler
+                0x080072c8                OTG_HS_IRQHandler
+                0x080072c8                EXTI1_IRQHandler
+                0x080072c8                USART2_IRQHandler
+                0x080072c8                I2C2_ER_IRQHandler
+                0x080072c8                DMA2_Stream1_IRQHandler
+                0x080072c8                CAN1_SCE_IRQHandler
+                0x080072c8                FLASH_IRQHandler
+                0x080072c8                DMA2_Stream4_IRQHandler
+                0x080072c8                OTG_FS_IRQHandler
+                0x080072c8                SPI3_IRQHandler
+                0x080072c8                DMA1_Stream4_IRQHandler
+                0x080072c8                I2C1_ER_IRQHandler
+                0x080072c8                DMA2_Stream6_IRQHandler
+                0x080072c8                DMA1_Stream3_IRQHandler
+ *fill*         0x080072ca        0x2 
  .text.__udivmoddi4
-                0x080073ec      0x2bc /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
-                0x080073ec                __udivmoddi4
- .text.__errno  0x080076a8        0xc /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-errno.o)
-                0x080076a8                __errno
- .text.malloc   0x080076b4       0x10 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-malloc.o)
-                0x080076b4                malloc
- .text.memcpy   0x080076c4       0x1c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-memcpy-stub.o)
-                0x080076c4                memcpy
+                0x080072cc      0x2bc /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+                0x080072cc                __udivmoddi4
+ .text.__errno  0x08007588        0xc /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-errno.o)
+                0x08007588                __errno
+ .text.malloc   0x08007594       0x10 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-malloc.o)
+                0x08007594                malloc
+ .text.memcpy   0x080075a4       0x1c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-memcpy-stub.o)
+                0x080075a4                memcpy
  *(.glue_7)
- .glue_7        0x080076e0        0x0 linker stubs
+ .glue_7        0x080075c0        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080076e0        0x0 linker stubs
+ .glue_7t       0x080075c0        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080076e0        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x080075c0        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x080076e0        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x080076e0                _init
- .init          0x080076e4        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x080075c0        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x080075c0                _init
+ .init          0x080075c4        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x080076ec        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x080076ec                _fini
- .fini          0x080076f0        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x080076f8                        . = ALIGN (0x4)
-                0x080076f8                        _etext = .
+ .fini          0x080075cc        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x080075cc                _fini
+ .fini          0x080075d0        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x080075d8                        . = ALIGN (0x4)
+                0x080075d8                        _etext = .
 
-.vfp11_veneer   0x080076f8        0x0
- .vfp11_veneer  0x080076f8        0x0 linker stubs
+.vfp11_veneer   0x080075d8        0x0
+ .vfp11_veneer  0x080075d8        0x0 linker stubs
 
-.v4_bx          0x080076f8        0x0
- .v4_bx         0x080076f8        0x0 linker stubs
+.v4_bx          0x080075d8        0x0
+ .v4_bx         0x080075d8        0x0 linker stubs
 
-.iplt           0x080076f8        0x0
- .iplt          0x080076f8        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x080075d8        0x0
+ .iplt          0x080075d8        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x080076f8       0x74
-                0x080076f8                        . = ALIGN (0x4)
+.rodata         0x080075d8       0x74
+                0x080075d8                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x080076f8        0xa CMakeFiles/sentry.dir/Application/robot.c.obj
- *fill*         0x08007702        0x2 
- .rodata        0x08007704        0xc CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .rodata        0x08007710        0x5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- *fill*         0x08007715        0x3 
- .rodata        0x08007718        0xd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .rodata        0x080075d8        0xa CMakeFiles/sentry.dir/Application/robot.c.obj
+ *fill*         0x080075e2        0x2 
+ .rodata        0x080075e4        0xc CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .rodata        0x080075f0        0x5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ *fill*         0x080075f5        0x3 
+ .rodata        0x080075f8        0xd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  *(.rodata*)
- *fill*         0x08007725        0x3 
+ *fill*         0x08007605        0x3 
  .rodata.defaultTask_attributes
-                0x08007728       0x24 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
-                0x08007728                defaultTask_attributes
+                0x08007608       0x24 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x08007608                defaultTask_attributes
  .rodata.flagBitshiftOffset.0
-                0x0800774c        0x8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x0800762c        0x8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .rodata.AHBPrescTable
-                0x08007754       0x10 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
-                0x08007754                AHBPrescTable
+                0x08007634       0x10 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+                0x08007634                AHBPrescTable
  .rodata.APBPrescTable
-                0x08007764        0x8 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
-                0x08007764                APBPrescTable
-                0x0800776c                        . = ALIGN (0x4)
+                0x08007644        0x8 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+                0x08007644                APBPrescTable
+                0x0800764c                        . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800776c        0x8
-                0x0800776c                        __exidx_start = .
+.ARM            0x0800764c        0x8
+                0x0800764c                        __exidx_start = .
  *(.ARM.exidx*)
  .ARM.exidx.text.__udivmoddi4
-                0x0800776c        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
-                0x08007774                        __exidx_end = .
+                0x0800764c        0x8 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+                0x08007654                        __exidx_end = .
 
-.rel.dyn        0x08007774        0x0
- .rel.iplt      0x08007774        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08007654        0x0
+ .rel.iplt      0x08007654        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x08007774        0x0
-                0x08007774                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08007654        0x0
+                0x08007654                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08007774                        PROVIDE (__preinit_array_end = .)
+                0x08007654                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x08007774        0x4
-                0x08007774                        PROVIDE (__init_array_start = .)
+.init_array     0x08007654        0x4
+                0x08007654                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08007774        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08007778                        PROVIDE (__init_array_end = .)
+ .init_array    0x08007654        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08007658                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x08007778        0x4
+.fini_array     0x08007658        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08007778        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08007658        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0800777c                        _sidata = LOADADDR (.data)
+                0x0800765c                        _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x60 load address 0x0800777c
+.data           0x20000000       0x60 load address 0x0800765c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -5960,19 +6121,19 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
                 0x2000005c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
                 0x20000060                        . = ALIGN (0x4)
                 0x20000060                        _edata = .
-                0x080077dc                        _siccmram = LOADADDR (.ccmram)
+                0x080076bc                        _siccmram = LOADADDR (.ccmram)
 
 .tm_clone_table
-                0x20000060        0x0 load address 0x080077dc
+                0x20000060        0x0 load address 0x080076bc
  .tm_clone_table
                 0x20000060        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  .tm_clone_table
                 0x20000060        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtend.o
 
-.igot.plt       0x20000060        0x0 load address 0x080077dc
+.igot.plt       0x20000060        0x0 load address 0x080076bc
  .igot.plt      0x20000060        0x0 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x080077dc
+.ccmram         0x10000000        0x0 load address 0x080076bc
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -5981,7 +6142,7 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
                 0x10000000                        _eccmram = .
                 0x10000000                        . = ALIGN (0x4)
 
-.bss            0x20000060     0x4d38
+.bss            0x20000060     0x4d78
                 0x20000060                        _sbss = .
                 0x20000060                        __bss_start__ = _sbss
  *(.bss)
@@ -6004,152 +6165,158 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
                 0x200001bc                __malloc_free_list
  .bss.errno     0x200001c0        0x4 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-reent.o)
                 0x200001c0                errno
- .bss.motor_info
-                0x200001c4       0x4d CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
-                0x200001c4                motor_info
- .bss.idx       0x20000211        0x1 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- *fill*         0x20000212        0x2 
- .bss.usart_instance
-                0x20000214        0xc CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .bss.rc_data   0x20000220        0x4 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .bss.robot_state
-                0x20000224        0x1 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .bss.can_instance
+                0x200001c4       0x40 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .bss.idx       0x20000204        0x1 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ *fill*         0x20000205        0x3 
+ .bss.rxconf.0  0x20000208       0x1c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .bss.idx       0x20000224        0x1 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
  *fill*         0x20000225        0x3 
+ .bss.usart_instance
+                0x20000228        0xc CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .bss.rc_data   0x20000234        0x4 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .bss.robot_state
+                0x20000238        0x1 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ *fill*         0x20000239        0x3 
  .bss.robotTaskHandle
-                0x20000228        0x4 CMakeFiles/sentry.dir/Application/robot.c.obj
-                0x20000228                robotTaskHandle
- .bss.rc_ctrl   0x2000022c       0x90 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+                0x2000023c        0x4 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x2000023c                robotTaskHandle
+ .bss.rc_ctrl   0x20000240       0x90 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .bss.rc_init_flag
-                0x200002bc        0x1 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- *fill*         0x200002bd        0x3 
+                0x200002d0        0x1 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ *fill*         0x200002d1        0x3 
  .bss.rc_usart_instance
-                0x200002c0        0x4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+                0x200002d4        0x4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .bss.defaultTaskHandle
-                0x200002c4        0x4 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
-                0x200002c4                defaultTaskHandle
- .bss.hcan1     0x200002c8       0x28 CMakeFiles/sentry.dir/Core/Src/can.c.obj
-                0x200002c8                hcan1
- .bss.huart1    0x200002f0       0x48 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x200002f0                huart1
- .bss.huart3    0x20000338       0x48 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x20000338                huart3
+                0x200002d8        0x4 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x200002d8                defaultTaskHandle
+ .bss.hcan1     0x200002dc       0x28 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x200002dc                hcan1
+ .bss.hcan2     0x20000304       0x28 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x20000304                hcan2
+ .bss.HAL_RCC_CAN1_CLK_ENABLED
+                0x2000032c        0x4 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .bss.huart1    0x20000330       0x48 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x20000330                huart1
+ .bss.huart3    0x20000378       0x48 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x20000378                huart3
  .bss.hdma_usart1_tx
-                0x20000380       0x60 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x20000380                hdma_usart1_tx
+                0x200003c0       0x60 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x200003c0                hdma_usart1_tx
  .bss.hdma_usart3_rx
-                0x200003e0       0x60 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
-                0x200003e0                hdma_usart3_rx
- .bss.uwTick    0x20000440        0x4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
-                0x20000440                uwTick
+                0x20000420       0x60 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x20000420                hdma_usart3_rx
+ .bss.uwTick    0x20000480        0x4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x20000480                uwTick
  .bss.xQueueRegistry
-                0x20000444       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x20000444                xQueueRegistry
+                0x20000484       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x20000484                xQueueRegistry
  .bss.pxCurrentTCB
-                0x20000484        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x20000484                pxCurrentTCB
+                0x200004c4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x200004c4                pxCurrentTCB
  .bss.pxReadyTasksLists
-                0x20000488      0x460 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x200004c8      0x460 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xDelayedTaskList1
-                0x200008e8       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20000928       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xDelayedTaskList2
-                0x200008fc       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x2000093c       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.pxDelayedTaskList
-                0x20000910        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20000950        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.pxOverflowDelayedTaskList
-                0x20000914        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20000954        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xPendingReadyList
-                0x20000918       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20000958       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xTasksWaitingTermination
-                0x2000092c       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x2000096c       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.uxDeletedTasksWaitingCleanUp
-                0x20000940        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xSuspendedTaskList
-                0x20000944       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxCurrentNumberOfTasks
-                0x20000958        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xTickCount
-                0x2000095c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxTopReadyPriority
-                0x20000960        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xSchedulerRunning
-                0x20000964        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xPendedTicks
-                0x20000968        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xYieldPending
-                0x2000096c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xNumOfOverflows
-                0x20000970        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxTaskNumber
-                0x20000974        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xNextTaskUnblockTime
-                0x20000978        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xIdleTaskHandle
-                0x2000097c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxSchedulerSuspended
                 0x20000980        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xSuspendedTaskList
+                0x20000984       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxCurrentNumberOfTasks
+                0x20000998        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xTickCount
+                0x2000099c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxTopReadyPriority
+                0x200009a0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xSchedulerRunning
+                0x200009a4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xPendedTicks
+                0x200009a8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xYieldPending
+                0x200009ac        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xNumOfOverflows
+                0x200009b0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxTaskNumber
+                0x200009b4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xNextTaskUnblockTime
+                0x200009b8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xIdleTaskHandle
+                0x200009bc        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxSchedulerSuspended
+                0x200009c0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xActiveTimerList1
-                0x20000984       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009c4       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.xActiveTimerList2
-                0x20000998       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009d8       0x14 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.pxCurrentTimerList
-                0x200009ac        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009ec        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.pxOverflowTimerList
-                0x200009b0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009f0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.xTimerQueue
-                0x200009b4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009f4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.xTimerTaskHandle
-                0x200009b8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009f8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.xLastTime.2
-                0x200009bc        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x200009fc        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.ucStaticTimerQueueStorage.1
-                0x200009c0       0xa0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x20000a00       0xa0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.xStaticTimerQueue.0
-                0x20000a60       0x50 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x20000aa0       0x50 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .bss.KernelState
-                0x20000ab0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x20000af0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .bss.Idle_TCB.3
-                0x20000ab4       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x20000af4       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .bss.Idle_Stack.2
-                0x20000b10      0x200 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x20000b50      0x200 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .bss.Timer_TCB.1
-                0x20000d10       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x20000d50       0x5c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .bss.Timer_Stack.0
-                0x20000d6c      0x400 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .bss.ucHeap    0x2000116c     0x3c00 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.xStart    0x20004d6c        0x8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.pxEnd     0x20004d74        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20000dac      0x400 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .bss.ucHeap    0x200011ac     0x3c00 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.xStart    0x20004dac        0x8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.pxEnd     0x20004db4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xFreeBytesRemaining
-                0x20004d78        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20004db8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xMinimumEverFreeBytesRemaining
-                0x20004d7c        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20004dbc        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xNumberOfSuccessfulAllocations
-                0x20004d80        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20004dc0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xNumberOfSuccessfulFrees
-                0x20004d84        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20004dc4        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xBlockAllocatedBit
-                0x20004d88        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20004dc8        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.ucMaxSysCallPriority
-                0x20004d8c        0x1 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- *fill*         0x20004d8d        0x3 
+                0x20004dcc        0x1 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ *fill*         0x20004dcd        0x3 
  .bss.ulMaxPRIGROUPValue
-                0x20004d90        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x20004dd0        0x4 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
  .bss.__sbrk_heap_end
-                0x20004d94        0x4 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+                0x20004dd4        0x4 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
  *(COMMON)
-                0x20004d98                        . = ALIGN (0x4)
-                0x20004d98                        _ebss = .
-                0x20004d98                        __bss_end__ = _ebss
+                0x20004dd8                        . = ALIGN (0x4)
+                0x20004dd8                        _ebss = .
+                0x20004dd8                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20004d98      0x600
-                0x20004d98                        . = ALIGN (0x8)
+                0x20004dd8      0x600
+                0x20004dd8                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x20004d98                        PROVIDE (_end = .)
-                0x20004f98                        . = (. + _Min_Heap_Size)
- *fill*         0x20004d98      0x200 
-                0x20005398                        . = (. + _Min_Stack_Size)
- *fill*         0x20004f98      0x400 
-                0x20005398                        . = ALIGN (0x8)
+                0x20004dd8                        PROVIDE (_end = .)
+                0x20004fd8                        . = (. + _Min_Heap_Size)
+ *fill*         0x20004dd8      0x200 
+                0x200053d8                        . = (. + _Min_Stack_Size)
+ *fill*         0x20004fd8      0x400 
+                0x200053d8                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -6263,7 +6430,7 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../ar
 LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
 LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a
 
-.debug_frame    0x00000000     0x4aa8
+.debug_frame    0x00000000     0x4b88
  .debug_frame   0x00000000       0x2c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-init.o)
  .debug_frame   0x0000002c       0x20 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-memset.o)
  .debug_frame   0x0000004c      0x144 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-findfp.o)
@@ -6272,384 +6439,409 @@ LOAD /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp
  .debug_frame   0x00000290       0x38 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-reent.o)
  .debug_frame   0x000002c8       0x30 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-mlock.o)
  .debug_frame   0x000002f8       0x2c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-sbrkr.o)
- .debug_frame   0x00000324       0x80 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_frame   0x000003a4       0xec CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_frame   0x00000490       0x4c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_frame   0x000004dc       0x8c CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_frame   0x00000568       0xe4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_frame   0x0000064c       0x68 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_frame   0x000006b4       0x38 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_frame   0x000006ec       0x4c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_frame   0x00000738       0x74 CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_frame   0x000007ac       0x34 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_frame   0x000007e0       0x90 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_frame   0x00000870      0x150 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_frame   0x000009c0       0x34 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_frame   0x000009f4      0x5a0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_frame   0x00000f94      0x1f4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_frame   0x00001188      0x14c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_frame   0x000012d4      0x250 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_frame   0x00001524      0x508 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_frame   0x00001a2c      0x374 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_frame   0x00001da0      0x954 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_frame   0x000026f4       0x58 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_frame   0x0000274c       0xd8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_frame   0x00002824      0x5ec CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_frame   0x00002e10      0x8f0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_frame   0x00003700      0x400 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_frame   0x00003b00      0xbc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_frame   0x000046c8      0x12c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_frame   0x000047f4      0x1a8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_frame   0x0000499c       0x34 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_frame   0x000049d0       0x2c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x000049fc       0x34 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00004a30       0x20 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-errno.o)
- .debug_frame   0x00004a50       0x30 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-malloc.o)
- .debug_frame   0x00004a80       0x28 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x00000324      0x128 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_frame   0x0000044c       0xec CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_frame   0x00000538       0x4c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_frame   0x00000584       0x8c CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_frame   0x00000610       0xe4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_frame   0x000006f4       0x68 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_frame   0x0000075c       0x38 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_frame   0x00000794       0x4c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_frame   0x000007e0       0x90 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_frame   0x00000870       0x34 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_frame   0x000008a4       0x90 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_frame   0x00000934      0x16c CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_frame   0x00000aa0       0x34 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_frame   0x00000ad4      0x5a0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_frame   0x00001074      0x1f4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_frame   0x00001268      0x14c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_frame   0x000013b4      0x250 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_frame   0x00001604      0x508 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_frame   0x00001b0c      0x374 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_frame   0x00001e80      0x954 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_frame   0x000027d4       0x58 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_frame   0x0000282c       0xd8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_frame   0x00002904      0x5ec CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_frame   0x00002ef0      0x8f0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_frame   0x000037e0      0x400 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_frame   0x00003be0      0xbc8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_frame   0x000047a8      0x12c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_frame   0x000048d4      0x1a8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_frame   0x00004a7c       0x34 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_frame   0x00004ab0       0x2c /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00004adc       0x34 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00004b10       0x20 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-errno.o)
+ .debug_frame   0x00004b30       0x30 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-malloc.o)
+ .debug_frame   0x00004b60       0x28 /home/rmer/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_info     0x00000000    0x16f03
- .debug_info    0x00000000      0x874 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_info    0x00000874      0x8f7 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_info    0x0000116b      0x7f3 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_info    0x0000195e      0x414 CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_info    0x00001d72      0x9fc CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_info    0x0000276e      0x94f CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_info    0x000030bd      0x2ba CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_info    0x00003377      0x38d CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_info    0x00003704      0xabb CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_info    0x000041bf      0x4c6 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_info    0x00004685      0xc30 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_info    0x000052b5      0xa8b CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_info    0x00005d40      0x4b7 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_info    0x000061f7      0xf49 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_info    0x00007140      0x8af CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_info    0x000079ef      0x6c3 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_info    0x000080b2      0x8e7 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_info    0x00008999      0xd8c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_info    0x00009725      0x944 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_info    0x0000a069     0x2f4f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_info    0x0000cfb8      0x512 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_info    0x0000d4ca      0x2af CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_info    0x0000d779     0x1b79 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_info    0x0000f2f2     0x21ec CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_info    0x000114de     0x1488 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_info    0x00012966     0x3a52 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_info    0x000163b8      0x4d5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_info    0x0001688d      0x4de CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_info    0x00016d6b      0x168 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_info    0x00016ed3       0x30 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+.debug_info     0x00000000    0x16f0c
+ .debug_info    0x00000000      0xbb1 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_info    0x00000bb1      0x8f7 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_info    0x000014a8      0x801 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_info    0x00001ca9      0x414 CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_info    0x000020bd      0x9fc CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_info    0x00002ab9      0x54e CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_info    0x00003007      0x2ba CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_info    0x000032c1      0x38d CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_info    0x0000364e      0xb40 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_info    0x0000418e      0x4c6 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_info    0x00004654      0xc4c CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_info    0x000052a0      0xaa9 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_info    0x00005d49      0x4b7 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_info    0x00006200      0xf49 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_info    0x00007149      0x8af CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_info    0x000079f8      0x6c3 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_info    0x000080bb      0x8e7 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_info    0x000089a2      0xd8c CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_info    0x0000972e      0x944 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_info    0x0000a072     0x2f4f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_info    0x0000cfc1      0x512 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_info    0x0000d4d3      0x2af CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_info    0x0000d782     0x1b79 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_info    0x0000f2fb     0x21ec CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_info    0x000114e7     0x1488 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_info    0x0001296f     0x3a52 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_info    0x000163c1      0x4d5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_info    0x00016896      0x4de CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_info    0x00016d74      0x168 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_info    0x00016edc       0x30 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
-.debug_abbrev   0x00000000     0x3f73
- .debug_abbrev  0x00000000      0x1d0 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_abbrev  0x000001d0      0x235 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_abbrev  0x00000405      0x1e2 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_abbrev  0x000005e7      0x191 CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_abbrev  0x00000778      0x29c CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_abbrev  0x00000a14      0x270 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_abbrev  0x00000c84       0xd8 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_abbrev  0x00000d5c      0x12c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_abbrev  0x00000e88      0x21f CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_abbrev  0x000010a7      0x11b CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_abbrev  0x000011c2      0x234 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_abbrev  0x000013f6      0x1e0 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_abbrev  0x000015d6      0x119 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_abbrev  0x000016ef      0x258 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_abbrev  0x00001947      0x2b7 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_abbrev  0x00001bfe      0x1d4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_abbrev  0x00001dd2      0x264 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_abbrev  0x00002036      0x31d CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_abbrev  0x00002353      0x214 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_abbrev  0x00002567      0x30e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_abbrev  0x00002875      0x11a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_abbrev  0x0000298f       0xf5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_abbrev  0x00002a84      0x3b6 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_abbrev  0x00002e3a      0x386 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_abbrev  0x000031c0      0x352 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_abbrev  0x00003512      0x508 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_abbrev  0x00003a1a      0x21d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_abbrev  0x00003c37      0x25c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_abbrev  0x00003e93       0xbc CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_abbrev  0x00003f4f       0x24 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+.debug_abbrev   0x00000000     0x4005
+ .debug_abbrev  0x00000000      0x29b CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_abbrev  0x0000029b      0x235 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_abbrev  0x000004d0      0x1e2 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_abbrev  0x000006b2      0x191 CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_abbrev  0x00000843      0x29c CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_abbrev  0x00000adf      0x218 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_abbrev  0x00000cf7       0xd8 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_abbrev  0x00000dcf      0x12c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_abbrev  0x00000efb      0x225 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_abbrev  0x00001120      0x11b CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_abbrev  0x0000123b      0x234 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_abbrev  0x0000146f      0x1f9 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_abbrev  0x00001668      0x119 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_abbrev  0x00001781      0x258 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_abbrev  0x000019d9      0x2b7 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_abbrev  0x00001c90      0x1d4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_abbrev  0x00001e64      0x264 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_abbrev  0x000020c8      0x31d CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_abbrev  0x000023e5      0x214 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_abbrev  0x000025f9      0x30e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_abbrev  0x00002907      0x11a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_abbrev  0x00002a21       0xf5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_abbrev  0x00002b16      0x3b6 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_abbrev  0x00002ecc      0x386 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_abbrev  0x00003252      0x352 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_abbrev  0x000035a4      0x508 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_abbrev  0x00003aac      0x21d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_abbrev  0x00003cc9      0x25c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_abbrev  0x00003f25       0xbc CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_abbrev  0x00003fe1       0x24 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
-.debug_aranges  0x00000000     0x1208
+.debug_aranges  0x00000000     0x1240
  .debug_aranges
-                0x00000000       0x30 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+                0x00000000       0x58 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .debug_aranges
-                0x00000030       0x48 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x00000058       0x48 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
  .debug_aranges
-                0x00000078       0x28 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+                0x000000a0       0x28 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .debug_aranges
-                0x000000a0       0x38 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x000000c8       0x38 CMakeFiles/sentry.dir/Application/robot.c.obj
  .debug_aranges
-                0x000000d8       0x48 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+                0x00000100       0x48 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .debug_aranges
-                0x00000120       0x30 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+                0x00000148       0x30 CMakeFiles/sentry.dir/Core/Src/main.c.obj
  .debug_aranges
-                0x00000150       0x20 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+                0x00000178       0x20 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
  .debug_aranges
-                0x00000170       0x28 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x00000198       0x28 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
  .debug_aranges
-                0x00000198       0x30 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x000001c0       0x38 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .debug_aranges
-                0x000001c8       0x20 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+                0x000001f8       0x20 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
  .debug_aranges
-                0x000001e8       0x38 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x00000218       0x38 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .debug_aranges
-                0x00000220       0x78 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x00000250       0x80 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
  .debug_aranges
-                0x00000298       0x20 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+                0x000002d0       0x20 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
  .debug_aranges
-                0x000002b8      0x138 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x000002f0      0x138 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_aranges
-                0x000003f0       0x88 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x00000428       0x88 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
  .debug_aranges
-                0x00000478       0x58 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+                0x000004b0       0x58 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
  .debug_aranges
-                0x000004d0       0x90 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x00000508       0x90 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .debug_aranges
-                0x00000560      0x130 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x00000598      0x130 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .debug_aranges
-                0x00000690       0xf0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x000006c8       0xf0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_aranges
-                0x00000780      0x208 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x000007b8      0x208 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .debug_aranges
-                0x00000988       0x28 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+                0x000009c0       0x28 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
  .debug_aranges
-                0x000009b0       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x000009e8       0x40 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
  .debug_aranges
-                0x000009f0      0x158 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x00000a28      0x158 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .debug_aranges
-                0x00000b48      0x208 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x00000b80      0x208 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .debug_aranges
-                0x00000d50       0xf0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x00000d88       0xf0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .debug_aranges
-                0x00000e40      0x2a8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x00000e78      0x2a8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .debug_aranges
-                0x000010e8       0x58 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x00001120       0x58 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .debug_aranges
-                0x00001140       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x00001178       0x80 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
  .debug_aranges
-                0x000011c0       0x20 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+                0x000011f8       0x20 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
  .debug_aranges
-                0x000011e0       0x28 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+                0x00001218       0x28 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
 .debug_rnglists
-                0x00000000      0xd9f
+                0x00000000      0xdcc
  .debug_rnglists
-                0x00000000       0x21 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+                0x00000000       0x41 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
  .debug_rnglists
-                0x00000021       0x34 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+                0x00000041       0x34 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
  .debug_rnglists
-                0x00000055       0x19 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+                0x00000075       0x19 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
  .debug_rnglists
-                0x0000006e       0x25 CMakeFiles/sentry.dir/Application/robot.c.obj
+                0x0000008e       0x25 CMakeFiles/sentry.dir/Application/robot.c.obj
  .debug_rnglists
-                0x00000093       0x32 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+                0x000000b3       0x32 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
  .debug_rnglists
-                0x000000c5       0x20 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+                0x000000e5       0x20 CMakeFiles/sentry.dir/Core/Src/main.c.obj
  .debug_rnglists
-                0x000000e5       0x14 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+                0x00000105       0x14 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
  .debug_rnglists
-                0x000000f9       0x19 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+                0x00000119       0x19 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
  .debug_rnglists
-                0x00000112       0x20 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+                0x00000132       0x27 CMakeFiles/sentry.dir/Core/Src/can.c.obj
  .debug_rnglists
-                0x00000132       0x13 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+                0x00000159       0x13 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
  .debug_rnglists
-                0x00000145       0x27 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+                0x0000016c       0x27 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
  .debug_rnglists
-                0x0000016c       0x55 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+                0x00000193       0x5b CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
  .debug_rnglists
-                0x000001c1       0x13 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+                0x000001ee       0x13 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
  .debug_rnglists
-                0x000001d4       0xee CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+                0x00000201       0xee CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_rnglists
-                0x000002c2       0x66 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+                0x000002ef       0x66 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
  .debug_rnglists
-                0x00000328       0x3f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+                0x00000355       0x3f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
  .debug_rnglists
-                0x00000367       0x70 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x00000394       0x70 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .debug_rnglists
-                0x000003d7       0xe0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+                0x00000404       0xe0 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
  .debug_rnglists
-                0x000004b7       0xaf CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+                0x000004e4       0xaf CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_rnglists
-                0x00000566      0x1bc CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+                0x00000593      0x1bc CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .debug_rnglists
-                0x00000722       0x1a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+                0x0000074f       0x1a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
  .debug_rnglists
-                0x0000073c       0x2b CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x00000769       0x2b CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
  .debug_rnglists
-                0x00000767      0x109 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x00000794      0x109 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .debug_rnglists
-                0x00000870      0x1a0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x0000089d      0x1a0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .debug_rnglists
-                0x00000a10       0xb8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+                0x00000a3d       0xb8 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
  .debug_rnglists
-                0x00000ac8      0x20c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+                0x00000af5      0x20c CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
  .debug_rnglists
-                0x00000cd4       0x42 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x00000d01       0x42 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .debug_rnglists
-                0x00000d16       0x5d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+                0x00000d43       0x5d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
  .debug_rnglists
-                0x00000d73       0x13 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+                0x00000da0       0x13 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
  .debug_rnglists
-                0x00000d86       0x19 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+                0x00000db3       0x19 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
-.debug_macro    0x00000000    0x22b97
- .debug_macro   0x00000000      0x1e7 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x000001e7      0xad8 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00000cbf      0x29b CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00000f5a       0x2e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00000f88       0x2f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00000fb7       0x22 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00000fd9       0x8e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00001067       0x51 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x000010b8      0x103 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x000011bb       0x6a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00001225      0x1df CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00001404       0x1c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00001420       0x22 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00001442       0xfb CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0000153d     0x1011 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0000254e      0x11f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0000266d    0x15e97 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00018504       0x6d CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x00018571     0x369a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001bc0b      0x190 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001bd9b       0x5c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001bdf7      0x980 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001c777      0x9e9 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d160      0x115 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d275      0x13e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d3b3       0xa5 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d458      0x174 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d5cc      0x287 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d853       0x5f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001d8b2      0x236 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001dae8      0x40f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001def7      0x12c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e023      0x21e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e241       0x2e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e26f      0x127 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e396       0x7e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e414       0x89 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e49d      0x2aa CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e747      0x12d CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e874       0x1c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_macro   0x0001e890      0x1dd CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_macro   0x0001ea6d       0x10 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_macro   0x0001ea7d      0x233 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_macro   0x0001ecb0       0x76 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_macro   0x0001ed26       0xbe CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_macro   0x0001ede4      0x257 CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_macro   0x0001f03b      0x169 CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_macro   0x0001f1a4      0x2e4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_macro   0x0001f488       0x16 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_macro   0x0001f49e      0x360 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_macro   0x0001f7fe       0x22 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_macro   0x0001f820       0xc4 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_macro   0x0001f8e4      0x1d8 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_macro   0x0001fabc      0x258 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_macro   0x0001fd14       0x6c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_macro   0x0001fd80      0x1d8 CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_macro   0x0001ff58      0x1d8 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_macro   0x00020130      0x1d8 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_macro   0x00020308      0x240 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_macro   0x00020548      0x1ce CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_macro   0x00020716      0x1d3 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_macro   0x000208e9      0x1e8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_macro   0x00020ad1      0x1ca CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_macro   0x00020c9b      0x1ca CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_macro   0x00020e65      0x1c4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_macro   0x00021029      0x224 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_macro   0x0002124d      0x1c5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_macro   0x00021412      0x1c4 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_macro   0x000215d6      0x178 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_macro   0x0002174e      0x202 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_macro   0x00021950       0x16 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_macro   0x00021966       0x87 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_macro   0x000219ed      0x26b CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_macro   0x00021c58       0x10 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_macro   0x00021c68      0x1cd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_macro   0x00021e35       0x97 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_macro   0x00021ecc      0x3a7 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x00022273       0x10 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x00022283       0xf5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x00022378       0x8d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x00022405       0x9a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x0002249f       0x22 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x000224c1       0x56 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_macro   0x00022517      0x19f CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_macro   0x000226b6      0x196 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_macro   0x0002284c       0xff CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_macro   0x0002294b       0x10 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_macro   0x0002295b      0x23c CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+.debug_macro    0x00000000    0x23d12
+ .debug_macro   0x00000000      0x2ec CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x000002ec      0xad8 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00000dc4      0x29b CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0000105f       0x2e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0000108d       0x2f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x000010bc       0x22 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x000010de       0x8e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0000116c       0x51 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x000011bd      0x103 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x000012c0       0x6a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0000132a      0x1df CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00001509       0x1c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00001525       0x22 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00001547       0xfb CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00001642     0x1011 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00002653      0x11f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00002772    0x15e97 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00018609       0x6d CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x00018676     0x369a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001bd10      0x190 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001bea0       0x5c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001befc      0x980 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001c87c      0x9e9 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d265      0x115 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d37a      0x13e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d4b8       0xa5 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d55d      0x174 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d6d1      0x287 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d958       0x5f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001d9b7      0x236 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001dbed      0x40f CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001dffc      0x12c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e128      0x21e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e346       0x2e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e374      0x127 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e49b       0x7e CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e519       0x89 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e5a2      0x2aa CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e84c      0x12d CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e979       0x16 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001e98f       0x7b CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ea0a       0x2a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ea34       0x3c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ea70       0x34 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001eaa4      0x370 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ee14       0x16 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ee2a       0x4a CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ee74       0x34 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001eea8       0x10 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001eeb8       0x58 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001ef10      0x1e5 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f0f5       0x10 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f105       0x3c CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f141       0x16 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f157       0x16 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f16d       0x29 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f196       0x10 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_macro   0x0001f1a6      0x1dd CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_macro   0x0001f383       0x10 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_macro   0x0001f393      0x3c2 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001f755       0x76 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001f7cb       0xbe CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001f889      0x19b CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001fa24      0x201 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001fc25       0x7c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001fca1       0x17 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001fcb8      0x118 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001fdd0      0x169 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001ff39       0x10 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001ff49       0x1c CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_macro   0x0001ff65      0x257 CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_macro   0x000201bc      0x169 CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_macro   0x00020325      0x2e4 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_macro   0x00020609       0x16 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_macro   0x0002061f      0x360 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_macro   0x0002097f       0x1c CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_macro   0x0002099b       0xc4 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_macro   0x00020a5f      0x1d8 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_macro   0x00020c37      0x258 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_macro   0x00020e8f       0x6c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_macro   0x00020efb      0x1d8 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_macro   0x000210d3      0x1d8 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_macro   0x000212ab      0x1d8 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_macro   0x00021483      0x240 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_macro   0x000216c3      0x1ce CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_macro   0x00021891      0x1d3 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_macro   0x00021a64      0x1e8 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_macro   0x00021c4c      0x1ca CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_macro   0x00021e16      0x1ca CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_macro   0x00021fe0      0x1c4 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_macro   0x000221a4      0x224 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_macro   0x000223c8      0x1c5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_macro   0x0002258d      0x1c4 CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_macro   0x00022751      0x178 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_macro   0x000228c9      0x202 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_macro   0x00022acb       0x16 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_macro   0x00022ae1       0x87 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_macro   0x00022b68      0x26b CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_macro   0x00022dd3       0x10 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_macro   0x00022de3      0x1cd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_macro   0x00022fb0       0x97 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_macro   0x00023047      0x3a7 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x000233ee       0x10 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x000233fe       0xf5 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x000234f3       0x8d CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x00023580       0x9a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x0002361a       0x22 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x0002363c       0x56 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_macro   0x00023692      0x19f CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_macro   0x00023831      0x196 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_macro   0x000239c7       0xff CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_macro   0x00023ac6       0x10 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_macro   0x00023ad6      0x23c CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
 
-.debug_line     0x00000000    0x13e6d
- .debug_line    0x00000000      0x659 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
- .debug_line    0x00000659      0x717 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_line    0x00000d70      0x6a5 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_line    0x00001415      0x7d9 CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_line    0x00001bee      0x8cb CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_line    0x000024b9      0x93d CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_line    0x00002df6      0x597 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_line    0x0000338d      0x78c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_line    0x00003b19      0x60c CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_line    0x00004125      0x596 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_line    0x000046bb      0x6cf CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_line    0x00004d8a      0x7fe CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_line    0x00005588      0x599 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_line    0x00005b21     0x104b CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_line    0x00006b6c      0xc96 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_line    0x00007802      0x9e1 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_line    0x000081e3      0xdf5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_line    0x00008fd8      0xb59 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_line    0x00009b31      0x889 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_line    0x0000a3ba     0x2398 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_line    0x0000c752      0x61c CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_line    0x0000cd6e      0x4d9 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_line    0x0000d247     0x144a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_line    0x0000e691     0x19cd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_line    0x0001005e      0xb19 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_line    0x00010b77     0x22d1 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_line    0x00012e48      0x6f0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_line    0x00013538      0x667 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_line    0x00013b9f      0x254 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_line    0x00013df3       0x7a CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+.debug_line     0x00000000    0x143e4
+ .debug_line    0x00000000      0x901 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+ .debug_line    0x00000901      0x717 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_line    0x00001018      0x8a6 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_line    0x000018be      0x7d9 CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_line    0x00002097      0x8cb CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_line    0x00002962      0x93d CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_line    0x0000329f      0x597 CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_line    0x00003836      0x78c CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_line    0x00003fc2      0x6b1 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_line    0x00004673      0x596 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_line    0x00004c09      0x6e0 CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_line    0x000052e9      0x816 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_line    0x00005aff      0x599 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_line    0x00006098     0x104b CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_line    0x000070e3      0xc96 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_line    0x00007d79      0x9e1 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_line    0x0000875a      0xdf5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_line    0x0000954f      0xb59 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_line    0x0000a0a8      0x889 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_line    0x0000a931     0x2398 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_line    0x0000ccc9      0x61c CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_line    0x0000d2e5      0x4d9 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_line    0x0000d7be     0x144a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_line    0x0000ec08     0x19cd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_line    0x000105d5      0xb19 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_line    0x000110ee     0x22d1 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_line    0x000133bf      0x6f0 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_line    0x00013aaf      0x667 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_line    0x00014116      0x254 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_line    0x0001436a       0x7a CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
-.debug_str      0x00000000    0xcfe60
- .debug_str     0x00000000    0xcfe60 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
-                              0xbf440 (size before relaxing)
- .debug_str     0x000cfe60    0xbf556 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
- .debug_str     0x000cfe60    0xbf8ce CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
- .debug_str     0x000cfe60    0xc338e CMakeFiles/sentry.dir/Application/robot.c.obj
- .debug_str     0x000cfe60    0xc2404 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
- .debug_str     0x000cfe60    0xc6c23 CMakeFiles/sentry.dir/Core/Src/main.c.obj
- .debug_str     0x000cfe60    0xbef9a CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
- .debug_str     0x000cfe60    0xc3d11 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
- .debug_str     0x000cfe60    0xbf847 CMakeFiles/sentry.dir/Core/Src/can.c.obj
- .debug_str     0x000cfe60    0xbf4b7 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
- .debug_str     0x000cfe60    0xbfaab CMakeFiles/sentry.dir/Core/Src/usart.c.obj
- .debug_str     0x000cfe60    0xc34b3 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
- .debug_str     0x000cfe60    0xbf4a7 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
- .debug_str     0x000cfe60    0xbf744 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
- .debug_str     0x000cfe60    0xbf47e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
- .debug_str     0x000cfe60    0xbf1c5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
- .debug_str     0x000cfe60    0xbf464 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
- .debug_str     0x000cfe60    0xbf94a CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
- .debug_str     0x000cfe60    0xbfbce CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
- .debug_str     0x000cfe60    0xbfa5f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
- .debug_str     0x000cfe60    0xbf04a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
- .debug_str     0x000cfe60     0xa5bd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_str     0x000cfe60     0xc0ad CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_str     0x000cfe60     0xcb6a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .debug_str     0x000cfe60     0xc62f CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
- .debug_str     0x000cfe60    0xc9680 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
- .debug_str     0x000cfe60     0xaeff CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_str     0x000cfe60     0x8788 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
- .debug_str     0x000cfe60     0x7129 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
- .debug_str     0x000cfe60       0x64 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
+.debug_str      0x00000000    0xd1a84
+ .debug_str     0x00000000    0xd1a84 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
+                              0xc227f (size before relaxing)
+ .debug_str     0x000d1a84    0xbf556 CMakeFiles/sentry.dir/Bsp/uart/bsp_usart.c.obj
+ .debug_str     0x000d1a84    0xc4189 CMakeFiles/sentry.dir/Application/cmd/robot_cmd.c.obj
+ .debug_str     0x000d1a84    0xc338e CMakeFiles/sentry.dir/Application/robot.c.obj
+ .debug_str     0x000d1a84    0xc2404 CMakeFiles/sentry.dir/Modules/remote/remote_control.c.obj
+ .debug_str     0x000d1a84    0xc69b4 CMakeFiles/sentry.dir/Core/Src/main.c.obj
+ .debug_str     0x000d1a84    0xbef9a CMakeFiles/sentry.dir/Core/Src/gpio.c.obj
+ .debug_str     0x000d1a84    0xc3d11 CMakeFiles/sentry.dir/Core/Src/freertos.c.obj
+ .debug_str     0x000d1a84    0xbf873 CMakeFiles/sentry.dir/Core/Src/can.c.obj
+ .debug_str     0x000d1a84    0xbf4b7 CMakeFiles/sentry.dir/Core/Src/dma.c.obj
+ .debug_str     0x000d1a84    0xbfaab CMakeFiles/sentry.dir/Core/Src/usart.c.obj
+ .debug_str     0x000d1a84    0xc34cd CMakeFiles/sentry.dir/Core/Src/stm32f4xx_it.c.obj
+ .debug_str     0x000d1a84    0xbf4a7 CMakeFiles/sentry.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+ .debug_str     0x000d1a84    0xbf744 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
+ .debug_str     0x000d1a84    0xbf47e CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+ .debug_str     0x000d1a84    0xbf1c5 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+ .debug_str     0x000d1a84    0xbf464 CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+ .debug_str     0x000d1a84    0xbf94a CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+ .debug_str     0x000d1a84    0xbfbce CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+ .debug_str     0x000d1a84    0xbfa5f CMakeFiles/sentry.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+ .debug_str     0x000d1a84    0xbf04a CMakeFiles/sentry.dir/Core/Src/system_stm32f4xx.c.obj
+ .debug_str     0x000d1a84     0xa5bd CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_str     0x000d1a84     0xc0ad CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_str     0x000d1a84     0xcb6a CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_str     0x000d1a84     0xc62f CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+ .debug_str     0x000d1a84    0xc9680 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+ .debug_str     0x000d1a84     0xaeff CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_str     0x000d1a84     0x8788 CMakeFiles/sentry.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+ .debug_str     0x000d1a84     0x7129 CMakeFiles/sentry.dir/Core/Src/sysmem.c.obj
+ .debug_str     0x000d1a84       0x64 CMakeFiles/sentry.dir/startup_stm32f407xx.s.obj
 
 .comment        0x00000000       0x45
  .comment       0x00000000       0x45 CMakeFiles/sentry.dir/Bsp/can/bsp_can.c.obj
