@@ -8,7 +8,9 @@
         "stdint.h": "c",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "general_def.h": "c"
+        "general_def.h": "c",
+        "bsp_dwt.h": "c",
+        "arm_math.h": "c"
     },
     "stm32-for-vscode.openOCDPath": false,
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"

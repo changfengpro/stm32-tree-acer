@@ -7,7 +7,8 @@
 #include "arm_math.h"
 
 
-
+float angle;
+float speed;
 static Chassis_Ctrl_Cmd_s chassis_cmd_recv;         // 底盘接收到的控制命令
 
 // first表示第一象限， second表示第二象限，以此类推
@@ -33,16 +34,16 @@ void ChassisInit()
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
                                                         .Kp = 10,
-                                                        .Ki = 0,
+                                                        .Ki = 0.1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 4000},
+                                                        .MaxOut = 10000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
-                        .Ki = 0,
+                        .Ki = 0.1,
                         .Kd = 0,
                         .DeadBand = 0,
-                        .MaxOut = 4000,
+                        .MaxOut = 10000,
         }
 
         }
@@ -57,23 +58,23 @@ void ChassisInit()
         },
         .controller_setting_init_config = 
         {.angle_feedback_source = MOTOR_FEED,
-            .outer_loop_type = ANGLE_LOOP,
+            .outer_loop_type = ANGLE_LOOP ,
             .close_loop_type = ANGLE_LOOP | SPEED_LOOP,
             .speed_feedback_source = MOTOR_FEED,
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
                                                         .Kp = 10,
-                                                        .Ki = 0,
+                                                        .Ki = 0.1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 4000},
+                                                        .MaxOut = 10000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
-                        .Ki = 0,
+                        .Ki = 0.1,
                         .Kd = 0,
                         .DeadBand = 0,
-                        .MaxOut = 4000,
+                        .MaxOut = 10000,
         }
 
         }
@@ -183,11 +184,12 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.speed_PID = {.Improve = 0,
-                                                        .Kp = 10,
-                                                        .Ki = 0,
+                                                        .Kp = 2.5,
+                                                        .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 0},
+                                                        .MaxOut = 10000,
+                                                        .IntegralLimit = 3000},
         }
     };
 
@@ -239,14 +241,40 @@ void ChassisInit()
         }
     };
 
-    First_GM6020_motor = DJIMotorInit(&chassis_first_GM6020_motor_config);
+    First_GM6020_motor  = DJIMotorInit(&chassis_first_GM6020_motor_config);
     Second_GM6020_motor = DJIMotorInit(&chassis_second_GM6020_motor_config);
-    Third_GM6020_motor = DJIMotorInit(&chassis_third_GM6020_motor_config);
+    Third_GM6020_motor  = DJIMotorInit(&chassis_third_GM6020_motor_config);
     Fourth_GM6020_motor = DJIMotorInit(&chassis_fourth_GM6020_motor_config);
-    First_M3508_motor = DJIMotorInit(&chassis_first_M3508_motor_config);
-    Second_M3508_motor = DJIMotorInit(&chassis_second_M3508_motor_config);
-    Third_M3508_motor= DJIMotorInit(&chassis_third_M3508_motor_config);
-    Fourth_M3508_motor = DJIMotorInit(&chassis_fourth_M3508_motor_config);
+    First_M3508_motor   = DJIMotorInit(&chassis_first_M3508_motor_config);
+    Second_M3508_motor  = DJIMotorInit(&chassis_second_M3508_motor_config);
+    Third_M3508_motor   = DJIMotorInit(&chassis_third_M3508_motor_config);
+    Fourth_M3508_motor  = DJIMotorInit(&chassis_fourth_M3508_motor_config);
+}
+
+/**
+ * @brief 设定底盘电机速度参考值
+ *
+ */
+static void ChassisSetRef()
+{
+    
+}
 
 
+
+/* 机器人底盘控制核心任务 */
+void ChassisTask()
+{   
+    DJIMotorEnable(First_GM6020_motor);
+    DJIMotorEnable(Second_GM6020_motor);
+    DJIMotorEnable(Third_GM6020_motor);
+    DJIMotorEnable(Fourth_GM6020_motor);
+    DJIMotorEnable(First_M3508_motor);
+    DJIMotorEnable(Second_M3508_motor);
+    DJIMotorEnable(Third_M3508_motor);
+    DJIMotorEnable(Fourth_M3508_motor);
+
+    DJIMotorSetRef(Second_GM6020_motor,angle);
+    DJIMotorSetRef(Second_M3508_motor,speed);
+    DJIMotorControl();
 }

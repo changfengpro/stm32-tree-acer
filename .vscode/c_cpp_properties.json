@@ -10,7 +10,8 @@
                 "${workspaceFolder}/Application",
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Bsp/dwt",
-                "${workspaceFolder}/Modules"
+                "${workspaceFolder}/Modules",
+                "${workspaceFolder}/Application/chassis"
             ],
             "defines": [],
             "compilerPath": null,
