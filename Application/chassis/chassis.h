@@ -14,4 +14,29 @@ void ChassisInit();
  */
 void ChassisTask();
 
+enum Direction
+{
+    forward_rotation = 1,
+    back_rotation = -1
+};
+
+#pragma pack(1)
+typedef struct
+{
+    float chassis_motor_speed[4];
+    float chassis_steer_motor_angle[4];
+    float vx,vy,wz;
+    float last_steer_target_angle[4];
+    float motor_set_speed[4];
+    float motor_set_steer[4];
+    float max_speed;
+    int TurnFlag[4];
+    enum  Direction direction[4];
+} ChassisHandle_t;
+
+
+
+#pragma pack()
+
+
 #endif

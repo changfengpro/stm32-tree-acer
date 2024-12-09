@@ -4,6 +4,7 @@
 // module
 #include "remote_control.h"
 #include "dji_motor.h"
+#include "chassis.h"
 
 // bsp
 
@@ -13,9 +14,12 @@
 #define PTICH_HORIZON_ANGLE (PITCH_HORIZON_ECD * ECD_ANGLE_COEF_DJI) // pitch水平时电机的角度,0-360
 
 
-
 static RC_ctrl_t *rc_data;              // 遥控器数据,初始化时返回
 static Robot_Status_e robot_state; // 机器人整体工作状态
+Chassis_Ctrl_Cmd_s chassis_cmd_send;
+extern RC_ctrl_t rc_ctrl[2]; 
+
+static void RemoteControlSet();
 
 
 void RobotCMDInit()
@@ -29,5 +33,20 @@ void RobotCMDInit()
 void RobotCMDTask()
 
 {
-    
+    RemoteControlSet();
+}
+
+
+/**
+ * @brief 控制输入为遥控器(调试时)的模式和控制量设置
+ *
+ */
+static void RemoteControlSet()
+{
+    if(switch_is_up(rc_ctrl->rc.switch_right))          //右侧开关上，底盘控制
+    {
+        chassis_cmd_send.vx = rc_ctrl->rc.rocker_r_;
+        chassis_cmd_send.vy = rc_ctrl->rc.rocker_r1;
+        chassis_cmd_send.wz = rc_ctrl->rc.rocker_l_;
+    }
 }

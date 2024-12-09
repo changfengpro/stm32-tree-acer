@@ -10,7 +10,9 @@
         "typeinfo": "cpp",
         "general_def.h": "c",
         "bsp_dwt.h": "c",
-        "arm_math.h": "c"
+        "arm_math.h": "c",
+        "robot_def.h": "c",
+        "dji_motor.h": "c"
     },
     "stm32-for-vscode.openOCDPath": false,
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"

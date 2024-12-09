@@ -1,8 +1,6 @@
 
 
 GraphedExpression="speed", Color=#e56a6f
-GraphedExpression="(((Second_M3508_motor)->motor_controller).speed_PID).Measure", Color=#35792b, Show=0
-GraphedExpression="((Second_M3508_motor)->measure).speed_aps", Color=#769dda
 OpenDocument="startup_stm32f407xx.s", FilePath="/home/rmer/STM/sentry/startup_stm32f407xx.s", Line=50
 OpenDocument="tasks.c", FilePath="/home/rmer/STM/sentry/Middlewares/Third_Party/FreeRTOS/Source/tasks.c", Line=3654
 OpenDocument="dji_motor.c", FilePath="/home/rmer/STM/sentry/Modules/motor/DJImotor/dji_motor.c", Line=255
@@ -18,19 +16,19 @@ OpenDocument="freertos.c", FilePath="/home/rmer/STM/sentry/Core/Src/freertos.c",
 OpenDocument="remote_control.c", FilePath="/home/rmer/STM/sentry/Modules/remote/remote_control.c", Line=69
 OpenDocument="can.h", FilePath="/home/rmer/STM/sentry/Core/Inc/can.h", Line=15
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=696, h=74, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=696, h=95, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Source Files", DockArea=LEFT, x=0, y=0, w=493, h=321, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Memory 1", DockArea=BOTTOM, x=2, y=0, w=669, h=264, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x20000390
-OpenWindow="Local Data", DockArea=RIGHT, x=0, y=0, w=696, h=89, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Local Data", DockArea=RIGHT, x=0, y=0, w=696, h=108, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=LEFT, x=0, y=1, w=493, h=349, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Data Sampling", DockArea=BOTTOM, x=1, y=0, w=706, h=264, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
-OpenWindow="Timeline", DockArea=RIGHT, x=0, y=2, w=696, h=501, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=1, DataPaneShown=1, PowerPaneShown=0, CodePaneShown=0, PinCursor="Cursor Movable", TimePerDiv="500 s / Div", TimeStampFormat="Time", DataGraphDrawAsPoints=0, DataGraphLegendShown=1, DataGraphUniformSampleSpacing=0, DataGraphLegendPosition="219;303", DataGraphShowNamesAtCursor=0, PowerGraphDrawAsPoints=0, PowerGraphLegendShown=0, PowerGraphAvgFilterTime=Off, PowerGraphAvgFilterLen=Off, PowerGraphUniformSampleSpacing=0, PowerGraphLegendPosition="510;0", CodeGraphLegendShown=0, CodeGraphLegendPosition="485;0"
+OpenWindow="Timeline", DockArea=RIGHT, x=0, y=2, w=696, h=461, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=1, DataPaneShown=1, PowerPaneShown=0, CodePaneShown=0, PinCursor="Cursor Movable", TimePerDiv="500 s / Div", TimeStampFormat="Time", DataGraphDrawAsPoints=0, DataGraphLegendShown=1, DataGraphUniformSampleSpacing=0, DataGraphLegendPosition="219;299", DataGraphShowNamesAtCursor=0, PowerGraphDrawAsPoints=0, PowerGraphLegendShown=0, PowerGraphAvgFilterTime=Off, PowerGraphAvgFilterLen=Off, PowerGraphUniformSampleSpacing=0, PowerGraphLegendPosition="511;0", CodeGraphLegendShown=0, CodeGraphLegendPosition="528;0"
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=463, h=264, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
 TableHeader="Local Data", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Location";"Size";"Type";"Scope"], ColWidths=[154;100;100;100;231;100]
-TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[100;100;100;100;100;181]
+TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[100;100;100;100;100;196]
 TableHeader="Source Files", SortCol="File", SortOrder="DESCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[239;100;100;100;679]
-TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" speed";" (((Second_M3508_motor)->motor_controller).speed_PID).Measure";" ((Second_M3508_motor)->measure).speed_aps"], ColWidths=[100;100;100;100;100]
+TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" speed"], ColWidths=[100;100;100]
 TableHeader="Data Sampling Setup", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[100;100;100;100;100;100;100;100;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
 TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Refresh"], ColWidths=[163;100;100;115]
@@ -40,6 +38,6 @@ WatchedExpression="rc_ctrl", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="First_GM6020_motor", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="Second_GM6020_motor", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="Third_GM6020_motor", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="angle", DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
+WatchedExpression="angle", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="Second_M3508_motor", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="speed", RefreshRate=5, Window=Watched Data 1
