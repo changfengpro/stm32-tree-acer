@@ -41,6 +41,6 @@ __attribute__((noreturn)) void StartRobotTask(void *argument)
     {
         RobotTask();
 
-        osDelay(5);
+        osDelay(1);
     }
 }

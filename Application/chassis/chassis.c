@@ -18,8 +18,7 @@ static void Steer_Chassis_Control(ChassisHandle_t *Chassis_hanlde);
 
 
 
-float angle;
-float speed;
+static float CHASSIS_6020_1_Y_ANGLE, CHASSIS_6020_2_Y_ANGLE, CHASSIS_6020_3_Y_ANGLE, CHASSIS_6020_4_Y_ANGLE;
 static Chassis_Ctrl_Cmd_s chassis_cmd_recv;         // 底盘接收到的控制命令
 
 // first表示第一象限， second表示第二象限，以此类推
@@ -355,21 +354,26 @@ static void Steer_angle_change(ChassisHandle_t *chassis_handle, float chassis_vx
 {
     float theta = atan(1.0 / 1.0);  //返回45度
     float steer_wz = chassis_wz * PI /180.0f;  //chassis_wz传入的是度/秒，转化为弧度制
+    float atan_angle[4];
 
     if((chassis_vx == 0) && (chassis_vy == 0) && (chassis_wz == 0))
     {
         for(int i = 0; i < 4; i++)
         {
-            chassis_handle->last_steer_target_angle[i] = chassis_handle->motor_set_steer[i];
+            chassis_handle->motor_set_steer[i] = chassis_handle->last_steer_target_angle[i];
         }
     }
     else
     {
-        chassis_handle->motor_set_steer[0] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)), (chassis_vy + steer_wz * RADIUS * sin(theta)));
-        chassis_handle->motor_set_steer[1] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
-        chassis_handle->motor_set_steer[2] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
-        chassis_handle->motor_set_steer[3] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy + steer_wz * RADIUS * sin(theta)));
+        atan_angle[0] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)), (chassis_vy + steer_wz * RADIUS * sin(theta)));
+        atan_angle[1] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
+        atan_angle[2] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
+        atan_angle[3] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy + steer_wz * RADIUS * sin(theta)));
 
+        chassis_handle->motor_set_steer[0] = CHASSIS_6020_1_Y_ANGLE + atan_angle[0];
+        chassis_handle->motor_set_steer[1] = CHASSIS_6020_2_Y_ANGLE + atan_angle[1];
+        chassis_handle->motor_set_steer[2] = CHASSIS_6020_3_Y_ANGLE + atan_angle[2];
+        chassis_handle->motor_set_steer[3] = CHASSIS_6020_4_Y_ANGLE + atan_angle[3];
 
         for(int i = 0; i < 4; i++)
         {
@@ -392,6 +396,8 @@ static void Steer_angle_change(ChassisHandle_t *chassis_handle, float chassis_vx
         for(int i = 0; i < 4; i++)
         {
             chassis_handle->motor_set_steer[i] = chassis_handle->motor_set_steer[i] * RADIAN_TO_ANGLE;
+
+            chassis_handle->last_steer_target_angle[i] = chassis_handle->motor_set_steer[i];    //记录上一次的角度数据
         }
     }
 
