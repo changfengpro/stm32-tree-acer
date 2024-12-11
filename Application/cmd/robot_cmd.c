@@ -45,8 +45,8 @@ static void RemoteControlSet()
 {
     if(switch_is_up(rc_ctrl->rc.switch_right))          //右侧开关上，底盘控制
     {
-        chassis_cmd_send.vx = rc_ctrl->rc.rocker_r_;
-        chassis_cmd_send.vy = rc_ctrl->rc.rocker_r1;
-        chassis_cmd_send.wz = rc_ctrl->rc.rocker_l_;
+        chassis_cmd_send.vx = rc_ctrl->rc.rocker_r_  / 1.5f;
+        chassis_cmd_send.vy = rc_ctrl->rc.rocker_r1 / 1.5f;
+        chassis_cmd_send.wz = rc_ctrl->rc.rocker_l_ * 150.0f;
     }
 }

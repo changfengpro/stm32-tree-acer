@@ -55,17 +55,19 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 10,
-                                                        .Ki = 0.1,
+                                                        .Kp = 25,
+                                                        .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 20000},
+                                                        .MaxOut = 20000,
+                                                        .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
                         .Ki = 0.1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
+                        .IntegralLimit = 3000
         }
 
         }
@@ -86,17 +88,19 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 10,
-                                                        .Ki = 0.1,
+                                                        .Kp = 25,
+                                                        .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 20000},
+                                                        .MaxOut = 20000,
+                                                        .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
                         .Ki = 0.1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
+                        .IntegralLimit = 3000
         }
 
         }
@@ -117,17 +121,19 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 10,
-                                                        .Ki = 0,
+                                                        .Kp = 25,
+                                                        .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 20000},
+                                                        .MaxOut = 20000,
+                                                        .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
                         .Ki = 0,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
+                        .IntegralLimit = 3000
         }
 
         }
@@ -148,17 +154,20 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 10,
-                                                        .Ki = 0,
+                                                        .Kp = 25,
+                                                        .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
-                                                        .MaxOut = 20000},
+                                                        .MaxOut = 20000,
+                                                        .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
                         .Kp = 10,
                         .Ki = 0,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
+                        .IntegralLimit = 3000,
+
         }
 
         }
@@ -297,10 +306,10 @@ void ChassisTask()
     ChassisHandle_Deliver_Config();
     Steer_Chassis_Control(&chassis_handle);
 
-    DJIMotorSetRef(First_GM6020_motor, chassis_handle.motor_set_steer[0]);
-    DJIMotorSetRef(Second_GM6020_motor, chassis_handle.motor_set_steer[1]);
-    DJIMotorSetRef(Third_GM6020_motor, chassis_handle.motor_set_steer[2]);
-    DJIMotorSetRef(Fourth_GM6020_motor, chassis_handle.motor_set_steer[3]);
+    DJIMotorSetRef(First_GM6020_motor, (float)(chassis_handle.motor_set_steer[0]) - 5.0f );
+    DJIMotorSetRef(Second_GM6020_motor, (float)(chassis_handle.motor_set_steer[1]) - 145.0f);
+    DJIMotorSetRef(Third_GM6020_motor, (float)(chassis_handle.motor_set_steer[2]) - 0.0f);
+    DJIMotorSetRef(Fourth_GM6020_motor, (float)(chassis_handle.motor_set_steer[3]) - 20.0f);
 
     DJIMotorSetRef(First_M3508_motor, chassis_handle.motor_set_speed[0]);
     DJIMotorSetRef(Second_M3508_motor, chassis_handle.motor_set_speed[1]);
@@ -356,10 +365,10 @@ static void Steer_angle_change(ChassisHandle_t *chassis_handle, float chassis_vx
     }
     else
     {
-        chassis_handle->motor_set_steer[0] = atan2((chassis_vy + steer_wz * RADIUS * sin(theta)), (chassis_vx - steer_wz * RADIUS * cos(theta)));
-        chassis_handle->motor_set_steer[1] = atan2((chassis_vy - steer_wz * RADIUS * sin(theta)), (chassis_vx - steer_wz * RADIUS * cos(theta)));
-        chassis_handle->motor_set_steer[2] = atan2((chassis_vy - steer_wz * RADIUS * sin(theta)), (chassis_vx + steer_wz * RADIUS * cos(theta)));
-        chassis_handle->motor_set_steer[3] = atan2((chassis_vy + steer_wz * RADIUS * sin(theta)), (chassis_vx + steer_wz * RADIUS * cos(theta)));
+        chassis_handle->motor_set_steer[0] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)), (chassis_vy + steer_wz * RADIUS * sin(theta)));
+        chassis_handle->motor_set_steer[1] = atan2((chassis_vx - steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
+        chassis_handle->motor_set_steer[2] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy - steer_wz * RADIUS * sin(theta)));
+        chassis_handle->motor_set_steer[3] = atan2((chassis_vx + steer_wz * RADIUS * cos(theta)),(chassis_vy + steer_wz * RADIUS * sin(theta)));
 
 
         for(int i = 0; i < 4; i++)
