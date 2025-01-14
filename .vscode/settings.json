@@ -12,7 +12,16 @@
         "bsp_dwt.h": "c",
         "arm_math.h": "c",
         "robot_def.h": "c",
-        "dji_motor.h": "c"
+        "dji_motor.h": "c",
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "cstdint": "cpp",
+        "random": "cpp",
+        "stop_token": "cpp",
+        "bmi088.h": "c",
+        "user_lib.h": "c",
+        "controller.h": "c"
     },
     "stm32-for-vscode.openOCDPath": false,
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"

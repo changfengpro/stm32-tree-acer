@@ -11,7 +11,8 @@
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Bsp/dwt",
                 "${workspaceFolder}/Modules",
-                "${workspaceFolder}/Application/chassis"
+                "${workspaceFolder}/Application/chassis",
+                "${workspaceFolder}/Modules/imu"
             ],
             "defines": [],
             "compilerPath": null,

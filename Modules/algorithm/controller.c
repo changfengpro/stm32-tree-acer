@@ -1,6 +1,15 @@
+/**
+ * @file controller.c
+ * @author wanghongxi
+ * @author modified by neozng
+ * @brief  PID控制器定义
+ * @version beta
+ * @date 2022-11-01
+ *
+ * @copyrightCopyright (c) 2022 HNU YueLu EC all rights reserved
+ */
 #include "controller.h"
 #include "memory.h"
-
 
 /* ----------------------------下面是pid优化环节的实现---------------------------- */
 
@@ -25,7 +34,6 @@ static void f_Changing_Integration_Rate(PIDInstance *pid)
             pid->ITerm = 0;
     }
 }
-
 
 static void f_Integral_Limit(PIDInstance *pid)
 {

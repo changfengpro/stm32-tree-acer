@@ -1,21 +1,30 @@
-#ifndef __CONTROLLER_H
-#define __CONTROLLER_H
+/**
+ ******************************************************************************
+ * @file	 controller.h
+ * @author  Wang Hongxi
+ * @version V1.1.3
+ * @date    2021/7/3
+ * @brief
+ ******************************************************************************
+ * @attention
+ *
+ ******************************************************************************
+ */
+#ifndef _CONTROLLER_H
+#define _CONTROLLER_H
 
 #include "main.h"
 #include "stdint.h"
 #include "memory.h"
 #include "stdlib.h"
-#include "arm_math.h"
-#include "math.h"
 #include "bsp_dwt.h"
-
+#include "arm_math.h"
+#include <math.h>
 
 #ifndef abs
 #define abs(x) ((x > 0) ? x : -x)
 #endif
 
-
-#pragma pack(1)
 // PID 优化环节使能标志位,通过位与可以判断启用的优化环节;也可以改成位域的形式
 typedef enum
 {
@@ -42,8 +51,6 @@ typedef struct
     uint64_t ERRORCount;
     ErrorType_e ERRORType;
 } PID_ErrorHandler_t;
-
-
 
 /* PID结构体 */
 typedef struct
@@ -108,9 +115,6 @@ typedef struct // config parameter
     float Derivative_LPF_RC;
 } PID_Init_Config_s;
 
-#pragma pack()
-
-
 /**
  * @brief 初始化PID实例
  * @todo 待修改为统一的PIDRegister风格
@@ -128,6 +132,5 @@ void PIDInit(PIDInstance *pid, PID_Init_Config_s *config);
  * @return float  PID计算输出
  */
 float PIDCalculate(PIDInstance *pid, float measure, float ref);
-
 
 #endif

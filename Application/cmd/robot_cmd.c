@@ -47,6 +47,6 @@ static void RemoteControlSet()
     {
         chassis_cmd_send.vx = rc_ctrl->rc.rocker_r_  / 1.5f;
         chassis_cmd_send.vy = rc_ctrl->rc.rocker_r1 / 1.5f;
-        chassis_cmd_send.wz = rc_ctrl->rc.rocker_l_ * 150.0f;
+        chassis_cmd_send.wz = - rc_ctrl->rc.rocker_l_ * 150.0f;
     }
 }

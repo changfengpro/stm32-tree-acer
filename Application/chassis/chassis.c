@@ -1,7 +1,7 @@
 #include "chassis.h"
 #include "robot_def.h"
 #include "dji_motor.h"
-
+#include "ins_task.h"
 #include "general_def.h"
 #include "bsp_dwt.h"
 #include "arm_math.h"
@@ -20,6 +20,9 @@ static void Steer_Chassis_Control(ChassisHandle_t *Chassis_hanlde);
 
 static float CHASSIS_6020_1_Y_ANGLE, CHASSIS_6020_2_Y_ANGLE, CHASSIS_6020_3_Y_ANGLE, CHASSIS_6020_4_Y_ANGLE;
 static Chassis_Ctrl_Cmd_s chassis_cmd_recv;         // 底盘接收到的控制命令
+static attitude_t *chassis_IMU_data; // 底盘IMU数据
+
+
 
 // first表示第一象限， second表示第二象限，以此类推
 static DJIMotorInstance *First_GM6020_motor, *Second_GM6020_motor, *Third_GM6020_motor, *Fourth_GM6020_motor, \
@@ -38,7 +41,10 @@ static void ChassisHandle_Deliver_Config()
 
 
 void ChassisInit()
-{
+{   
+
+    chassis_IMU_data = INS_Init();
+
     Motor_Init_Config_s chassis_first_GM6020_motor_config =       //first表示第一象限， second表示第二象限，以此类推
     {
         .motor_type = GM6020,
@@ -288,7 +294,7 @@ void ChassisInit()
 }
 
 
-
+static float speed[4];  //调试用
 
 /* 机器人底盘控制核心任务 */
 void ChassisTask()
@@ -314,6 +320,11 @@ void ChassisTask()
     DJIMotorSetRef(Second_M3508_motor, chassis_handle.motor_set_speed[1]);
     DJIMotorSetRef(Third_M3508_motor, chassis_handle.motor_set_speed[2]);
     DJIMotorSetRef(Fourth_M3508_motor, chassis_handle.motor_set_speed[3]);
+
+    // DJIMotorSetRef(First_M3508_motor, speed[0]);
+    // DJIMotorSetRef(Second_M3508_motor, speed[1]);
+    // DJIMotorSetRef(Third_M3508_motor, speed[2]);
+    // DJIMotorSetRef(Fourth_M3508_motor, speed[3]);
     
     DJIMotorControl();
 }

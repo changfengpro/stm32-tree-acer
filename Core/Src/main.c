@@ -21,6 +21,8 @@
 #include "cmsis_os.h"
 #include "can.h"
 #include "dma.h"
+#include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -99,6 +101,9 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
   MX_CAN2_Init();
+  MX_SPI1_Init();
+  MX_TIM10_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   RobotInit();
   /* USER CODE END 2 */
