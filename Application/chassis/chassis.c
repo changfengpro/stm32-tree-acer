@@ -17,10 +17,10 @@ static void Steer_Calculate(ChassisHandle_t *chassis_handle, float chassis_vx, f
 static void Steer_Chassis_Control(ChassisHandle_t *Chassis_hanlde);
 
 
-
 static float CHASSIS_6020_1_Y_ANGLE, CHASSIS_6020_2_Y_ANGLE, CHASSIS_6020_3_Y_ANGLE, CHASSIS_6020_4_Y_ANGLE;
 static Chassis_Ctrl_Cmd_s chassis_cmd_recv;         // 底盘接收到的控制命令
 static attitude_t *chassis_IMU_data; // 底盘IMU数据
+static float Init_angle[4] = { -1.0f , 144.0f , -3.0f , -164.0f };
 
 
 
@@ -43,7 +43,7 @@ static void ChassisHandle_Deliver_Config()
 void ChassisInit()
 {   
 
-    chassis_IMU_data = INS_Init();
+    // chassis_IMU_data = INS_Init();
 
     Motor_Init_Config_s chassis_first_GM6020_motor_config =       //first表示第一象限， second表示第二象限，以此类推
     {
@@ -60,15 +60,15 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 25,
+                                                        .Kp = 35,
                                                         .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
                                                         .MaxOut = 20000,
                                                         .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
-                        .Kp = 10,
-                        .Ki = 0.1,
+                        .Kp = 30,
+                        .Ki = 1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
@@ -93,15 +93,15 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 25,
+                                                        .Kp = 35,
                                                         .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
                                                         .MaxOut = 20000,
                                                         .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
-                        .Kp = 10,
-                        .Ki = 0.1,
+                        .Kp = 30,
+                        .Ki = 1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
@@ -126,15 +126,15 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 25,
+                                                        .Kp = 35,
                                                         .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
                                                         .MaxOut = 20000,
                                                         .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
-                        .Kp = 10,
-                        .Ki = 0,
+                        .Kp = 30,
+                        .Ki = 1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
@@ -159,15 +159,15 @@ void ChassisInit()
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL
         },
         .controller_param_init_config = {.angle_PID = {.Improve = 0,
-                                                        .Kp = 25,
+                                                        .Kp = 35,
                                                         .Ki = 1,
                                                         .Kd = 0,
                                                         .DeadBand = 0,
                                                         .MaxOut = 20000,
                                                         .IntegralLimit = 3000},
         .speed_PID = {.Improve = 0,
-                        .Kp = 10,
-                        .Ki = 0,
+                        .Kp = 30,
+                        .Ki = 1,
                         .Kd = 0,
                         .DeadBand = 0,
                         .MaxOut = 20000,
@@ -295,6 +295,11 @@ void ChassisInit()
 
 
 static float speed[4];  //调试用
+static float angle[4]; //调试用
+/*
+    angle[3] = -164
+ */
+
 
 /* 机器人底盘控制核心任务 */
 void ChassisTask()
@@ -311,22 +316,26 @@ void ChassisTask()
     ChassisHandle_Deliver_Config();
     Steer_Chassis_Control(&chassis_handle);
 
-    DJIMotorSetRef(First_GM6020_motor, (float)(chassis_handle.motor_set_steer[0]) - 5.0f );
-    DJIMotorSetRef(Second_GM6020_motor, (float)(chassis_handle.motor_set_steer[1]) - 145.0f);
-    DJIMotorSetRef(Third_GM6020_motor, (float)(chassis_handle.motor_set_steer[2]) - 0.0f);
-    DJIMotorSetRef(Fourth_GM6020_motor, (float)(chassis_handle.motor_set_steer[3]) - 20.0f);
+    DJIMotorSetRef(First_GM6020_motor, (float)(chassis_handle.motor_set_steer[0]) - Init_angle[0] );
+    DJIMotorSetRef(Second_GM6020_motor, (float)(chassis_handle.motor_set_steer[1]) - Init_angle[1]);
+    DJIMotorSetRef(Third_GM6020_motor, (float)(chassis_handle.motor_set_steer[2]) - Init_angle[2]);
+    DJIMotorSetRef(Fourth_GM6020_motor, (float)(chassis_handle.motor_set_steer[3]) - Init_angle[3]);
 
     DJIMotorSetRef(First_M3508_motor, chassis_handle.motor_set_speed[0]);
     DJIMotorSetRef(Second_M3508_motor, chassis_handle.motor_set_speed[1]);
     DJIMotorSetRef(Third_M3508_motor, chassis_handle.motor_set_speed[2]);
     DJIMotorSetRef(Fourth_M3508_motor, chassis_handle.motor_set_speed[3]);
 
+    // DJIMotorSetRef(First_GM6020_motor, (float)(angle[0]));
+    // DJIMotorSetRef(Second_GM6020_motor, (float)(angle[1]));
+    // DJIMotorSetRef(Third_GM6020_motor, (float)(angle[2]));
+    // DJIMotorSetRef(Fourth_GM6020_motor, (float)(angle[3]));
+
     // DJIMotorSetRef(First_M3508_motor, speed[0]);
     // DJIMotorSetRef(Second_M3508_motor, speed[1]);
     // DJIMotorSetRef(Third_M3508_motor, speed[2]);
     // DJIMotorSetRef(Fourth_M3508_motor, speed[3]);
     
-    DJIMotorControl();
 }
 
 static void Steer_Speed_Calcu(ChassisHandle_t *chassis_handle, float chassis_vx, float chassis_vy, float chassis_wz)

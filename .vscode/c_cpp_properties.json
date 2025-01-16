@@ -12,7 +12,8 @@
                 "${workspaceFolder}/Bsp/dwt",
                 "${workspaceFolder}/Modules",
                 "${workspaceFolder}/Application/chassis",
-                "${workspaceFolder}/Modules/imu"
+                "${workspaceFolder}/Modules/imu",
+                "${workspaceFolder}/Modules/motor/DJImotor"
             ],
             "defines": [],
             "compilerPath": null,

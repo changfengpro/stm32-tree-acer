@@ -1,4 +1,4 @@
-# Install script for directory: /home/rmer/STM/sentry
+# Install script for directory: /home/rmer/STM/sentry/sentry_chassis
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,13 +39,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rmer/STM/sentry/build/cmake/stm32cubemx/cmake_install.cmake")
+  include("/home/rmer/STM/sentry/sentry_chassis/build/cmake/stm32cubemx/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/rmer/STM/sentry/build/install_local_manifest.txt"
+  file(WRITE "/home/rmer/STM/sentry/sentry_chassis/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/rmer/STM/sentry/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/rmer/STM/sentry/sentry_chassis/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

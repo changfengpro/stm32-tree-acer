@@ -35,7 +35,7 @@ rule C_COMPILER__sentry_unscanned_Debug
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__sentry_Debug
-  command = $PRE_LINK && /home/rmer/arm-none-eabi/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -T "/home/rmer/STM/sentry/STM32F407IGHx_FLASH.ld" --specs=nano.specs -Wl,-Map=sentry.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = $PRE_LINK && /home/rmer/arm-none-eabi/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -T "/home/rmer/STM/sentry/sentry_chassis/STM32F407IGHx_FLASH.ld" --specs=nano.specs -Wl,-Map=sentry.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/local/bin/cmake --regenerate-during-build -S/home/rmer/STM/sentry -B/home/rmer/STM/sentry/build
+  command = /usr/local/bin/cmake --regenerate-during-build -S/home/rmer/STM/sentry/sentry_chassis -B/home/rmer/STM/sentry/sentry_chassis/build
   description = Re-running CMake...
   generator = 1
 
