@@ -14,6 +14,7 @@
         "dji_motor.h": "c",
         "bsp_log.h": "c",
         "shoot.h": "c",
-        "message_center.h": "c"
+        "message_center.h": "c",
+        "robot_def.h": "c"
     }
 }
