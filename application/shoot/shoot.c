@@ -18,7 +18,7 @@ static Subscriber_t *shoot_sub;
 static Shoot_Upload_Data_s shoot_feedback_data; // 来自cmd的发射控制信息
 static float output[2]; //存储拨弹电机的输出值
 static int count[2] = {0, 0};       //用于堵转计数
-
+static int enter_count[2]; //用于进入计数
 // dwt定时,计算冷却用
 static float hibernate_time = 0, dead_time = 0;
 
@@ -113,13 +113,13 @@ void ShootInit()
         .controller_param_init_config = {
             .angle_PID = {
                 // 如果启用位置环来控制发弹,需要较大的I值保证输出力矩的线性度否则出现接近拨出的力矩大幅下降
-                .Kp = 10, // 10
+                .Kp = 30, // 10
                 .Ki = 0,
                 .Kd = 0,
                 .MaxOut = 200,
             },
             .speed_PID = {
-                .Kp = 10, // 10
+                .Kp = 15, // 10
                 .Ki = 1, // 1
                 .Kd = 0,
                 .Improve = PID_Integral_Limit,
@@ -216,17 +216,38 @@ void ShootTask()
         break;
     // 连发模式,对速度闭环,射频后续修改为可变,目前固定为1Hz
     case LOAD_BURSTFIRE:
-        DJIMotorOuterLoop(shoot_l.loader, SPEED_LOOP);                                              // 切换到速度环
-        DJIMotorOuterLoop(shoot_r.loader, SPEED_LOOP);
         if(shoot_l.stall_flag == 1 || shoot_r.stall_flag == 1)
         {
-            if(shoot_l.stall_flag == 1) DJIMotorSetRef(shoot_l.loader, -50);
-            if(shoot_r.stall_flag == 1) DJIMotorSetRef(shoot_r.loader, -50);
+            if(shoot_l.stall_flag == 1) 
+            {
+                DJIMotorOuterLoop(shoot_l.loader, ANGLE_LOOP);                                              // 切换到角度环
+                DJIMotorSetRef(shoot_l.loader, -(shoot_l.loader->measure.total_angle + ONE_BULLET_DELTA_ANGLE)); // 控制量减少一发弹丸的角度
+                if(enter_count[0] == 20)
+                {
+                    shoot_l.stall_flag = 0;
+                    enter_count[0] = 0;
+                }
+                
+                enter_count[0]++;
+            }
+            if(shoot_r.stall_flag == 1)
+            {
+                DJIMotorOuterLoop(shoot_r.loader, ANGLE_LOOP);
+                DJIMotorSetRef(shoot_r.loader, -(shoot_r.loader->measure.total_angle + ONE_BULLET_DELTA_ANGLE)); // 控制量减少一发弹丸的角度
+                if(enter_count[1] == 20)
+                {
+                    shoot_r.stall_flag = 0;
+                    enter_count[1] = 0;
+                }
+                    enter_count[1]++;
+            }
         }
         else
-        {
+        {   DJIMotorOuterLoop(shoot_l.loader, SPEED_LOOP);                                              // 切换到速度环
+            DJIMotorOuterLoop(shoot_r.loader, SPEED_LOOP);
             DJIMotorSetRef(shoot_l.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
             DJIMotorSetRef(shoot_r.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
+
         // x颗/秒换算成速度: 已知一圈的载弹量,由此计算出1s需要转的角度,注意换算角速度(DJIMotor的速度单位是angle per second)
         }
         
@@ -306,10 +327,10 @@ void LoaderStallDetection()
         if(count[1] < 0)    count[1]++;
     }
 
-    if(output[0] >=9000 || output[1] >=9000)
+    if(output[0] >=5000 || output[1] >=5000)
     {
-        if(output[0] >= 9000)    count[0]++;
-        if(output[1] >= 9000)    count[1]++;
+        if(output[0] >= 5000)    count[0]++;
+        if(output[1] >= 5000)    count[1]++;
     }
     if(count[0]== 400 || count[1]== 400)
     {
