@@ -12,7 +12,9 @@ typedef struct
     DJIMotorInstance *friction_l;
     DJIMotorInstance *friction_r;
     DJIMotorInstance *loader;
-} Shoot_Init_Config;
+    int stall_flag;
+
+} ShootInstance;
 
 
 
@@ -28,5 +30,12 @@ void ShootInit();
  * 
  */
 void ShootTask();
+
+/**
+ * @brief 拨弹轮堵转检测函数
+ * 
+ * @return {*}
+ */
+void LoaderStallDetection();
 
 #endif // SHOOT_H

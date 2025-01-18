@@ -1,3 +1,12 @@
+/*
+ * @Description: 
+ * @Author: 
+ * @brief: 
+ * @version: 
+ * @Date: 2025-01-15 11:36:27
+ * @LastEditors:  
+ * @LastEditTime: 2025-01-18 16:35:07
+ */
 #include "motor_task.h"
 #include "LK9025.h"
 #include "HT04.h"
@@ -5,6 +14,7 @@
 #include "step_motor.h"
 #include "servo_motor.h"
 #include "power_control.h"
+#include "shoot.h"
 
 void MotorControlTask()
 {
@@ -15,6 +25,7 @@ void MotorControlTask()
     PowerControl();
     /* 如果有对应的电机则取消注释,可以加入条件编译或者register对应的idx判断是否注册了电机 */
     LKMotorControl();
+    LoaderStallDetection();
 
     // legacy support
     // 由于ht04电机的反馈方式为接收到一帧消息后立刻回传,以此方式连续发送可能导致总线拥塞

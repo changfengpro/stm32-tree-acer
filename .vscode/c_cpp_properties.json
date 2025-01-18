@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/bsp/can",
+                "${workspaceFolder}/application/shoot"
             ],
             "defines": [
                 "_DEBUG",

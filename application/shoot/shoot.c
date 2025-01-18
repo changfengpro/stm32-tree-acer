@@ -11,13 +11,13 @@
 // static servo_instance *lid; 需要增加弹舱盖
 
 extern Shoot_Ctrl_Cmd_s shoot_cmd_send;      // 传递给发射的控制信息
-
-static Shoot_Init_Config shoot_l, shoot_r; // 左右发射机构初始化配置
-
+static ShootInstance shoot_l, shoot_r; // 左右发射机构实例
 static Publisher_t *shoot_pub;
 static Shoot_Ctrl_Cmd_s shoot_cmd_recv; // 来自cmd的发射控制信息
 static Subscriber_t *shoot_sub;
 static Shoot_Upload_Data_s shoot_feedback_data; // 来自cmd的发射控制信息
+static float output[2]; //存储拨弹电机的输出值
+static int count[2] = {0, 0};       //用于堵转计数
 
 // dwt定时,计算冷却用
 static float hibernate_time = 0, dead_time = 0;
@@ -147,13 +147,16 @@ void ShootInit()
     loader_config.can_init_config.can_handle = &hcan2;
     shoot_r.loader = DJIMotorInit(&loader_config);     // 右云台发射机构初始化拨盘电机
 
+    shoot_l.stall_flag = 0; //初始化堵转标志位
+    shoot_r.stall_flag = 0;
+
     shoot_pub = PubRegister("shoot_feed", sizeof(Shoot_Upload_Data_s));
     shoot_sub = SubRegister("shoot_cmd", sizeof(Shoot_Ctrl_Cmd_s));
 }
 
 /* 机器人发射机构控制核心任务 */
 void ShootTask()
-{
+{   
     // 从cmd获取控制数据
     SubGetMessage(shoot_sub, &shoot_cmd_recv);
 
@@ -215,9 +218,18 @@ void ShootTask()
     case LOAD_BURSTFIRE:
         DJIMotorOuterLoop(shoot_l.loader, SPEED_LOOP);                                              // 切换到速度环
         DJIMotorOuterLoop(shoot_r.loader, SPEED_LOOP);
-        DJIMotorSetRef(shoot_l.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
-        DJIMotorSetRef(shoot_r.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
+        if(shoot_l.stall_flag == 1 || shoot_r.stall_flag == 1)
+        {
+            if(shoot_l.stall_flag == 1) DJIMotorSetRef(shoot_l.loader, -50);
+            if(shoot_r.stall_flag == 1) DJIMotorSetRef(shoot_r.loader, -50);
+        }
+        else
+        {
+            DJIMotorSetRef(shoot_l.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
+            DJIMotorSetRef(shoot_r.loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8); // 设定速度
         // x颗/秒换算成速度: 已知一圈的载弹量,由此计算出1s需要转的角度,注意换算角速度(DJIMotor的速度单位是angle per second)
+        }
+        
         break;
     // 拨盘反转,对速度闭环,后续增加卡弹检测(通过裁判系统剩余热量反馈和电机电流)
     // 也有可能需要从switch-case中独立出来
@@ -256,8 +268,8 @@ void ShootTask()
             DJIMotorSetRef(shoot_r.friction_r, 0);
             break;
         default: // 当前为了调试设定的默认值4000,因为还没有加入裁判系统无法读取弹速.
-            DJIMotorSetRef(shoot_l.friction_l, 30000);
-            DJIMotorSetRef(shoot_l.friction_r, 30000);
+            DJIMotorSetRef(shoot_l.friction_l, 50000);
+            DJIMotorSetRef(shoot_l.friction_r, 50000);
             break;
         }
     }
@@ -281,4 +293,36 @@ void ShootTask()
 
     // 反馈数据,目前暂时没有要设定的反馈数据,后续可能增加应用离线监测以及卡弹反馈
     PubPushMessage(shoot_pub, (void *)&shoot_feedback_data);
+}
+
+void LoaderStallDetection()
+{   
+    output[0] = shoot_l.loader->motor_controller.speed_PID.Output;
+    output[1] = shoot_r.loader->motor_controller.speed_PID.Output;
+
+    if(count[0] <= 0 || count[1] <= 0)
+    {
+        if(count[0] < 0)    count[0]++;
+        if(count[1] < 0)    count[1]++;
+    }
+
+    if(output[0] >=9000 || output[1] >=9000)
+    {
+        if(output[0] >= 9000)    count[0]++;
+        if(output[1] >= 9000)    count[1]++;
+    }
+    if(count[0]== 400 || count[1]== 400)
+    {
+        if(count[0] == 400)
+        {
+            shoot_l.stall_flag = 1;
+            count[0] = -50;
+        }
+        if(count[1] == 400)
+        {
+            shoot_r.stall_flag = 1;
+            count[1] = -50;
+        }
+    }
+    
 }
